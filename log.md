@@ -25,3 +25,7 @@
 ## [2026-10-20] lint | ตรวจ wikilink และ frontmatter
 - ตรวจทุก wikilink ชี้หน้าที่มีจริง และ frontmatter ครบ 8 field (ผลดูรายงานส่งมอบ)
 - Pages: [[index]], [[SCHEMA]]
+
+## [2026-10-20] config | ตั้ง auto-sync ไป GitHub
+- repo นี้ push ไป https://github.com/pitsanu1976/brain2nd อัตโนมัติผ่าน hook `~/.claude/hooks/llm-wiki-sync.sh` (SubagentStop/Stop)
+- Pages: [[SCHEMA]]

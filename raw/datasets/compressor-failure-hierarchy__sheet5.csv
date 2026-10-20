@@ -1,0 +1,474 @@
+PWTR-INST-FSIG,Power transmission-Instruments-Faulty signal/indication/alarm
+PWTR-INST-OADJ,Power transmission-Instruments-Out of adjustment
+PWTR-INST-OPEN,Power transmission-Instruments-Open circuit
+PWTR-INST-EART,Power transmission-Instruments-Earth/isolation fault
+PWTR-INST-LEAK,Power transmission-Instruments-Leakage
+PWTR-INST-BLKG,Power transmission-Instruments-Blockage/plugged
+PWTR-INST-CTMN,Power transmission-Instruments-Contamination
+PWTR-INST-EROS,Power transmission-Instruments-Erosion
+PWTR-INST-NSIG,Power transmission-Instruments-No signal/indication/alarm
+PWTR-INST-NCFD,Power transmission-Instruments-No cause found
+PWTR-INST-STCK,Power transmission-Instruments-Sticking
+PWTR-INST-ALGN,Power transmission-Instruments-Clearance/ alignment failure
+PWTR-INST-OVHT,Power transmission-Instruments-Overheating
+PWTR-INST-LOOS,Power transmission-Instruments-Looseness
+PWTR-GBVD-FSIG,Power transmission-Gearbox/var.drive-Faulty signal/indication/alarm
+CPUN-INST-FSIG,Compressor unit-Instruments-Faulty signal/indication/alarm
+CPUN-INST-OADJ,Compressor unit-Instruments-Out of adjustment
+CPUN-INST-OPEN,Compressor unit-Instruments-Open circuit
+CPUN-INST-EART,Compressor unit-Instruments-Earth/isolation fault
+CPUN-INST-LEAK,Compressor unit-Instruments-Leakage
+CPUN-INST-BLKG,Compressor unit-Instruments-Blockage/plugged
+CPUN-INST-CTMN,Compressor unit-Instruments-Contamination
+CPUN-INST-EROS,Compressor unit-Instruments-Erosion
+CPUN-INST-NSIG,Compressor unit-Instruments-No signal/indication/alarm
+CPUN-INST-NCFD,Compressor unit-Instruments-No cause found
+CPUN-INST-STCK,Compressor unit-Instruments-Sticking
+CPUN-INST-ALGN,Compressor unit-Instruments-Clearance/ alignment failure
+CPUN-INST-OVHT,Compressor unit-Instruments-Overheating
+CPUN-INST-LOOS,Compressor unit-Instruments-Looseness
+CPUN-VALV-OADJ,Compressor unit-Valves-Out of adjustment
+CPUN-VALV-FSIG,Compressor unit-Valves-Faulty signal/indication/alarm
+CPUN-ASRG-FSIG,Compressor unit-Antisurge system-Faulty signal/indication/alarm
+CPUN-ASRG-OADJ,Compressor unit-Antisurge system-Out of adjustment
+CPUN-ASRG-NCFD,Compressor unit-Antisurge system-No cause found
+CPUN-CYLN-FSIG,Compressor unit-Cylinder liner-Faulty signal/indication/alarm
+CPUN-IPIP-BLKG,Compressor unit-Internal piping-Blockage/plugged
+CTMN-INST-FSIG,Control and monitoring-Instruments-Faulty signal/indication/alarm
+CTMN-INST-OADJ,Control and monitoring-Instruments-Out of adjustment
+CTMN-INST-OPEN,Control and monitoring-Instruments-Open circuit
+CTMN-INST-EART,Control and monitoring-Instruments-Earth/isolation fault
+CTMN-INST-LEAK,Control and monitoring-Instruments-Leakage
+CTMN-INST-BLKG,Control and monitoring-Instruments-Blockage/plugged
+CTMN-INST-CTMN,Control and monitoring-Instruments-Contamination
+CTMN-INST-EROS,Control and monitoring-Instruments-Erosion
+CTMN-INST-NSIG,Control and monitoring-Instruments-No signal/indication/alarm
+CTMN-INST-NCFD,Control and monitoring-Instruments-No cause found
+CTMN-INST-STCK,Control and monitoring-Instruments-Sticking
+CTMN-INST-ALGN,Control and monitoring-Instruments-Clearance/ alignment failure
+CTMN-INST-OVHT,Control and monitoring-Instruments-Overheating
+CTMN-INST-LOOS,Control and monitoring-Instruments-Looseness
+CTMN-MONI-FSIG,Control and monitoring-Monitoring-Faulty signal/indication/alarm
+CTMN-MONI-SWFL,Control and monitoring-Monitoring-Software failure
+CTMN-MONI-OADJ,Control and monitoring-Monitoring-Out of adjustment
+CTMN-MONI-FPWR,Control and monitoring-Monitoring-Faulty power/voltage
+CTMN-MONI-NSIG,Control and monitoring-Monitoring-No signal/indication/alarm
+CTMN-MONI-NCFD,Control and monitoring-Monitoring-No cause found
+CTMN-CTUN-SWFL,Control and monitoring-Control unit-Software failure
+CTMN-CTUN-FSIG,Control and monitoring-Control unit-Faulty signal/indication/alarm
+CTMN-CTUN-NCFD,Control and monitoring-Control unit-No cause found
+CTMN-CTUN-NSIG,Control and monitoring-Control unit-No signal/indication/alarm
+CTMN-VALV-OADJ,Control and monitoring-Valves-Out of adjustment
+CTMN-VALV-FSIG,Control and monitoring-Valves-Faulty signal/indication/alarm
+CTMN-CBJB-OPEN,Control and monitoring-Cabling & junction boxes-Open circuit
+CTMN-CBJB-SHRT,Control and monitoring-Cabling & junction boxes-Short circuiting
+CTMN-CBJB-EART,Control and monitoring-Cabling & junction boxes-Earth/isolation fault
+CTMN-CBJB-CORR,Control and monitoring-Cabling & junction boxes-Corrosion
+CTMN-CBJB-LOOS,Control and monitoring-Cabling & junction boxes-Looseness
+CTMN-CBJB-MEXT,Control and monitoring-Cabling & junction boxes-Misc. external influences
+CTMN-IPSU-NPWR,Control and monitoring-Internal power supply-No power/ voltage
+CTMN-IPSU-FPWR,Control and monitoring-Internal power supply-Faulty power/voltage
+CTMN-ACTD-OADJ,Control and monitoring-Actuating device-Out of adjustment
+CTMN-CICV-OADJ,"Control and monitoring-Control-, isolating & check valves-Out of adjustment"
+CTMN-CICV-FSIG,"Control and monitoring-Control-, isolating & check valves-Faulty signal/indication/alarm"
+LUBS-INST-FSIG,Lubrication system-Instruments-Faulty signal/indication/alarm
+LUBS-INST-OADJ,Lubrication system-Instruments-Out of adjustment
+LUBS-INST-OPEN,Lubrication system-Instruments-Open circuit
+LUBS-INST-EART,Lubrication system-Instruments-Earth/isolation fault
+LUBS-INST-LEAK,Lubrication system-Instruments-Leakage
+LUBS-INST-BLKG,Lubrication system-Instruments-Blockage/plugged
+LUBS-INST-CTMN,Lubrication system-Instruments-Contamination
+LUBS-INST-EROS,Lubrication system-Instruments-Erosion
+LUBS-INST-NSIG,Lubrication system-Instruments-No signal/indication/alarm
+LUBS-INST-NCFD,Lubrication system-Instruments-No cause found
+LUBS-INST-STCK,Lubrication system-Instruments-Sticking
+LUBS-INST-ALGN,Lubrication system-Instruments-Clearance/ alignment failure
+LUBS-INST-OVHT,Lubrication system-Instruments-Overheating
+LUBS-INST-LOOS,Lubrication system-Instruments-Looseness
+LUBS-VALV-OADJ,Lubrication system-Valves-Out of adjustment
+LUBS-VALV-FSIG,Lubrication system-Valves-Faulty signal/indication/alarm
+LUBS-LUBE-CTMN,Lubrication system-Lube oil-Contamination
+LUBS-LUBE-FSIG,Lubrication system-Lube oil-Faulty signal/indication/alarm
+LUBS-RSHT-ELEC,Lubrication system-Reservoir w/heating system-Electrical failure - general
+LUBS-RSHT-FSIG,Lubrication system-Reservoir w/heating system-Faulty signal/indication/alarm
+LUBS-FILT-FSIG,Lubrication system-Filter(s)-Faulty signal/indication/alarm
+LUBS-OTHT-ELEC,Lubrication system-Oil tank w/heating system-Electrical failure - general
+LUBS-OTHT-FSIG,Lubrication system-Oil tank w/heating system-Faulty signal/indication/alarm
+SHSS-INST-FSIG,Shaft seal system-Instruments-Faulty signal/indication/alarm
+SHSS-INST-OADJ,Shaft seal system-Instruments-Out of adjustment
+SHSS-INST-OPEN,Shaft seal system-Instruments-Open circuit
+SHSS-INST-EART,Shaft seal system-Instruments-Earth/isolation fault
+SHSS-INST-LEAK,Shaft seal system-Instruments-Leakage
+SHSS-INST-BLKG,Shaft seal system-Instruments-Blockage/plugged
+SHSS-INST-CTMN,Shaft seal system-Instruments-Contamination
+SHSS-INST-EROS,Shaft seal system-Instruments-Erosion
+SHSS-INST-NSIG,Shaft seal system-Instruments-No signal/indication/alarm
+SHSS-INST-NCFD,Shaft seal system-Instruments-No cause found
+SHSS-INST-STCK,Shaft seal system-Instruments-Sticking
+SHSS-INST-ALGN,Shaft seal system-Instruments-Clearance/ alignment failure
+SHSS-INST-OVHT,Shaft seal system-Instruments-Overheating
+SHSS-INST-LOOS,Shaft seal system-Instruments-Looseness
+SHSS-VALV-OADJ,Shaft seal system-Valves-Out of adjustment
+SHSS-VALV-FSIG,Shaft seal system-Valves-Faulty signal/indication/alarm
+SHSS-RSHT-ELEC,Shaft seal system-Reservoir w/heating system-Electrical failure - general
+SHSS-RSHT-FSIG,Shaft seal system-Reservoir w/heating system-Faulty signal/indication/alarm
+SHSS-SOIL-FSIG,Shaft seal system-Seal oil-Faulty signal/indication/alarm
+SHSS-FILT-FSIG,Shaft seal system-Filter(s)-Faulty signal/indication/alarm
+MISC-VALV-OADJ,Miscellaneous-Valves-Out of adjustment
+MISC-VALV-FSIG,Miscellaneous-Valves-Faulty signal/indication/alarm
+CPUN-RBRG-OVHT,Compressor unit-Radial bearing-Overheating
+CPUN-RBRG-FATG,Compressor unit-Radial bearing-Fatigue
+CPUN-CASG-FATG,Compressor unit-Casing-Fatigue
+CPUN-PSTN-BRKG,Compressor unit-Piston(s)-Breakage
+CPUN-PSTN-FATG,Compressor unit-Piston(s)-Fatigue
+CPUN-PSTN-LOOS,Compressor unit-Piston(s)-Looseness
+PWTR-CPDR-ALGN,Power transmission-Coupling to driver-Clearance/ alignment failure
+PWTR-CPDR-WEAR,Power transmission-Coupling to driver-Wear
+CPUN-VALV-WEAR,Compressor unit-Valves-Wear
+CPUN-VALV-BRKG,Compressor unit-Valves-Breakage
+CPUN-VALV-CTMN,Compressor unit-Valves-Contamination
+CPUN-VALV-STCK,Compressor unit-Valves-Sticking
+CPUN-ASRG-CTRL,Compressor unit-Antisurge system-Control failure
+CPUN-ASRG-STCK,Compressor unit-Antisurge system-Sticking
+CPUN-PSTN-WEAR,Compressor unit-Piston(s)-Wear
+CTMN-VALV-STCK,Control and monitoring-Valves-Sticking
+CTMN-CTUN-CTRL,Control and monitoring-Control unit-Control failure
+LUBS-VALV-STCK,Lubrication system-Valves-Sticking
+SHSS-VALV-STCK,Shaft seal system-Valves-Sticking
+MISC-VALV-STCK,Miscellaneous-Valves-Sticking
+PWTR-SEAL-WEAR,Power transmission-Seals-Wear
+PWTR-SEAL-LEAK,Power transmission-Seals-Leakage
+PWTR-INST-CORR,Power transmission-Instruments-Corrosion
+CPUN-CYLN-WEAR,Compressor unit-Cylinder liner-Wear
+CPUN-CYLN-LEAK,Compressor unit-Cylinder liner-Leakage
+CPUN-CYLN-FATG,Compressor unit-Cylinder liner-Fatigue
+CPUN-VALV-LEAK,Compressor unit-Valves-Leakage
+CPUN-VALV-EROS,Compressor unit-Valves-Erosion
+CPUN-VALV-CORR,Compressor unit-Valves-Corrosion
+CPUN-VALV-LOOS,Compressor unit-Valves-Looseness
+CPUN-PACK-WEAR,Compressor unit-Packing-Wear
+CPUN-PACK-ALGN,Compressor unit-Packing-Clearance/ alignment failure
+CPUN-PACK-OVHT,Compressor unit-Packing-Overheating
+CPUN-PACK-CTMN,Compressor unit-Packing-Contamination
+CPUN-PACK-LEAK,Compressor unit-Packing-Leakage
+CPUN-IPIP-FATG,Compressor unit-Internal piping-Fatigue
+CPUN-IPIP-LEAK,Compressor unit-Internal piping-Leakage
+CPUN-IPIP-CORR,Compressor unit-Internal piping-Corrosion
+CPUN-INSS-LEAK,Compressor unit-Interstage seals-Leakage
+CPUN-SHSL-WEAR,Compressor unit-Shaft seals-Wear
+CPUN-SHSL-CTMN,Compressor unit-Shaft seals-Contamination
+CPUN-SHSL-LEAK,Compressor unit-Shaft seals-Leakage
+CPUN-SHSL-OVHT,Compressor unit-Shaft seals-Overheating
+CPUN-SHSL-ALGN,Compressor unit-Shaft seals-Clearance/ alignment failure
+CPUN-ASRG-LEAK,Compressor unit-Antisurge system-Leakage
+CPUN-CASG-CORR,Compressor unit-Casing-Corrosion
+CPUN-CASG-EROS,Compressor unit-Casing-Erosion
+CPUN-CASG-LEAK,Compressor unit-Casing-Leakage
+CPUN-CASG-LOOS,Compressor unit-Casing-Looseness
+CPUN-INST-CORR,Compressor unit-Instruments-Corrosion
+CPUN-PIPE-CORR,Compressor unit-Piping-Corrosion
+CPUN-PIPE-FATG,Compressor unit-Piping-Fatigue
+CPUN-PIPE-EROS,Compressor unit-Piping-Erosion
+CPUN-PIPE-LEAK,Compressor unit-Piping-Leakage
+CPUN-PIPE-BRST,Compressor unit-Piping-Burst
+CTMN-VALV-LEAK,Control and monitoring-Valves-Leakage
+CTMN-VALV-EROS,Control and monitoring-Valves-Erosion
+CTMN-VALV-CORR,Control and monitoring-Valves-Corrosion
+CTMN-INST-CORR,Control and monitoring-Instruments-Corrosion
+LUBS-VALV-LEAK,Lubrication system-Valves-Leakage
+LUBS-VALV-EROS,Lubrication system-Valves-Erosion
+LUBS-VALV-CORR,Lubrication system-Valves-Corrosion
+LUBS-PMTR-LEAK,Lubrication system-Pump w/motor-Leakage
+LUBS-SEAL-WEAR,Lubrication system-Seals-Wear
+LUBS-SEAL-LEAK,Lubrication system-Seals-Leakage
+LUBS-FILT-LEAK,Lubrication system-Filter(s)-Leakage
+LUBS-INST-CORR,Lubrication system-Instruments-Corrosion
+LUBS-PIPE-CORR,Lubrication system-Piping-Corrosion
+LUBS-PIPE-FATG,Lubrication system-Piping-Fatigue
+LUBS-PIPE-EROS,Lubrication system-Piping-Erosion
+LUBS-PIPE-LEAK,Lubrication system-Piping-Leakage
+LUBS-PIPE-BRST,Lubrication system-Piping-Burst
+SHSS-VALV-LEAK,Shaft seal system-Valves-Leakage
+SHSS-VALV-EROS,Shaft seal system-Valves-Erosion
+SHSS-VALV-CORR,Shaft seal system-Valves-Corrosion
+SHSS-SGAS-LEAK,Shaft seal system-Seal gas-Leakage
+SHSS-SGAS-CORR,Shaft seal system-Seal gas-Corrosion
+SHSS-FILT-LEAK,Shaft seal system-Filter(s)-Leakage
+SHSS-INST-CORR,Shaft seal system-Instruments-Corrosion
+MISC-VALV-LEAK,Miscellaneous-Valves-Leakage
+MISC-VALV-EROS,Miscellaneous-Valves-Erosion
+MISC-VALV-CORR,Miscellaneous-Valves-Corrosion
+MISC-PSPB-CORR,"Miscellaneous-Piping, pipe support + bellows-Corrosion"
+MISC-PSPB-FATG,"Miscellaneous-Piping, pipe support + bellows-Fatigue"
+MISC-PSPB-EROS,"Miscellaneous-Piping, pipe support + bellows-Erosion"
+MISC-PSPB-LEAK,"Miscellaneous-Piping, pipe support + bellows-Leakage"
+MISC-PSPB-BRST,"Miscellaneous-Piping, pipe support + bellows-Burst"
+MISC-PIPE-CORR,Miscellaneous-Piping-Corrosion
+MISC-PIPE-FATG,Miscellaneous-Piping-Fatigue
+MISC-PIPE-EROS,Miscellaneous-Piping-Erosion
+MISC-PIPE-LEAK,Miscellaneous-Piping-Leakage
+MISC-PIPE-BRST,Miscellaneous-Piping-Burst
+MISC-SILN-FATG,Miscellaneous-Silencers-Fatigue
+MISC-SILN-CORR,Miscellaneous-Silencers-Corrosion
+MISC-SILN-LEAK,Miscellaneous-Silencers-Leakage
+PWTR-SEAL-MATF,Power transmission-Seals-Material failure - general
+PWTR-SEAL-ALGN,Power transmission-Seals-Clearance/ alignment failure
+PWTR-CPDN-LEAK,Power transmission-Coupling to driven unit-Leakage
+PWTR-BRNG-LEAK,Power transmission-Bearing-Leakage
+PWTR-GBVD-LEAK,Power transmission-Gearbox/var.drive-Leakage
+PWTR-CPDR-LEAK,Power transmission-Coupling to driver-Leakage
+PWTR-LUBR-LEAK,Power transmission-Lubrication-Leakage
+PWTR-LUBR-FATG,Power transmission-Lubrication-Fatigue
+CPUN-CYLN-CORR,Compressor unit-Cylinder liner-Corrosion
+CTMN-CICV-LEAK,"Control and monitoring-Control-, isolating & check valves-Leakage"
+CTMN-CBJB-LEAK,Control and monitoring-Cabling & junction boxes-Leakage
+CTMN-CTUN-LEAK,Control and monitoring-Control unit-Leakage
+LUBS-SEAL-MATF,Lubrication system-Seals-Material failure - general
+LUBS-SEAL-ALGN,Lubrication system-Seals-Clearance/ alignment failure
+LUBS-COOL-CORR,Lubrication system-Cooler(s)-Corrosion
+LUBS-COOL-EROS,Lubrication system-Cooler(s)-Erosion
+LUBS-COOL-FATG,Lubrication system-Cooler(s)-Fatigue
+LUBS-COOL-BRST,Lubrication system-Cooler(s)-Burst
+LUBS-OILS-LEAK,Lubrication system-Oil-Leakage
+LUBS-LUBE-LEAK,Lubrication system-Lube oil-Leakage
+LUBS-OTHT-LEAK,Lubrication system-Oil tank w/heating system-Leakage
+LUBS-OTHT-CORR,Lubrication system-Oil tank w/heating system-Corrosion
+LUBS-RSHT-LEAK,Lubrication system-Reservoir w/heating system-Leakage
+LUBS-RSHT-CORR,Lubrication system-Reservoir w/heating system-Corrosion
+SHSS-PMGR-LEAK,Shaft seal system-Pump w/motor/gear-Leakage
+SHSS-SOIL-LEAK,Shaft seal system-Seal oil-Leakage
+SHSS-DGSL-LEAK,Shaft seal system-Dry gas seal-Leakage
+SHSS-BFGS-LEAK,Shaft seal system-Buffer gas system-Leakage
+SHSS-OHTK-LEAK,Shaft seal system-Overhead tank-Leakage
+SHSS-OHTK-CORR,Shaft seal system-Overhead tank-Corrosion
+SHSS-RSHT-LEAK,Shaft seal system-Reservoir w/heating system-Leakage
+SHSS-RSHT-CORR,Shaft seal system-Reservoir w/heating system-Corrosion
+MISC-COOL-CORR,Miscellaneous-Cooler(s)-Corrosion
+MISC-COOL-EROS,Miscellaneous-Cooler(s)-Erosion
+MISC-COOL-FATG,Miscellaneous-Cooler(s)-Fatigue
+MISC-COOL-BRST,Miscellaneous-Cooler(s)-Burst
+MISC-PAIR-LEAK,Miscellaneous-Purge air-Leakage
+PWTR-BRNG-WEAR,Power transmission-Bearing-Wear
+PWTR-BRNG-OVHT,Power transmission-Bearing-Overheating
+CPUN-SHSL-CTRL,Compressor unit-Shaft seals-Control failure
+CPUN-CYLN-STCK,Compressor unit-Cylinder liner-Sticking
+CTMN-CTUN-INST,Control and monitoring-Control unit-Instrument failure - general
+CTMN-CTUN-FPWR,Control and monitoring-Control unit-Faulty power/voltage
+CTMN-IPSU-SHRT,Control and monitoring-Internal power supply-Short circuiting
+CTMN-ACTD-STCK,Control and monitoring-Actuating device-Sticking
+CTMN-ACTD-LEAK,Control and monitoring-Actuating device-Leakage
+CTMN-ACTD-WEAR,Control and monitoring-Actuating device-Wear
+CTMN-ACTD-OPEN,Control and monitoring-Actuating device-Open circuit
+LUBS-PMTR-ELEC,Lubrication system-Pump w/motor-Electrical failure - general
+LUBS-PMTR-CTRL,Lubrication system-Pump w/motor-Control failure
+SHSS-PMGR-ELEC,Shaft seal system-Pump w/motor/gear-Electrical failure - general
+SHSS-PMGR-CTRL,Shaft seal system-Pump w/motor/gear-Control failure
+MISC-PAIR-OADJ,Miscellaneous-Purge air-Out of adjustment
+MISC-PAIR-BLKG,Miscellaneous-Purge air-Blockage/plugged
+MISC-PAIR-FSIG,Miscellaneous-Purge air-Faulty signal/indication/alarm
+CPUN-ASRG-EROS,Compressor unit-Antisurge system-Erosion
+LUBS-FILT-BLKG,Lubrication system-Filter(s)-Blockage/plugged
+SHSS-FILT-BLKG,Shaft seal system-Filter(s)-Blockage/plugged
+CPUN-VALV-FATG,Compressor unit-Valves-Fatigue
+CPUN-CYLN-CTMN,Compressor unit-Cylinder liner-Contamination
+CPUN-INSS-WEAR,Compressor unit-Interstage seals-Wear
+CPUN-INSS-ALGN,Compressor unit-Interstage seals-Clearance/ alignment failure
+CPUN-INSS-CTMN,Compressor unit-Interstage seals-Contamination
+CTMN-VALV-WEAR,Control and monitoring-Valves-Wear
+CTMN-VALV-BRKG,Control and monitoring-Valves-Breakage
+CTMN-VALV-CAVT,Control and monitoring-Valves-Cavitation
+LUBS-OILS-CTMN,Lubrication system-Oil-Contamination
+LUBS-VALV-WEAR,Lubrication system-Valves-Wear
+LUBS-VALV-BRKG,Lubrication system-Valves-Breakage
+LUBS-VALV-CAVT,Lubrication system-Valves-Cavitation
+LUBS-FILT-BRKG,Lubrication system-Filter(s)-Breakage
+LUBS-FILT-BRST,Lubrication system-Filter(s)-Burst
+SHSS-VALV-WEAR,Shaft seal system-Valves-Wear
+SHSS-VALV-BRKG,Shaft seal system-Valves-Breakage
+SHSS-VALV-CAVT,Shaft seal system-Valves-Cavitation
+SHSS-DGSL-WEAR,Shaft seal system-Dry gas seal-Wear
+SHSS-DGSL-CTMN,Shaft seal system-Dry gas seal-Contamination
+SHSS-DGSL-BRKG,Shaft seal system-Dry gas seal-Breakage
+SHSS-FILT-BRKG,Shaft seal system-Filter(s)-Breakage
+SHSS-FILT-BRST,Shaft seal system-Filter(s)-Burst
+MISC-VALV-WEAR,Miscellaneous-Valves-Wear
+MISC-VALV-BRKG,Miscellaneous-Valves-Breakage
+MISC-VALV-CAVT,Miscellaneous-Valves-Cavitation
+CPUN-ROTR-CTMN,Compressor unit-Rotor w/ impellers-Contamination
+CPUN-ROTR-EROS,Compressor unit-Rotor w/ impellers-Erosion
+CPUN-ROTR-CORR,Compressor unit-Rotor w/ impellers-Corrosion
+CTMN-VALV-BLKG,Control and monitoring-Valves-Blockage/plugged
+CTMN-VALV-CTMN,Control and monitoring-Valves-Contamination
+LUBS-VALV-BLKG,Lubrication system-Valves-Blockage/plugged
+LUBS-VALV-CTMN,Lubrication system-Valves-Contamination
+LUBS-PMTR-WEAR,Lubrication system-Pump w/motor-Wear
+LUBS-PMTR-CAVT,Lubrication system-Pump w/motor-Cavitation
+LUBS-PMTR-BLKG,Lubrication system-Pump w/motor-Blockage/plugged
+LUBS-PMTR-OADJ,Lubrication system-Pump w/motor-Out of adjustment
+LUBS-LUBE-MATF,Lubrication system-Lube oil-Material failure - general
+SHSS-VALV-BLKG,Shaft seal system-Valves-Blockage/plugged
+SHSS-VALV-CTMN,Shaft seal system-Valves-Contamination
+SHSS-PMGR-WEAR,Shaft seal system-Pump w/motor/gear-Wear
+SHSS-PMGR-CAVT,Shaft seal system-Pump w/motor/gear-Cavitation
+SHSS-PMGR-BLKG,Shaft seal system-Pump w/motor/gear-Blockage/plugged
+SHSS-PMGR-OADJ,Shaft seal system-Pump w/motor/gear-Out of adjustment
+SHSS-SOIL-CTMN,Shaft seal system-Seal oil-Contamination
+SHSS-SOIL-BLKG,Shaft seal system-Seal oil-Blockage/plugged
+SHSS-SOIL-MATF,Shaft seal system-Seal oil-Material failure - general
+MISC-VALV-BLKG,Miscellaneous-Valves-Blockage/plugged
+MISC-VALV-CTMN,Miscellaneous-Valves-Contamination
+PWTR-BRNG-CTMN,Power transmission-Bearing-Contamination
+PWTR-BRNG-LOOS,Power transmission-Bearing-Looseness
+PWTR-GBVD-LOOS,Power transmission-Gearbox/var.drive-Looseness
+CPUN-IPIP-LOOS,Compressor unit-Internal piping-Looseness
+CPUN-PIPE-LOOS,Compressor unit-Piping-Looseness
+CPUN-ASRG-LOOS,Compressor unit-Antisurge system-Looseness
+CPUN-CHKV-CTMN,Compressor unit-Check valves-Contamination
+CTMN-VALV-LOOS,Control and monitoring-Valves-Looseness
+CTMN-MONI-LOOS,Control and monitoring-Monitoring-Looseness
+CTMN-CTUN-CORR,Control and monitoring-Control unit-Corrosion
+CTMN-CTUN-LOOS,Control and monitoring-Control unit-Looseness
+CTMN-CICV-STCK,"Control and monitoring-Control-, isolating & check valves-Sticking"
+CTMN-CICV-CTMN,"Control and monitoring-Control-, isolating & check valves-Contamination"
+LUBS-FILT-CTMN,Lubrication system-Filter(s)-Contamination
+LUBS-FILT-STCK,Lubrication system-Filter(s)-Sticking
+LUBS-VALV-LOOS,Lubrication system-Valves-Looseness
+LUBS-PMTR-LOOS,Lubrication system-Pump w/motor-Looseness
+LUBS-PIPE-LOOS,Lubrication system-Piping-Looseness
+LUBS-OILS-MATF,Lubrication system-Oil-Material failure - general
+LUBS-OTHT-CTMN,Lubrication system-Oil tank w/heating system-Contamination
+LUBS-COOL-WEAR,Lubrication system-Cooler(s)-Wear
+LUBS-COOL-LOOS,Lubrication system-Cooler(s)-Looseness
+LUBS-RSHT-CTMN,Lubrication system-Reservoir w/heating system-Contamination
+SHSS-FILT-CTMN,Shaft seal system-Filter(s)-Contamination
+SHSS-FILT-STCK,Shaft seal system-Filter(s)-Sticking
+SHSS-VALV-LOOS,Shaft seal system-Valves-Looseness
+SHSS-PMGR-LOOS,Shaft seal system-Pump w/motor/gear-Looseness
+SHSS-RSHT-CTMN,Shaft seal system-Reservoir w/heating system-Contamination
+MISC-VALV-LOOS,Miscellaneous-Valves-Looseness
+MISC-BASE-CORR,Miscellaneous-Base frame-Corrosion
+MISC-BASE-LOOS,Miscellaneous-Base frame-Looseness
+MISC-PSPB-LOOS,"Miscellaneous-Piping, pipe support + bellows-Looseness"
+MISC-PIPE-LOOS,Miscellaneous-Piping-Looseness
+MISC-PAIR-CTMN,Miscellaneous-Purge air-Contamination
+MISC-COOL-WEAR,Miscellaneous-Cooler(s)-Wear
+MISC-COOL-LOOS,Miscellaneous-Cooler(s)-Looseness
+PWTR-GBVD-WEAR,Power transmission-Gearbox/var.drive-Wear
+PWTR-GBVD-ALGN,Power transmission-Gearbox/var.drive-Clearance/ alignment failure
+PWTR-GBVD-CTMN,Power transmission-Gearbox/var.drive-Contamination
+CPUN-ROTR-VIBR,Compressor unit-Rotor w/ impellers-Vibration
+CPUN-ROTR-ALGN,Compressor unit-Rotor w/ impellers-Clearance/ alignment failure
+CTMN-VALV-VIBR,Control and monitoring-Valves-Vibration
+LUBS-VALV-VIBR,Lubrication system-Valves-Vibration
+SHSS-PMGR-ALGN,Shaft seal system-Pump w/motor/gear-Clearance/ alignment failure
+SHSS-VALV-VIBR,Shaft seal system-Valves-Vibration
+MISC-VALV-VIBR,Miscellaneous-Valves-Vibration
+MISC-SILN-BRKG,Miscellaneous-Silencers-Breakage
+PWTR-INST-OTHR,Power transmission-Instruments-Other
+PWTR-GBVD-OTHR,Power transmission-Gearbox/var.drive-Other
+PWTR-BRNG-OTHR,Power transmission-Bearing-Other
+CPUN-VALV-OTHR,Compressor unit-Valves-Other
+CPUN-INST-OTHR,Compressor unit-Instruments-Other
+CPUN-ASRG-OTHR,Compressor unit-Antisurge system-Other
+CPUN-SHSL-OTHR,Compressor unit-Shaft seals-Other
+CPUN-CYLN-OTHR,Compressor unit-Cylinder liner-Other
+CPUN-IPIP-OTHR,Compressor unit-Internal piping-Other
+CPUN-INSS-OTHR,Compressor unit-Interstage seals-Other
+CTMN-VALV-OTHR,Control and monitoring-Valves-Other
+CTMN-INST-OTHR,Control and monitoring-Instruments-Other
+CTMN-CTUN-OTHR,Control and monitoring-Control unit-Other
+CTMN-MONI-OTHR,Control and monitoring-Monitoring-Other
+CTMN-IPSU-OTHR,Control and monitoring-Internal power supply-Other
+CTMN-ACTD-OTHR,Control and monitoring-Actuating device-Other
+CTMN-CBJB-OTHR,Control and monitoring-Cabling & junction boxes-Other
+LUBS-VALV-OTHR,Lubrication system-Valves-Other
+LUBS-INST-OTHR,Lubrication system-Instruments-Other
+LUBS-FILT-OTHR,Lubrication system-Filter(s)-Other
+LUBS-OTHT-OTHR,Lubrication system-Oil tank w/heating system-Other
+LUBS-LUBE-OTHR,Lubrication system-Lube oil-Other
+LUBS-OILS-OTHR,Lubrication system-Oil-Other
+LUBS-PMTR-OTHR,Lubrication system-Pump w/motor-Other
+LUBS-COOL-OTHR,Lubrication system-Cooler(s)-Other
+SHSS-VALV-OTHR,Shaft seal system-Valves-Other
+SHSS-INST-OTHR,Shaft seal system-Instruments-Other
+SHSS-PMGR-OTHR,Shaft seal system-Pump w/motor/gear-Other
+SHSS-FILT-OTHR,Shaft seal system-Filter(s)-Other
+SHSS-SOIL-OTHR,Shaft seal system-Seal oil-Other
+SHSS-DGSL-OTHR,Shaft seal system-Dry gas seal-Other
+SHSS-SGAS-OTHR,Shaft seal system-Seal gas-Other
+MISC-VALV-OTHR,Miscellaneous-Valves-Other
+MISC-PSPB-OTHR,"Miscellaneous-Piping, pipe support + bellows-Other"
+MISC-COOL-OTHR,Miscellaneous-Cooler(s)-Other
+PWTR-GBVD-OVHT,Power transmission-Gearbox/var.drive-Overheating
+CPUN-CYLN-OVHT,Compressor unit-Cylinder liner-Overheating
+CPUN-CYLN-BLKG,Compressor unit-Cylinder liner-Blockage/plugged
+CPUN-VALV-OVHT,Compressor unit-Valves-Overheating
+CPUN-THRB-OVHT,Compressor unit-Thrust bearing-Overheating
+CPUN-THRB-WEAR,Compressor unit-Thrust bearing-Wear
+CPUN-THRB-CTMN,Compressor unit-Thrust bearing-Contamination
+CPUN-RBRG-CTMN,Compressor unit-Radial bearing-Contamination
+CPUN-RBRG-ALGN,Compressor unit-Radial bearing-Clearance/ alignment failure
+LUBS-PMTR-ALGN,Lubrication system-Pump w/motor-Clearance/ alignment failure
+LUBS-PMTR-OVHT,Lubrication system-Pump w/motor-Overheating
+LUBS-COOL-BLKG,Lubrication system-Cooler(s)-Blockage/plugged
+LUBS-COOL-ELEC,Lubrication system-Cooler(s)-Electrical failure - general
+LUBS-COOL-OADJ,Lubrication system-Cooler(s)-Out of adjustment
+LUBS-COOL-MEXT,Lubrication system-Cooler(s)-Misc. external influences
+MISC-COOL-BLKG,Miscellaneous-Cooler(s)-Blockage/plugged
+MISC-COOL-ELEC,Miscellaneous-Cooler(s)-Electrical failure - general
+MISC-COOL-OADJ,Miscellaneous-Cooler(s)-Out of adjustment
+MISC-COOL-MEXT,Miscellaneous-Cooler(s)-Misc. external influences
+MISC-PSPB-MISC,"Miscellaneous-Piping, pipe support + bellows-Miscellaneous - general"
+CPUN-CHKV-WEAR,Compressor unit-Check valves-Wear
+CPUN-CHKV-STCK,Compressor unit-Check valves-Sticking
+CPUN-CHKV-BRKG,Compressor unit-Check valves-Breakage
+SHSS-BFGS-BLKG,Shaft seal system-Buffer gas system-Blockage/plugged
+SHSS-BFGS-OADJ,Shaft seal system-Buffer gas system-Out of adjustment
+PWTR-BRNG-ALGN,Power transmission-Bearing-Clearance/ alignment failure
+CPUN-ROTR-FATG,Compressor unit-Rotor w/ impellers-Fatigue
+CPUN-RBRG-WEAR,Compressor unit-Radial bearing-Wear
+CTMN-IPSU-OVHT,Control and monitoring-Internal power supply-Overheating
+SHSS-PMGR-OVHT,Shaft seal system-Pump w/motor/gear-Overheating
+PWTR-BRNG-FATG,Power transmission-Bearing-Fatigue
+CPUN-ASRG-FATG,Compressor unit-Antisurge system-Fatigue
+CTMN-CBJB-DEFM,Control and monitoring-Cabling & junction boxes-Deformation
+CTMN-VALV-FATG,Control and monitoring-Valves-Fatigue
+LUBS-VALV-FATG,Lubrication system-Valves-Fatigue
+SHSS-VALV-FATG,Shaft seal system-Valves-Fatigue
+MISC-BASE-FATG,Miscellaneous-Base frame-Fatigue
+MISC-BASE-DEFM,Miscellaneous-Base frame-Deformation
+MISC-BASE-EXIN,Miscellaneous-Base frame-External influence - general
+MISC-PSPB-VIBR,"Miscellaneous-Piping, pipe support + bellows-Vibration"
+MISC-VALV-FATG,Miscellaneous-Valves-Fatigue
+PWTR-INST-UNKN,Power transmission-Instruments-Unknown
+CPUN-VALV-UNKN,Compressor unit-Valves-Unknown
+CPUN-CYLN-UNKN,Compressor unit-Cylinder liner-Unknown
+CPUN-INST-UNKN,Compressor unit-Instruments-Unknown
+CPUN-PSTN-UNKN,Compressor unit-Piston(s)-Unknown
+CTMN-VALV-UNKN,Control and monitoring-Valves-Unknown
+CTMN-INST-UNKN,Control and monitoring-Instruments-Unknown
+CTMN-CBJB-UNKN,Control and monitoring-Cabling & junction boxes-Unknown
+CTMN-CTUN-UNKN,Control and monitoring-Control unit-Unknown
+LUBS-VALV-UNKN,Lubrication system-Valves-Unknown
+LUBS-PMTR-UNKN,Lubrication system-Pump w/motor-Unknown
+LUBS-OILS-UNKN,Lubrication system-Oil-Unknown
+LUBS-INST-UNKN,Lubrication system-Instruments-Unknown
+LUBS-FILT-UNKN,Lubrication system-Filter(s)-Unknown
+SHSS-VALV-UNKN,Shaft seal system-Valves-Unknown
+SHSS-INST-UNKN,Shaft seal system-Instruments-Unknown
+SHSS-FILT-UNKN,Shaft seal system-Filter(s)-Unknown
+MISC-VALV-UNKN,Miscellaneous-Valves-Unknown
+PWTR-INST-VIBR,Power transmission-Instruments-Vibration
+PWTR-CPDN-ALGN,Power transmission-Coupling to driven unit-Clearance/ alignment failure
+PWTR-CPDN-WEAR,Power transmission-Coupling to driven unit-Wear
+PWTR-CPDN-FATG,Power transmission-Coupling to driven unit-Fatigue
+PWTR-CPDN-LOOS,Power transmission-Coupling to driven unit-Looseness
+PWTR-CPDR-FATG,Power transmission-Coupling to driver-Fatigue
+PWTR-CPDR-LOOS,Power transmission-Coupling to driver-Looseness
+CPUN-INST-VIBR,Compressor unit-Instruments-Vibration
+CPUN-CYLN-LOOS,Compressor unit-Cylinder liner-Looseness
+CPUN-THRB-ALGN,Compressor unit-Thrust bearing-Clearance/ alignment failure
+CTMN-INST-VIBR,Control and monitoring-Instruments-Vibration
+LUBS-INST-VIBR,Lubrication system-Instruments-Vibration
+SHSS-INST-VIBR,Shaft seal system-Instruments-Vibration
+#N/A,--

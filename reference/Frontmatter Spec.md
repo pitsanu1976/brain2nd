@@ -1,7 +1,7 @@
 ---
 title: Frontmatter Spec
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-21
 type: reference
 tags: [frontmatter, reference, convention]
 sources: []
@@ -20,7 +20,7 @@ YAML block ที่ต้นไฟล์ คั่นด้วย `---` Obsidia
 | `title` | string | ชื่อหน้า (ตรงชื่อไฟล์) |
 | `created` | date `YYYY-MM-DD` | วันสร้าง |
 | `updated` | date | วันแก้ล่าสุด (อัปเดตทุกครั้งที่แก้) |
-| `type` | enum | `concept`, `guide`, `reference`, `query` (หรือ `entity`, `comparison` ถ้ามีโฟลเดอร์นั้น) |
+| `type` | enum | `entity`, `concept`, `comparison`, `guide`, `reference`, `query` (ดู [[SCHEMA]] หัวข้อ 5.1) |
 | `tags` | list | ตาม taxonomy ใน [[SCHEMA]] |
 | `sources` | list | ไฟล์ใน `raw/` ที่ใช้ (ว่าง `[]` ได้) |
 | `confidence` | enum | `high`, `medium`, `low` |

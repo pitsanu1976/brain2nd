@@ -1,0 +1,39 @@
+Failure Mechanism,Adjust,Check,Combination,Inspection,Modify,No Fault Found,Other,Overhaul,Refit,Repair,Replace,Service,Test,No. of Resolutions
+Blockage/plugged,,✓,,✓,✓,,,,,✓,✓,✓,,6
+Breakage,,✓,✓,✓,✓,,,✓,,✓,✓,,,7
+Burst,,✓,,✓,✓,,,,,✓,✓,,✓,6
+Cavitation,✓,✓,,✓,✓,,,✓,,✓,✓,,,7
+Clearance/ alignment failure,✓,✓,✓,✓,,,,✓,✓,✓,✓,,,8
+Combined causes,,✓,✓,✓,,,,✓,,✓,✓,,,6
+Contamination,,✓,,✓,✓,,,,,,✓,✓,,5
+Control failure,✓,✓,,,✓,,,,,✓,✓,,✓,6
+Corrosion,,✓,✓,✓,✓,,,,,✓,✓,✓,,7
+Deformation,,✓,✓,✓,✓,,,,,✓,✓,,,6
+Earth/isolation fault,,✓,,✓,,,,,,✓,✓,✓,✓,6
+Electrical failure - general,,✓,✓,,,,✓,,,✓,✓,,✓,6
+Erosion,,✓,,✓,✓,,,✓,,✓,✓,,,6
+External influence - general,,✓,✓,✓,✓,,✓,,,✓,✓,,,7
+Fatigue,,✓,✓,✓,✓,,,,,✓,✓,,,6
+Faulty power/voltage,✓,✓,,,,,,,,✓,✓,,✓,5
+Faulty signal/indication/alarm,✓,✓,,,,✓,,,✓,✓,✓,,✓,7
+Instrument failure - general,✓,✓,✓,,,✓,✓,,,✓,✓,,✓,8
+Leakage,✓,✓,✓,✓,✓,,,✓,✓,✓,✓,,✓,10
+Looseness,✓,✓,,✓,,,,,✓,✓,✓,,,6
+Material failure - general,,✓,✓,✓,✓,,✓,,,✓,✓,,,7
+Mechanical Failure - general,,✓,✓,✓,,,✓,✓,,✓,✓,,,7
+Misc. external influences,,✓,,✓,✓,,,,,✓,✓,✓,,6
+Miscellaneous - general,✓,✓,,,,,✓,,,✓,✓,✓,,6
+No cause found,,✓,,,,✓,,,,,,,✓,3
+No power/ voltage,✓,✓,,,,,,,,✓,✓,,✓,5
+No signal/indication/alarm,,✓,,,,,,,✓,✓,✓,,✓,5
+Open circuit,,✓,,,,,,,✓,✓,✓,,✓,5
+Other,,✓,✓,,,,✓,,,✓,✓,,,5
+Out of adjustment,✓,✓,,,,,,,,,✓,,✓,4
+Overheating,✓,✓,✓,✓,✓,,,✓,,✓,✓,✓,,9
+Short circuiting,,✓,,✓,,,,,,✓,✓,,✓,5
+Software failure,✓,✓,,,✓,,,,,,✓,,✓,5
+Sticking,✓,✓,✓,,,,,✓,,✓,✓,✓,✓,8
+Unknown,,✓,,✓,,✓,✓,,,,,,,4
+Vibration,✓,✓,✓,✓,✓,,,✓,✓,✓,✓,,,9
+Wear,✓,✓,✓,✓,✓,,,✓,,✓,✓,✓,,9
+Total plausible pairs,,,,,,,,,,,,,,233

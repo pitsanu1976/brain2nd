@@ -1,0 +1,41 @@
+Notes & assumptions
+"1. Failure modes, sub units, maintainable items and % values are transcribed from the OREDA compressor images in this folder."
+2. Only failure mode / maintainable item combinations with a non-zero % are listed. % = share of total compressor failure rate.
+Each row = one failure mechanism + one resolution. The % is repeated on every row of the same mode/item pair for filtering;
+totals use column J (1 = first row of the pair) so the % is counted once.
+3. Small totals differences vs OREDA 'Sum' column are due to rounding in the source tables.
+4. Sub unit allocation follows OREDA Table 5. An item listed under several sub units in Table 5 is paired with EVERY one of them:
+"Instruments -> Power transmission, Compressor unit, Control and monitoring, Lubrication system, Shaft seal system;"
+"Valves -> Compressor unit, Control and monitoring, Lubrication system, Shaft seal system, Miscellaneous;"
+"Seals -> Power transmission, Lubrication system; Cooler(s) -> Lubrication system, Miscellaneous;"
+"Filter(s) -> Lubrication system, Shaft seal system; Piping ('Valves & piping' / 'Piping') -> Compressor unit, Lubrication system, Miscellaneous;"
+"Reservoir w/heating system -> Lubrication system, Shaft seal system ('Reservoir')."
+"OREDA gives ONE % per failure mode/item (not split by sub unit), so the same % is shown under each sub unit but counted once."
+Valves outside the Compressor unit use a separate mechanism set (oil/seal gas/control/utility valves instead of compressor valves).
+"Items not in Table 5 were assigned by judgement: check valves / internal piping -> Compressor unit; control-, isolating & check valves"
+-> Control and monitoring; couplings -> Power transmission; lube oil / oil tank -> Lubrication system; pipe supports -> Miscellaneous.
+"Instruments = OREDA instrument types flow, general, level, pressure, speed, temperature and vibration merged into one item;"
+its % is the sum of the types and its mechanisms are the union of the type-specific mechanisms (type named in the detail).
+"5. OREDA placeholder items 'Other', 'Subunit' and 'Unknown' (failure not traced to a specific item) are excluded, so there is no"
+"'Unspecified' sub unit. They account for 13.96% of the OREDA failure rate, so the listed total is 85.66% (not ~100%)."
+6. Failure mechanism names are taken from the OREDA failure mechanism list (file 'failure mechanism.jpg'). For each maintainable
+"item only the mechanisms from that list that are physically relevant to the item were selected (sheet 'Mechanism Library'),"
+"each with an item-specific detail (column G), the failure modes it can cause, and one or more resolutions."
+A mechanism appears on a Failure Hierarchy row only when it can cause that failure mode for that item.
+Structure is one-to-many: 1 failure mode/item -> many mechanisms -> many resolutions; each mechanism x resolution is its own row.
+Failure mode 'OTH - Other' maps to mechanism 'Other' and 'UNK - Unknown' maps to 'Unknown' for every item.
+7. Resolution names are taken from the OREDA resolution list (file 'resolution.jpg'); the specific action is in column H.
+"Each failure mechanism gets every resolution judged plausible for it (sheet 'Resolution Matrix', 233 of 37 x 13 pairs);"
+"implausible pairs (e.g. Wear -> No Fault Found, Open circuit -> Overhaul, Fatigue -> Service) are excluded. One row per resolution."
+Column H gives the action: 'Item-specific' (column K) = action from the item mechanism library; 'Standard' = generic action
+for that resolution. Item actions whose resolution fell outside the matrix were moved to the nearest allowed resolution.
+8. Mechanism selection/detail and resolutions are engineering judgement and should be reviewed against site CMMS history / RCA
+before use in RCM or FMEA.
+OREDA failure mechanism list (source file):
+Blockage/plugged | Breakage | Burst | Cavitation | Clearance/ alignment failure | Combined causes | Contamination | Control failure
+Corrosion | Deformation | Earth/isolation fault | Electrical failure - general | Erosion | External influence - general | Fatigue | Faulty power/voltage
+Faulty signal/indication/alarm | Instrument failure - general | Leakage | Looseness | Material failure - general | Mechanical Failure - general | Misc. external influences | Miscellaneous - general
+No cause found | No power/ voltage | No signal/indication/alarm | Open circuit | Other | Out of adjustment | Overheating | Short circuiting
+Software failure | Sticking | Unknown | Vibration | Wear
+OREDA resolution list (source file):
+Adjust | Check | Combination | Inspection | Modify | No Fault Found | Other | Overhaul | Refit | Repair | Replace | Service | Test

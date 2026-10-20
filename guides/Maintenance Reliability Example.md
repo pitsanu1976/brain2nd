@@ -1,7 +1,7 @@
 ---
 title: Maintenance Reliability Example
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-21
 type: guide
 tags: [maintenance-reliability, fleet-engineering, llm-wiki]
 sources: []
@@ -11,24 +11,27 @@ contested: false
 
 # Maintenance Reliability Example
 
-Worked example: wiki ของ compressor failure hierarchy (โฟลเดอร์ `15 failure hierarchy/coce/wiki` บน Desktop) ใช้โครง [[LLM Wiki Pattern]] จริง ข้อมูลด้านล่างสรุปจากการอ่าน SCHEMA/index/log ของ wiki นั้น
+Worked example ของ [[LLM Wiki Pattern]] ที่ใช้งานจริง: wiki ด้าน compressor failure hierarchy และ reliability-based maintenance management ซึ่งตอนนี้อยู่ใน vault เดียวกันนี้ (ย้ายมาจากโฟลเดอร์ `coce\wiki` เมื่อ 2026-10-21 ดู [[log]]) ไม่ใช่ตัวอย่างภายนอกอีกต่อไป
+
+เริ่มอ่านที่ [[Compressor]], [[Failure Hierarchy]], [[Failure Mode]] และ [[Reliability Based Maintenance Management Book]]
 
 ## Mapping
 
-| ชั้น wiki | ตัวอย่างในงาน compressor |
+| ชั้น wiki | ตัวอย่างในงาน compressor / RBMM |
 |---|---|
-| raw | `Compressor Failure Hierarchy.xlsx` -> 10 CSV + manifest, `failure structure.xlsx`, ภาพ OREDA ใน `raw/assets/` |
-| entities | Compressor, Centrifugal/Reciprocating/Screw, Sub Unit (PWTR, CPUN, CTMN, LUBS, SHSS, MISC) |
-| concepts | Failure Hierarchy, Failure Mode (hub), Failure Mechanism, Resolution Codes, OREDA, ISO 14224 |
-| comparisons | เปรียบเทียบโปรไฟล์ failure ระหว่างประเภท compressor |
-| queries | คำถามเช่น โหมดไหนครองสัดส่วน failure rate |
+| raw | [[raw/compressor-failure-hierarchy]] (xlsx -> 10 CSV), [[raw/failure-structure]], [[raw/reliability-based-maintenance-management]] (หนังสือ -> reading notes), ภาพ OREDA ใน `raw/assets/` |
+| entities | [[Compressor]], [[Centrifugal Compressor]], [[Reciprocating Compressor]], [[Screw Compressor]], Sub Unit เช่น [[PWTR Power Transmission]] และ [[CPUN Compressor Unit]] |
+| concepts | [[Failure Hierarchy]], [[Failure Mode]] (hub), [[Failure Mechanism]], [[Resolution Codes]], [[OREDA]], [[ISO 14224]] และแนวคิด RBMM เช่น [[Weibull Analysis]], [[RCM Reliability Centered Maintenance]] |
+| comparisons | [[Compressor Type Failure Profiles]], [[RBMM Concepts vs Compressor Failure Hierarchy]] |
+| queries | [[Which failure modes dominate compressor failure rate]], [[How to choose PM task for a compressor failure mode]] |
 
 ## หลักที่ใช้
 
 - หน้ารายโหมดสร้างเฉพาะ 9 โหมด % สูง ตาม [[Page Thresholds]]
 - ตัวเลข derived ต้องบอกวิธีคำนวณ
-- ความขัดแย้งเรื่อง sub unit ระหว่างสอง source -> เก็บทั้งสองฝั่ง ([[Contradiction Handling]])
-- Total 85.66% ไม่ใช่ 100% เพราะตัด placeholder item (อธิบายในหน้า Failure Mode ของ wiki นั้น)
+- ความขัดแย้งเรื่อง sub unit ระหว่างสอง source -> เก็บทั้งสองฝั่ง ([[Contradiction Handling]]) ดู [[Failure Hierarchy]]
+- Total 85.66% ไม่ใช่ 100% เพราะตัด placeholder item (อธิบายใน [[Failure Mode]])
+- กติกาที่ใช้ร่วมกันอยู่ใน [[SCHEMA]] (area ข)
 
 ## ใช้ซ้ำกับงานอื่น
 

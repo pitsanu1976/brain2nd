@@ -1,0 +1,21 @@
+Code,Failure Mode,No. of Maintainable Items,% of Total Failure Rate
+AIR,Abnormal instrument reading,17,17.179999999999996
+BRD,Breakdown,3,0.08
+ERO,Erratic output,6,1.5
+ELP,External leakage - Process medium,17,4.579999999999998
+ELU,External leakage - Utility medium,33,8.619999999999997
+FTS,Fail to start on demand,13,2.3499999999999996
+STP,Fail to stop on demand,5,0.33999999999999997
+HIO,High output,4,0.21
+INL,Internal leakage,9,1.9700000000000002
+LOO,Low output,12,10.11
+SER,Minor in-service problems,27,13.05
+NOI,Noise,5,0.44
+OTH,Other,25,5.46
+OHE,Overheating,12,4.18
+PDE,Parameter deviation,14,8.13
+UST,Spurious stop,22,4.159999999999999
+STD,Structural deficiency,10,0.8100000000000002
+UNK,Unknown,9,1.07
+VIB,Vibration,15,1.4200000000000006
+,Total,258,85.65999999999998

@@ -1,0 +1,44 @@
+Instruments,INST
+Gearbox/var.drive,GBVD
+Valves,VALV
+Antisurge system,ASRG
+Cylinder liner,CYLN
+Internal piping,IPIP
+Monitoring,MONI
+Control unit,CTUN
+Cabling & junction boxes,CBJB
+Internal power supply,IPSU
+Actuating device,ACTD
+"Control-, isolating & check valves",CICV
+Lube oil,LUBE
+Reservoir w/heating system,RSHT
+Filter(s),FILT
+Oil tank w/heating system,OTHT
+Seal oil,SOIL
+Radial bearing,RBRG
+Casing,CASG
+Piston(s),PSTN
+Coupling to driver,CPDR
+Seals,SEAL
+Packing,PACK
+Interstage seals,INSS
+Shaft seals,SHSL
+Piping,PIPE
+Pump w/motor,PMTR
+Seal gas,SGAS
+"Piping, pipe support + bellows",PSPB
+Silencers,SILN
+Coupling to driven unit,CPDN
+Bearing,BRNG
+Lubrication,LUBR
+Cooler(s),COOL
+Oil,OILS
+Pump w/motor/gear,PMGR
+Dry gas seal,DGSL
+Buffer gas system,BFGS
+Overhead tank,OHTK
+Purge air,PAIR
+Rotor w/ impellers,ROTR
+Check valves,CHKV
+Base frame,BASE
+Thrust bearing,THRB

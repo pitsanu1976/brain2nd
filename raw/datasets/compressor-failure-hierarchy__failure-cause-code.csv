@@ -1,0 +1,35 @@
+Blockage/plugged,BLKG
+Breakage,BRKG
+Burst,BRST
+Cavitation,CAVT
+Clearance/ alignment failure,ALGN
+Contamination,CTMN
+Control failure,CTRL
+Corrosion,CORR
+Deformation,DEFM
+Earth/isolation fault,EART
+Electrical failure - general,ELEC
+Erosion,EROS
+External influence - general,EXIN
+Fatigue,FATG
+Faulty power/voltage,FPWR
+Faulty signal/indication/alarm,FSIG
+Instrument failure - general,INST
+Leakage,LEAK
+Looseness,LOOS
+Material failure - general,MATF
+Misc. external influences,MEXT
+Miscellaneous - general,MISC
+No cause found,NCFD
+No power/ voltage,NPWR
+No signal/indication/alarm,NSIG
+Open circuit,OPEN
+Other,OTHR
+Out of adjustment,OADJ
+Overheating,OVHT
+Short circuiting,SHRT
+Software failure,SWFL
+Sticking,STCK
+Unknown,UNKN
+Vibration,VIBR
+Wear,WEAR

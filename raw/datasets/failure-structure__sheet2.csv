@@ -1,0 +1,24 @@
+Blockage/plugged,physical
+Breakage,physical
+Burst,electrical/constrol
+Clearance/ alignment failure,physical
+Combined causes,
+Contamination,envir
+Control failure,electrical/constrol
+Corrosion,envir
+Deformation,physical
+Faulty signal/indication/alarm,electrical/constrol
+Instrument failure - general,electrical/constrol
+Leakage,physical
+Looseness,physical
+Material failure - general,physical
+Mechanical Failure - general,physical
+No cause found,
+No power/ voltage,electrical/constrol
+No signal/indication/alarm,electrical/constrol
+Open circuit,electrical/constrol
+Out of adjustment,
+Sticking,physical
+Unknown,
+Vibration,physical
+Wear,physical

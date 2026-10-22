@@ -1,7 +1,7 @@
 ---
 title: Maintenance Cost Structure
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [cost, budget, maintenance-management, kpi, spare-parts, book]
 sources: [reliability-based-maintenance-management.md]
@@ -146,3 +146,59 @@ Total Variance = Efficiency Variance + Cost Variance
 - [[Spare Parts Management]]
 - [[CMMS]]
 - [[Maintenance Strategic Report]]
+
+## Triplets
+
+- [[Maintenance Cost Structure]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapters 3, 10, 11
+- Total Maintenance Cost [has_formula:: Full Fixed Cost + Materials + Losses] (RBMM p.278-279)
+- Full Fixed Cost [part_of:: Total Maintenance Cost] Man-Hrs planned and unplanned
+- Materials [part_of:: Total Maintenance Cost] variable cost
+- Losses [part_of:: Total Maintenance Cost] tracked for management, not booked from budget (RBMM p.288)
+- Personnel [part_of:: Full Fixed Cost] group 1 (RBMM p.280, 337)
+- Asset [part_of:: Full Fixed Cost] group 2, includes stock spare holding cost (RBMM p.280, 337)
+- Operating [part_of:: Full Fixed Cost] group 3 (RBMM p.280, 337)
+- Allocation [part_of:: Full Fixed Cost] group 4 (RBMM p.280, 337)
+- Provision [part_of:: Full Fixed Cost] group 5 (RBMM p.280, 337)
+- Outsource [part_of:: Materials] (RBMM p.283-284)
+- Direct Purchase Parts [part_of:: Materials] (RBMM p.283-284)
+- Stock Parts [part_of:: Materials] (RBMM p.283-284)
+- Direct Purchase Parts [applies_to:: Planned Maintenance] Scheduled PM, not stocked (RBMM p.283-284)
+- Stock Parts [applies_to:: CM-Unplanned] only (RBMM p.283-284)
+- Outsource [applies_to:: Labour Overflow or Special Skill] regular contracts count as Fixed; none for unplanned (RBMM p.283-284)
+- Blanket Order [related_to:: Stock Parts] vendor stores parts in our store, billed on issue (RBMM p.289)
+- Full Fixed Cost [has_value:: 45,900,000 THB] A5 budget, actual 48,720,000 (RBMM p.295, Fig 3.4/3.5)
+- Current Asset Spare Holding [has_value:: 18,000,000 THB] A3.2 budget, 15% of 120,000,000 (RBMM p.295)
+- Long Term Asset [has_value:: 520,000 THB] A3.1 actual, chapter 10 (RBMM p.295)
+- Long Term Asset [has_value:: 320,000 THB] A3.1 actual, alternate reading in chapter 3
+- Materials [has_value:: 158,645,455 THB] A9 budget, actual 161,900,500 (RBMM p.295)
+- Total Maintenance Cost [has_value:: 204,545,455 THB] A10 budget, actual 210,620,500, A-B 6,075,045 (RBMM p.295)
+- Full Fixed Cost [produces:: Available Man-Hrs] about 1,600 Man-Hrs per person per year (RBMM p.280)
+- Outsource Policy [differs_from:: Full Fixed Cost] high outsourcing lowers Fixed Cost but raises Outsource and parts (RBMM p.280-281)
+- Holding Cost [has_value:: 15-20%] of purchase price per year (RBMM ch3 p.68, ch10 p.314)
+- Holding Cost [has_value:: 15-25%] range at p.295 (RBMM p.295)
+- Full Fixed Cost Rate [has_formula:: Full Fixed Cost / Man-Hrs used (planned)] (RBMM p.281-282, 296)
+- Available Man-Hrs [has_formula:: Direct Persons x working days/year x hours/day] (RBMM p.281-282, 296)
+- Man-Hrs Used [has_formula:: Available Man-Hrs x Utilization Rate] (RBMM p.281-282, 296)
+- Full Fixed Cost Rate [has_value:: about 1,087 THB/Man-Hr] 40 x 220 x 8 = 70,400, 60% = 42,240 (RBMM p.296)
+- Full Fixed Cost Rate [depends_on:: Man-Hrs Used] more Man-Hrs lower rate (RBMM ch3 p.65)
+- Full Fixed Cost Rate [has_value:: Engineer 1,200 / 900 / 600; Technician 900 / 600 / 400; Labor 300 THB/Man-Hr] table 10.6 uses Labor 200 (RBMM p.281)
+- Calculated Cost [has_value:: 1,865,000 THB] 3,250 Man-Hrs, average rate 574 (RBMM Fig 10.6-10.7 p.282)
+- Over/(Under) Absorption [has_value:: Under 135,000 THB] actual Full Fixed Cost 2,000,000 - 1,865,000 (RBMM p.282)
+- Over/(Under) Absorption [has_formula:: calculated cost (Actual Man-Hrs x Standard Rate) - Actual Full Fixed Cost] (RBMM p.282, 349-353)
+- Efficiency Variance [has_formula:: (actual Qty - budget Qty) x Standard Rate] (RBMM p.349-353)
+- Cost Variance [has_formula:: (actual Rate - standard Rate) x actual Qty] equals O/(U) Absorption (RBMM p.349-353)
+- Total Variance [has_formula:: Efficiency Variance + Cost Variance] (RBMM p.349-353)
+- Cost Variance [alias_of:: Over/(Under) Absorption]
+- Cost Variance [has_value:: (4.35M) Under] chapter 3 Fig 3.9 example (RBMM ch3 p.72-73)
+- Efficiency Variance [has_value:: 1.53M Favorable] shown as (1,530,000) in part B (RBMM ch3 Fig 3.9)
+- Total Variance [has_value:: (2.82M) Unfavorable] 48.72M - 45.90M (RBMM ch3 Fig 3.9)
+- Utilization Factor [has_formula:: actual Man-Hrs / Available Man-Hrs] 60% considered high (RBMM ch3 p.73-74)
+- Planned Fixed Cost [has_formula:: Total x R/(R+1)] R = Planned/Unplanned Man-Hr ratio (RBMM p.288-289, 297)
+- Planned Fixed Cost [has_value:: 28,160 Man-Hrs planned / 14,080 unplanned] R = 2.0 (RBMM p.297)
+- Planned/Unplanned Ratio [has_value:: Man-Hrs 1.90 / 2.10 / 2.20; Cost 1.60 / 1.80 / 2.00] Process 1/2/3 actual (RBMM Fig 10.24 p.306-309)
+- Direct Purchase Parts [related_to:: Stock Parts] high direct purchase in unplanned work = wrong stocking or excess unplanned (RBMM p.313)
+- Improvement Maintenance [has_category:: capital budget] depreciation is production cost (RBMM p.277-278)
+- Workshop Tools and Computers [has_category:: maintenance cost] depreciation (RBMM p.277-278)
+- Stock Parts [has_category:: no depreciation, 15-20% holding cost] (RBMM p.314)
+- Fixed Cost Allocation [uses:: Service Base] HR x Head Count, purchasing per PO, spare handling per issue (RBMM p.341-342)
+- Fixed Cost Allocation [related_to:: [[Job Order Costing]]]

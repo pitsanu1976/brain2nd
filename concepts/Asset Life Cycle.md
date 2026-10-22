@@ -1,7 +1,7 @@
 ---
 title: Asset Life Cycle
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [maintenance-management, criticality, spare-parts, cost, book]
 sources: [reliability-based-maintenance-management.md]
@@ -119,3 +119,59 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - [[Availability and OEE]]
 - [[Maintenance Strategic Report]]
 - [[Failure Hierarchy]]
+
+## Triplets
+
+- Feasibility Study [step_of:: [[Asset Life Cycle]]] stage 1 (Fig 1.1, RBMM p.14)
+- Project Stage [step_of:: [[Asset Life Cycle]]] stage 2 (Fig 1.1)
+- Engineering Design [step_of:: [[Asset Life Cycle]]] stage 3 (Fig 1.1)
+- EPC [step_of:: [[Asset Life Cycle]]] stage 4, Engineering Procurement Construction (Fig 1.1)
+- Commissioning [step_of:: [[Asset Life Cycle]]] stage 5, trial run, abnormal part replacement (Fig 1.1)
+- Commercial Run [step_of:: [[Asset Life Cycle]]] stages 6-8: failures, improvement/expansion, major repair; ends with salvage value (Fig 1.1)
+- Feasibility Study [has_value:: about 70%] of cost locked early; read from Fig 1.1, verify [confidence:: low]
+- Engineering Design [has_value:: 85% to 95%] of cost locked by sub-stage; read from Fig 1.1 [confidence:: low]
+- EPC [has_value:: 100%] of cost locked at end of design/procurement; read from Fig 1.1 [confidence:: low]
+- Depreciation [depends_on:: Commissioning] all costs move to asset account after commissioning (RBMM p.15)
+- Commissioning Spare Part [is_a:: Spare Part] (RBMM p.15-16)
+- Maintenance Spare Part [is_a:: Spare Part] (RBMM p.15-16)
+- Commissioning Spare Part [differs_from:: Maintenance Spare Part] should not mix with normal stock; contractors often transfer wrongly (RBMM p.15-16)
+- Commissioning Spare Part [applies_to:: Forced Deterioration] failure caused by people during construction/installation, not age (RBMM p.15-16)
+- Maintenance Spare Part [has_category:: Current Asset] not depreciated (RBMM p.15-16)
+- Holding Cost [has_value:: 15-20%] of spare part price (RBMM p.16)
+- Long Term Asset [has_value:: 15-20-25 years] straight-line annual depreciation (RBMM p.15)
+- MDT [has_formula:: MTTR + MWT] (Fig 1.2, RBMM p.16-20)
+- Availability [depends_on:: MTTF] with MDT (Fig 1.2)
+- Availability [depends_on:: MDT] (Fig 1.2)
+- OEE [has_formula:: Availability x Speed x Quality] (Fig 1.2)
+- Production [depends_on:: OEE] also Planning Factor and Plant Capacity (Fig 1.2)
+- Profit [depends_on:: Contribution Margin] Goods to GOGS to Contribution Margin to Profit (Fig 1.2)
+- MTTR [depends_on:: Maintenance Proficiency] also Tools, Methods, Planning/Scheduling/Control (Fig 1.2)
+- MWT [depends_on:: Spare Part Stock Performance] also Logistics/Support (Fig 1.2)
+- Machine Ownership Cost [has_formula:: WACC + Depreciation] (RBMM p.19)
+- Inventory Turnover [has_value:: about 18 per year] 365/20 with 20 days average in store, derived (RBMM p.20)
+- Fault Recovery [is_a:: Maintenance Work Group] group 1, machine calls us: Trouble Shooting, Component Change/Rebuild, Spare Parts (Fig 1.3, RBMM p.21-23)
+- Proactive [is_a:: Maintenance Work Group] group 2, we go to machine: Predictive, Condition Monitoring, PM, Turnaround (Fig 1.3)
+- Improvement and Project [is_a:: Maintenance Work Group] group 3: Project Management, Commissioning, Installation, Engineering, Modification (Fig 1.3)
+- Maintenance Engineering [is_a:: Maintenance Work Group] group 4: Audits, Reliability/Performance/Management Improvement (Fig 1.3)
+- Condition Monitoring [part_of:: Proactive] (Fig 1.3)
+- Planned Condition Monitoring [applies_to:: Evident Failure] evident symptoms (RBMM p.22)
+- Planned Failure Finding Inspection [applies_to:: Hidden Failure] hidden symptoms (RBMM p.22)
+- [[CMMS]] [uses:: Maintenance History] housekeeper that plans, schedules, keeps history, reports; goal shifts group 1 unplanned to planned (RBMM p.23)
+- Equipment Criticality [depends_on:: Stress] also Resistance and maintenance plan (Fig 1.4, RBMM p.23-25)
+- Criticality A [has_value:: 30%] share of machines (Fig 1.4, RBMM p.23-25)
+- Criticality B [has_value:: 50%] share of machines (Fig 1.4)
+- Criticality C [has_value:: 20%] share of machines (Fig 1.4)
+- Zero Plant Down Time [depends_on:: Criticality A] target state: failures only at C/B that do not stop plant; beginning state fails at all levels (Fig 1.4)
+- Zero Breakdown [depends_on:: TPM] covers design to operator and maintenance (RBMM p.27)
+- Criticality A [uses:: 100% RCM Tasks] High; failure finding intensive; service level 100%, stock out 0% (Fig 1.5, RBMM p.25-27)
+- Criticality B [uses:: Pro-active] Medium; remove ineffective PM with RCM, optimal PM, RTF (Fig 1.5)
+- Criticality C [uses:: Re-active] Low; remove unnecessary PM, optimal PM, RTF (Fig 1.5)
+- Criticality B [depends_on:: [[PM Interval Optimization]]] Medium finds minimum total planned+unplanned cost
+- Series Equipment [has_category:: Criticality A] no redundancy (Fig 1.6, RBMM p.28-30)
+- Standby Equipment [depends_on:: Hidden Failure] may cause Multiple Failure, criticality not lowered automatically (RBMM p.29)
+- Load Sharing [differs_from:: Standby] load sharing criticality can drop with load capacity (RBMM p.29)
+- Buffer Tank [related_to:: Equipment Criticality] lowers overall criticality depending on volume and feed time (Fig 1.8, RBMM p.30)
+- Think [step_of:: Asset Management Cycle] goals/strategy (RBMM p.30)
+- Plan and Act [step_of:: Asset Management Cycle] manage work (RBMM p.30)
+- Reporting and Control [step_of:: Asset Management Cycle] measure and report with money (RBMM p.30)
+- Standby Compressor [has_failure_mode:: FTS] hidden/multiple failure of standby detected on demand, interpretation [confidence:: low]

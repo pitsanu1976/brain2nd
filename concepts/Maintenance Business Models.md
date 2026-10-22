@@ -1,7 +1,7 @@
 ---
 title: Maintenance Business Models
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [maintenance-management, cost, budget, book]
 sources: [reliability-based-maintenance-management.md]
@@ -105,3 +105,57 @@ Cost Center เป็นหน่วยสนับสนุน ควบคุ�
 - [[Maintenance Strategic Report]]
 - [[CMMS]]
 - [[Reliability Based Maintenance Management Book]]
+
+## Triplets
+
+- [[Maintenance Business Models]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 11 (RBMM p.321-329)
+- Cost Center [is_a:: [[Maintenance Business Models]]]
+- Profit Centered Maintenance [is_a:: [[Maintenance Business Models]]] internal unit run as business
+- Maintenance Service Company [is_a:: [[Maintenance Business Models]]] full service company
+- Cost Center [measures:: OEE, total cost per machine, Maintenance Cost/Unit] (RBMM p.326)
+- Profit Centered Maintenance [measures:: profit/loss per Site]
+- Maintenance Service Company [measures:: profit/loss] (RBMM p.329)
+- Cost Center [uses:: [[Maintenance Budget]]] Performance Budget
+- Profit Centered Maintenance [uses:: Job Budget] plus balance sheet / P&L
+- Maintenance Service Company [uses:: Job Budget] every Job
+- Profit Centered Maintenance [uses:: [[Job Order Costing]]]
+- Maintenance Service Company [uses:: [[Job Order Costing]]]
+- Cost Center [differs_from:: Profit Centered Maintenance] low risk vs confused primary/secondary priorities
+- Maintenance Service Company [depends_on:: Cash Flow] costs occur before Order
+- Profit Centered Maintenance [has_category:: risky if seeking external revenue] author warning (RBMM p.327)
+- Performance Based Contract [step_of:: Business Model Transition] long-term, Win-Win, before full service company (RBMM p.329)
+- Cost Center [uses:: [[CMMS]]] Work Control, Scheduled PM, Spare Part Control (RBMM p.325-326)
+- [[RCM Reliability Centered Maintenance]] [part_of:: Cost Center] module 1 (RBMM p.325-326)
+- [[PM Interval Optimization]] [part_of:: Cost Center] module 2 (RBMM p.325-326)
+- [[Spare Part Criticality and Risk]] [part_of:: Cost Center] module 3, Risk Based Spare Part Optimization (RBMM p.325-326)
+- [[Maintenance Budget]] [part_of:: Cost Center] module 4, Performance Budgeting (RBMM p.325-326)
+- [[Maintenance Strategic Report]] [part_of:: Cost Center] module 5 (RBMM p.325-326)
+- Maintenance Activities [has_value:: 16] in 4 groups, Fig 11.3 (RBMM p.326)
+- Breakdown Work [is_a:: Maintenance Activities] expense; Trouble Shooting, Component Change, Component Rebuilt, Spare Parts, Fault Recovery (RBMM p.326)
+- Planned PM Work [is_a:: Maintenance Activities] expense; Predictive, Condition Monitoring, Preventive Maintenance, Turnaround, Preventive-Proactive (RBMM p.326)
+- Improvement Projects [is_a:: Maintenance Activities] investment; Project Management, Commissioning, Installation, Engineering, Modification Project (RBMM p.326)
+- Maintenance Engineering [is_a:: Maintenance Activities] investment; Audits, Reliability, Performance and Management Improvement (RBMM p.326)
+- Breakdown Work [has_category:: expense] (RBMM p.326)
+- Planned PM Work [has_category:: expense] (RBMM p.326)
+- Improvement Projects [has_category:: investment] (RBMM p.326)
+- Maintenance Engineering [has_category:: investment] (RBMM p.326)
+- Cost Center [produces:: [[Availability and OEE]]] benefit 1 of 3; also total cost per machine, maintenance cost per unit (RBMM p.326)
+- Service Gap Model [has_part:: Gap 1] provider does not understand customer needs, sum of Gap 2-6 (RBMM Fig 11.1)
+- Service Gap Model [has_part:: Gap 2] management cannot translate specs to operations (RBMM Fig 11.1)
+- Service Gap Model [has_part:: Gap 3] external communication not true (RBMM Fig 11.1)
+- Service Gap Model [has_part:: Gap 4] order mismatch (RBMM Fig 11.1)
+- Service Gap Model [has_part:: Gap 5] no work control process (RBMM Fig 11.1)
+- Service Gap Model [has_part:: Gap 6] delivery not matching expectation (RBMM Fig 11.1)
+- Service Contract [depends_on:: Results Specification] buyer specifies results not detailed method (RBMM p.322-324)
+- In-situ Services [part_of:: Maintenance Service Company] (RBMM Fig 11.4)
+- Optional Services [part_of:: Maintenance Service Company] Installation, Engineering (RBMM Fig 11.4)
+- Value Added Services [part_of:: Maintenance Service Company] Plant Audits, Reliability Improvement, Performance Improvement, Maintenance Engineering (RBMM Fig 11.4)
+- Value Added Services [depends_on:: Engineering Capability] whoever holds engineering capability (RBMM p.329-331)
+- Maintenance Service Company [uses:: Technical/Information Centralized, Operation Decentralized] (RBMM p.329-331)
+- Business Model Transition [depends_on:: Service Business Process] and Service Business Management Accounting (RBMM p.328, 358-360)
+- Business Model Transition [depends_on:: Change Management] Emerging Business Manager via Mentoring by Working Process (RBMM p.358-360)
+- Business Model Transition [depends_on:: ERP] adapt process, not ERP (RBMM p.358-360)
+- Profit Center Manager [uses:: WIP, Account Receivable-Days, Account Payable-Days] Cash Flow tracking (RBMM p.358-360)
+- Single Plant Unit Cost Control [selects:: Cost Center] with Performance Budgeting
+- Performance Based Contract [applies_to:: Multi-Plant Group Sharing Resources]
+- [[Job Order Costing]] [applies_to:: External Revenue] prerequisite with ERP and Mentoring (RBMM p.359)

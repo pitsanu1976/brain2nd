@@ -1,7 +1,7 @@
 ---
 title: Spare Part Demand Forecasting
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: concept
 tags: [spare-parts, statistics, reliability, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -174,3 +174,59 @@ D_LT = (อัตราใช้ต่อปี x Lead Time) / 365
 - [[Monte Carlo Maintenance Simulation]]
 - [[Statistical Distributions for Maintenance]]
 - [[Weibull Analysis]]
+
+## Triplets
+
+- [[Spare Part Demand Forecasting]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapters 7, 9, 12
+- [[Spare Part Demand Forecasting]] [part_of:: [[Spare Parts Management]]] Demand Side
+- [[Spare Part Demand Forecasting]] [produces:: Max/Min] input to [[EOQ and Reorder Point]] and [[Spare Part Criticality and Risk]]
+- Basic Average Method [is_a:: Demand Forecasting Method] level 1, uses MTBF (RBMM p.257-258)
+- Poisson Distribution [is_a:: Demand Forecasting Method] level 2, low integer demand (RBMM p.258-261)
+- [[Monte Carlo Maintenance Simulation]] [is_a:: Demand Forecasting Method] level 3, linked to PM plan and failure mode (beta, eta)
+- Unplanned Spare Demand [depends_on:: CM-Unplanned] expected number of CM-Unplanned (RBMM p.241)
+- CM-Unplanned [depends_on:: [[Weibull Analysis]]] failure history + beta, eta + Monte Carlo (RBMM p.241)
+- CM-Unplanned [depends_on:: [[PM Interval Optimization]]] PM lowers CM-Unplanned, optimum needed
+- Part Replacement Example [has_value:: about 1 piece in 3 years] planned, optimum interval about 10 months (RBMM p.230)
+- MTBF [has_formula:: (units x operating hours per unit) / number of failures] (RBMM p.257-258)
+- Expected Failures [has_formula:: unit-hours of new group / MTBF] (RBMM p.257-258)
+- Basic Average Method [uses:: MTBF]
+- MTBF [has_value:: 398,181.82 h] example 100 units x 43,800 h, 11 failures (RBMM Fig 9.14)
+- Expected Failures [has_value:: 0.99 ~ 1] example 15 units x 26,280 h = 394,200 unit-hours (RBMM Fig 9.14)
+- Basic Average Method [depends_on:: Constant Failure Rate] assumption often untrue (RBMM p.258)
+- Basic Average Method [applies_to:: Low Criticality] starting value, boxes 3-4 of Fig 9.2 (RBMM p.258)
+- Poisson Distribution [has_formula:: P(X = x) = e^(-D) x D^x / x!] (RBMM p.258)
+- Poisson Distribution [alias_of:: Homogeneous Poisson Process] HPP (RBMM p.258)
+- Poisson Distribution [has_parameter:: D] mean occurrences in period
+- Poisson Distribution [has_parameter:: x] number of events, integer from 0
+- Poisson Distribution [related_to:: [[Statistical Distributions for Maintenance]]] Excel POISSON(x, mean, cumulative)
+- Poisson Distribution [has_value:: 14.936%] P(1) for mean 3 per year (RBMM p.258)
+- Poisson Example Mean 4 [has_value:: stock 7 pieces] cumulative 94.9%, meets at least 90% (RBMM p.261)
+- Poisson Example Part A [has_value:: D = 5.333 per year] issues 5, 7, 4 over 3 years (RBMM p.371-373)
+- Poisson Example Part A [has_value:: 99.12%] cumulative up to 11 pieces per year (RBMM p.371-373)
+- D_LT [has_formula:: (annual usage x Lead Time) / 365] (RBMM p.371-373)
+- D_LT [has_value:: 0.6575] 5.333 x 45 / 365 (RBMM p.371-373)
+- Poisson Example Part A [has_value:: stock 3 pieces, confidence 99.537%] over 45-day Lead Time (RBMM p.373)
+- D_LT [depends_on:: Lead Time] adjust D to period before reading table
+- Poisson Distribution [differs_from:: Normal Distribution] better for low, lumpy demand than Normal in [[EOQ and Reorder Point]]
+- Spare Part Model [uses:: Spare Part Data] price, Lead Time, holding cost, purchasing cost + issue history (RBMM p.261-262, Fig 9.19)
+- Spare Part Model [applies_to:: Medium Criticality] (RBMM p.261-262)
+- Spare Part Model [produces:: Cost Ratio] also stock out count, stock out rate, average level, total cost
+- Spare Part DSx Model [applies_to:: High Criticality] (RBMM p.263-264, Fig 9.20)
+- Spare Part DSx Model [has_parameter:: Equipment] (RBMM p.263-264)
+- Spare Part DSx Model [has_parameter:: [[Failure Mode]]] (RBMM p.263-264)
+- Spare Part DSx Model [has_parameter:: Beta] (RBMM p.263-264)
+- Spare Part DSx Model [has_parameter:: Eta] (RBMM p.263-264)
+- Spare Part DSx Model [has_parameter:: Stock out Cost Rate] (RBMM p.263-264)
+- Spare Part DSx Model [uses:: [[Monte Carlo Maintenance Simulation]]]
+- Chapter 7 Base Case [has_parameter:: beta = 3.7888, eta = 13,130 h] 3 years, MDT 10 h (RBMM p.201-206)
+- Run to Failure Case [has_value:: 1.76 CM-Unplanned per 3 years, 3.6 million THB] needs 2 spares (RBMM Fig 7.18)
+- Reduced MTTR/MWT Case [has_value:: 1.79 CM-Unplanned, 2.6 million THB] MTTR 6 h, MWT 1 h (RBMM Fig 7.19)
+- 75% Repair Case [has_value:: 2.18 CM-Unplanned, 4.5 million THB] (RBMM Fig 7.20)
+- 16-Month Replacement Case [has_value:: about 1.0 CM-Unplanned + about 1.0 PM, 2,508,282 THB] 1 spare CM + 1 direct purchase PM (RBMM Fig 7.23)
+- Fast Moving [selects:: Normal Distribution] average + variance -> EOQ (RBMM p.238)
+- Low Criticality [selects:: Poisson Distribution] or Average (MTBF) + Confidence (RBMM p.238)
+- Medium Criticality [selects:: Cost Ratio] Average or Monte Carlo (RBMM p.238)
+- High Criticality [selects:: [[Monte Carlo Maintenance Simulation]]] linked to failure mode, beta, eta and PM plan (RBMM p.238)
+- [[OREDA]] [input_to:: Basic Average Method] constant item failure rate converted to MTBF; not usable for PM interval (RBMM p.223, p.231, p.257)
+- Random Failure Mode [depends_on:: [[Failure Patterns and Bathtub Curve]]] planned replacement does not reduce failures, must stock, Exponential conclusion (chapter 12, page not given)
+- Stock Decision [depends_on:: [[P-F Interval and Condition Monitoring]]] stock if P-F interval shorter than Lead Time

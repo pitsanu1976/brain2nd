@@ -1,10 +1,10 @@
 ---
 title: Criticality Assessment
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
-tags: [criticality, rcm, spare-parts, maintenance-management, cost, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224]
+sources: [reliability-based-maintenance-management.md, iso-14224.md]
 confidence: medium
 contested: false
 ---
@@ -12,6 +12,13 @@ contested: false
 # Criticality Assessment
 
 **Criticality Assessment** คือการจัดระดับความวิกฤติของเครื่องจักรเป็น A/B/C (High/Moderate/Low) เพื่อเลือกกลยุทธ์ PM อะไหล่ และงบ ให้ต่างกันตามระดับ ภายใต้เป้า "Zero (Plant) Breakdown @ Minimum Cost" RBMM บท 5 วัด criticality ด้วย Consequence (1-5) x Likelihood (1-6) = Score 1-30 แยก 3 ด้าน: Commercial, Safety, Environment โดยอ้างแนว FMECA Mil-1629 ส่วนเกณฑ์ตัวเลขเป็นตัวอย่างที่ปรับเองได้ (RBMM p.116-117) confidence เป็น medium เพราะมีค่า derived ที่ผู้เขียน wiki คำนวณเพิ่ม (ระบุในหน้า) และบางตัวเลขในภาพเบลอ
+
+> [!warning] คำว่า "critical" มี 3 ความหมาย
+> 1. **A/B/C ในหน้านี้**: ระดับความสำคัญของเครื่อง จาก Consequence x Likelihood (RBMM)
+> 2. **ISO 14224 failure impact**: critical / degraded / incipient คือผลของ failure หนึ่งครั้งต่อ function ของ equipment ตัวนั้น (ISO 14224 cl. 3.28, p.6)
+> 3. **ISO/TR 12489 safety critical failure**: dangerous failure ที่ทำให้ safety function ใช้ไม่ได้ทั้งหมด ถ้ามี redundancy ต้องคำนึงถึงตัวสำรองด้วย (ISO 14224 cl. F.4.1, p.253-254)
+>
+> ทั้งสามเป็นคนละแกน เครื่อง criticality A ไม่ได้แปลว่าทุก failure เป็น critical ตาม ISO ดู [[Failure Impact Classification]] และ [[Safety Critical Failure Classification]] เป็นความต่างของความหมาย ไม่ใช่ข้อขัดแย้งของข้อมูล
 
 ## สูตรและการแบ่งระดับ (RBMM p.116-118)
 
@@ -121,3 +128,63 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - [[Spare Part Criticality and Risk]]
 - [[Maintenance Budget]]
 - [[Asset Life Cycle]]
+
+## Triplets
+
+- [[Criticality Assessment]] [produces:: Criticality A] High, Criticality 1 (RBMM p.116-118)
+- [[Criticality Assessment]] [produces:: Criticality B] Moderate, Criticality 2 (RBMM p.116-118)
+- [[Criticality Assessment]] [produces:: Criticality C] Low, Criticality 3 (RBMM p.116-118)
+- [[Criticality Assessment]] [defined_in:: Mil-Std-1629] follows FMECA approach; thresholds are adjustable examples (RBMM p.116-117)
+- [[Criticality Assessment]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 5
+- Criticality Score [has_formula:: Consequence (1-5) x Likelihood (1-6)] range 1-30 (RBMM p.116-118)
+- Criticality Score [has_parameter:: Consequence]
+- Criticality Score [has_parameter:: Likelihood]
+- Criticality A [has_value:: 15-30] Criticality Score range (RBMM p.116-118)
+- Criticality B [has_value:: 5-12] Criticality Score range (RBMM p.116-118)
+- Criticality C [has_value:: 1-4] Criticality Score range (RBMM p.116-118)
+- Criticality Score [has_value:: no 13 or 14] integer products 1-5 x 1-6 cannot equal 13 or 14, derived [confidence:: low]
+- [[Criticality Assessment]] [has_category:: Commercial] (RBMM p.116-117)
+- [[Criticality Assessment]] [has_category:: Safety] (RBMM p.118)
+- [[Criticality Assessment]] [has_category:: Environment] (RBMM p.119)
+- Criticality Matrix [has_value:: L6xC3 = 18 High] book example; also L4xC4 = 16 High, L3xC4 = 12 Moderate, L2xC5 = 10 Moderate, L1xC5 = 5 Moderate (Fig 5.3, p.118)
+- Commercial Consequence 5 [has_value:: line stop > 24 h or loss > 500,000] currency not stated (Fig 5.2, RBMM p.117)
+- Commercial Consequence 4 [has_value:: line stop 12-24 h or 100,000-500,000] (Fig 5.2)
+- Commercial Consequence 3 [has_value:: partial stop 8-12 h or 10,000-100,000] (Fig 5.2)
+- Commercial Consequence 2 [has_value:: partial stop < 8 h or 1,000-10,000] (Fig 5.2)
+- Commercial Consequence 1 [has_value:: no line impact or repair < 1,000] (Fig 5.2)
+- Commercial Likelihood 6 [has_value:: life before failure up to 3 months] image blurred (Fig 5.2)
+- Commercial Likelihood 5 [has_value:: > 3 months to 1 year] (Fig 5.2)
+- Commercial Likelihood 4 [has_value:: > 1 to 3 years] (Fig 5.2)
+- Commercial Likelihood 3 [has_value:: > 3 to 5 years] (Fig 5.2)
+- Commercial Likelihood 2 [has_value:: > 5 to 10 years] (Fig 5.2)
+- Commercial Likelihood 1 [has_value:: > 10 years] (Fig 5.2)
+- Safety Consequence [has_value:: 1-5] 5 fatality/limb loss/disability, 4 lost-time, 3 recordable, 2 first aid, 1 no safety impact (Fig 5.4, RBMM p.118)
+- Safety Likelihood [has_value:: 1-6] 6 at least once per year, 5 more than once in 5 years, 3 once in 5 years, 1 never reported; 4 and 2 N.A. (Fig 5.4)
+- Environment Consequence [has_value:: 1-5] 5 may exceed 500 units or affect others/regulation, 4 over 200 needs outside help, 3 over 20 handled internally, 2 minor not reportable, 1 none (Fig 5.5, RBMM p.119)
+- Environment Likelihood [alias_of:: Safety Likelihood] same 1-6 scale (Fig 5.5)
+- Criticality A [uses:: 100% RCM Tasks] Zero Breakdown, intensive failure finding (Fig 1.5 RBMM p.26; Fig 10.32 p.316)
+- Criticality B [uses:: Pro-active] remove ineffective PM, PM optimum (Fig 1.5; Fig 10.32)
+- Criticality C [uses:: Re-active] remove unnecessary PM, PM optimum, Run to Failure (Fig 1.5; Fig 10.32)
+- Criticality A [has_value:: 100% service level] spare parts, 0% stock out (Fig 1.5)
+- Criticality A [has_value:: > 95%] confidence level that CM-Unplanned will not occur, for budget (RBMM ch10 p.315-319)
+- Criticality B [has_value:: 90%] confidence level, service factor 100% (RBMM ch10 p.315-319)
+- Criticality C [has_value:: 80-90%] confidence level, Run to Failure (RBMM ch10 p.315-319)
+- Criticality A [has_value:: 30%] share of machines, hypothetical book example (Fig 1.4, RBMM p.23-25)
+- Criticality B [has_value:: 50%] share of machines, hypothetical (Fig 1.4)
+- Criticality C [has_value:: 20%] share of machines, hypothetical (Fig 1.4)
+- Equipment Criticality [depends_on:: Stress] changes over time; also Resistance and maintenance plan (RBMM p.23-25)
+- Equipment Criticality [has_formula:: Commercial + Safety + Environment] (Fig 9.5, RBMM p.243-246)
+- Series Equipment [has_category:: Criticality A] no redundancy (Fig 1.6, RBMM p.28-30)
+- Standby Equipment [depends_on:: Hidden Failure] not automatically below A; hidden failure can lead to Multiple Failure (RBMM p.28-30)
+- Load Sharing [differs_from:: Standby] 3 machines at 50% each: standby 2+1 vs each 1/3 able to take up to 50% (RBMM p.28-30)
+- Buffer Tank [related_to:: Equipment Criticality] reduces overall criticality (Fig 1.8)
+- Part Criticality [has_parameter:: Price] score 1 highest to 3 low (Fig 9.5, RBMM p.243-246)
+- Part Criticality [has_parameter:: Lead Time] (Fig 9.5)
+- Part Criticality [has_parameter:: Failure Detect-ability] CBM; low = cannot detect in advance (Fig 9.5)
+- Part Criticality [depends_on:: Equipment Criticality] shared part takes highest criticality of using equipment (RBMM p.243-246)
+- [[Criticality Assessment]] [differs_from:: [[Failure Impact Classification]]] A/B/C equipment importance vs ISO critical/degraded/incipient per failure (ISO 14224 cl. 3.28, p.6)
+- [[Criticality Assessment]] [differs_from:: [[Safety Critical Failure Classification]]] vs ISO/TR 12489 dangerous failure of safety function (ISO 14224 cl. F.4.1, p.253-254)
+- [[Criticality Assessment]] [step_of:: [[RCM Reliability Centered Maintenance]]] process 2; Fast Track RCM treats it as outside the process (RBMM p.150)
+- Equipment Criticality [input_to:: Maintenance Strategy] Criticality field of Equipment Database in CMMS (Fig 4.3, RBMM p.96)
+- Likelihood [depends_on:: [[FMECA]]] when no history, e.g. new plant; or designer/manufacturer knowledge (RBMM p.137)
+- [[Criticality Assessment]] [applies_to:: [[Compressor]]] equipment level; no Valeura failure data so no actual ranking

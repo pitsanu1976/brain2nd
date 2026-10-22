@@ -1,7 +1,7 @@
 ---
 title: Which maintainable item and mode pairs drive failure rate
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: query
 tags: [query, maintainable-item, failure-mode, failure-rate]
 sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__failure-hierarchy.csv]
@@ -46,3 +46,26 @@ contested: false
 - Instruments มีตัวเลขสูงเพราะเป็นการรวม 7 instrument type เป็น item เดียว (Notes ข้อ 4) และ Sub Unit PWTR เป็นเพียงที่นับ % (ดู [[PWTR Power Transmission]])
 - Cylinder liner เด่นเฉพาะ [[Reciprocating Compressor]] (Sum 28.77 ในภาพ reciprocating); ถ้า fleet ไม่มี reciprocating ลำดับจะต่างจากนี้
 - Mechanism ที่แสดงมาจากแถวแรกของคู่ ไม่ใช่ทุก mechanism ของคู่นั้น ดู [[Failure Mechanism]]
+
+## Triplets
+
+- PWTR-INST [contributes_to:: [[AIR Abnormal Instrument Reading]]] 13.54% of total failure rate, pair rank 1; about 15.8% of 85.66
+- LUBS-FILT [contributes_to:: [[SER Minor In-Service Problems]]] 7.33% of total failure rate, pair rank 2
+- CPUN-CYLN [contributes_to:: [[LOO Low Output]]] 5.78% of total failure rate, pair rank 3
+- CPUN-CYLN [contributes_to:: [[OHE Overheating]]] 3.40% of total failure rate, pair rank 4
+- PWTR-INST [contributes_to:: [[PDE Parameter Deviation]]] 3.35% of total failure rate, pair rank 5
+- CPUN-VALV [contributes_to:: [[LOO Low Output]]] 2.21% of total failure rate, pair rank 6
+- CPUN-CYLN [contributes_to:: [[ELP External Leakage Process Medium]]] 1.94% of total failure rate, pair rank 7
+- PWTR-INST [contributes_to:: [[UST Spurious Stop]]] 1.92% of total failure rate, pair rank 8=
+- CPUN-VALV [contributes_to:: [[PDE Parameter Deviation]]] 1.92% of total failure rate, pair rank 8=
+- CPUN-VALV [contributes_to:: [[OTH Other]]] 1.37% of total failure rate, pair rank 10
+- Top 3 Item/Mode Pairs [has_failure_rate_share:: 26.65%] derived; about 31.1% of 85.66
+- Top 5 Item/Mode Pairs [has_failure_rate_share:: 33.40%] about 39.0% of 85.66
+- INST [has_failure_rate_share:: 23.34%] sum over all modes (derived); 27.3% of 85.66
+- CYLN [has_failure_rate_share:: 13.66%] sum over all modes (derived); 15.9% of 85.66
+- VALV [has_failure_rate_share:: 11.64%] sum over all modes (derived); 13.6% of 85.66
+- FILT [has_failure_rate_share:: 8.95%] sum over all modes (derived); 10.4% of 85.66
+- Top 4 Maintainable Items [has_failure_rate_share:: 57.59%] INST, CYLN, VALV, FILT; about 67.2% of 85.66
+- INST [has_value:: 7] instrument types combined into one item (Notes item 4)
+- [[PWTR Power Transmission]] [has_part:: PWTR-INST] sub unit used only as counting location for %
+- CYLN [dominant_in:: [[Reciprocating Compressor]]] Sum 28.77 in reciprocating figure; ranking differs if fleet has no reciprocating

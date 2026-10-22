@@ -1,7 +1,7 @@
 ---
 title: RBMM Concepts vs Compressor Failure Hierarchy
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: comparison
 tags: [comparison, book, taxonomy, rcm, maintenance-management]
 sources: [reliability-based-maintenance-management.md, compressor-failure-hierarchy.md]
@@ -45,3 +45,40 @@ contested: false
 - [[Failure Data Recording]]
 - [[How to choose PM task for a compressor failure mode]]
 - [[Compressor Type Failure Profiles]]
+
+## Triplets
+
+- Plant/Process/System/Subsystem [differs_from:: [[Failure Hierarchy]]] above Equipment level; wiki starts at Equipment (book Fig 5.12 p.130)
+- Equipment [maps_to:: [[Compressor]]] level 1; book p.151-152 with interpretation as compressor [confidence:: medium]
+- Pump/Motor Boundary [maps_to:: [[PWTR Power Transmission]]] similar group names, but pump/motor boundary not compressor (Fig 5.14, 5.16 p.132-133) [confidence:: medium]
+- Pump/Motor Boundary [maps_to:: [[CTMN Control and Monitoring]]] similar group names, but pump/motor boundary not compressor (Fig 5.14, 5.16 p.132-133) [confidence:: medium]
+- Pump/Motor Boundary [maps_to:: [[LUBS Lubrication System]]] similar group names, but pump/motor boundary not compressor (Fig 5.14, 5.16 p.132-133) [confidence:: medium]
+- Pump/Motor Boundary [maps_to:: [[MISC Miscellaneous]]] similar group names, but pump/motor boundary not compressor (Fig 5.14, 5.16 p.132-133) [confidence:: medium]
+- Object Part [maps_to:: [[Maintainable Item]]] level 3; close but not same definition (interpretation, book does not compare) [confidence:: medium]
+- Damage Code [maps_to:: [[Failure Mode]]] level 4, e.g. ELP, ELU, VIB (p.151-152 with interpretation) [confidence:: medium]
+- Cause [maps_to:: [[Failure Mechanism]]] level 5; book uses one Cause layer, wiki splits two (interpretation) [confidence:: medium]
+- Cause [maps_to:: [[Failure Cause Codes]]] level 6 (interpretation) [confidence:: medium]
+- Causation Sequence [has_value:: 7] levels down to design/assembly/procurement/storekeeping error (Fig 5.13 p.131)
+- Causation Sequence [related_to:: [[Failure Mechanism]]] separates mechanism from latent/systemic cause (Fig 5.13 p.131)
+- Action [maps_to:: [[Resolution Codes]]] level 7; comparable as data to record (p.152 with interpretation) [confidence:: medium]
+- Pump Failure Mode Codes [maps_to:: [[Failure Mode]]] 19 ISO 14224 pump codes, 18 match the wiki's 19 modes (Fig 5.15 p.133)
+- SPS [alias_of:: [[UST Spurious Stop]]] UST primary, resolved 2026-10-21 (Fig 5.15 p.133)
+- Motor Failure Mode Codes [differs_from:: [[Failure Mode]]] 18 codes; no ELP, INL; has OWD not in wiki (Fig 5.17 p.134)
+- SAE Failure Mode [differs_from:: [[Failure Mode]]] single event causing functional failure; deeper causation level than equipment-level mode (Fig 5.13 p.131)
+- [[Criticality Assessment]] [applies_to:: [[Compressor]]] A/B/C by Consequence x Likelihood; no actual rating yet (p.116-118; adoption is interpretation) [confidence:: medium]
+- [[FMECA]] [applies_to:: [[Failure Mode]]] RPN, FF, FFCr per failure mode x maintainable item [confidence:: medium]
+- [[FMECA]] [uses:: [[OREDA]]] % as relative frequency proxy, conceptual only (interpretation) [confidence:: medium]
+- [[PM Task Selection]] [selects:: Condition Monitoring] one of 5 PM task types (p.180)
+- [[PM Task Selection]] [selects:: Overhaul/Discard] one of 5 PM task types (p.180)
+- [[PM Task Selection]] [selects:: Failure Finding] one of 5 PM task types (p.180)
+- [[PM Task Selection]] [selects:: Run To Failure] one of 5 PM task types (p.180)
+- [[PM Task Selection]] [selects:: Redesign] one of 5 PM task types (p.180)
+- [[PM Task Selection]] [applies_to:: [[Maintainable Item]]] recommended task per failure mode x item; column not yet in wiki (interpretation) [confidence:: medium]
+- [[Weibull Analysis]] [has_parameter:: Beta] per failure mode (book)
+- [[Weibull Analysis]] [has_parameter:: Eta] per failure mode (book)
+- [[OREDA]] [differs_from:: [[Weibull Analysis]]] OREDA data in wiki has only %, no beta/eta
+- [[Spare Part Criticality and Risk]] [applies_to:: [[Maintainable Item]]] spares per failure mode / Object Part (Fig 9.5 p.243-246 with interpretation) [confidence:: medium]
+- [[Spare Part Criticality and Risk]] [has_parameter:: Price] part criticality factor (Fig 9.5 p.243-246)
+- [[Spare Part Criticality and Risk]] [has_parameter:: Lead Time] part criticality factor (Fig 9.5 p.243-246)
+- Work Order [input_to:: [[Failure Data Recording]]] fields Failure Mode, Cause, Effect, Down Time etc. needed to build Valeura's own dataset; wiki has no Valeura failure data (Fig 4.15 p.109, [[CMMS]])
+- [[Reliability Based Maintenance Management Book]] [related_to:: [[Failure Hierarchy]]] book does not compare to OREDA and does not resolve Sub Unit conflict (boundary is pump/motor)

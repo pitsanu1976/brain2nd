@@ -1,7 +1,7 @@
 ---
 title: Maintenance Strategic Report
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [kpi, budget, cost, cmms, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -123,3 +123,62 @@ Net Budget = Gross Budget - Provision for Costs - Provision for Losses
 - [[Maintenance Budget]]
 - [[Availability and OEE]]
 - [[Asset Life Cycle]]
+
+## Triplets
+
+- [[Maintenance Strategic Report]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 3, p.55-87; reused in chapter 10
+- [[Maintenance Strategic Report]] [uses:: [[CMMS]]] output directly from CMMS/ERP without re-preparation (RBMM p.56-59)
+- [[Maintenance Strategic Report]] [depends_on:: Man-Hrs] only extra input needed in Work Order (RBMM p.66)
+- [[Maintenance Strategic Report]] [differs_from:: Bottom Up Report] top-down, 1-2 A4 pages vs up to 100 reports (RBMM p.56-59)
+- [[Maintenance Strategic Report]] [step_of:: Maintenance Improvement Cycle] Problem of Reporting? (Fig 2.4 and 3.1)
+- Section A [part_of:: [[Maintenance Strategic Report]]] organization size and total cost (RBMM p.66-70)
+- Section B [part_of:: [[Maintenance Strategic Report]]] key indices: cost/efficiency and stock performance (RBMM p.70-75)
+- Section C [part_of:: [[Maintenance Strategic Report]]] Man-Hrs/cost by Process/Area/Criticality, planned vs unplanned (RBMM p.76-83)
+- Section D [part_of:: [[Maintenance Strategic Report]]] equipment results: output/OEE and cost per unit (RBMM p.83-84)
+- Section E [part_of:: [[Maintenance Strategic Report]]] budget management performance, added later (RBMM p.84-86)
+- Asset Performance [has_parameter:: Failure Rate] component level; equipment R/A/M; integrity incl. hidden failures (Fig 3.2, RBMM p.59, p.63)
+- Accountability Reporting Matrix [produces:: Cost per Asset] rows = maintenance units, columns = assets (Fig 3.3, RBMM p.60)
+- A3 Total Asset Costs [has_formula:: A3.1 + A3.2] (Fig 3.4-3.5, RBMM p.64-70)
+- A5 Total Fixed Cost [has_formula:: A1 + A2 + A3 + A4] (Fig 3.4-3.5)
+- A9 Material Cost [has_formula:: A6 + A7 + A8] (Fig 3.4-3.5)
+- A10 Total Maintenance Cost [has_formula:: A5 + A9] (Fig 3.4-3.5)
+- A1 Personnel Costs [has_value:: 25,000,000] actual; budget 20,000,000
+- A2 Operating Costs [has_value:: 3,500,000] actual; budget 2,400,000
+- A3 Total Asset Costs [has_value:: 19,720,000] actual; budget 23,000,000
+- A3.1 Cost of Long Term Asset [has_value:: 520,000] actual; budget 5,000,000; p.64 reads 320,000 from low-res image, 520,000 used (p.66, Fig 10.22)
+- A3.2 Cost of Current Asset [has_value:: 19,200,000] actual; budget 18,000,000
+- A4 Allocation Costs [has_value:: 500,000] actual; budget 500,000
+- A5 Total Fixed Cost [has_value:: 48,720,000] actual; budget 45,900,000; variance 2,820,000
+- A6 Parts from Stock [has_value:: 54,000,000] actual; budget 52,881,818
+- A7 Direct Purchase Parts [has_value:: 78,350,000] actual; budget 79,000,000
+- A8 Outsource [has_value:: 29,550,500] actual; budget 26,763,636
+- A9 Material Cost [has_value:: 161,900,500] actual; budget 158,645,455
+- A10 Total Maintenance Cost [has_value:: 210,620,500] actual; budget 204,545,455; variance 6,075,045
+- A5 Total Fixed Cost [has_category:: Fixed Cost] A1-A4 incurred regardless of output, easy to budget, hard to cut (RBMM p.69)
+- Holding Cost [has_value:: 15-20%] of spare part purchase price per year, often hidden in fixed cost (RBMM p.68)
+- A6 Parts from Stock [applies_to:: CM-Unplanned] stock is for breakdown/CM-Unplanned only (RBMM p.70)
+- A7 Direct Purchase Parts [applies_to:: Scheduled PM] mismatch with C2 means wrong PM selection (RBMM p.70)
+- C1.1 % Critical PM per Total PM Tasks [has_value:: 71.3 / 62.9 / 51.9] P1/P2/P3
+- C1.2 Critical PM Compliance [has_value:: 100.0 / 96.6 / 100.0] P1/P2/P3
+- C1.3 Non-Critical PM Compliance [has_value:: 75.9 / 99.3 / 95.0] P1/P2/P3
+- C5.1 Production Loss from Maintenance [has_value:: 7,050,000] planned 1,410,000 and unplanned 5,640,000 (ch10)
+- Section C [depends_on:: [[Failure Mode]]] PM must map to a failure mode; separate Scheduled PM, CM-Planned, CM-Unplanned, Breakdown (RBMM p.65)
+- Section D [uses:: OEE] cost per unit with OEE
+- Net Budget [has_formula:: Gross Budget - Provision for Costs - Provision for Losses] (Fig 3.18-3.20, RBMM p.84-86; ch10 p.309-312)
+- E6 Gross Budget [has_value:: 225,000,000] includes provisions, excludes major overhaul
+- E8 Total Provision [has_value:: 20,454,545] 10% of net
+- E10 Provision for Cost Variance [has_value:: 4,090,909] 2% of Net Budget; book labels E9 as % of total provision, misprint
+- E12 Provision for Losses [has_value:: 16,363,636] 8% of Net Budget; book labels E11 as % of total provision, misprint
+- E13 Net Budget [has_value:: 204,545,455]
+- E14 Actual Gross [has_value:: 217,670,500]
+- E17 Actual Net [has_value:: 210,620,500]
+- E18 Cost Variance [has_value:: 6,075,045] E19 = 2.97% of Net
+- E22 Actual Losses [has_value:: 7,050,000] E23 = 3.45% of Net
+- E18 Cost Variance [measures:: Cost Management Capability] problems from work planning/control; check Top Ten High Cost and Man-Hrs (RBMM p.86)
+- E22 Actual Losses [measures:: Strategy and Quality Control Capability] problems from wrong PM selection; check Top High Loss (RBMM p.86)
+- E15 Variance Gross [has_value:: (7,329,500)] chapter 3 Fig 3.19, vs Gross Budget, likely misprint/misread
+- E15 Variance Gross [has_value:: 13,125,045] chapter 10 Fig 10.27, vs Net Budget, used by wiki
+- E16 Variance Gross Percent [has_value:: -3.58%] chapter 3 Fig 3.19
+- E16 Variance Gross Percent [has_value:: 6.42%] chapter 10 Fig 10.27, matches text, used by wiki
+- E18 Cost Variance [has_value:: 2.97%] exceeds 2% cost provision; losses 3.45% within 8% provision (wiki reading of p.86)
+- [[Maintenance Strategic Report]] [input_to:: [[Maintenance Budget]]] periodic budget adjustment with Top 10/20 reports (RBMM ch10 p.306-309)

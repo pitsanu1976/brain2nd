@@ -1,7 +1,7 @@
 ---
 title: Failure Patterns and Bathtub Curve
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [reliability, weibull, failure-rate, rcm, pm, book]
 sources: [reliability-based-maintenance-management.md]
@@ -85,3 +85,55 @@ contested: false
 - [[PM Task Selection]]
 - [[Failure Mode]]
 - [[Failure Finding Interval]]
+
+## Triplets
+
+- Failure Pattern [is_a:: Failure Rate Versus Time Shape] per failure mode
+- Failure Pattern [depends_on:: Shape Parameter Beta] (RBMM p.155-158)
+- Pattern A [is_a:: Failure Pattern] very low early then rises fast, clear wear-out (RBMM p.155-158)
+- Pattern A [has_value:: β = 15, η = 30,000] β >> 1
+- Pattern B [is_a:: Failure Pattern] gradually increasing
+- Pattern B [has_value:: β = 3, η = 30,000] β > 1
+- Pattern C [is_a:: Failure Pattern] low at first then increases and levels off
+- Pattern C [has_value:: β = 1.5, η = 5,000] β slightly > 1
+- Pattern D [is_a:: Failure Pattern] constant, random
+- Pattern D [has_value:: β = 1, η = 5,000]
+- Pattern E [is_a:: Failure Pattern] very high early then drops, infant mortality
+- Pattern E [has_value:: β = 0.5, η = 5,000] β < 1
+- Shape Parameter Beta [has_value:: β > 1] bell shape; larger η gives flatter, wider bell (RBMM p.156-157)
+- Shape Parameter Beta [has_value:: β ≈ 1] like Exponential density, constant failure rate (RBMM p.156-157)
+- Shape Parameter Beta [has_value:: β < 1] hyper-exponential, decreasing failure rate (RBMM p.156-157)
+- Bathtub Curve [applies_to:: Whole Machine] combination of many parts (RBMM p.145-146 Fig 5.24)
+- Bathtub Curve [has_part:: Infant Mortality] β < 1, decreasing rate, factory defects, wrong assembly or use
+- Bathtub Curve [has_part:: Normal Usage Period] β = 1, random, still needs PM
+- Bathtub Curve [has_part:: Designed Life End] β > 1, wear-out, increasing rate
+- Bathtub Curve [differs_from:: Failure Pattern] bathtub is machine level; single failure mode uses pattern A-E (RBMM p.155)
+- RBMM ch12 Six Failure Rate Patterns [contradicts:: RBMM ch6 Five Failure Patterns] ch12 says 6 like RCM, ch6 shows 5 (RBMM p.379)
+- RBMM ch6 Five Failure Patterns [contradicts:: RBMM ch12 Six Failure Rate Patterns] internal book inconsistency (RBMM p.155-158)
+- Lube Oil Car Example [has_value:: 13,000 km] mean life, changed every 10,000 km (RBMM p.146-149)
+- Timing Belt Car Example [has_value:: 110,000 km] mean life, replaced at 80,000 km safe-life
+- Water Pump Car Example [uses:: Inspection] every 10,000 km instead of time replacement
+- Gear Box Car Example [uses:: Scheduled Overhaul] parts designed with similar life
+- Infant Mortality [has_cause:: Parts, Assembly Or QC] PM does not help
+- Shape Parameter Beta [selects:: Root Cause Correction] β < 1, PM cannot fix (RBMM p.183-189)
+- Shape Parameter Beta [selects:: Condition Monitoring] β = 1, scheduled replace/overhaul does not help (RBMM p.183-189)
+- Shape Parameter Beta [selects:: Condition Monitoring] β → 1 slowly increasing, main option
+- Shape Parameter Beta [selects:: Condition Monitoring, Part Replacement Or Overhaul] β >> 1, start inspection before t1
+- Constant Failure Rate Replacement Example [has_value:: 47.0158%] R(120) without replacement equals R(80) x R(40) = 60.4639% x 77.7585% (RBMM p.186-187)
+- Constant Failure Rate Replacement Example [has_value:: 77.758%] conditional R(120/80)
+- Constant Failure Rate Replacement Example [has_value:: 160 h] inferred η, derived [confidence:: low]
+- Light Bulb Example [has_value:: 72.57%] at 2,000 h whether replaced every 1,000 or 500 h (RBMM p.378)
+- Weibull Example TTF 8500-16000 [has_category:: Pattern A] β ≈ 3.8, not pattern D (RBMM p.199)
+- RBMM Fig 6.14 Pattern Mapping [contradicts:: RBMM Pattern Example Parameters] Fig 6.14 puts B/C/D at β ≈ 1 but example B has β = 3 (RBMM p.155-156, p.165-166)
+- RBMM Pattern Example Parameters [contradicts:: RBMM Fig 6.14 Pattern Mapping] example values preferred (RBMM p.155-156)
+- RBMM ch5 Infant Mortality Type D [contradicts:: RBMM ch6 Pattern Definitions] ch5 says infant mortality type D (RBMM p.148)
+- RBMM ch6 Pattern Definitions [contradicts:: RBMM ch5 Infant Mortality Type D] ch6 E = infant mortality, D = random; ch6 used as primary
+- Bathtub Curve [applies_to:: [[Compressor]]] whole unit is sum of many failure modes in many maintainable items
+- [[AIR Abnormal Instrument Reading]] [related_to:: Pattern D] hypothesis, no β in sources [confidence:: low]
+- [[SER Minor In-Service Problems]] [related_to:: Pattern E] hypothesis, no β in sources [confidence:: low]
+- [[ELP External Leakage Process Medium]] [detected_by:: Condition Monitoring] may be monitored, no β in sources [confidence:: low]
+- [[ELU External Leakage Utility Medium]] [detected_by:: Condition Monitoring] may be monitored, no β in sources [confidence:: low]
+- [[Failure Mechanism]] [related_to:: β > 1] age-related mechanisms such as wear, fatigue
+- Infant Mortality [has_cause:: Assembly Or Installation] see [[Failure Cause Codes]]
+- [[Failure Patterns and Bathtub Curve]] [related_to:: [[Weibull Analysis]]]
+- [[Failure Patterns and Bathtub Curve]] [related_to:: [[PM Task Selection]]]

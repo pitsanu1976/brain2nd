@@ -1,7 +1,7 @@
 ---
 title: Reliability Based Maintenance Management Book
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: entity
 tags: [book, maintenance-management, reliability]
 sources: [reliability-based-maintenance-management.md]
@@ -94,3 +94,101 @@ CMMS (ข้อมูล + กระบวนการ)
 - [[Compressor]]
 - [[OREDA]]
 - [[ISO 14224]]
+
+## Triplets
+
+- RBMM [alias_of:: [[Reliability Based Maintenance Management Book]]]
+- การจัดการงานบำรุงรักษาด้วย Reliability [alias_of:: [[Reliability Based Maintenance Management Book]]] Thai title
+- [[Reliability Based Maintenance Management Book]] [related_to:: วัฒนา เชียงกูล] author
+- [[Reliability Based Maintenance Management Book]] [related_to:: เกรียงไกร ดำรงรัตน์] author
+- [[Reliability Based Maintenance Management Book]] [related_to:: ดลดิษฐ์ เมืองแมน] author
+- [[Reliability Based Maintenance Management Book]] [related_to:: SE-Education] publisher (SE-ED)
+- [[Reliability Based Maintenance Management Book]] [has_value:: 2010] publication year, B.E. 2553
+- [[Reliability Based Maintenance Management Book]] [has_code:: ISBN 978-616-08-0207-4]
+- [[Reliability Based Maintenance Management Book]] [has_value:: 400] pages
+- [[Reliability Based Maintenance Management Book]] [has_category:: Industrial Management & Technical Series] vol. 3, maintenance management
+- [[Reliability Based Maintenance Management Book]] [has_value:: 401] pages of scanned PDF, no text layer
+- [[Reliability Based Maintenance Management Book]] [has_formula:: book page = PDF page - 2]
+- [[Reliability Based Maintenance Management Book]] [has_value:: 12] chapters
+- RBMM Maintenance Management Framework [defined_in:: [[Reliability Based Maintenance Management Book]]] goal Zero Plant Breakdown @ Minimum Cost, strategy by criticality A/B/C
+- [[CMMS]] [step_of:: RBMM Maintenance Management Framework] step 1
+- [[RCM Reliability Centered Maintenance]] [step_of:: RBMM Maintenance Management Framework] step 2
+- [[FMECA]] [step_of:: RBMM Maintenance Management Framework] step 3
+- [[Weibull Analysis]] [step_of:: RBMM Maintenance Management Framework] step 4
+- [[PM Task Selection]] [step_of:: RBMM Maintenance Management Framework] step 5
+- [[PM Interval Optimization]] [step_of:: RBMM Maintenance Management Framework] step 6
+- [[Spare Parts Management]] [step_of:: RBMM Maintenance Management Framework] step 7
+- [[Maintenance Budget]] [step_of:: RBMM Maintenance Management Framework] step 8
+- [[Maintenance Strategic Report]] [step_of:: RBMM Maintenance Management Framework] step 9
+- [[Maintenance Business Models]] [step_of:: RBMM Maintenance Management Framework] step 10
+- [[Asset Life Cycle]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.1 (p.13-30)
+- [[Criticality Assessment]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.1 (p.13-30)
+- [[Availability and OEE]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.1 (p.13-30)
+- [[Maintenance Efficacy Pyramid]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.2 (p.31-54)
+- [[Maintenance KPIs]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.2 (p.31-54)
+- [[Maintenance Strategic Report]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.3 (p.55-88)
+- [[Maintenance KPIs]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.3 (p.55-88)
+- [[Availability and OEE]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.3 (p.55-88)
+- [[CMMS]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.4 (p.89-112)
+- [[Failure Data Recording]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.4 (p.89-112)
+- [[RCM Reliability Centered Maintenance]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.5 (p.113-152)
+- [[FMECA]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.5 (p.113-152)
+- [[Criticality Assessment]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.5 (p.113-152)
+- [[Failure Data Recording]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.5 (p.113-152)
+- [[Failure Patterns and Bathtub Curve]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.5 (p.113-152)
+- [[Weibull Analysis]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 (p.153-178)
+- [[Failure Patterns and Bathtub Curve]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 (p.153-178)
+- [[Reliability Metrics]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 (p.153-178)
+- [[Censored Data]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 (p.153-178)
+- [[Reliability Block Diagram]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 (p.153-178)
+- [[PM Task Selection]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.7 (p.179-218)
+- [[P-F Interval and Condition Monitoring]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.7 (p.179-218)
+- [[Failure Finding Interval]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.7 (p.179-218)
+- [[Redundancy and Standby Systems]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.7 (p.179-218)
+- [[PM Interval Optimization]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.8 (p.219-232)
+- [[Monte Carlo Maintenance Simulation]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.8 (p.219-232)
+- [[Spare Parts Management]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.9 (p.233-272)
+- [[Spare Part Criticality and Risk]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.9 (p.233-272)
+- [[EOQ and Reorder Point]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.9 (p.233-272)
+- [[Spare Part Demand Forecasting]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.9 (p.233-272)
+- [[Maintenance Budget]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.10 (p.273-320)
+- [[Maintenance Cost Structure]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.10 (p.273-320)
+- [[Maintenance Strategic Report]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.10 (p.273-320)
+- [[Maintenance Business Models]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.11 (p.321-360)
+- [[Job Order Costing]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.11 (p.321-360)
+- [[Maintenance Cost Structure]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.11 (p.321-360)
+- [[Statistical Distributions for Maintenance]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.12 (p.361-392)
+- [[Weibull Analysis]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.12 (p.361-392)
+- [[Censored Data]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.12 (p.361-392)
+- [[PM Interval Optimization]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.12 (p.361-392)
+- [[Reliability Metrics]] [has_value:: about 8,837 h] T(R) at R = 0.8 with correct formula eta x (-ln R)^(1/beta) (derived); book p.169 prints 13,847.81 h
+- [[Reliability Metrics]] [has_value:: 11,865.51 h] MTTF = eta x Gamma(1+1/beta); book p.168 integral limits -inf to inf should be 0 to inf
+- [[Reliability Block Diagram]] [has_value:: 0.985] parallel example Fig 6.22; book prints 0.9085
+- [[Reliability Block Diagram]] [has_value:: 0.765] series example Fig 6.21 as calculated 0.85 x 0.9; text says 0.9/0.9
+- [[PM Interval Optimization]] [has_formula:: cost per unit time denominator integral from 0 to tp] book p.391 prints tp to inf
+- [[Statistical Distributions for Maintenance]] [has_value:: 101.486] sigma using N-1; book p.374 swaps N and N-1 rules
+- [[EOQ and Reorder Point]] [has_formula:: A/Q x Cp] ordering cost term; book p.253 prints Q/2 x Cp; Cp in ch.9 differs from Cp in ch.8
+- [[Job Order Costing]] [has_value:: (33,000)] book p.357 prints (3,300)
+- ABC Analysis RBMM Text p.242 [contradicts:: ABC Analysis RBMM Fig 9.4] text vs figure labels, unresolved
+- ABC Analysis RBMM Fig 9.4 [contradicts:: ABC Analysis RBMM Text p.242] figure labels vs text, unresolved
+- [[Maintenance Strategic Report]] [has_value:: 6.42%] Section E16 total per ch.10 Fig 10.27 (used, matches 2.97% + 3.45%); ch.3 Fig 3.19 shows -3.58%, likely misprint
+- [[Maintenance Strategic Report]] [has_value:: 520,000] A3.1 Actual (used, p.66 and ch.10); p.64 reads 320,000
+- [[PM Interval Optimization]] [has_value:: 9 months] optimum PM interval, Fig 8.6 minimum (1,559,907 vs 1,591,959); text says about 10 months
+- [[Failure Patterns and Bathtub Curve]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ch.6 numbers and definitions used; ch.5/6/7/12 inconsistent on pattern/beta
+- [[Failure Mode]] [defined_in:: [[Reliability Based Maintenance Management Book]]] ISO 14224 pump code list p.132-134, Fig 5.14-5.17; 18 of 19 codes match wiki
+- SPS [alias_of:: [[UST Spurious Stop]]] SPS in book, UST in wiki (resolved: UST primary)
+- Motor [has_failure_mode:: OWD] additional code vs pump list (RBMM)
+- Equipment [part_of:: RBMM Minimum Failure Record] 1 of 5 fields
+- Damage Code [part_of:: RBMM Minimum Failure Record] 1 of 5 fields
+- Object Part [part_of:: RBMM Minimum Failure Record] 1 of 5 fields (RBMM p.151-152)
+- Cause [part_of:: RBMM Minimum Failure Record] 1 of 5 fields
+- Action [part_of:: RBMM Minimum Failure Record] 1 of 5 fields
+- Damage Code [maps_to:: [[Failure Mode]]] interpretation [confidence:: low]
+- Object Part [maps_to:: [[Maintainable Item]]] interpretation, book makes no direct mapping [confidence:: low]
+- Cause [maps_to:: [[Failure Cause Codes]]] interpretation [confidence:: low]
+- Cause [maps_to:: [[Failure Mechanism]]] interpretation [confidence:: low]
+- Action [maps_to:: [[Resolution Codes]]] interpretation [confidence:: low]
+- Work Order Failure Fields [input_to:: [[Weibull Analysis]]] Failure Mode, Cause, Effect, Down Time, Work Time, Man Hours, spare parts
+- Work Order Failure Fields [input_to:: [[Reliability Metrics]]] OREDA % in wiki has no time-to-failure
+- Work Order Failure Fields [part_of:: [[CMMS]]]
+- [[PM Task Selection]] [applies_to:: [[Compressor]]] per failure mode (interpretation) [confidence:: low]

@@ -2,9 +2,9 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-21 | จำนวนหน้า wiki: 86 (entities 11, concepts 56, comparisons 3, guides 6, reference 6, queries 4; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-10-23 | จำนวนหน้า wiki: 96 (entities 11, concepts 64, comparisons 4, guides 6, reference 6, queries 5; ไม่นับ `queries/README.md`)
 
-Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy และ RBMM)
+Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM และ ISO 14224)
 
 ## Raw sources (Layer 1, immutable; area ข)
 
@@ -12,6 +12,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/failure-structure]] — failure structure.xlsx (Sheet1 โครงสร้าง mode/item/sub unit/descriptor ต่อประเภท, Sheet2 category ของ mechanism)
 - `raw/assets/` — ภาพตาราง OREDA (failure descriptor, failure mode vs maintainable item, failure mechanism, resolution)
 - [[raw/reliability-based-maintenance-management]] — หนังสือ Reliability Based Maintenance Management (SE-ED 2553, 400 หน้า) reading notes 12 บทใน `raw/reliability-based-maintenance-management/`
+- [[raw/iso-14224]] — ISO 14224:2016 (280 หน้า, licensed ไม่เก็บ PDF) reading notes ถอดความ 6 ส่วนใน `raw/iso-14224/` (clauses 1-7, 8-9, Annex A, B, C-D, E-F)
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)
@@ -40,11 +41,12 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Second Brain vs LLM Wiki]] — เปรียบเทียบและการรวมใน vault เดียว
 - [[Contradiction Handling]] — contested flag และขั้นตอน
 - [[Page Thresholds]] — เกณฑ์สร้างหน้าใหม่
+- [[Knowledge Graph Triplet]] — สเปก triplet subject-predicate-object: syntax `## Triplets`, node naming, predicate vocabulary และ `graph/triplets.csv`
 
 ### Area ข: Compressor failure hierarchy (OREDA / ISO 14224)
 
-- [[Failure Hierarchy]] — ลำดับชั้น 7 ระดับ Equipment ถึง Resolution และความขัดแย้งเรื่อง sub unit ระหว่าง sources
-- [[Failure Mode]] — hub ตาราง 19 โหมด พร้อม % failure rate (total 85.66)
+- [[Failure Hierarchy]] — ลำดับชั้น 7 ระดับ Equipment ถึง Resolution, ความขัดแย้งเรื่อง sub unit ระหว่าง sources และการเทียบเลขระดับกับ ISO 14224
+- [[Failure Mode]] — hub ตาราง 19 โหมด พร้อม % failure rate (total 85.66); ISO Table B.6 ให้ compressor 20 โหมด (+PLU)
 - [[AIR Abnormal Instrument Reading]] — AIR 17.18%, Instruments x AIR 13.54
 - [[SER Minor In-Service Problems]] — SER 13.05%, Filter(s) x SER 7.33
 - [[LOO Low Output]] — LOO 10.11%, Cylinder liner x LOO 5.78
@@ -53,13 +55,18 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[OTH Other]] — OTH 5.46%, mechanism = Other ทุกแถว
 - [[ELP External Leakage Process Medium]] — ELP 4.58%, Cylinder liner/Valves เด่น
 - [[OHE Overheating]] — OHE 4.18%, Cylinder liner x OHE 3.40
-- [[UST Spurious Stop]] — UST 4.16%, Instruments/Control unit เด่น
-- [[Failure Mechanism]] — 37 mechanism พร้อมรหัส, category และจำนวน resolution
-- [[Failure Cause Codes]] — รหัส mechanism 35 ตัวและ CAUSE_CODE 473 รหัส พร้อมข้อขัดแย้ง
-- [[Resolution Codes]] — 14 รหัส resolution พร้อมจำนวนแถวใช้งานและข้อขัดแย้ง CHG
+- [[UST Spurious Stop]] — UST 4.16%, Instruments/Control unit เด่น; ISO 14224:2016 ใช้ UST ไม่มี SPS
+- [[Failure Mechanism]] — 37 mechanism พร้อมรหัส, category และจำนวน resolution; เทียบ ISO Table B.2 (38 รหัส)
+- [[Failure Cause Codes]] — รหัส mechanism 35 ตัวและ CAUSE_CODE 473 รหัส พร้อมข้อขัดแย้ง; ISO failure cause Table B.3 (21 รหัส)
+- [[Resolution Codes]] — 14 รหัส resolution พร้อมจำนวนแถวใช้งานและข้อขัดแย้ง CHG; เทียบ ISO maintenance activity Table B.5 (12 รหัส)
 - [[Maintainable Item]] — 44 รหัส item และกติกาจับคู่หลาย sub unit
 - [[OREDA]] — แหล่งข้อมูลต้นทางและข้อจำกัด (ไม่มี absolute rate)
-- [[ISO 14224]] — มาตรฐาน taxonomy (ไม่มีใน sources, confidence ต่ำ)
+- [[ISO 14224]] — hub มาตรฐาน ISO 14224:2016: สาระแต่ละส่วนและข้อสรุปที่เปลี่ยนความเข้าใจเดิม (UST, PLU, 9 ระดับ)
+- [[ISO 14224 Taxonomy]] — taxonomy 9 ระดับ, failure data ผูกกับระดับใด, กติกา boundary, equipment class (CO = compressor) และการเทียบกับ 7 ระดับของ wiki
+- [[Failure Detection Method]] — รหัส detection method 11 ตัว (Table B.4) และกติกา failure ที่พบระหว่าง PM
+- [[Failure Impact Classification]] — critical/degraded/incipient, maintenance impact และความหมาย "critical" 3 แบบ
+- [[Safety Critical Failure Classification]] — Annex F: DD/DU/SD/SU, CCF, test interval, failure fraction
+- [[RM Data Quality]] — คุณภาพข้อมูล RM: วางแผน, checklist ตรวจสอบ, เกณฑ์ความครบถ้วน และข้อมูลที่ต้องใช้ต่อประเภทการวิเคราะห์ (Annex D)
 - [[CAUSE_CODE Convention]] — รูปแบบ SubUnit-Item-Mechanism และ code collision
 
 ### Area ข: Reliability Based Maintenance Management (RBMM)
@@ -68,8 +75,8 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 
 - [[Asset Life Cycle]] — วงจรชีวิตทรัพย์สิน, 4 กลุ่มงาน, criticality A/B/C, Zero Plant Breakdown @ Minimum Cost
 - [[Maintenance Efficacy Pyramid]] — พีระมิด 6 ชั้นและการประเมิน 16 หัวข้อ จาก Reactive ถึง Optimization
-- [[Maintenance KPIs]] — ต้นไม้ดัชนี 19 กิจกรรม และดัชนี B/C/D พร้อมสูตร variance
-- [[Availability and OEE]] — MTTF/MTTR/MWT/MDT ถึง Availability และ OEE กับการใช้ในรายงาน
+- [[Maintenance KPIs]] — ต้นไม้ดัชนี 19 กิจกรรม และดัชนี B/C/D พร้อมสูตร variance; ISO Annex E KPI 34 ตัวและ KPI vs benchmark
+- [[Availability and OEE]] — MTTF/MTTR/MWT/MDT ถึง Availability และ OEE กับการใช้ในรายงาน และประเภท Ai/Aa/Ao (ความรู้ทั่วไป) เทียบนิยาม ISO AI/Ao/AT (contested)
 - [[Maintenance Strategic Report]] — รายงาน A4 ส่วน A-E พร้อมตัวเลขตัวอย่างและการตรวจเลข
 - [[CMMS]] — ระบบบริหารงานบำรุงรักษา: 10 โมดูล, Asset Register หยุดที่ Equipment + Object Part, Process vs Content, ห้ามปิด WO ถ้ายังไม่ระบุ Failure Mode
 - [[Failure Data Recording]] — ฟิลด์ใน Work Order, record ขั้นต่ำ 5 รายการ และตารางเทียบรหัส Failure Mode ISO 14224 (pump/motor) กับ wiki (UST หลัก, SPS = alias)
@@ -78,7 +85,9 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Criticality Assessment]] — Consequence x Likelihood = 1-30 แบ่ง A/B/C ใน 3 ด้าน (Commercial, Safety, Environment) และกลยุทธ์ PM/อะไหล่/งบตามระดับ
 - [[Weibull Analysis]] — พารามิเตอร์ β/η/γ, วิธีประมาณ (probability plot, Y/X regression), ตัวอย่าง TTF 8,500-16,000 ชม. และกระทบยอด β 3.5/3.79/3.94
 - [[Failure Patterns and Bathtub Curve]] — pattern A-E, bathtub curve และกฎเลือกงาน PM ตามค่า β
-- [[Reliability Metrics]] — F(t), R(t), λ(t), MTTF/MTBF, conditional reliability, availability, MTTR พร้อมสูตรที่หนังสือพิมพ์ผิด
+- [[Reliability Metrics]] — F(t), R(t), λ(t), MTTF/MTBF, conditional reliability, availability, MTTR พร้อมสูตรที่หนังสือพิมพ์ผิด; MTBF ของ RBMM เทียบ METBF ของ ISO (contested)
+- [[Maintenance Time Definitions]] — แยกเวลาตาม ISO (up/down, planned/unplanned) และ MTTR/MTTRes/MRT/MART/MDT/METBF เทียบ MTTR/MWT ของ RBMM
+- [[Failure Rate Estimation]] — ISO Annex C: λ = n/τ, ช่วงความเชื่อมั่น chi-square, กรณีไม่มี failure, รวมข้อมูลหลายแหล่ง, on-demand failure, CCF และสูตร test interval
 - [[Censored Data]] — ข้อมูล complete/right/left/interval censored และวิธี MON ปรับ rank ก่อน fit Weibull
 - [[Reliability Block Diagram]] — RBD แบบ series/parallel/mixed, failure tree และตัวเลขที่หนังสือคำนวณผิด
 - [[Statistical Distributions for Maintenance]] — Poisson, Normal, Exponential, Weibull กับตัวอย่างอะไหล่และ PM
@@ -101,6 +110,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 
 - [[Compressor Type Failure Profiles]] — เปรียบเทียบ % 19 โหมดของ centrifugal vs reciprocating vs screw
 - [[Resolution Matrix by Mechanism]] — 37 mechanism x 13 resolution (233 คู่ที่เป็นไปได้)
+- [[Compressor Subdivision Wiki vs ISO 14224]] — subunit และ maintainable item ของ dataset เทียบ ISO Table A.9 รายตัว, type code CE/RE/SC/AX, boundary
 - [[RBMM Concepts vs Compressor Failure Hierarchy]] — ตารางเทียบแนวคิดหนังสือ (Object Part, Damage Code, criticality, task, Weibull, spares) กับ 7 ระดับของ hierarchy พร้อมที่มา
 
 ## guides/ (area ก)
@@ -128,6 +138,11 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Which failure modes dominate compressor failure rate]] — 5 โหมดแรกรวม 57.09%, 9 โหมดแรก 75.47% (area ข)
 - [[Which maintainable item and mode pairs drive failure rate]] — Instruments x AIR 13.54 ใหญ่สุด; 4 item รวม 57.59 (area ข)
 - [[How to choose PM task for a compressor failure mode]] — ขั้นตอน 7 ข้อ: criticality, consequence/hidden, beta/pattern, ประเภทงาน, คาบ, อะไหล่ (ไม่มี beta/P-F ของ compressor ใน sources) (area ข)
+- [[How does Weibull help reliability]] — β บอกรูปแบบการเสียและประเภทงาน PM, η, ตัวอย่าง R/MTTF/conditional R, T(R=0.8) ≈ 8,837 ชม. (หนังสือพิมพ์ผิด 13,848) (area ข)
+
+## graph/ (generated)
+
+- `graph/triplets.csv` — knowledge graph รวม triplet ของทุกหน้า area ข (generate ด้วย `graph/build_triplets.py` ห้ามแก้ด้วยมือ) สเปกใน [[Knowledge Graph Triplet]]
 
 ## _archive/
 

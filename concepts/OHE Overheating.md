@@ -1,7 +1,7 @@
 ---
 title: OHE Overheating
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [failure-mode, failure-rate, oreda, compressor]
 sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__failure-hierarchy.csv, compressor-failure-hierarchy__summary-by-failure-mode.csv, compressor-reciprocating-failure-mode-vs-item-2.png]
@@ -33,3 +33,25 @@ Cylinder liner x OHE = 3.40 จาก 4.18 (derived: ประมาณ 81%) ผ
 | 0.67 | 8.85 | 2.41 |
 
 OHE เด่นใน [[Reciprocating Compressor]] ดู [[Compressor Type Failure Profiles]] และความสัมพันธ์กับ lubrication/cooling ที่ [[LUBS Lubrication System]]
+
+## Triplets
+
+- [[OHE Overheating]] [is_a:: [[Failure Mode]]]
+- [[OHE Overheating]] [has_code:: OHE]
+- [[OHE Overheating]] [has_failure_rate_share:: 4.18%] all compressor types, rank 8 of 19
+- [[OHE Overheating]] [has_value:: 12] failure mode/item pairs
+- CPUN-CYLN [contributes_to:: [[OHE Overheating]]] 3.40%; about 81% of OHE (derived)
+- CPUN-VALV [contributes_to:: [[OHE Overheating]]] 0.22%
+- LUBS-PMTR [contributes_to:: [[OHE Overheating]]] 0.11%
+- PWTR-INST [contributes_to:: [[OHE Overheating]]] 0.09%
+- CPUN-IPIP [contributes_to:: [[OHE Overheating]]] 0.09%
+- LUBS-COOL [contributes_to:: [[OHE Overheating]]] 0.09%
+- [[OHE Overheating]] [has_mechanism:: WEAR] Cylinder liner, Valves, Pump w/motor
+- [[OHE Overheating]] [has_mechanism:: BLKG] Internal piping, Cooler(s)
+- [[OHE Overheating]] [has_mechanism:: OVHT] Instruments
+- [[OHE Overheating]] [has_failure_rate_share:: 0.67%] within [[Centrifugal Compressor]]
+- [[OHE Overheating]] [has_failure_rate_share:: 8.85%] within [[Reciprocating Compressor]]
+- [[OHE Overheating]] [has_failure_rate_share:: 2.41%] within [[Screw Compressor]]
+- [[OHE Overheating]] [dominant_in:: [[Reciprocating Compressor]]]
+- [[OHE Overheating]] [related_to:: [[LUBS Lubrication System]]] lubrication/cooling
+- [[OHE Overheating]] [defined_in:: [[OREDA]]]

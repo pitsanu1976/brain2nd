@@ -1,7 +1,7 @@
 ---
 title: Reciprocating Compressor
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: entity
 tags: [compressor, reciprocating, oreda, failure-rate]
 sources: [failure-structure.md, failure-structure__sheet1.csv, compressor-reciprocating-failure-descriptor.png, compressor-reciprocating-failure-mode-vs-item-1.png, compressor-reciprocating-failure-mode-vs-item-2.png]
@@ -53,3 +53,63 @@ Cylinder liner **28.77**, Filter(s) **14.80**, Valves 10.94, Unknown 5.03, Pump 
 ## โครงสร้างใน failure-structure.md
 
 Sheet1 ระบุคู่ mode/item/sub unit/descriptor ของ reciprocating 732 แถว (โครงสร้างความเป็นไปได้) เปรียบเทียบที่ [[Compressor Type Failure Profiles]]
+
+## Triplets
+
+- [[Reciprocating Compressor]] [is_a:: [[Compressor]]]
+- [[Reciprocating Compressor]] [has_failure_rate_share:: 100.00%] sum of modes within reciprocating
+- [[SER Minor In-Service Problems]] [has_failure_rate_share:: 21.97%] within [[Reciprocating Compressor]]
+- [[LOO Low Output]] [has_failure_rate_share:: 21.60%] within [[Reciprocating Compressor]]
+- [[PDE Parameter Deviation]] [has_failure_rate_share:: 12.38%] within [[Reciprocating Compressor]]
+- [[AIR Abnormal Instrument Reading]] [has_failure_rate_share:: 9.22%] within [[Reciprocating Compressor]]
+- [[OHE Overheating]] [has_failure_rate_share:: 8.85%] within [[Reciprocating Compressor]]
+- [[ELP External Leakage Process Medium]] [has_failure_rate_share:: 7.82%] within [[Reciprocating Compressor]]
+- [[ELU External Leakage Utility Medium]] [has_failure_rate_share:: 4.28%] within [[Reciprocating Compressor]]
+- UNK [has_failure_rate_share:: 3.26%] within [[Reciprocating Compressor]]
+- [[UST Spurious Stop]] [has_failure_rate_share:: 2.79%] within [[Reciprocating Compressor]]
+- VIB [has_failure_rate_share:: 1.77%] within [[Reciprocating Compressor]]
+- STD [has_failure_rate_share:: 1.49%] within [[Reciprocating Compressor]]
+- ERO [has_failure_rate_share:: 1.12%] within [[Reciprocating Compressor]]
+- FTS [has_failure_rate_share:: 1.12%] within [[Reciprocating Compressor]]
+- [[OTH Other]] [has_failure_rate_share:: 1.02%] within [[Reciprocating Compressor]]
+- NOI [has_failure_rate_share:: 0.56%] within [[Reciprocating Compressor]]
+- STP [has_failure_rate_share:: 0.37%] within [[Reciprocating Compressor]]
+- BRD [has_failure_rate_share:: 0.19%] within [[Reciprocating Compressor]]
+- INL [has_failure_rate_share:: 0.19%] within [[Reciprocating Compressor]]
+- HIO [has_failure_rate_share:: 0.00%] within [[Reciprocating Compressor]]
+- [[SER Minor In-Service Problems]] [dominant_in:: [[Reciprocating Compressor]]]
+- [[LOO Low Output]] [dominant_in:: [[Reciprocating Compressor]]]
+- [[PDE Parameter Deviation]] [dominant_in:: [[Reciprocating Compressor]]]
+- [[OHE Overheating]] [dominant_in:: [[Reciprocating Compressor]]]
+- CYLN [has_failure_rate_share:: 28.77%] within [[Reciprocating Compressor]], all modes
+- FILT [has_failure_rate_share:: 14.80%] within [[Reciprocating Compressor]], all modes
+- VALV [has_failure_rate_share:: 10.94%] within [[Reciprocating Compressor]]
+- Unknown [has_failure_rate_share:: 5.03%] placeholder item, within [[Reciprocating Compressor]]
+- PMTR [has_failure_rate_share:: 4.56%] within [[Reciprocating Compressor]]
+- Instrument Pressure [has_failure_rate_share:: 4.19%] within [[Reciprocating Compressor]]
+- Instrument Temperature [has_failure_rate_share:: 3.96%] within [[Reciprocating Compressor]]
+- Other [has_failure_rate_share:: 3.54%] placeholder item, within [[Reciprocating Compressor]]
+- Subunit [has_failure_rate_share:: 3.26%] placeholder item, within [[Reciprocating Compressor]]
+- CTUN [has_failure_rate_share:: 2.51%] within [[Reciprocating Compressor]]
+- Instrument Vibration [has_failure_rate_share:: 2.47%] within [[Reciprocating Compressor]]
+- BASE [has_failure_rate_share:: 2.14%] within [[Reciprocating Compressor]]
+- CYLN [dominant_in:: [[Reciprocating Compressor]]] 28.77%
+- FILT [dominant_in:: [[Reciprocating Compressor]]] 14.80%
+- CYLN [contributes_to:: [[LOO Low Output]]] 12.20% within [[Reciprocating Compressor]]
+- CYLN [contributes_to:: [[OHE Overheating]]] 7.17% within [[Reciprocating Compressor]]
+- CYLN [contributes_to:: [[ELP External Leakage Process Medium]]] 4.10% within [[Reciprocating Compressor]]
+- CYLN [contributes_to:: [[ELU External Leakage Utility Medium]]] 1.30% within [[Reciprocating Compressor]]
+- CYLN [contributes_to:: [[PDE Parameter Deviation]]] 1.21% within [[Reciprocating Compressor]]
+- FILT [contributes_to:: [[SER Minor In-Service Problems]]] 14.25% within [[Reciprocating Compressor]], nearly all of Filter(s)
+- INST [has_failure_rate_share:: 14.81%] within [[Reciprocating Compressor]], all 7 instrument types (derived), much lower than centrifugal/screw
+- CYLN [has_failure_rate_share:: 13.66%] all compressor types, main dataset (derived)
+- FILT [has_failure_rate_share:: 8.95%] all compressor types, main dataset (derived)
+- VALV [has_failure_rate_share:: 11.64%] all compressor types, main dataset (derived)
+- [[LOO Low Output]] [has_mechanism:: Mechanical Failure - general] 18.62% within [[Reciprocating Compressor]]
+- [[LOO Low Output]] [has_mechanism:: UNKN] 1.40% within [[Reciprocating Compressor]]
+- [[ELP External Leakage Process Medium]] [has_mechanism:: Mechanical Failure - general] 6.70% within [[Reciprocating Compressor]]
+- [[AIR Abnormal Instrument Reading]] [has_mechanism:: Instrument failure - general] 6.52% within [[Reciprocating Compressor]]
+- [[ELU External Leakage Utility Medium]] [has_mechanism:: Mechanical Failure - general] 2.33% within [[Reciprocating Compressor]]
+- Mechanical Failure - general [has_value:: 0] rows in main dataset, though very high in reciprocating descriptors
+- [[Reciprocating Compressor]] [has_value:: 732] rows in failure-structure.md Sheet1 (possible combinations, not events)
+- [[OREDA]] [source_of:: [[Reciprocating Compressor]]] per-type table images

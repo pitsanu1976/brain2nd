@@ -19,7 +19,7 @@ wiki นี้ครอบคลุม 2 พื้นที่ (area) ในโ�
 1. **Compressor failure hierarchy** ตาม taxonomy ของ [[OREDA]] / [[ISO 14224]]: ประเภท compressor (centrifugal, reciprocating, screw), sub unit, maintainable item, failure mode, failure mechanism, failure cause, resolution และรหัสที่เกี่ยวข้อง
 2. **Reliability-based maintenance management**: RCM, FMECA, Weibull/สถิติ reliability, การเลือกและ optimize PM, อะไหล่, งบประมาณ/ต้นทุนบำรุงรักษา, CMMS และ KPIs (ที่มา: หนังสือ [[Reliability Based Maintenance Management Book]])
 
-- แหล่งความรู้: raw sources 3 ชุด (ดูหัวข้อ 9) ตัวเลข failure rate ของ compressor ทั้งหมดมาจาก OREDA ที่ transcribe ไว้ใน raw
+- แหล่งความรู้: raw sources 4 ชุด (ดูหัวข้อ 9) ตัวเลข failure rate ของ compressor ทั้งหมดมาจาก OREDA ที่ transcribe ไว้ใน raw ส่วนรหัสและนิยามมาตรฐานยึด ISO 14224:2016
 - ตัวอย่างในหนังสือ RBMM เป็นข้อมูลทั่วไป ไม่ใช่ compressor ให้เชื่อมกับ hierarchy ผ่านหัวข้อ "เชื่อมโยงกับ compressor failure hierarchy" ในแต่ละหน้า และระบุว่าเป็นการตีความ
 - หน้าอยู่ใน `entities/`, `concepts/`, `comparisons/`, `queries/`
 - ตัวอย่างการใช้วิธีของ (ก) กับงานจริง: [[Maintenance Reliability Example]]
@@ -33,9 +33,11 @@ wiki นี้ครอบคลุม 2 พื้นที่ (area) ในโ�
 
 | Layer | ที่อยู่ | สถานะ |
 |---|---|---|
-| 1. Raw sources | `raw/` (`raw/datasets/`, `raw/assets/`, `raw/reliability-based-maintenance-management/`) | **IMMUTABLE** หลัง ingest อ่านอย่างเดียว ห้ามแก้/ลบ |
+| 1. Raw sources | `raw/` (`raw/datasets/`, `raw/assets/`, `raw/reliability-based-maintenance-management/`, `raw/iso-14224/`) | **IMMUTABLE** หลัง ingest อ่านอย่างเดียว ห้ามแก้/ลบ |
 | 2. Wiki pages | `entities/`, `concepts/`, `comparisons/`, `guides/`, `reference/`, `queries/` | LLM เขียนและดูแล |
 | 3. Rules | `SCHEMA.md`, `index.md`, `log.md`, `README.md` | กติกาและแค็ตตาล็อก |
+
+`graph/` เก็บ knowledge graph ที่ generate จากหัวข้อ `## Triplets` ของหน้า wiki (`triplets.csv`) และสคริปต์ `build_triplets.py` (ดูหัวข้อ 10) ไม่ใช่ Layer ใหม่ หน้า wiki ยังเป็น source of truth
 
 `_archive/` เก็บหน้าที่เลิกใช้และประวัติ log ที่แยกเก็บ (ห้ามลบ ให้ย้ายมาและบันทึกใน [[log]])
 
@@ -123,7 +125,7 @@ immutable: true
 - Method: `second-brain`, `para`, `zettelkasten`, `moc`, `llm-wiki`, `code-method`
 - Obsidian: `obsidian`, `settings`, `plugins`, `templates`, `frontmatter`, `links`, `naming`
 - Workflow: `workflow`, `setup`, `claude-code`, `ingest`, `lint`
-- Meta: `guide`, `reference`, `convention`, `faq`
+- Meta: `guide`, `reference`, `convention`, `faq`, `knowledge-graph`
 
 **Area ข: Maintenance Reliability**
 - Equipment: `compressor`, `centrifugal`, `reciprocating`, `screw`, `sub-unit`, `maintainable-item`
@@ -184,6 +186,7 @@ immutable: true
 - (area ข) ตัวเลขตรงกับ raw (สุ่มตรวจกับ `raw/datasets/`)
 - หน้า stale (`updated` เก่ามาก) ให้ทบทวน
 - หน้า `contested: true` มี entry ใน [[log]]
+- (area ข) ทุกหน้ามีหัวข้อ `## Triplets` และ `python -I graph/build_triplets.py --check` ไม่มี ERROR/MISSING
 
 ## 9. Raw source ปัจจุบัน (area ข)
 
@@ -193,5 +196,18 @@ Area ก ไม่มี raw source ดู [[LLM Wiki Pattern]] สำหรั�
 - [[raw/failure-structure]] และ `raw/datasets/failure-structure__sheet1.csv`, `__sheet2.csv`
 - `raw/assets/` ภาพ OREDA (failure descriptor, failure mode vs maintainable item, failure mechanism, resolution)
 - [[raw/reliability-based-maintenance-management]] (ingest 2026-10-21; PDF สแกน -> reading notes สรุปความ ไม่ใช่ข้อความต้นฉบับ) และ notes ต่อบทใน `raw/reliability-based-maintenance-management/` (`ch01-02.md`, `ch03.md`, `ch04.md`, `ch05.md`, `ch06.md`, `ch07.md`, `ch08-09.md`, `ch10.md`, `ch11.md`, `ch12.md`) ใช้ `sources: [reliability-based-maintenance-management.md]` และอ้างหน้าหนังสือแบบ `(RBMM p.NNN)`
+- [[raw/iso-14224]] (ingest 2026-10-21; ISO 14224:2016 PDF licensed ไม่เก็บใน vault -> reading notes ถอดความต่อส่วนใน `raw/iso-14224/`: `cl01-07.md`, `cl08-09.md`, `annex-a.md`, `annex-b.md`, `annex-c-d.md`, `annex-e-f.md`) ใช้ `sources: [iso-14224.md]` และอ้างแบบ `(ISO 14224 cl. X.Y, p.NN)` หรือ `(ISO 14224 Table B.6, p.NN)` ด้วยเลข printed page
 
 หมายเหตุ: `raw/README.md` เป็นไฟล์เดิมของ area ก ที่ระบุว่า raw ยังว่าง ข้อความนั้นล้าสมัยแล้ว (ไฟล์ immutable ไม่แก้) ให้ยึดหัวข้อนี้เป็นหลัก ประวัติ log ของ area ข ก่อนรวม vault อยู่ที่ [[_archive/log-maintenance-reliability-2026-10-20]]
+
+## 10. Knowledge graph triplets (area ข)
+
+สเปกเต็ม (syntax, node naming, predicate vocabulary) อยู่ใน [[Knowledge Graph Triplet]]
+
+- ทุกหน้า area ข (`entities/`, `comparisons/`, หน้า area ข ใน `concepts/` และ `queries/`) ต้องมีหัวข้อ `## Triplets` เป็นหัวข้อสุดท้ายของหน้า
+- หนึ่งบรรทัดต่อหนึ่ง triplet: `- <subject> [<predicate>:: <object>] <qualifier>` ใช้เฉพาะ predicate ใน vocabulary
+- triplet สะท้อนเนื้อหาที่เขียนในหน้านั้นเท่านั้น เมื่อแก้เนื้อหาหน้า ให้แก้ triplet ให้ตรงกันในครั้งเดียวกัน
+- ข้อมูล contested ใส่ `[contested:: true]` ทั้งสองมุมมอง ตามหัวข้อ 7
+- หลังแก้ triplet ให้รัน `python -I graph/build_triplets.py` เพื่อสร้าง `graph/triplets.csv` ใหม่ (ไฟล์ generate ห้ามแก้ด้วยมือ)
+- เพิ่ม predicate ใหม่: เพิ่มแถวในตาราง vocabulary ของ [[Knowledge Graph Triplet]] ก่อนใช้ และ append [[log]]
+- area ก ไม่บังคับ triplet

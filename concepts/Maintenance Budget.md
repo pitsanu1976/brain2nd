@@ -1,7 +1,7 @@
 ---
 title: Maintenance Budget
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [budget, cost, maintenance-management, kpi, book]
 sources: [reliability-based-maintenance-management.md]
@@ -165,3 +165,76 @@ Provision for Losses แบ่งต่อเป็นจากงานตา�
 - [[Spare Part Criticality and Risk]]
 - [[Maintenance Business Models]]
 - [[Reliability Based Maintenance Management Book]]
+
+## Triplets
+
+- [[Maintenance Budget]] [alias_of:: Maintenance Performance Budgeting]
+- [[Maintenance Budget]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 10
+- [[Maintenance Budget]] [uses:: Top Down] combined with Bottom Up (RBMM p.274)
+- [[Maintenance Budget]] [uses:: [[Maintenance Strategic Report]]] budget correction cycle
+- [[Maintenance Budget]] [related_to:: [[Maintenance Cost Structure]]]
+- Maintenance Cost/Unit [applies_to:: Downturn or Commodity Product] needs high Availability (RBMM p.274)
+- Zero Down Time @ Minimum Cost [applies_to:: Upturn or Specialty Product] needs high Reliability (RBMM p.274)
+- Zero Down Time [depends_on:: Minimum Cost] always paired (RBMM p.316)
+- Capital Expenses [is_a:: Budget Type] depreciated, not expensed at once (RBMM p.276-279)
+- Operating Expenses Budget [is_a:: Budget Type] (RBMM p.276-279)
+- Full Fixed Cost [part_of:: Operating Expenses Budget] Man-Hrs
+- Materials [part_of:: Operating Expenses Budget] Stock Parts, Direct Purchase Parts, Outsource
+- Improvement Maintenance [has_category:: production cost] depreciation not maintenance cost (RBMM p.277-278)
+- Plant Turnaround [has_formula:: turnaround cost / years in cycle] every 3-4 years, Materials and contract only, excludes internal labour (RBMM p.276-279)
+- Net Production Target [has_formula:: Planned Production x Budget OEE] (RBMM p.291-294)
+- Unit Cost Target Excl Overhaul [has_formula:: Maintenance Cost/Unit incl overhaul - (annual overhaul amortisation / Net Production Target)] (RBMM p.291-294)
+- Gross Budget [has_formula:: Unit Cost Target Excl Overhaul x Net Production Target] (RBMM p.291-294)
+- Total Provision [has_formula:: Gross x X% / (1 + X%)] X% = provision % of net cost (RBMM p.291-294)
+- Provision for Losses [has_formula:: Y% of Total Provision] (RBMM p.291-294)
+- Provision for Costs [has_formula:: (1 - Y%) of Total Provision] (RBMM p.291-294)
+- Net Maintenance Budget [has_formula:: Gross - Total Provision] (RBMM p.291-294)
+- Materials [has_formula:: Net Budget - Full Fixed Cost] (RBMM p.291-294)
+- Provision for Losses [part_of:: Total Provision]
+- Provision for Costs [part_of:: Total Provision]
+- Net Production Target [depends_on:: [[Availability and OEE]]]
+- Gross Budget [has_value:: 225,000,000 THB] 3 processes, book example (RBMM Fig 10.14 p.293)
+- Total Provision [has_value:: 20,454,545 THB] 10% (RBMM Fig 10.14 p.293)
+- Provision for Losses [has_value:: 16,363,636 THB] 80% of provision (RBMM Fig 10.14 p.293)
+- Provision for Costs [has_value:: 4,090,909 THB] 20% of provision (RBMM Fig 10.14 p.293)
+- Net Maintenance Budget [has_value:: 204,545,455 THB] (RBMM Fig 10.14 p.293)
+- Provision for Costs [has_value:: 2.00%] of Net Budget, table E; same as 20% of provision (RBMM p.310)
+- Provision for Losses [has_value:: 8.00%] of Net Budget, table E (RBMM p.310)
+- Provision for Losses [has_value:: 20% planned / 80% unplanned] 3,272,727 / 13,090,909 THB (RBMM p.293)
+- Top Down Overall Targets [step_of:: Budget Setting Cycle] step 1 (RBMM p.290)
+- Full Fixed Costs and Total Material Costs [step_of:: Budget Setting Cycle] step 2 (RBMM p.290)
+- Man-Hrs Utilization and Rate [step_of:: Budget Setting Cycle] step 3 (RBMM p.290)
+- Planned, Unplanned and Total Full Costs [step_of:: Budget Setting Cycle] step 4 (RBMM p.290)
+- Unit Cost Distribution [step_of:: Budget Setting Cycle] step 5, Equipment -> System -> Process (RBMM p.290)
+- Budget Consolidation [step_of:: Budget Setting Cycle] after step 5, then Budget Correction Loop (RBMM p.285)
+- Full Fixed Cost [has_value:: 45,900,000 THB] Personnel 20.0M + Operating 2.4M + Asset 23.0M + Allocation 0.5M (RBMM p.295-299)
+- Materials [has_value:: 158,645,455 THB] Net - Fixed (RBMM p.295-299)
+- Full Fixed Cost Rate [has_value:: about 1,087 THB/Man-Hr] 45,900,000 / 42,240 Man-Hrs, utilization 60% (RBMM p.295-299)
+- Planned Maintenance Cost [has_formula:: Net x R/(R+1)] R = Planned/Unplanned Man-Hr Ratio (RBMM p.295-299)
+- Planned Maintenance Cost [has_value:: 136,363,636 THB] R = 2.0 (RBMM p.295-299)
+- Unplanned Maintenance Cost [has_value:: 68,181,818 THB] Net - Planned (RBMM p.295-299)
+- Stock Parts [has_value:: 0] intentional target for planned work (RBMM p.289, 298, 301)
+- Direct Purchase Parts [has_value:: 0] intentional target for unplanned work, except Blanket Order (RBMM p.289, 298, 301)
+- Outsource [has_value:: 0] intentional target for unplanned work (RBMM p.289, 298, 301)
+- Spare Inventory / Asset [has_value:: 1-3%] recommended of machine price, example 3% (RBMM p.295)
+- Asset Readiness Cost [has_value:: 15-20%] recommended of machine price, example 10% (RBMM p.295)
+- Holding Cost [has_value:: 15-25%] recommended of spare value, example 15% (RBMM p.295)
+- Cost Control [uses:: Provision for Costs] variance of Fixed + Materials (RBMM p.286-288)
+- Loss Control [uses:: Provision for Losses] Losses due to Maintenance (RBMM p.286-288)
+- Cost Variance [has_value:: 6,075,045 THB (2.97%)] actual vs provision 4,090,909 (2.0%) (RBMM Fig 10.27-10.28 p.310-312)
+- Losses due to Maintenance [has_value:: 7,050,000 THB (3.45%)] actual vs provision 16,363,636 (8.0%) (RBMM p.310-312)
+- Total Budget Variance [has_value:: 13,125,045 THB (6.42%)] vs Net Budget, chapter 10 (RBMM p.310)
+- Total Budget Variance [has_value:: 7,329,500 THB (-3.58%)] vs Gross Budget, chapter 3 Fig 3.19 E15 mixes bases; use chapter 10
+- Criticality A [selects:: Zero Breakdown] 100% RCM tasks, Service Level 100%, Stock-out 0%, Confidence more than 95% (RBMM p.315-319)
+- Criticality B [selects:: Optimum] PM Optimization, Confidence 90%, Service Factor 100% (RBMM p.315-319)
+- Criticality C [selects:: Run to Failure] minimum PM, Confidence 80-90% (RBMM p.315-319)
+- Criticality A [uses:: [[Redundancy and Standby Systems]]] reduce criticality, verify with [[Monte Carlo Maintenance Simulation]] (RBMM p.318)
+- Planned Work Share [has_value:: more than 80-85%] budget becomes realistic (RBMM p.320)
+- Central Contingency Budget [depends_on:: Confidence Level] e.g. 95% from unplanned issue history (RBMM p.303-306)
+- Budget Correction Loop [uses:: [[RCM Reliability Centered Maintenance]]] Top 10/20 covering 80% of budget (RBMM p.303-306)
+- Budget Correction Loop [uses:: [[Spare Parts Management]]] review Stock Max/Min (RBMM p.303-306)
+- Maintenance Cost / Asset Replacement Value [has_value:: 5.44%] actual vs budget 5.63% (RBMM Fig 10.23 p.306-309)
+- Full Fixed Cost Rate [has_value:: 1,193 THB/Man-Hr] actual vs budget 1,087 (RBMM Fig 10.23 p.306-309)
+- Utilization Factor [has_value:: 58.0%] actual vs budget 60.0% (RBMM Fig 10.23 p.306-309)
+- Service Factor [has_value:: 97.10%] actual vs budget 99.00% (RBMM Fig 10.23 p.306-309)
+- Stock out Rate [has_value:: 2.50%] actual vs budget 1.00% (RBMM Fig 10.23 p.306-309)

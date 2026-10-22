@@ -1,7 +1,7 @@
 ---
 title: Spare Parts Management
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [spare-parts, maintenance-management, cmms, kpi, cost, book]
 sources: [reliability-based-maintenance-management.md]
@@ -144,3 +144,69 @@ contested: false
 - [[Maintenance Cost Structure]]
 - [[CMMS]]
 - [[Maintenance KPIs]]
+
+## Triplets
+
+- [[Spare Parts Management]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9
+- [[Spare Parts Management]] [has_part:: Demand Side] PM task selection and interval
+- [[Spare Parts Management]] [has_part:: Supply Side] Max/Min under accepted risk
+- Demand Side [uses:: [[RCM Reliability Centered Maintenance]]] (RBMM p.237)
+- Demand Side [uses:: [[PM Interval Optimization]]]
+- Supply Side [uses:: Risk Based Spare Part Optimization] (RBMM p.238, p.241-242)
+- Spare Parts [has_value:: more than half] share of maintenance cost (RBMM p.234)
+- Spare Parts [has_value:: more than 60-70%] share of direct and indirect maintenance cost (RBMM p.34); differs in wording from p.234, use as order of magnitude
+- Holding Cost [has_value:: 15-20%] of spare value per year (RBMM p.16, p.34, p.234)
+- Holding Cost [has_value:: 15-25%] chapter 10 target of total spare value, different context, not contested (RBMM ch10)
+- Holding Cost [has_value:: 75-100 million THB per year] book example, 500 million THB stock (RBMM p.234)
+- Interest on Inventory [part_of:: Holding Cost] (RBMM p.68)
+- Storage Cost [part_of:: Holding Cost] (RBMM p.68)
+- Procurement Cost [part_of:: Holding Cost] (RBMM p.68)
+- Obsolete Parts Disposal [part_of:: Holding Cost] (RBMM p.68)
+- Write-off [part_of:: Holding Cost] non-moving items (RBMM p.68)
+- Spare Parts [is_a:: Current Asset] no depreciation, has overhead (RBMM p.16, p.70)
+- Mean Wait Time [related_to:: [[Availability and OEE]]] spare shortage shows as MWT, affects MDT (RBMM p.20)
+- Commissioning Spare Part [is_a:: Spare Part Type] responsibility of vendor/EPC, not taken into maintenance store (RBMM p.15-16, p.235)
+- Direct Purchase Parts [is_a:: Spare Part Type] non-stock, planned work, Just in Time, excluded from Max/Min and Turnover Rate (RBMM p.236, p.239)
+- Stock Parts [is_a:: Spare Part Type] stock item for CM-Unplanned, managed with Max/Min, ROP, EOQ, Safety Stock (RBMM p.236, p.239)
+- Insurance Part [is_a:: Spare Part Type] kept even when Cost Ratio below 1, management approval (RBMM p.251)
+- Direct Purchase Parts [applies_to:: Planned Maintenance] (RBMM p.45, p.236)
+- Stock Parts [applies_to:: CM-Unplanned] (RBMM p.45, p.236)
+- Shared Parts With Staggered PM [selects:: Max/Min] combine planned and unplanned demand, statistical setting (RBMM p.236)
+- Condition Monitoring [produces:: CM-Planned] (RBMM p.241)
+- Stock Decision [depends_on:: Lead Time] stock if Lead Time longer than time left before unplanned failure (RBMM p.241)
+- Fast Moving [selects:: [[EOQ and Reorder Point]]] Fast Moving Method, Max/Min, Safety Stock, Confidence Level, EOQ (RBMM p.238)
+- Low Criticality [selects:: [[Spare Part Demand Forecasting]]] Fast Moving or Average Usage Method (RBMM p.238)
+- Medium Criticality [selects:: Average Usage Method] or Demand Simulation; Max/Min, Cost Ratio (RBMM p.238)
+- High Criticality [selects:: [[Monte Carlo Maintenance Simulation]]] Demand Simulation Extended linked to maintenance plan (RBMM p.238)
+- Consolidation [step_of:: Supply Side] box 6 (RBMM p.238)
+- Criticality Assessment Box [step_of:: Supply Side] box 1, equipment and part criticality (RBMM p.238)
+- Stock Turnover Rate [has_formula:: value of parts issued / total value of parts in store] low = Write-off risk (RBMM p.239)
+- Stock Service Rate [has_formula:: items issued / items requested] alias Service Factor (RBMM p.239)
+- Stock Service Rate [alias_of:: Service Factor]
+- Stock out Rate [has_formula:: quantity not issued / total quantity requested] (RBMM p.239)
+- Stock Value / Asset Replacement Value [has_formula:: total spare value / asset replacement value] (RBMM p.239)
+- Stock Turnover Rate [is_a:: [[Maintenance KPIs]]]
+- Stock Service Rate [is_a:: [[Maintenance KPIs]]]
+- Stock out Rate [is_a:: [[Maintenance KPIs]]]
+- B7 Spare Part Inventory / Plant Asset [has_value:: 2.50%] actual vs budget 3.00%, book example (RBMM p.74-75)
+- B8 Stock Turn Ratio [has_value:: 40.00%] actual vs budget 44.07% (RBMM p.74-75)
+- B9 Service Factor [has_value:: 97.10%] actual vs budget 99.00% (RBMM p.74-75)
+- B10 Stock Out Rate [has_value:: 2.50%] actual vs budget 1.00% (RBMM p.74-75)
+- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] target of machine price (RBMM p.295, p.314)
+- B7 Spare Part Inventory / Plant Asset [part_of:: [[Maintenance Strategic Report]]]
+- Criticality A [has_value:: more than 95%] target Confidence Level (RBMM p.317-319)
+- Criticality B [has_value:: 90%] target Confidence Level (RBMM p.317-319)
+- Criticality C [has_value:: 80-90%] target Confidence Level (RBMM p.317-319)
+- Spare Part Database [part_of:: [[CMMS]]] 3 field groups (RBMM p.100-102)
+- Min Qty [part_of:: Spare Part Database] group 3, calculated field
+- Max Qty [part_of:: Spare Part Database] group 3, calculated field
+- Reorder Point [part_of:: Spare Part Database] group 3, calculated field
+- EOQ [part_of:: Spare Part Database] group 3, calculated field
+- Spare Parts [part_of:: BOM] not in equipment hierarchy (RBMM p.98)
+- [[Failure Data Recording]] [input_to:: Spare Optimization] Failure Mode, Object Part, Cause from Work Order (RBMM p.96)
+- Lead Time [has_value:: 20% reduction halves average stock] book claim, unproven (RBMM p.247) [confidence:: low]
+- Blanket Order [applies_to:: CM-Unplanned] vendor stock in our store, billed on issue (RBMM p.289, p.298)
+- Consolidation [uses:: [[Monte Carlo Maintenance Simulation]]] multi-user Max/Min cannot be summed (RBMM p.265-266)
+- Spare Part DSx Model [uses:: [[Failure Mode]]] needs Equipment, Failure Mode, Beta, Eta (RBMM p.263)
+- [[OREDA]] [input_to:: Basic Average Method] constant item failure rate, not for PM interval
+- Spare Level Setting [depends_on:: [[Redundancy and Standby Systems]]] standby compressors, hidden failure

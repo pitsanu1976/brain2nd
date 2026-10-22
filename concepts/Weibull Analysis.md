@@ -1,10 +1,10 @@
 ---
 title: Weibull Analysis
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
-tags: [weibull, reliability, statistics, failure-rate, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [weibull, reliability, statistics, failure-rate, book, iso-14224]
+sources: [reliability-based-maintenance-management.md, iso-14224.md]
 confidence: medium
 contested: false
 ---
@@ -81,6 +81,23 @@ X regression:  a = ((Σy)^2 - N·Σy^2) / (Σx·Σy - N·Σxy)
 
 ค่าที่คำนวณจาก β = 3.7888, η = 13,130.8 ดู [[Reliability Metrics]]: F(10,000) = 29.97%, R = 70.03%, λ = 0.0135%/ชม., MTTF = 11,865.51 ชม. (RBMM p.166-168)
 
+## แนวทางของ ISO 14224 (sources: iso-14224.md)
+
+Annex C.1.11 (p.209-210) ให้เกณฑ์เสริมที่ไม่ขัดกับ RBMM:
+
+- ใช้ Weibull เมื่อ equipment type มี failure **แบบเดียวกัน อย่างน้อย 5 ครั้ง** ที่ severity class I-XII (ตาม Table C.2 ดู [[Failure Impact Classification]]) ส่วน RCA ให้ทำกับ severity I-VIII และ bad actors
+- ข้อมูล failure date จำเป็นต่อ lifetime analysis (TTT-plot, Weibull) Annex D ระบุว่าไม่ควรทิ้ง (Table D.3, p.230-234)
+- ISO ระบุว่า β = 1 อาจเกิดจากการรวม failure mode หรืออุปกรณ์ต่างชนิด ตรงกับคำเตือนของ RBMM ข้างบน
+
+| β | ความหมายตาม ISO (ถอดความ) | แนวทาง |
+|---|---|---|
+| < 1.0 | infant mortality (ติดตั้งไม่ดี, defect ผลิต, start-up ผิด) | ตรวจ installation และ commissioning |
+| = 1.0 | random (human error, foreign object หรือการรวม mode ต่างชนิด) | predictive maintenance หรือ condition monitoring |
+| 1.0-4.0 | early wear-out (low-cycle fatigue, bearing ส่วนใหญ่, corrosion, erosion) | PM คุ้ม |
+| >= 4.0 | old-age wear-out (เช่น stress corrosion) ยิ่งชันยิ่งทำนายได้ | กำหนดรอบ overhaul จาก "β life" บน Weibull plot |
+
+ข้อสังเกต: RBMM แบ่ง β > 1 เป็น wear-out ก้อนเดียว (p.156-157) ISO แบ่งละเอียดขึ้นที่ 4.0 เป็นการเสริม ไม่ใช่ขัดแย้ง ดังนั้นตัวอย่าง β = 3.79 อยู่ในกลุ่ม early wear-out ของ ISO และ β = 3.94 ก็ยังต่ำกว่า 4.0 (derived) ISO ยังแนะนำ Weibull กับ component และ power law กับ repaired system เมื่อมี wear-out (cl. C.3.1.2, p.214-215) ส่วนการประมาณ λ แบบคงที่ดู [[Failure Rate Estimation]]
+
 ## ผลการเสียตัวอย่างอื่นในหนังสือ
 
 - Pattern ตัวอย่าง A-E ใช้ β = 15, 3, 1.5, 1, 0.5 (RBMM p.155-158) ดู [[Failure Patterns and Bathtub Curve]]
@@ -107,3 +124,67 @@ X regression:  a = ((Σy)^2 - N·Σy^2) / (Σx·Σy - N·Σxy)
 - [[Failure Patterns and Bathtub Curve]]
 - [[Statistical Distributions for Maintenance]]
 - [[Reliability Block Diagram]]
+
+## Triplets
+
+- [[Weibull Analysis]] [is_a:: Statistical Analysis Method] fit Weibull to TTF of one failure mode
+- [[Weibull Analysis]] [uses:: Weibull Distribution]
+- [[Weibull Analysis]] [uses:: Time to Fail] TTF data of one failure mode
+- [[Weibull Analysis]] [applies_to:: [[Failure Mode]]] one failure mode at a time (RBMM p.158)
+- [[Weibull Analysis]] [applies_to:: [[Maintainable Item]]] failure mode at maintainable item level, not whole machine
+- [[Weibull Analysis]] [produces:: Shape Parameter Beta]
+- [[Weibull Analysis]] [produces:: Scale Parameter Eta]
+- [[Weibull Analysis]] [selects:: PM Task Type] also PM interval and spare part planning (RBMM p.154, p.378)
+- Weibull Distribution [has_parameter:: Shape Parameter Beta] shape, trend of failure rate (RBMM p.156, p.378)
+- Weibull Distribution [has_parameter:: Scale Parameter Eta] characteristic life (RBMM p.156, p.378)
+- Weibull Distribution [has_parameter:: Location Parameter Gamma] failure-free time, set to 0 in maintenance
+- Scale Parameter Eta [has_value:: F(t) = 63.2%] time at which F(t) = 63.2% regardless of beta
+- Location Parameter Gamma [has_value:: 0] in maintenance work
+- Weibull Distribution [has_formula:: f(t) = (β/η) * ((t-γ)/η)^(β-1) * exp(-((t-γ)/η)^β)] pdf
+- Unreliability Function [has_formula:: F(t) = 1 - exp(-(t/η)^β)] Weibull, γ = 0
+- Reliability Function [has_formula:: R(t) = exp(-(t/η)^β)] Weibull
+- Failure Rate [has_formula:: λ(t) = f(t)/R(t) = (β/η) * (t/η)^(β-1)] Weibull hazard
+- Shape Parameter Beta [has_value:: β < 1] decreasing failure rate, infant mortality, hyper-exponential (RBMM p.156-157, p.379)
+- Shape Parameter Beta [has_value:: β = 1] constant failure rate, random, Exponential, η = MTBF (RBMM p.156-157)
+- Shape Parameter Beta [has_value:: β > 1] increasing failure rate, wear-out (RBMM p.156-157)
+- Shape Parameter Beta [related_to:: [[Failure Patterns and Bathtub Curve]]] pattern A-E and task rules
+- Mixed Failure Modes [produces:: β ≈ 1] fitting several modes together gives false random conclusion (RBMM p.186, p.190-193)
+- [[Weibull Analysis]] [depends_on:: Maintenance History] manufacturers do not give β, η (RBMM p.158)
+- [[Weibull Analysis]] [uses:: Confidence Bound] estimates need confidence bounds, method not shown (RBMM p.165)
+- [[Weibull Analysis]] [uses:: [[Censored Data]]] adjust rank positions before plotting
+- Weibull Probability Paper [is_a:: Weibull Estimation Method] β = slope, η read at 63.2% (RBMM p.162-164, p.379-381)
+- Weibull Probability Paper [uses:: Median Rank] Benard
+- Median Rank [has_formula:: MR(j) = (j - 0.3) / (N + 0.4)] Benard (RBMM p.164, p.381-382)
+- Linear Regression [is_a:: Weibull Estimation Method] (RBMM p.164, p.381-382)
+- Linear Regression [has_formula:: x = ln(T),  y = ln(ln(1/(1 - MR))), y = a x + b, a = β, b = -β ln(η)]
+- Y Regression [has_formula:: a = (Σy·Σx - N·Σxy) / ((Σx)^2 - N·Σx^2)] minimizes error along y axis
+- X Regression [has_formula:: a = ((Σy)^2 - N·Σy^2) / (Σx·Σy - N·Σxy)] minimizes error along x axis
+- Scale Parameter Eta [has_formula:: η = exp( -(Σy - a·Σx) / (N·a) )] regression estimate
+- MLE [is_a:: Weibull Estimation Method] mentioned without example (RBMM p.158)
+- Weibull Example TTF 8500-16000 [has_value:: 8,500 / 11,000 / 12,000 / 16,000 h] N = 4 (RBMM p.163-164, p.382-384)
+- Weibull Example TTF 8500-16000 [has_value:: β ≈ 3.5, η ≈ 13,000] probability paper by eye (RBMM p.164 Fig 6.11)
+- Weibull Example TTF 8500-16000 [has_value:: β ≈ 3.7, η ≈ 13,000] probability plot (RBMM p.381 Fig 12.14)
+- Weibull Example TTF 8500-16000 [has_value:: β = 3.7888, η = 13,130.8] Y regression, used for all later book figures (RBMM p.164, p.384)
+- Weibull Example TTF 8500-16000 [has_value:: β = 3.9406, η = 13,067.2] X regression (RBMM p.384)
+- Weibull Example TTF 8500-16000 [has_category:: Pattern A] β >> 1 wear-out
+- Weibull Example TTF 8500-16000 [has_value:: F(10,000) = 29.97%] also R = 70.03%, λ = 0.0135%/h (RBMM p.166-168)
+- Weibull Example TTF 8500-16000 [has_value:: MTTF = 11,865.51 h] (RBMM p.166-168)
+- Motor Bearing Example [has_value:: β = 3.5008, η = 996.70 days] different dataset, uses MON (RBMM p.390)
+- Motor Bearing Example [uses:: MON] see Censored Data
+- [[Weibull Analysis]] [defined_in:: [[ISO 14224]]] Annex C.1.11 guidance (p.209-210)
+- [[Weibull Analysis]] [applies_to:: At Least 5 Failures Of Same Type] severity class I-XII (ISO 14224 Annex C.1.11)
+- [[Weibull Analysis]] [uses:: Failure Date] needed for lifetime analysis (ISO 14224 Table D.3)
+- Shape Parameter Beta [has_value:: β < 1.0] infant mortality, check installation and commissioning (ISO 14224 Annex C.1.11)
+- Shape Parameter Beta [has_value:: β = 1.0] random, predictive maintenance or condition monitoring (ISO 14224 Annex C.1.11)
+- Shape Parameter Beta [has_value:: 1.0-4.0] early wear-out, PM worthwhile (ISO 14224 Annex C.1.11)
+- Shape Parameter Beta [has_value:: β >= 4.0] old-age wear-out, overhaul cycle from beta life (ISO 14224 Annex C.1.11)
+- Power Law [applies_to:: Repaired System] with wear-out; Weibull for components (ISO 14224 cl. C.3.1.2)
+- Impeller Example [has_value:: β = 4.352] wear-out (RBMM p.136, p.145-148)
+- Bearing Example [has_value:: β = 3.876] wear-out (RBMM p.136, p.145-148)
+- Control Failure Example [has_value:: β = 0.997] random (RBMM p.136, p.145-148)
+- [[Weibull Analysis]] [input_to:: [[Monte Carlo Maintenance Simulation]]] β, η with MTTR, MWT; CM-Unplanned 1.76 in 3 years, Availability 99.93% (RBMM p.199-203)
+- [[Weibull Analysis]] [input_to:: [[PM Interval Optimization]]] bearing example about 480 days
+- [[Weibull Analysis]] [input_to:: [[Reliability Metrics]]]
+- [[OREDA]] [depends_on:: Constant Failure Rate] equivalent to assuming β = 1
+- [[Weibull Analysis]] [uses:: [[CMMS]]] failure mode, install date, failure date, running hours
+- [[Weibull Analysis]] [related_to:: [[Statistical Distributions for Maintenance]]]

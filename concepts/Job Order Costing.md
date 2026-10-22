@@ -1,7 +1,7 @@
 ---
 title: Job Order Costing
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [cost, budget, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -143,3 +143,54 @@ Materials และ Outsource วิเคราะห์ถึงระดั�
 - [[Maintenance Budget]]
 - [[Maintenance Strategic Report]]
 - [[Reliability Based Maintenance Management Book]]
+
+## Triplets
+
+- [[Job Order Costing]] [is_a:: Managerial Accounting] cost per Job (RBMM p.344-345)
+- [[Job Order Costing]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 11
+- [[Job Order Costing]] [applies_to:: Maintenance Service Business] no inventory of goods (RBMM p.344-345)
+- [[Job Order Costing]] [uses:: Partial Invoice] (RBMM p.344-345)
+- [[Job Order Costing]] [uses:: Standard Direct Labor Rate]
+- [[Job Order Costing]] [related_to:: [[Maintenance Business Models]]]
+- Full Cost [has_formula:: Full Fixed Cost + variable job cost (Spare Part Usage, Outsource, Other Material Cost)] (RBMM p.337-338)
+- Direct Cost [differs_from:: Indirect Cost] direct booked to Job (materials, outsource); indirect allocated (salaries, utilities, rent) (RBMM p.337-338)
+- Other Production Costs [part_of:: Job Cost] internal labour and expenses, not directly recognised (RBMM p.345)
+- Fixed Cost Allocation [has_formula:: Corporate Administration -> Business Unit -> Profit Center -> Job Budget] labour = Man-Hrs x Full Fixed Cost Rate (RBMM Fig 11.10)
+- Service Base Cost Allocation [differs_from:: Lump Sum Allocation] better option (RBMM Fig 11.11)
+- Sales and Marketing Allocation [has_formula:: rate x sales] (RBMM p.338-342)
+- IT Allocation [has_formula:: rate x resources used] (RBMM p.338-342)
+- HR Allocation [has_formula:: rate x Head Count] (RBMM p.338-342)
+- Purchasing Allocation [has_formula:: rate per PO x number of PO] (RBMM p.338-342)
+- Spare Handling Allocation [has_formula:: rate per issue x number of issues] (RBMM p.338-342)
+- Standard Direct Labor Rate [has_formula:: Full Fixed Cost / budgeted Man-Hrs] (RBMM p.340)
+- Standard Direct Labor Rate [alias_of:: Full Fixed Cost Rate]
+- Job Budget [alias_of:: Job Pre-cal] (RBMM p.347-348)
+- Job Cost [has_formula:: Materials + Outsource + Other Production Costs + Professional Services] (RBMM p.347-348)
+- Professional Services [has_formula:: Full Fixed Cost Rate x Man-Hrs] (RBMM p.347-348)
+- Gross Margin [has_formula:: (selling price - cost) / selling price] %Gross Margin (RBMM p.347-348)
+- Reference Cost [has_formula:: recognised revenue x (1 - %Margin)] e.g. margin 20%, revenue 100 -> cost 80 (RBMM p.345, 348-349)
+- WIP [is_a:: Current Asset] for services, arises when Job Order opened (RBMM p.348-349)
+- WIP Balance [has_category:: asset] cost not fully recognised (RBMM p.348-349)
+- Provision for Work Due [alias_of:: Accrued Cost] negative WIP (RBMM p.348-349)
+- Provision for Loss Order [depends_on:: Actual Cost] actual cost exceeds recognised revenue (RBMM p.348-349)
+- Over/(Under) Absorption [has_formula:: total calculated cost of all jobs - actual Full Fixed Cost of unit] (+) Over, (-) Under (RBMM p.349-350)
+- Over/(Under) Absorption [applies_to:: Unit Level] not single Job (RBMM p.353)
+- Over/(Under) Absorption [measures:: accuracy of organisation sizing and performance] (RBMM p.349-350)
+- Backlog [has_formula:: Sales Order - recognised revenue] (RBMM p.351)
+- Calculated Cost [has_formula:: Actual Qty x Standard Rate] (RBMM p.351-353)
+- WIP [has_formula:: actual cost - reference cost] if positive (RBMM p.351)
+- Calculated Profit [has_formula:: revenue - recognised cost] (RBMM p.351)
+- Profit After WIP/Provision [has_formula:: calculated profit - WIP + Provision Work Due - Provision Loss] (RBMM p.351)
+- Budget Cost [has_formula:: Budget Qty x Budget Rate] (RBMM p.351-353)
+- Actual Cost [has_formula:: Actual Qty x Actual Rate] (RBMM p.351-353)
+- Efficiency Variance [has_formula:: Calculated - Budget] (RBMM p.351-353)
+- Cost Variance [has_formula:: Actual - Calculated] equals O/(U) Absorption (RBMM p.351-353)
+- Total Variance [has_formula:: Efficiency + Cost Variance] (RBMM p.351-353)
+- 4-Month Example [has_value:: sales 500,000; revenue 400,000; backlog 100,000 THB] (RBMM Fig 11.19 p.354)
+- 4-Month Example [has_value:: calculated cost 295,000; actual 328,000; Cost Variance (33,000) THB] (RBMM Fig 11.19 p.354)
+- 4-Month Example [has_value:: WIP 8,000; net profit 72,000 THB (18.0%)] adjust O/(U) at COGS (RBMM Fig 11.19 p.354)
+- Proportional Adjustment Example [has_value:: reference cost 355,797; profit before WIP 44,203 (11.1%); WIP (27,797) THB] same final profit 72,000 (RBMM Fig 11.21 p.357)
+- Proportional Adjustment Example [has_value:: (33,000)] used by wiki, book formula misprints (3,300) (RBMM p.357)
+- Site Monthly Report [uses:: Order Received, Revenue, Backlog, EBIT, Cash Flow, Utilization, O/(U) Absorption] plus balance sheet (RBMM p.357-358)
+- [[Job Order Costing]] [uses:: ERP] with Standard Cost or ABC recommended over Excel (RBMM p.360)
+- Materials [applies_to:: Job Level Variance] Materials and Outsource analysed per Job; labour at Profit Center first (RBMM p.351-353)

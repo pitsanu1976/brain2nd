@@ -1,7 +1,7 @@
 ---
 title: Statistical Distributions for Maintenance
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [statistics, reliability, weibull, spare-parts, book]
 sources: [reliability-based-maintenance-management.md]
@@ -107,3 +107,58 @@ pdf = λ e^(-λx);   cdf = 1 - e^(-λx);   λ = 1/mean = 1/MTTF
 - [[Censored Data]]
 - [[Spare Part Demand Forecasting]]
 - [[PM Interval Optimization]]
+
+## Triplets
+
+- Statistical Method Process [has_part:: Data Collection] then Data Presentation, Data Analysis, Interpretation (RBMM p.362)
+- Data Collection [step_of:: Statistical Method Process] step 1
+- Data Presentation [step_of:: Statistical Method Process] step 2, tables, graphs, equations
+- Data Analysis [step_of:: Statistical Method Process] step 3
+- Interpretation [step_of:: Statistical Method Process] step 4
+- Meeting Attendance Example [has_value:: Mean = 241.3, Median = 252.5] Mode about 251-350 (RBMM p.365-367)
+- Meeting Attendance Example [has_value:: 70%] cumulative probability that 300 seats suffice; 100 seats 5% (RBMM p.362-365)
+- Probability Density Function [has_value:: total area = 1] area a to b = probability of failure in interval (RBMM p.367-371)
+- Unreliability Function [has_formula:: F(t) = ∫0..t f(s) ds] cdf
+- Reliability Function [has_formula:: R(t) = 1 - F(t)]
+- Failure Rate [has_formula:: λ(t) = f(t)/R(t)] hazard
+- Discrete Distribution [has_part:: Poisson Distribution] also Binomial, Geometric, Hypergeometric; integer counts such as spare withdrawals
+- Continuous Distribution [has_part:: Normal Distribution] also Exponential, Weibull, Log Normal; failure times and PM intervals
+- Continuous Distribution [has_part:: Exponential Distribution]
+- Continuous Distribution [has_part:: Weibull Distribution]
+- Distribution Selection [depends_on:: Analysis Type] also assumption fit and data fit checked after parameters
+- Poisson Distribution [has_formula:: f(x) = e^(-D) D^x / x!] D = mean number of events (RBMM p.371-373)
+- Poisson Distribution [has_formula:: D(lead time) = (annual usage x Lead Time) / 365]
+- Poisson Distribution [applies_to:: Spare Part Withdrawals] random events
+- Poisson Spare A Example [has_value:: D = 5.333] 5, 7, 4 pieces per year over 3 years
+- Poisson Spare A Example [has_value:: 17.361%] P(5 pieces), highest; P(<= 5) = 55.768%, P(<= 11) = 99.12%
+- Poisson Spare A Example [has_value:: D = 0.6575] lead time 45 days, derived
+- Poisson Spare A Example [has_value:: 99.537%] stock 3 pieces sufficient within lead time
+- Poisson Distribution [input_to:: [[Spare Part Demand Forecasting]]] see also [[EOQ and Reorder Point]]
+- Normal Distribution [has_formula:: pdf = (1/(σ √(2π))) exp(-1/2 ((x-μ)/σ)^2)] printed with square brackets (RBMM p.374-376)
+- Normal Distribution [has_parameter:: μ]
+- Normal Distribution [has_parameter:: σ]
+- Normal Distribution [applies_to:: Wear-out] symmetric around mean
+- RBMM Sigma Rule [has_value:: small N uses N, large N (>20) uses N-1] as printed, reversed (RBMM p.374-376)
+- Statistical Convention Sigma Rule [has_value:: small sample uses N-1, population uses N] general statistics convention
+- RBMM Sigma Rule [contradicts:: Statistical Convention Sigma Rule] next example uses N-1 with N = 9
+- Normal Failure Example [has_value:: μ = 295, σ = 101.486] 9 failures, N-1; σ ≈ 95.7 if N (derived)
+- Normal Failure Example [has_value:: 4.23% / 12.86% / 75.48%] probability of failure within 120 / 180 / 365 days (RBMM p.375-376)
+- Normal Failure Example [has_value:: 12.17%] PM every 120 days, 1-(1-0.0423)^3
+- Normal Failure Example [has_value:: 24.06%] PM every 180 days, 1-(1-0.1286)^2; shortcut assumes as-good-as-new
+- Exponential Distribution [has_formula:: pdf = λ e^(-λx);   cdf = 1 - e^(-λx);   λ = 1/mean = 1/MTTF] (RBMM p.376-378)
+- Exponential Distribution [applies_to:: Random Failure] memoryless, human error, electrical equipment
+- Light Bulb Example [has_value:: mean 1,546, λ = 0.00064683] 150, 700, 3120, 1200, 2560 h
+- Light Bulb Example [has_value:: cdf(500) = 27.63%, cdf(1000) = 47.63%, cdf(2000) = 72.57%] pdf(2000) = 0.0177%
+- Light Bulb Example [has_value:: 72.57%] replacing every 1,000 or 500 h gives same probability (RBMM p.377-378)
+- Exponential Distribution [related_to:: [[Failure Patterns and Bathtub Curve]]] scheduled replacement does not reduce failure probability
+- Weibull Distribution [has_parameter:: Shape Parameter Beta] flexible, mimics most distributions (RBMM p.378-384)
+- Exponential Distribution [is_a:: Weibull Distribution] special case β = 1
+- Weibull Example TTF 8500-16000 [has_value:: β = 3.7888, η = 13,130.8] Y regression; see [[Weibull Analysis]]
+- Weibull Example TTF 8500-16000 [has_value:: β = 3.9406, η = 13,067.2] X regression
+- Weibull Distribution [applies_to:: [[Failure Mode]]] all β patterns, one failure mode at a time
+- [[OREDA]] [uses:: Exponential Distribution] constant failure rate per 10^6 h; wear-out modes should use Weibull or Normal
+- Poisson Distribution [applies_to:: [[Compressor]]] spares such as seal, bearing with lead time; see [[Spare Parts Management]]
+- [[ISO 14224]] [source_of:: MTTR] work type and downtime data, also F/S split
+- Lack Of Accurate Failure History [is_a:: Root Problem] not the statistical method (RBMM p.392)
+- [[Statistical Distributions for Maintenance]] [related_to:: [[Censored Data]]]
+- [[Statistical Distributions for Maintenance]] [related_to:: [[PM Interval Optimization]]]

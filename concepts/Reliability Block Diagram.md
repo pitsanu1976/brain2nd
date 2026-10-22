@@ -1,7 +1,7 @@
 ---
 title: Reliability Block Diagram
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [reliability, statistics, criticality, book]
 sources: [reliability-based-maintenance-management.md]
@@ -52,3 +52,31 @@ Failure tree : Ft = 1 - Π (1 - Fi),  Fi = 1 - Ri          (ตรงข้า�
 - [[Weibull Analysis]]
 - [[Redundancy and Standby Systems]]
 - [[Criticality Assessment]]
+
+## Triplets
+
+- [[Reliability Block Diagram]] [is_a:: System Reliability Model] from component reliabilities by connection (RBMM p.172-174)
+- [[Reliability Block Diagram]] [has_part:: Series Configuration]
+- [[Reliability Block Diagram]] [has_part:: Parallel Configuration]
+- [[Reliability Block Diagram]] [has_part:: Mixed Configuration]
+- Series Configuration [has_formula:: R_total = R1 x R2 x ... x Rn] any block fails, system fails
+- Parallel Configuration [has_formula:: R_total = 1 - Π (1 - Ri)] system works if any block survives
+- Failure Tree [has_formula:: Ft = 1 - Π (1 - Fi),  Fi = 1 - Ri] opposite of RBD
+- [[Reliability Block Diagram]] [uses:: Reliability Function] block R from Weibull at same time t, see [[Weibull Analysis]]
+- [[Reliability Block Diagram]] [uses:: Dedicated Software] for real systems with many parts (RBMM p.174)
+- Series Example Fig 6.21 [has_value:: 0.765] R1 = 0.85, R2 = 0.9; text says both 0.9 but computed with 0.85
+- RBMM Parallel Result Fig 6.22 [has_value:: 0.9085] 1 - (0.15 x 0.1), book misprint (RBMM p.173)
+- Correct Parallel Result Fig 6.22 [has_value:: 0.985] 1 - 0.015, must exceed best block 0.9
+- RBMM Parallel Result Fig 6.22 [contradicts:: Correct Parallel Result Fig 6.22] calculation/print error in book
+- Mixed Example Fig 6.24-6.25 [has_value:: R* = 0.999] parallel group R2 = R3 = R4 = 0.90, 1 - 0.1^3
+- Mixed Example Fig 6.24-6.25 [has_value:: Rt ≈ 0.679] 0.85 x 0.999 x 0.8; derived 0.67932
+- [[Reliability Block Diagram]] [depends_on:: Independent Block Failures] same mission time t; general knowledge [confidence:: low]
+- Parallel Configuration [produces:: Higher Reliability] 3 in parallel at 0.90 gives 0.999
+- [[Redundancy and Standby Systems]] [differs_from:: [[Reliability Block Diagram]]] standby and k-out-of-n need specific models
+- Availability [depends_on:: MTTR] system availability needs MTTR not R only, see [[Availability and OEE]]
+- [[Reliability Block Diagram]] [related_to:: [[Failure Hierarchy]]]
+- [[PWTR Power Transmission]] [part_of:: [[Compressor]]] mostly functional series in RBD
+- [[LUBS Lubrication System]] [part_of:: [[Compressor]]] mostly functional series in RBD
+- [[CTMN Control and Monitoring]] [part_of:: [[Compressor]]] mostly functional series in RBD
+- Compressor 2x100% Or 3x50% [is_a:: Parallel Configuration] train level, no Valeura asset data
+- [[Criticality Assessment]] [uses:: [[Reliability Block Diagram]]] with failure tree and [[FMECA]], which item failure mode fails system function

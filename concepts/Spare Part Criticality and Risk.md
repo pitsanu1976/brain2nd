@@ -1,7 +1,7 @@
 ---
 title: Spare Part Criticality and Risk
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [spare-parts, criticality, cost, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -174,3 +174,63 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - [[Spare Part Demand Forecasting]]
 - [[Monte Carlo Maintenance Simulation]]
 - [[Failure Mode]]
+
+## Triplets
+
+- [[Spare Part Criticality and Risk]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9
+- [[Spare Part Criticality and Risk]] [part_of:: [[Spare Parts Management]]] Supply Side
+- ABC Analysis [step_of:: Supply Side] step 1, screen by turnover (RBMM p.241-242)
+- Part Criticality [step_of:: Supply Side] step 2 (RBMM p.241-242)
+- Part-Equipment Criticality Table [step_of:: Supply Side] step 3 (RBMM p.241-242)
+- Risk Assessment [step_of:: Supply Side] step 4 (RBMM p.241-242)
+- Stock Level Calculation [step_of:: Supply Side] step 5, EOQ / average + Safety Stock / simulation (RBMM p.241-242)
+- Turnover [has_formula:: Qty x Unit Price] issue value (RBMM p.242-243)
+- ABC Turnover Group A [is_a:: ABC Analysis] very slow, first 80% of total turnover value (RBMM p.242-243)
+- ABC Turnover Group B [is_a:: ABC Analysis] medium, next 15% (cumulative 95%) (RBMM p.242-243)
+- ABC Turnover Group C [is_a:: ABC Analysis] fast moving, last 5% (RBMM p.242-243)
+- ABC Turnover Group A [has_category:: high value] text p.242 (RBMM p.242)
+- ABC Turnover Group A [has_category:: Very Slow] label in Fig 9.4 (RBMM p.243)
+- ABC Turnover Group A [differs_from:: Criticality A] turnover grouping vs equipment criticality
+- ABC Analysis [differs_from:: Part Criticality] ABC ignores criticality
+- Price [part_of:: Part Criticality] COST, score 1 = highest, 2 = medium, 3 = low (RBMM p.243)
+- Lead Time [part_of:: Part Criticality] LT, score 1-3 (RBMM p.243)
+- Failure Detect-ability [part_of:: Part Criticality] CBM, low score = no advance warning, verify direction with book (RBMM p.243, p.245) [confidence:: low]
+- Criticality A [is_a:: Equipment Criticality] very high, production stops (RBMM p.243-244)
+- Criticality B [is_a:: Equipment Criticality] medium (RBMM p.243-244)
+- Criticality C [is_a:: Equipment Criticality] low (RBMM p.243-244)
+- Commercial [part_of:: Equipment Criticality] (RBMM p.244, Fig 9.5)
+- Safety [part_of:: Equipment Criticality] (RBMM p.244, Fig 9.5)
+- Environment [part_of:: Equipment Criticality] (RBMM p.244, Fig 9.5)
+- Equipment Criticality [related_to:: [[Criticality Assessment]]]
+- Common Usage Part [depends_on:: Equipment Criticality] use highest equipment criticality; equal level -> compare Part Criticality (RBMM p.244)
+- Specific Usage Part [differs_from:: Common Usage Part] separate planned (JIT) vs unplanned (risk) management (RBMM p.244)
+- Part-Equipment Criticality Table [uses:: BOM] columns EQ Criticality A/B/C, COST, LT, CBM, On hand, Unit cost, Max, Min (RBMM p.245-246, Fig 9.6)
+- Fast Moving [selects:: EOQ] with demand variance (RBMM p.238)
+- Low Criticality [selects:: Poisson Distribution] Average Usage / Poisson / Confidence (RBMM p.238)
+- Medium Criticality [selects:: Cost Ratio] Average Usage or Monte Carlo (RBMM p.238)
+- High Criticality [selects:: [[Monte Carlo Maintenance Simulation]]] linked to PM plan (DSx), Cost Ratio (RBMM p.238)
+- Confidence Level [measures:: availability of part during Lead Time] (RBMM p.246)
+- Risk of Stock out [has_formula:: 1 - Confidence] (RBMM p.249)
+- Cost Ratio [has_formula:: Expected Cost of Stock out / Expected Cost of Stock] (RBMM p.246, p.249)
+- Cost Ratio [has_value:: 6.1] point C Fig 9.9, Max/Min 3/2, 600,000 / 98,360.65 THB (RBMM p.249)
+- Criticality A [has_value:: more than 95%] target Confidence Level (RBMM p.317-319)
+- Criticality B [has_value:: 90%] target Confidence Level (RBMM p.317-319)
+- Criticality C [has_value:: 80-90%] target Confidence Level (RBMM p.317-319)
+- High Criticality [has_value:: 100% service level, 0% stock out] chapter 1 target (RBMM p.24-26)
+- Mandatory Stock Zone [depends_on:: Cost Ratio] ratio above about 9 (approximate, read from graph), stock without approval (RBMM p.249-251)
+- Stock with Approval Zone [depends_on:: Cost Ratio] middle ratio, approval per policy (RBMM p.249-251)
+- Stock with Approval Zone [alias_of:: Risk Based Optimum Zone]
+- No Stock Zone [depends_on:: Cost Ratio] ratio not above 1 (RBMM p.249-251)
+- Insurance Part [depends_on:: Stock out Cost] above threshold e.g. 1,100,000 THB per event even if ratio below 1, approximate from graph (RBMM p.249-251)
+- Risk Policy [part_of:: Risk Based Spare Part Optimization] implementation requirement 1 of 4 (RBMM p.252)
+- Statistical Calculation Tool [part_of:: Risk Based Spare Part Optimization] requirement 2 of 4 (RBMM p.252)
+- Approval Process [part_of:: Risk Based Spare Part Optimization] requirement 3 of 4 (RBMM p.252)
+- Replenishment Process [part_of:: Risk Based Spare Part Optimization] requirement 4 of 4 (RBMM p.252)
+- High Criticality Example [has_value:: Max/Min 4/2, Cost Ratio 3.80, total 283,018.01 THB] book recommendation if stock out cost within limit (RBMM p.263-264, Fig 9.20)
+- High Criticality Example [has_value:: Max/Min 5/2] if treated as Insurance Part (RBMM p.263-264)
+- High Criticality Example [has_value:: lowest total cost 4/2] book text (RBMM p.263-264)
+- High Criticality Example [has_value:: lowest total cost 6/4 = 248,470.42 THB] read from table by wiki, low-res figure (RBMM Fig 9.20)
+- Medium Criticality Example [has_value:: Max/Min 5/2, Cost Ratio 2.17] book recommendation (RBMM p.261-262, Fig 9.19)
+- Medium Criticality Example [has_value:: Cost Ratio column mismatch] stock out / stock cost e.g. 4/1 about 60.8 vs 36.69, derived (RBMM Fig 9.19) [confidence:: low]
+- Stock Decision [depends_on:: [[P-F Interval and Condition Monitoring]]] stock if P-F interval shorter than Lead Time (RBMM p.241)
+- Failure Detect-ability [related_to:: [[FMECA]]] similar to detectability

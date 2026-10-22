@@ -1,10 +1,10 @@
 ---
 title: CMMS
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
-tags: [cmms, maintenance-management, reliability, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality]
+sources: [reliability-based-maintenance-management.md, iso-14224.md]
 confidence: high
 contested: false
 ---
@@ -90,10 +90,68 @@ RAM (Reliability Based Asset Management) มี 7 กระบวนการ CM
 - Compressor ([[Compressor]]) ควรเป็น Equipment ที่มี Running Number ส่วน sub unit/maintainable item ที่ซ่อมได้เก็บเป็น Object Part ในประวัติ หรือเป็น Equipment ถ้าซ่อมแยกเป็นหน่วย (การตีความ ไม่ใช่ข้อความในหนังสือ)
 - ฟิลด์ Failure Mode ใน WO ควรใช้รหัส 3 ตัวอักษรแบบเดียวกับ [[Failure Mode]] ใน wiki
 
+## CMMS ในมุมของ ISO 14224 (เพิ่ม 2026-10-21)
+
+ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised maintenance management information system) (cl. 4 abbreviations, p.18-20)
+
+- CMMIS ของ facility เป็นแหล่งข้อมูลหลักสำหรับเก็บ RM data และต้องรองรับการรายงานตามมาตรฐาน; แหล่งอื่นตาม Table D.5 เช่น generic data, operator-specific, manufacturer, expert judgement (ISO 14224 cl. 7.2.1, p.27)
+- ใช้ **coded field เป็นหลักและมี free text เสริม**; การโอนข้อมูลกึ่งอัตโนมัติจาก CMMIS ช่วยลดปัญหาแหล่งกระจัดกระจายและการตีความต่างกัน (Table 1, cl. 7.1.4, p.27; cl. 9.2, p.35-36) ขั้นตอนทั่วไป: ดึงข้อมูลดิบลง intermediate storage -> ตีความ/แปลงเข้ารูปแบบเป้าหมาย (ส่วนใหญ่ทำมือ) -> โอนเข้า reliability data bank (cl. 7.2.2, p.27-28)
+- **event ใน CMMS ไม่ใช่ reliability data ในตัวเอง** ต้องมี taxonomy/boundary ชัด, failure กับ maintenance record ที่ผูกกัน, นิยาม failure และ surveillance period/operating time ที่เป็นมาตรฐาน และ validation โดยคนที่ไม่ใช่ผู้เก็บ (cl. 7.1.2-7.1.3, p.25-27) ดู [[RM Data Quality]]
+- ISO ระบุว่า active maintenance time และ downtime สำคัญต่อ RAM/RCM แต่ CMMS ยังบันทึกน้อย ต้องปรับปรุง (Table 8 note d, p.45) และ cost data อยู่นอก scope ของมาตรฐาน ให้ดึงจาก CMMIS (cl. 5.4, p.21-22)
+- สอดคล้องกับ RBMM เรื่อง Process และ Content ของ CMMS: ระบบอย่างเดียวไม่พอ ต้องออกแบบฟิลด์และวินัยการป้อนข้อมูล ฟิลด์ที่ ISO แนะนำเทียบกับ Work Order ของ RBMM ที่ [[Failure Data Recording]]
+
 ## ดูเพิ่ม
 
 - [[Failure Data Recording]]
+- [[ISO 14224]]
 - [[RCM Reliability Centered Maintenance]]
 - [[Criticality Assessment]]
 - [[Maintenance Strategic Report]]
 - [[Spare Parts Management]]
+
+## Triplets
+
+- [[CMMS]] [has_label:: Computerized Maintenance Management System]
+- [[CMMS]] [alias_of:: CMMIS] ISO 14224 term, computerised maintenance management information system (ISO 14224 cl. 4, p.18-20)
+- [[CMMS]] [depends_on:: CMMS Process] data collection steps; success needs Process and Content together (RBMM p.90, 108, 112)
+- [[CMMS]] [depends_on:: CMMS Content] quality/meaning of data; building content takes people and years (RBMM p.108)
+- [[CMMS]] [has_value:: less than half] share of CMMS judged worth the investment, not full cycle (RBMM p.90)
+- Master Data [part_of:: [[CMMS]]] module 1, e.g. Cost Center (RBMM p.92-94)
+- Access Control [part_of:: [[CMMS]]] module 2 (RBMM p.92-94)
+- Asset Registration [part_of:: [[CMMS]]] module 3, done first, usually longest (RBMM p.92-94)
+- Work Control System [part_of:: [[CMMS]]] module 4, very important; failure here = failed implementation (RBMM p.92-94)
+- Planned Maintenance [part_of:: [[CMMS]]] module 5 (RBMM p.92-94)
+- Spare Part Management Module [part_of:: [[CMMS]]] module 6 (RBMM p.92-94)
+- Purchasing System [part_of:: [[CMMS]]] module 7, maintenance needs Purchase Requisition more than Purchasing (RBMM p.92-94)
+- Report and KPI Analysis [part_of:: [[CMMS]]] module 8 (RBMM p.92-94)
+- Maintenance Performance Budgeting Module [part_of:: [[CMMS]]] module 9, Activity Based Budgeting recommended (RBMM p.92-94)
+- Turnaround Management [part_of:: [[CMMS]]] module 10, large plants only (RBMM p.92-94)
+- Work Order Backlog [part_of:: [[CMMS]]] core module, most important with History (Fig 4.1, RBMM p.94)
+- Work Order History [part_of:: [[CMMS]]] core module, shop-floor data for long-term analysis (Fig 4.1, RBMM p.94)
+- Work Control System [differs_from:: Planned Maintenance] book: Work Control more important than Planned Maintenance (RBMM p.93)
+- Equipment Database [part_of:: [[CMMS]]] asset database (Fig 4.3, RBMM p.96)
+- Equipment Database [has_parameter:: Criticality] linked to Maintenance Strategy; also Structure and Coding, Accounting Info, BOM, Technical Data (Fig 4.3, RBMM p.96)
+- Equipment Maintenance History [has_parameter:: Failure Data] Failure Mode, Object Part, Cause, Effect, Consequence, Effect Cost (RBMM p.96-99)
+- Process [part_of:: Area] CMMS hierarchy (Fig 4.4, RBMM p.97)
+- Equipment [part_of:: Process] CMMS hierarchy (Fig 4.4)
+- Component [part_of:: Equipment] CMMS hierarchy (Fig 4.4)
+- Part [part_of:: Component] CMMS hierarchy (Fig 4.4)
+- [[CMMS]] [at_level:: Equipment] hierarchy stops at Equipment; lower levels recorded as Object Part (Fig 4.5, RBMM p.98)
+- Object Part [part_of:: Equipment Maintenance History] location of problem in repair history (RBMM p.98)
+- Spare Part [part_of:: BOM] not in hierarchy (RBMM p.98)
+- Productive Unit [has_code:: Smart Number] every digit meaningful, e.g. XX-999-AA (RBMM p.98-99)
+- Equipment [has_code:: Running Number] independent of location, e.g. MOT2499 (RBMM p.98-99)
+- CM-Unplanned Work Order [depends_on:: [[Failure Mode]]] must not close without failure mode (RBMM p.98, 110-111)
+- Planned Maintenance Database [depends_on:: [[Failure Mode]]] task that cannot name its failure mode is not needed (RBMM p.99)
+- Spare Part Database [uses:: [[EOQ and Reorder Point]]] stock level data Min/Max/ROP/EOQ (Fig 4.8, RBMM p.100-102)
+- CMMS Work Flow [has_value:: 2 approval points] approve work request and approve close (Fig 4.10, RBMM p.104)
+- [[CMMS]] [related_to:: [[RCM Reliability Centered Maintenance]]] covers RAM processes 1, 5, 6 only; 2-4 and FMECA (7) usually outside CMMS (RBMM p.106-108)
+- [[CMMS]] [produces:: Average Availability] analysis output, also expected PM and CM-Unplanned counts and costs, cost per operating hour (RBMM p.112)
+- [[CMMS]] [source_of:: RM Data] facility CMMIS is main source (ISO 14224 cl. 7.2.1, p.27)
+- [[CMMS]] [uses:: Coded Field] coded fields first with free text supplement (ISO 14224 Table 1, cl. 7.1.4, p.27; cl. 9.2, p.35-36)
+- CMMS Event [differs_from:: Reliability Data] needs taxonomy, boundary, linked records, standard failure definition and independent validation (ISO 14224 cl. 7.1.2-7.1.3, p.25-27)
+- [[RM Data Quality]] [applies_to:: [[CMMS]]]
+- [[CMMS]] [source_of:: Cost Data] cost data outside ISO 14224 scope (ISO 14224 cl. 5.4, p.21-22)
+- [[CMMS]] [source_of:: Active Maintenance Time] important for RAM/RCM but poorly recorded (ISO 14224 Table 8 note d, p.45)
+- [[Compressor]] [at_level:: Equipment] Running Number; sub unit/maintainable item as Object Part, interpretation [confidence:: low]
+- Work Order Failure Mode Field [uses:: [[Failure Mode]]] 3-letter codes as in wiki

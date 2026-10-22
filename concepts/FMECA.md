@@ -1,7 +1,7 @@
 ---
 title: FMECA
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [fmeca, criticality, rcm, reliability, statistics, book]
 sources: [reliability-based-maintenance-management.md]
@@ -101,3 +101,61 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 - [[Failure Mode]]
 - [[Failure Data Recording]]
 - [[Weibull Analysis]]
+
+## Triplets
+
+- [[FMECA]] [has_label:: Failure Mode Effect Criticality Analysis]
+- [[FMECA]] [applies_to:: Equipment] from equipment down to component/part (RBMM p.137)
+- [[FMECA]] [produces:: Failure Mode Ranking] which FM matters first (RBMM ch5)
+- [[FMECA]] [differs_from:: [[RCM Reliability Centered Maintenance]]] independent process from design/manufacturing; equipment level, ignores effect on larger frame (RBMM p.137)
+- [[RCM Reliability Centered Maintenance]] [uses:: [[FMECA]]] RCM may use existing FMECA database (RBMM p.137)
+- [[FMECA]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 5; table values are assessor opinion (RBMM p.139-140)
+- Qualitative FMECA [is_a:: [[FMECA]]] used when no failure rate per FM (RBMM p.138-140)
+- Quantitative FMECA [is_a:: [[FMECA]]] criticality from probability at time t (RBMM p.141-143)
+- Qualitative FMECA [uses:: RPN]
+- RPN [has_formula:: S x O x D] Severity x Occurrence x Detect-ability (RBMM p.138-140)
+- RPN [has_parameter:: Severity]
+- RPN [has_parameter:: Occurrence]
+- RPN [has_parameter:: Detect-ability]
+- Occurrence [defined_in:: Mil-Std-1629] Fig 5.19
+- Occurrence Rank 1 [has_label:: Extremely Unlikely] rate not given in notes (Fig 5.19)
+- Occurrence Rank 2 [has_value:: 1/10,000] Remote (Fig 5.19)
+- Occurrence Rank 3 [has_value:: 1/1,000] Occasional (Fig 5.19)
+- Occurrence Rank 4 [has_value:: 1/100] Reasonably Probable (Fig 5.19)
+- Occurrence Rank 5 [has_value:: 1/10] Frequent, per cycles, hrs etc. (Fig 5.19)
+- Severity [has_value:: 1-5] 1 Minor, 2 Marginal, 3 Moderate, 4 Critical, 5 Catastrophic (Fig 5.20)
+- Detect-ability [has_value:: 1-5] 1 = 80-100% chance of early detection ... 5 = 0-20%; high score = hard to detect (Fig 5.21)
+- RPN [has_value:: 24] example O = 4, S = 3, D = 2 (RBMM p.140)
+- RPN [has_value:: 125] max 5 x 5 x 5, derived, not stated in book [confidence:: low]
+- RPN [depends_on:: Company Criteria] book gives no acceptable RPN threshold
+- RPN [depends_on:: Ordinal Scale] different combinations can give equal RPN with different risk; general observation not in book [confidence:: low]
+- Functional Failure Probability [has_formula:: FF(t) = 1 - Product(1 - Fm_i(t))] (RBMM p.141-143)
+- Functional Failure Criticality [has_formula:: FFCr(t) = FF(t) x S x MR] (RBMM p.141-143)
+- Item Criticality [has_formula:: Cr(t) = Sum of FFCr(t)] (RBMM p.141-143)
+- Functional Failure Criticality [has_parameter:: Severity] scale 0-1
+- Functional Failure Criticality [has_parameter:: Failure Mode Ratio] MR, all ratios sum to 1
+- [[Failure Mode]] [part_of:: Functional Failure] OR logic, parallel in failure tree (Fig 5.22)
+- Functional Failure [part_of:: Function] (Fig 5.22)
+- Function [part_of:: Item] (Fig 5.22)
+- Functional Failure Probability [has_value:: 0.664] example FF1 of Function 1 (RBMM p.141-143)
+- Functional Failure Criticality [has_value:: 0.3984] example FF1, S 1.0, MR 0.6
+- Functional Failure Criticality [has_value:: 0.132] example FF2, FF 0.88, S 0.75, MR 0.2
+- Functional Failure Criticality [has_value:: 0.06] example Function 2, FF 0.6, S 0.5, MR 0.2
+- Item Criticality [has_value:: 0.5904] example item, Cr1 0.5304 + Cr2 0.06 (RBMM p.141-143)
+- Quantitative FMECA [uses:: [[Weibull Analysis]]] Fm(t) from Weibull per FM
+- [[FMECA]] [defined_in:: MIL-STD-1629A] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: RAC-HDBK-1120] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: MIL-HDBK-217] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: MIL-STD-882D] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: NAVAIRINST 5100.11] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: IEC 60812] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: BS 5760-5] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: SAE ARP 5580] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: SAE J1739] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: SEMATECH FMEA Guide] 1992, cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: SAE JA1012] standard cited (RBMM p.140-141)
+- [[FMECA]] [defined_in:: NAVAIR 00-25-403] standard cited (RBMM p.140-141)
+- [[FMECA]] [input_to:: [[PM Task Selection]]] FMECA ranks FMs but does not select PM tasks
+- [[FMECA]] [uses:: [[Failure Data Recording]]] columns Equipment, Damage Code, Object Part, Failure Mode (Fig 5.23)
+- Occurrence [depends_on:: [[OREDA]]] interpretation: OREDA % share cannot map directly to Fig 5.19 ranks [confidence:: low]
+- Detect-ability [related_to:: [[P-F Interval and Condition Monitoring]]] e.g. VIB detectable earlier than sudden modes

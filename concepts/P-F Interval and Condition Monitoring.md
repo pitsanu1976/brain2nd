@@ -1,7 +1,7 @@
 ---
 title: P-F Interval and Condition Monitoring
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [pm, cbm, rcm, reliability, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -89,3 +89,42 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - [[Failure Finding Interval]]
 - [[Monte Carlo Maintenance Simulation]]
 - [[Failure Patterns and Bathtub Curve]]
+
+## Triplets
+
+- Condition Monitoring [alias_of:: On-Condition Task] (RBMM p.208-209)
+- Potential Failure [detected_by:: Condition Monitoring] point P, before Functional Failure F (RBMM p.208-209)
+- Condition Monitoring [produces:: CM-Planned] instead of CM-Unplanned
+- Condition Monitoring [step_of:: [[PM Task Selection]]] first question, cheapest task
+- Condition Monitoring [applies_to:: Wear-Out Failure] failure modes with warning signs, pattern A/B, high beta
+- P-F Interval [has_parameter:: Potential Failure] point P, first detectable symptom e.g. excess vibration, wear (RBMM p.208-209)
+- P-F Interval [has_parameter:: Functional Failure] point F, actual failure (RBMM p.208-209)
+- P-F Interval [has_value:: variable] shortest and longest differ, F1 vs F2 (RBMM p.208-209)
+- Threshold of Life [defined_in:: [[Reliability Based Maintenance Management Book]]] life used before end-of-life process starts, % of life (RBMM p.208-209)
+- P-F Curve [differs_from:: PDF] PDF is distribution of failure times; P-F is time from symptom to failure (RBMM p.208)
+- CM Age Zone 1 [has_value:: F(t) < 0.01] unlikely to fail, no CM needed (Fig 7.24, RBMM p.207-208)
+- CM Age Zone 2 [has_value:: F(t) < 0.1] some failures, CM not yet full scale (Fig 7.24)
+- CM Age Zone 3 [has_value:: F(t) > 0.1] likely to fail, full CM (Fig 7.24)
+- CM Age Zone 1 [depends_on:: [[Weibull Analysis]]] F(t) from Weibull
+- CM Interval [has_formula:: (P-F interval) / 2] (RBMM p.208, p.211)
+- CM Interval [depends_on:: P-F Interval] too long risks failure before next check; too short wastes cost
+- Condition Monitoring [uses:: In-House Labour] cheap; limits are utilization and tools (RBMM p.208)
+- P-F Interval [has_value:: 120 days] simulator example, 4 months; figures read from print, verify (Fig 7.28-7.30, RBMM p.209-212)
+- CM Interval [has_value:: 60 days] optimum = (P-F)/2, derived from 120/2 (RBMM p.211)
+- CM Inspection Cost [has_value:: 1,600 baht] per inspection, simulator example (RBMM p.211)
+- CM-Planned [has_value:: 570,000 baht] per event as recorded; equal to CM-Unplanned is odd, unconfirmed (RBMM p.211) [confidence:: low]
+- CM-Unplanned [has_value:: 570,000 baht] per event, simulator example (RBMM p.211)
+- CM-Unplanned [has_value:: 45-50 days] inspection interval where CM-Unplanned becomes significant; rises fast near and beyond 120 days (RBMM p.211)
+- Total Maintenance [has_formula:: Preventive + Corrective-Planned + Corrective-Unplanned] CM model (Fig 7.26-7.27, RBMM p.209-210)
+- CM Simulation Model [produces:: Availability] also counts of CM-Unplanned, PM, CM-Planned, cost per unit time, total cost (Fig 7.26-7.27)
+- CM Simulation Model [uses:: [[Monte Carlo Maintenance Simulation]]]
+- CM Interval [depends_on:: [[PM Interval Optimization]]] interval found with PM interval optimization approach
+- Condition Monitoring [applies_to:: Random Failure] beta = 1, scheduled replace cannot substitute; electronics need environment control (RBMM p.185)
+- Condition Monitoring [applies_to:: Shape Parameter Beta Near 1] main option if easy to access (RBMM p.187)
+- Condition Monitoring [applies_to:: Wear-Out Failure] very high beta: not intensive early in life, start later (RBMM p.188)
+- CM-Planned [depends_on:: Spare Part Lead Time] stock needed if lead time exceeds time left before CM-Unplanned (RBMM p.241)
+- Condition Monitoring [applies_to:: VIB] suggestion, not in sources [confidence:: low]
+- Condition Monitoring [applies_to:: [[OHE Overheating]]] suggestion, not in sources [confidence:: low]
+- Condition Monitoring [applies_to:: NOI] suggestion, not in sources [confidence:: low]
+- Condition Monitoring [applies_to:: [[PDE Parameter Deviation]]] suggestion, not in sources [confidence:: low]
+- [[Failure Data Recording]] [uses:: [[Failure Detection Method]]] ISO 14224 detection method field separates CM-Planned from CM-Unplanned; general knowledge, not verified [confidence:: low]

@@ -1,12 +1,12 @@
 ---
 title: Availability and OEE
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
-tags: [kpi, reliability, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [kpi, reliability, maintenance-management, book, iso-14224]
+sources: [reliability-based-maintenance-management.md, iso-14224.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Availability and OEE
@@ -31,6 +31,50 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 | Speed Factor, Quality Factor | ปัจจัยด้านการเดินเครื่อง | ส่วนใหญ่ฝั่งผลิต |
 
 หมายเหตุ: ปริมาณผลิตขึ้นกับ Capacity, Production Plan และ OEE (RBMM p.19) ฝั่งบำรุงรักษาจึงควบคุมได้ผ่าน Availability เป็นหลัก
+
+### ประเภทของ Availability (ความรู้ทั่วไป ไม่มีใน sources, confidence: low)
+
+หัวข้อย่อยนี้ไม่ได้มาจาก RBMM เป็นการแบ่งที่ใช้ทั่วไปในงาน reliability engineering ความต่างอยู่ที่ว่านับเวลาหยุดประเภทใดบ้าง
+
+| ประเภท | สูตร | นับเวลาหยุดอะไร | ใช้ทำอะไร |
+|---|---|---|---|
+| Inherent availability (Ai) | MTBF / (MTBF + MTTR) | เฉพาะเวลาซ่อมแก้ (corrective) | ความสามารถของการออกแบบ ไม่รวมผลของ PM และ logistics |
+| Achieved availability (Aa) | MTBM / (MTBM + M) | เวลาซ่อมแก้ + เวลา PM (M = mean active maintenance time) | ผลของทั้งการออกแบบและแผน PM |
+| Operational availability (Ao) | MTBM / (MTBM + MDT) | ทุกอย่าง รวมเวลารออะไหล่ รอคน และงานธุรการ | สิ่งที่หน้างานเจอจริง |
+
+- MTBM = mean time between maintenance (รวมทั้ง corrective และ preventive)
+- สูตร Availability ~ MTTF / (MTTF + MDT) ในหัวข้อ 1 ที่ใช้ MDT = MTTR + MWT จึงใกล้เคียง Ao มากที่สุด เพราะรวมเวลารอ (MWT)
+- ปกติ Ai ≥ Aa ≥ Ao ถ้า Ai สูงแต่ Ao ต่ำ แปลว่าปัญหาอยู่ที่ logistics/อะไหล่หรือการวางแผน ไม่ใช่ที่ตัวเครื่อง (เชื่อมกับ MWT ใน [[Spare Parts Management]] และ MTTR ใน [[Maintenance KPIs]])
+- ตัวป้อน MTBF/MTTF ดูการคำนวณใน [[Reliability Metrics]]
+
+### นิยามของ ISO 14224 Annex C (sources: iso-14224.md)
+
+มาตรฐาน [[ISO 14224]] กำหนดเฉพาะชุดนี้ (cl. C.2.3, p.211-213; Annex E KPI 7-8, p.243-250) ไม่มี Achieved availability (Aa) และไม่ใช้ MTBM
+
+| ชื่อใน ISO | สูตร | นับเวลาหยุดอะไร |
+|---|---|---|
+| Intrinsic AI (ชื่อพ้อง technical, inherent) | MTTF / (MTTF + MTTRes) (C.10) | active maintenance time ของ corrective |
+| Operational Ao | MUT / (MUT + MDT) (C.9) | down time จริงทั้งหมด รวม delay ทุกชนิด |
+| Ao,y รายปี | (8760 - (tC + tP)) / 8760 (C.14) | corrective + preventive (tC, tP = ชั่วโมงหยุดต่อปี) |
+| AT,y รายปี (technical) | (8760 - tC) / 8760 (C.15) | เฉพาะ corrective |
+| KPI 7 AO และ KPI 8 AT (Annex E) | ระดับ taxonomy 6 | AO นับ CM+PM, AT นับเฉพาะ corrective สะท้อน intrinsic reliability |
+
+- AI = Ao เฉพาะเมื่อ MDT = MTTRes AI เหมาะกับ reliability engineer ส่วน Ao เหมาะกับฝ่ายบำรุงรักษา และ Ao ไม่ใช่คุณสมบัติของเครื่อง แต่เป็นของเครื่องในบริบท (installation, procedure, policy, support) เพราะ MDT รวม detection, isolation, รออะไหล่, standby, ซ่อม, reinstatement (cl. C.2.3.2, p.212)
+- ต้องประมาณ λ และ μ แยกกัน (λ จาก MTTF/MUT, μ จาก MTTRes หรือ MRT) สูตรเดียวไม่พอ ดู [[Failure Rate Estimation]] และ [[Maintenance Time Definitions]]
+- การรวมหรือไม่รวมเวลา PM ใน Ao เป็นทางเลือก ไม่ใช่นิยามบังคับ (p.212-213)
+- availability = ทำงานได้ ณ ขณะหนึ่ง ส่วน reliability = ทำงานต่อเนื่องตลอดช่วง (cl. C.2.1, p.210)
+
+### เปรียบเทียบสองชุดนิยาม (contested: ผู้ใช้ต้องเลือก convention ของ wiki)
+
+| ประเด็น | ความรู้ทั่วไป (ด้านบน, ไม่มีใน sources) | ISO 14224 (sourced) |
+|---|---|---|
+| Inherent / intrinsic | Ai = MTBF / (MTBF + MTTR) | AI = MTTF / (MTTF + MTTRes) ใช้ MTTF และ MTTRes ไม่ใช่ MTBF/MTTR |
+| Achieved | Aa = MTBM / (MTBM + M) | ไม่มีนิยามนี้ ไม่มี MTBM |
+| Operational | Ao = MTBM / (MTBM + MDT) | Ao = MUT / (MUT + MDT) |
+| รวมเวลา PM | Aa รวม PM, Ai ไม่รวม | Ao รวม PM ได้ (ทางเลือก), AT ไม่รวม PM |
+| ชื่อ "technical" | ไม่ใช้ | AT/technical = intrinsic ใช้แทนกันได้ |
+
+ทั้งสองชุดใช้แนวเดียวกัน (Ai/AI = ฝั่งเครื่อง, Ao = ฝั่งหน้างาน) ต่างที่ตัวแปรและการมีหรือไม่มี Aa ข้อสังเกตของ wiki (ไม่ใช่ข้อความมาตรฐาน): สูตรแบบ MTBM น่าจะมาจากธรรมเนียม MIL/DoD (ความรู้ทั่วไป, confidence: low) wiki ยังไม่เลือกว่าจะยึดชุดใด ถ้ารายงานต้องเทียบ benchmark แบบ [[OREDA]] หรือ ISO ควรใช้ AI/Ao/AT ของ ISO และระบุว่ารวม PM หรือไม่ สูตร Availability ~ MTTF / (MTTF + MDT) ในหัวข้อ 1 ใกล้เคียง Ao ของ ISO (MUT / (MUT + MDT)) มากที่สุด (derived)
 
 ## 2. ตัวอย่างสมมติ (ไม่ใช่ข้อมูลจากหนังสือ)
 
@@ -72,3 +116,58 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - [[Reliability Metrics]]
 - [[Asset Life Cycle]]
 - [[Spare Parts Management]]
+
+## Triplets
+
+- RBMM MDT [has_formula:: MTTR + MWT] (RBMM Fig 1.2, p.17-20)
+- Availability [has_formula:: MTTF / (MTTF + MDT)] derived from Fig 1.2, not printed [confidence:: low]
+- OEE [has_formula:: Availability x Speed x Quality] (RBMM p.19-20)
+- OEE [has_part:: Availability Factor] almost 100% owned by maintenance (RBMM p.20)
+- OEE [has_part:: Speed Factor] mostly production side
+- OEE [has_part:: Quality Factor] mostly production side
+- MTTF [measures:: Reliability] owner Reliability / PM strategy
+- MTTR [depends_on:: Tools, Methods, Skill, Planning]
+- MWT [depends_on:: Spare Part Stock Performance] waiting mostly for spares; logistics
+- Production Output [depends_on:: OEE] also Capacity, Production Plan (RBMM p.19)
+- Inherent Availability Ai [has_formula:: MTBF / (MTBF + MTTR)] general knowledge, corrective only [confidence:: low] [contested:: true]
+- Achieved Availability Aa [has_formula:: MTBM / (MTBM + M)] general knowledge, M = mean active maintenance time [confidence:: low] [contested:: true]
+- Operational Availability Ao General [has_formula:: MTBM / (MTBM + MDT)] general knowledge, all downtime [confidence:: low] [contested:: true]
+- MTBM [has_label:: Mean Time Between Maintenance] corrective and preventive [confidence:: low]
+- Availability [related_to:: Operational Availability Ao General] MTTF/(MTTF + MDT) closest to Ao because it includes MWT
+- Inherent Availability Ai [has_value:: Ai ≥ Aa ≥ Ao] high Ai with low Ao means logistics/spares or planning problem [confidence:: low]
+- Intrinsic Availability AI [has_formula:: MTTF / (MTTF + MTTRes)] (ISO 14224 C.10, cl. C.2.3) [contested:: true]
+- Operational Availability Ao ISO [has_formula:: MUT / (MUT + MDT)] (ISO 14224 C.9) [contested:: true]
+- Annual Operational Availability Ao,y [has_formula:: (8760 - (tC + tP)) / 8760] (ISO 14224 C.14)
+- Annual Technical Availability AT,y [has_formula:: (8760 - tC) / 8760] corrective only (ISO 14224 C.15)
+- KPI 7 AO [measures:: Operational Availability Ao ISO] CM + PM, taxonomy level 6 (ISO 14224 Annex E)
+- KPI 8 AT [measures:: Intrinsic Availability AI] corrective only (ISO 14224 Annex E)
+- Intrinsic Availability AI [alias_of:: Technical Availability AT] synonyms technical, inherent (ISO 14224)
+- Intrinsic Availability AI [has_value:: AI = Ao when MDT = MTTRes] (ISO 14224 cl. C.2.3.2, p.212)
+- Operational Availability Ao ISO [depends_on:: MDT] context property: installation, procedure, policy, support
+- Availability [depends_on:: Failure Rate] λ and μ estimated separately; see [[Failure Rate Estimation]] and [[Maintenance Time Definitions]]
+- Availability [differs_from:: Reliability] availability at an instant, reliability over interval (ISO 14224 cl. C.2.1, p.210)
+- Inherent Availability Ai [contradicts:: Intrinsic Availability AI] general uses MTBF/MTTR, ISO uses MTTF/MTTRes [contested:: true]
+- Achieved Availability Aa [contradicts:: ISO 14224 Availability Set] ISO has no Aa and no MTBM [contested:: true]
+- Operational Availability Ao General [contradicts:: Operational Availability Ao ISO] MTBM/(MTBM + MDT) vs MUT/(MUT + MDT) [contested:: true]
+- Operational Availability Ao ISO [contradicts:: Operational Availability Ao General] ISO sourced; preferred for OREDA/ISO benchmarking, convention not chosen [contested:: true]
+- MTBM Availability Formulas [defined_in:: MIL/DoD Convention] wiki observation, general knowledge [confidence:: low]
+- Hypothetical Availability Example [has_value:: 97.6%] MTTF = 2,000, MTTR = 20, MWT = 30, MDT = 50 h; assumed not from book [confidence:: low]
+- Hypothetical Availability Example [has_value:: 98.5%] MWT reduced to 10 h, MDT = 30 h [confidence:: low]
+- Asset Utilization [has_formula:: actual running time / total planned production time] (RBMM Fig 2.9, p.49-51)
+- Unplanned Down Time [measures:: Unit Availability] activity 4 indices with Availability Factor and MDT
+- MTTF [is_a:: Maintenance KPI] activity 5 reliability improvement
+- MTTR [is_a:: Maintenance KPI] activity 8, Repair + Wait labor
+- MWT [is_a:: Maintenance KPI] activity 9 stock performance with Turnover, Stockout Rate, Service Factor
+- Unplanned Down Time [depends_on:: MTTR] also number of unplanned repairs and MWT (RBMM p.50); see [[Maintenance KPIs]]
+- OEE [input_to:: [[Maintenance Strategic Report]]] section D, D1.2 OEE variance (RBMM p.63, 66, 83-84)
+- Strategic Report Example [has_value:: 376,000 / 477,500 / 576,000] actual output P1/P2/P3; variance (4,000) / 2,500 / 6,000
+- Strategic Report Example [has_value:: 4.63 / (6.89) / (11.41)] D2.2 cost per unit
+- Budget Example [has_value:: Budget OEE 95%] per process, from ch10 notes, unverified; see [[Maintenance Budget]] [confidence:: low]
+- Zero Plant Down Time [depends_on:: Zero Equipment Down Time] of plant-stopping equipment (RBMM p.27); see [[Asset Life Cycle]]
+- Asset Performance Report [has_part:: Failure Rate] component level; equipment level = Reliability, Availability, Maintainability (RBMM p.62-63)
+- Availability [related_to:: [[Redundancy and Standby Systems]]] redundancy changes system availability; see [[Reliability Block Diagram]]
+- [[OREDA]] [input_to:: Availability] MTTF = 1/lambda for [[Compressor]]; OREDA gives no MTTR/MWT
+- [[UST Spurious Stop]] [contributes_to:: Availability] stops machine; also FTS
+- [[LOO Low Output]] [contributes_to:: OEE] speed/output, degraded
+- MWT [related_to:: [[Spare Part Criticality and Risk]]] critical spares of [[Maintainable Item]]
+- [[Availability and OEE]] [related_to:: [[Spare Parts Management]]]

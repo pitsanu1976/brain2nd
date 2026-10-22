@@ -1,7 +1,7 @@
 ---
 title: EOQ and Reorder Point
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: concept
 tags: [spare-parts, statistics, cost, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -123,3 +123,47 @@ ROP = (12/365) x 90 + 2 = 2.95 + 2 ~ 5 ชิ้น   (ใช้เป็น Min
 - [[Spare Part Criticality and Risk]]
 - [[Spare Part Demand Forecasting]]
 - [[Statistical Distributions for Maintenance]]
+
+## Triplets
+
+- [[EOQ and Reorder Point]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9
+- [[EOQ and Reorder Point]] [part_of:: [[Spare Parts Management]]]
+- EOQ [alias_of:: Economic Order Quantity]
+- Reorder Point [alias_of:: Min]
+- Lead Time [measures:: time from PR to part ready in store] (RBMM p.247)
+- Safety Stock [measures:: buffer for demand and supply variation] (RBMM p.248)
+- Z [measures:: number of sigma for required confidence] one-sided (RBMM p.249)
+- EOQ [has_parameter:: Ch] holding cost per unit per year
+- EOQ [has_parameter:: Cp] purchasing cost per order; differs from Cp in chapter 8 (PM cost)
+- EOQ [has_parameter:: A] annual usage
+- EOQ [has_parameter:: Q] order quantity
+- Average Stock [has_formula:: Q/2] constant LT and demand (RBMM p.252, Fig 9.10)
+- Total Inventory Cost [has_formula:: (Q/2) x Ch + (A/Q) x Cp] (RBMM p.253)
+- EOQ [has_formula:: sqrt( 2 x A x Cp / Ch )] minimum when holding cost = purchasing cost (RBMM p.252-253)
+- Ordering Cost Term [has_formula:: (A/Q) x Cp] book p.253 misprints Q/2 x Cp (RBMM p.253)
+- Ch [has_formula:: holding rate x unit price] derived, not written in book [confidence:: low]
+- Ch [depends_on:: Holding Cost] about 15-20% of part price per year (RBMM p.16, p.234)
+- EOQ [depends_on:: Shelf Life] short shelf life limits quantity (RBMM p.256)
+- EOQ [applies_to:: Fast Moving] and Low Criticality (RBMM p.238)
+- Reorder Point [has_formula:: Demand Rate x Lead Time] constant case (RBMM p.247)
+- Reorder Point [has_formula:: D_avg x LT_avg + SS] variable demand and LT (RBMM p.253-255)
+- Safety Stock [has_formula:: z x sigma_combined] (RBMM p.253-255)
+- sigma_combined [has_formula:: sqrt( (sigma_D)^2 x LT_avg + (sigma_LT x D_avg)^2 )] (RBMM p.253-255, Fig 9.13)
+- Reorder Point [depends_on:: Safety Stock]
+- Safety Stock [depends_on:: Confidence Level] via Z
+- Risk of Stock out [has_formula:: 1 - Confidence] (RBMM Fig 9.13)
+- Reorder Point [uses:: Normal Distribution] demand and LT assumed Normal (RBMM Fig 9.12)
+- Z [has_value:: 1.0000] Confidence 0.841 (RBMM p.249, Fig 9.8)
+- Z [has_value:: 1.2816] Confidence 0.900 (RBMM p.249, Fig 9.8)
+- Z [has_value:: 1.6446] Confidence 0.950 (RBMM p.249, Fig 9.8)
+- Z [has_value:: 1.9600] Confidence 0.975 (RBMM p.249, Fig 9.8)
+- Z [has_value:: 2.5758] Confidence 0.995 (RBMM p.249, Fig 9.8)
+- Z [has_value:: 2.8070] Confidence 0.9975 (RBMM p.249, Fig 9.8)
+- Safety Stock [has_value:: 2.035 ~ 2 pieces] example D_avg 12/365 per day, LT_avg 90 d, sigma_D 0.14, sigma_LT 26.5 d, Z 1.2816 (RBMM p.255-256)
+- Reorder Point [has_value:: 2.95 + 2 ~ 5 pieces] example, used as Min (RBMM p.255-256)
+- Lead Time Variance Term [has_value:: about 30%] share of total variance in example, 0.759 / 2.523, derived [confidence:: low]
+- Lead Time [has_value:: 20% reduction halves average stock] book claim, no calculation shown (RBMM p.247) [confidence:: low]
+- Reorder Point [differs_from:: Poisson Distribution] Normal not suited to 0-5 pieces per year; use Poisson or Monte Carlo, see [[Spare Part Demand Forecasting]]
+- Reorder Point [related_to:: [[Statistical Distributions for Maintenance]]]
+- Reorder Point [part_of:: Spare Part Database] group 3 calculated field in [[CMMS]] (RBMM p.102)
+- EOQ [part_of:: Spare Part Database] group 3 calculated field in [[CMMS]] (RBMM p.102)

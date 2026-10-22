@@ -1,7 +1,7 @@
 ---
 title: PM Task Selection
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [pm, rcm, reliability, weibull, maintenance-management, book]
 sources: [reliability-based-maintenance-management.md]
@@ -107,3 +107,50 @@ TTF 4 ครั้ง (16,000, 12,000, 11,000, 8,500 ชม.) fit ได้ beta
 - [[Redundancy and Standby Systems]]
 - [[RCM Reliability Centered Maintenance]]
 - [[Criticality Assessment]]
+
+## Triplets
+
+- [[PM Task Selection]] [applies_to:: [[Failure Mode]]] select per failure mode, not per equipment (RBMM ch7)
+- [[PM Task Selection]] [selects:: Condition Monitoring] task type 1, on-condition (Nowlan and Heap, RBMM p.180)
+- [[PM Task Selection]] [selects:: Scheduled Overhaul or Discard] task type 2, restoration/discard (RBMM p.180)
+- [[PM Task Selection]] [selects:: Scheduled Failure Finding] task type 3 (RBMM p.180)
+- [[PM Task Selection]] [selects:: Run to Failure] task type 4 (RBMM p.180)
+- [[PM Task Selection]] [selects:: Redesign] task type 5 (RBMM p.180)
+- [[PM Task Selection]] [step_of:: [[RCM Reliability Centered Maintenance]]] decision chart Fig 5.10-5.11 = Fig 7.1-7.2 (RBMM p.126)
+- [[FMECA]] [input_to:: [[PM Task Selection]]] task selection follows FMECA (RBMM p.126)
+- Nowlan and Heap Decision Chart [uses:: Evident Failure] split Evident vs Hidden first, then Safety vs Economic (Fig 7.1, RBMM p.181)
+- Redesign [applies_to:: Evident Safety Consequence] Redesign is Required (Fig 7.1)
+- Combination of Tasks [applies_to:: Evident Safety Consequence] (Fig 7.1)
+- Run to Failure [applies_to:: Evident Operational Consequence] also Evident Non-Operational; Redesign may be desirable (Fig 7.1)
+- Scheduled Failure Finding [applies_to:: Hidden Failure] (Fig 7.1)
+- Condition Monitoring [applies_to:: Hidden Failure] also Restore/Overhaul, Discard/Replace; option in all groups (Fig 7.1)
+- SAE JA1012 Decision Chart [differs_from:: Nowlan and Heap Decision Chart] splits Hidden into Safety and Economic, more weight on Safety and Environment (Fig 7.2, RBMM p.181)
+- SAE JA1012 Decision Chart [defined_in:: SAE JA1012] also SAE JA1011
+- Redesign [applies_to:: Environment Consequence] Redesign Compulsory with Safety (SAE JA1012, Fig 7.2)
+- No Scheduled Maintenance [alias_of:: Run to Failure] JA1012 replaces Nowlan and Heap Run to Failure (Fig 7.2)
+- [[PM Task Selection]] [uses:: Applicable and Feasible Criteria] technically possible and worth doing (Fig 7.3, RBMM p.182-183)
+- Task Question 1 [step_of:: [[PM Task Selection]]] Condition Monitoring/Inspection applicable and feasible? yes = Scheduled on-Condition Task, cheapest (Fig 7.3)
+- Task Question 2 [step_of:: [[PM Task Selection]]] Scheduled Replacement/Overhaul applicable and feasible? yes = Scheduled Discard or Restoration (Fig 7.3)
+- Task Question 3 [step_of:: [[PM Task Selection]]] Hidden Failure? yes = Failure Finding Task (Fig 7.3)
+- Task Question 4 [step_of:: [[PM Task Selection]]] remaining: Redesign (compulsory if severe Safety/Environment) or Run to Failure (Fig 7.3)
+- Run to Failure [applies_to:: No Consequence] or nothing worth doing (RBMM p.183)
+- Shape Parameter Beta [input_to:: [[PM Task Selection]]] needs failure data per failure mode (RBMM p.183-189)
+- Infant Mortality [depends_on:: Shape Parameter Beta] beta < 1: PM cannot fix; review parts quality, workmanship, misuse; PM may be the cause (RBMM p.184)
+- Random Failure [depends_on:: Shape Parameter Beta] beta = 1, constant failure rate (RBMM p.185-187)
+- Condition Monitoring [applies_to:: Random Failure] beta = 1; scheduled replace/overhaul adds no reliability (RBMM p.185-187)
+- Condition Monitoring [applies_to:: Shape Parameter Beta Near 1] minor part, slowly rising rate, if easy to access and replace (RBMM p.187)
+- Wear-Out Failure [depends_on:: Shape Parameter Beta] beta much greater than 1, clustered life t1-t2 (RBMM p.188)
+- Scheduled Overhaul or Discard [applies_to:: Wear-Out Failure] also Condition Monitoring or Part Replacement (RBMM p.188)
+- Shape Parameter Beta [has_value:: near 1] when several failure modes are pooled; separate modes first (RBMM p.185)
+- Scheduled Replacement [has_value:: 47.0158%] R(80) x R(40) with replace every 80 h equals R(120) without replacement at beta = 1 (RBMM p.186)
+- Conditional Reliability [has_value:: 77.758%] Rc(120/80) = 0.470158/0.604639 (RBMM p.186)
+- Weibull Eta [has_value:: about 159-160 h] inferred for beta = 1 proof, derived [confidence:: low]
+- High Beta Example [has_value:: 3.788] beta, eta about 13,130 h, TTF 16,000/12,000/11,000/8,500 h, pattern A (RBMM p.199)
+- High Beta Example [selects:: Scheduled Overhaul or Discard] scheduled replacement or Condition Monitoring; constant rate assumption wrong (RBMM p.199)
+- [[PM Task Selection]] [applies_to:: Dominant Failure Mode] start here, about 80% of problems/cost (RBMM p.206)
+- Scheduled Failure Finding [applies_to:: Protective Device] hidden failure of protective/standby, not age-based replacement
+- Redesign [applies_to:: Random Failure] with Safety/Environment impact: redesign or condition-based, not more frequent PM
+- [[PM Task Selection]] [depends_on:: Site-Specific History] OREDA has only relative %, no beta (RBMM p.223, p.231)
+- [[PM Task Selection]] [uses:: [[Failure Cause Codes]]] separate mode and cause coding in CMMS, since pooling gives beta near 1
+- Scheduled Failure Finding [applies_to:: [[AIR Abnormal Instrument Reading]]] protective/instrument loop, suggestion not in sources [confidence:: low]
+- Scheduled Failure Finding [applies_to:: [[UST Spurious Stop]]] suggestion not in sources [confidence:: low]

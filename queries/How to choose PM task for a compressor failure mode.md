@@ -1,7 +1,7 @@
 ---
 title: How to choose PM task for a compressor failure mode
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: query
 tags: [query, pm, rcm, criticality, compressor, book]
 sources: [reliability-based-maintenance-management.md, compressor-failure-hierarchy.md]
@@ -38,3 +38,39 @@ contested: false
 - [[RBMM Concepts vs Compressor Failure Hierarchy]]
 - [[FMECA]]
 - [[Which failure modes dominate compressor failure rate]]
+
+## Triplets
+
+- Define Analysis Unit [step_of:: [[How to choose PM task for a compressor failure mode]]] step 1: failure mode per maintainable item, not per equipment (RBMM p.185)
+- Assess Criticality [step_of:: [[How to choose PM task for a compressor failure mode]]] step 2: Consequence x Likelihood, A/B/C
+- Classify Consequence And Hidden/Evident [step_of:: [[How to choose PM task for a compressor failure mode]]] step 3: Nowlan & Heap or SAE JA1012
+- Check Beta And Failure Pattern [step_of:: [[How to choose PM task for a compressor failure mode]]] step 4: needs time-to-failure per mode from CMMS
+- Select Task Type [step_of:: [[How to choose PM task for a compressor failure mode]]] step 5: simplified question order (RBMM p.182-183)
+- Determine Interval [step_of:: [[How to choose PM task for a compressor failure mode]]] step 6
+- Prepare Spare Parts [step_of:: [[How to choose PM task for a compressor failure mode]]] step 7: part criticality by price, lead time, pre-checkability
+- Define Analysis Unit [uses:: [[Maintainable Item]]] e.g. Seals x ELP
+- Assess Criticality [uses:: [[Criticality Assessment]]] Commercial, Safety, Environment
+- [[Criticality Assessment]] [selects:: [[RCM Reliability Centered Maintenance]]] class A uses full RCM tasks
+- [[Criticality Assessment]] [selects:: Run To Failure] class C may run to failure; B/C drop ineffective PM
+- Classify Consequence And Hidden/Evident [uses:: [[RCM Reliability Centered Maintenance]]] Safety/Environment, Economic (Operational/Non-Operational), Hidden
+- Classify Consequence And Hidden/Evident [uses:: [[Failure Finding Interval]]] when failure is hidden, e.g. protective device
+- Check Beta And Failure Pattern [uses:: [[Weibull Analysis]]]
+- Check Beta And Failure Pattern [uses:: [[Failure Patterns and Bathtub Curve]]]
+- [[Failure Data Recording]] [input_to:: Check Beta And Failure Pattern] time-to-failure per mode from CMMS
+- [[Weibull Analysis]] [selects:: Root Cause Investigation] beta < 1: PM cannot fix, find cause
+- [[Weibull Analysis]] [selects:: Condition Monitoring] beta = 1: time-based replacement does not help
+- [[Weibull Analysis]] [selects:: Condition Monitoring] beta >> 1: condition monitoring, replacement or overhaul
+- [[Compressor]] [has_value:: no beta] wiki has no beta of compressor; step 4 blocked until Valeura data
+- Select Task Type [uses:: [[P-F Interval and Condition Monitoring]]] order: condition monitoring, scheduled replacement/overhaul, failure finding (if hidden), then redesign or run to failure
+- Condition Monitoring Interval [has_formula:: (P-F)/2]
+- [[Failure Finding Interval]] [has_formula:: FFI = 2 x U x MTBF]
+- Determine Interval [uses:: [[PM Interval Optimization]]] time-based: minimum cost per unit time with Cp/Cf
+- Determine Interval [uses:: [[Monte Carlo Maintenance Simulation]]]
+- Prepare Spare Parts [uses:: [[Spare Part Criticality and Risk]]]
+- Prepare Spare Parts [uses:: [[Spare Parts Management]]]
+- Prepare Spare Parts [uses:: [[EOQ and Reorder Point]]]
+- [[How to choose PM task for a compressor failure mode]] [depends_on:: [[Reliability Based Maintenance Management Book]]] sequence from the book
+- [[ELP External Leakage Process Medium]] [related_to:: [[Criticality Assessment]]] consequence may be high for Safety/Environment, rate separately from ELU (wiki proposal)
+- [[UST Spurious Stop]] [related_to:: [[Failure Finding Interval]]] mostly from Instruments/Control unit; may relate to failure finding of protective loop (wiki proposal)
+- VIB [related_to:: Condition Monitoring] may suit condition monitoring (wiki proposal)
+- [[OHE Overheating]] [related_to:: Condition Monitoring] may suit condition monitoring (wiki proposal)

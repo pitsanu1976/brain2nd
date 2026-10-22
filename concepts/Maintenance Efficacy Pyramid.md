@@ -1,7 +1,7 @@
 ---
 title: Maintenance Efficacy Pyramid
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
 tags: [maintenance-management, kpi, budget, cmms, book]
 sources: [reliability-based-maintenance-management.md]
@@ -91,3 +91,45 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - [[Maintenance KPIs]]
 - [[Maintenance Strategic Report]]
 - [[RCM Reliability Centered Maintenance]]
+
+## Triplets
+
+- [[Maintenance Efficacy Pyramid]] [has_value:: 6 levels] maturity of maintenance organization (Fig 2.2, RBMM p.35-40)
+- [[Maintenance Efficacy Pyramid]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 2
+- [[Maintenance Efficacy Pyramid]] [uses:: 16-Topic Assessment] radar chart, 16 axes, 0-100% (Fig 2.1, RBMM p.32-35)
+- Maintenance Cost Accounting [part_of:: 16-Topic Assessment] topic 2, one of 6 most important (RBMM p.35)
+- Maintenance Performance Budgeting [part_of:: 16-Topic Assessment] topic 3, one of 6 most important (RBMM p.35)
+- Performance Measuring Reporting and Control [part_of:: 16-Topic Assessment] topic 4, one of 6 most important; frequent root cause (RBMM p.33-35)
+- Organization [part_of:: 16-Topic Assessment] topic 7, one of 6 most important (RBMM p.35)
+- Method and Technical Management [part_of:: 16-Topic Assessment] topic 10, one of 6 most important (RBMM p.35)
+- Spare Part Management [part_of:: 16-Topic Assessment] topic 13, one of 6 most important; linked to topics 2-7 and 10 (RBMM p.34-35)
+- Spare Part Cost [has_value:: > 60-70%] of maintenance cost (RBMM p.34)
+- Holding Cost [has_value:: 15-20%] of spare part price (RBMM p.34)
+- Reactive [step_of:: [[Maintenance Efficacy Pyramid]]] level 1: break and fix (Fig 2.2)
+- Immature [step_of:: [[Maintenance Efficacy Pyramid]]] level 2: good process, poor content (Fig 2.2)
+- Maintenance Work Control [step_of:: [[Maintenance Efficacy Pyramid]]] level 3, do first: strategies, accountability, planning/scheduling, parts, work control indices (Fig 2.2, p.36-38)
+- Maintenance Cost Control [step_of:: [[Maintenance Efficacy Pyramid]]] level 4: cost accounting, full cost per unit, cost control indices (Fig 2.2)
+- Maintenance Performance Budgeting [step_of:: [[Maintenance Efficacy Pyramid]]] level 5: workload budget, full fixed cost rate, cost per unit produced (Fig 2.2)
+- Maintenance Optimization [step_of:: [[Maintenance Efficacy Pyramid]]] level 6: planned maintenance and spare part optimization (Fig 2.2)
+- Best in Class and Sustainable [part_of:: [[Maintenance Efficacy Pyramid]]] top of pyramid (Fig 2.2)
+- Accountability [differs_from:: Responsibility] must explain results and reasons when asked (RBMM p.37)
+- Cost Control [differs_from:: Loss Control] loss control depends on strategy, do the right thing and do the thing right (RBMM p.38-39)
+- Total Maintenance [has_formula:: Total Planned + Total Unplanned] each split into Man-Hrs and Materials plus losses (Fig 2.3, RBMM p.39-40)
+- [[PM Task Selection]] [step_of:: Maintenance Improvement Cycle] PM Selection? via RCM Process (Fig 2.4, RBMM p.40-42)
+- [[PM Interval Optimization]] [step_of:: Maintenance Improvement Cycle] Optimum PM Interval? (Fig 2.4)
+- [[Spare Part Criticality and Risk]] [step_of:: Maintenance Improvement Cycle] Stock Performance? risk based spare part optimization (Fig 2.4)
+- [[Maintenance Budget]] [step_of:: Maintenance Improvement Cycle] Budgeting and Control? performance budgeting (Fig 2.4)
+- [[Maintenance Strategic Report]] [step_of:: Maintenance Improvement Cycle] Problem of Reporting? (Fig 2.4)
+- [[Criticality Assessment]] [step_of:: Reliability Based Maintenance Selection and Optimization] step 1 select equipment by criticality (Fig 2.5, RBMM p.42-43)
+- [[FMECA]] [step_of:: Reliability Based Maintenance Selection and Optimization] step 2 qualitative RPN (Fig 2.5)
+- [[Weibull Analysis]] [step_of:: Reliability Based Maintenance Selection and Optimization] step 3 failure data analysis, quantitative criticality (Fig 2.5)
+- [[PM Task Selection]] [step_of:: Reliability Based Maintenance Selection and Optimization] step 4 select PM type (Fig 2.5)
+- [[PM Interval Optimization]] [step_of:: Reliability Based Maintenance Selection and Optimization] step 5 optimal task interval (Fig 2.5)
+- Reliability Based Maintenance Selection and Optimization [selects:: Scheduled Overhaul or Discard] scheduled replacement/overhaul (Fig 2.5)
+- Reliability Based Maintenance Selection and Optimization [selects:: Condition Monitoring] scheduled CM/inspection (Fig 2.5)
+- Reliability Based Maintenance Selection and Optimization [selects:: Scheduled Failure Finding] hidden failure finding (Fig 2.5)
+- Reliability Based Maintenance Selection and Optimization [selects:: Run to Failure] (Fig 2.5)
+- [[Maintenance Efficacy Pyramid]] [has_value:: 6 maintenance diseases] CMMS not worth it, poor PM selection, wrong PM interval, no stock level, no budgeting (most important), no feedback report (RBMM p.54)
+- [[Maintenance KPIs]] [input_to:: [[Maintenance Efficacy Pyramid]]] self-assessment starting point (RBMM p.54)
+- [[RCM Reliability Centered Maintenance]] [has_value:: 1978] origin year as stated by book, not cross-checked (RBMM p.43)
+- Maintenance Work Control [uses:: [[Failure Data Recording]]] minimum record: failure mode/cause, Man-Hrs, PM type, parts, date-time, cost, equipment to part level (RBMM p.53)

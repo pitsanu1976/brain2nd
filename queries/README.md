@@ -1,7 +1,7 @@
 ---
 title: Queries README
 created: 2026-10-20
-updated: 2026-10-21
+updated: 2026-10-23
 type: query
 tags: [query, convention]
 sources: []
@@ -18,5 +18,6 @@ contested: false
 - [[Which failure modes dominate compressor failure rate]]
 - [[Which maintainable item and mode pairs drive failure rate]]
 - [[How to choose PM task for a compressor failure mode]]
+- [[How does Weibull help reliability]]
 
 กติกาอยู่ใน [[SCHEMA]] และขั้นตอนใน [[Using Claude Code on a Vault]]

@@ -1,10 +1,10 @@
 ---
 title: Censored Data
 created: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-22
 type: concept
-tags: [reliability, weibull, statistics, data-quality, cmms, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [reliability, weibull, statistics, data-quality, cmms, book, iso-14224]
+sources: [reliability-based-maintenance-management.md, iso-14224.md]
 confidence: medium
 contested: false
 ---
@@ -78,6 +78,15 @@ MON = ค่าเฉลี่ยถ่วงน้ำหนักของต�
 
 β = 3.5008 นี้เป็นข้อมูลคนละชุดกับ TTF 8,500-16,000 ชม. ใน [[Weibull Analysis]]
 
+## มุมมอง ISO 14224 (sources: iso-14224.md)
+
+- Annex C **ไม่ครอบคลุม** censoring หรือวิธี MON โดยตรง ไม่มีนิยาม left/right/interval censored ในมาตรฐาน
+- ช่วงเวลาที่ไม่มี failure ก็ยังมีค่า ใช้ประมาณ failure rate แบบ censored พร้อม confidence limits (Annex B.1, p.176; cl. 8.3.2, p.33-34)
+- การใช้ aggregated surveillance time τ ใน λ̂ = n/τ คือการนับเวลาของ item ที่ยังไม่เสียเข้าไปด้วย ซึ่งเทียบได้กับการใช้ข้อมูล right-censored ภายใต้สมมติ exponential (การตีความของ wiki) ดู [[Failure Rate Estimation]] ส่วน RBMM ใช้ MON เพื่อ fit Weibull ต่างวิธีกัน ไม่ขัดกัน
+- Annex D ระบุว่า failure date จำเป็นต่อ lifetime analysis (TTT-plot, Weibull) ไม่ควรทิ้ง (Table D.3, p.230-234)
+- งาน preventive ที่เปลี่ยน consumable หรือ wear part ตามรอบไม่นับเป็น failure ทั้ง reliability และ availability (Table B.1, p.177) ตรงกับการลงเป็น suspension ในหนังสือ
+- ISO ตัด planned maintenance ออกจาก failure และให้บันทึก detection method ของ failure ที่พบระหว่าง PM เป็นประเภท PM นั้น (cl. 9.6.3, p.43)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ข้อมูล [[OREDA]] / [[ISO 14224]] มี surveillance period และแยก failure ออกจาก planned maintenance เป็นแนวคิดเดียวกับ censoring: planned replacement ของ seal/bearing ใน [[Compressor]] ต้องลงเป็น suspension ไม่ใช่ failure
@@ -90,3 +99,47 @@ MON = ค่าเฉลี่ยถ่วงน้ำหนักของต�
 - [[Reliability Metrics]]
 - [[Failure Data Recording]]
 - [[Statistical Distributions for Maintenance]]
+
+## Triplets
+
+- [[Censored Data]] [is_a:: Incomplete Time to Fail Data] exact life to failure unknown
+- [[Censored Data]] [input_to:: [[Weibull Analysis]]] via MON without discarding suspensions
+- [[Censored Data]] [depends_on:: [[CMMS]]] install point, start time, failure/replacement time, failure vs scheduled PM (RBMM p.170-172)
+- [[Censored Data]] [related_to:: [[Failure Data Recording]]]
+- Discarding Suspensions [produces:: Biased Estimate] life too short; counting suspensions as failures is worse
+- Complete Data [is_a:: Time to Fail Data Type] F, failure time known
+- Right Censored Data [is_a:: Time to Fail Data Type] S, suspension, not failed or replaced before failure
+- Right Censored Data [has_value:: PM part replacement by hours] example
+- Interval Censored Data [is_a:: Time to Fail Data Type] failed between two inspections
+- Left Censored Data [is_a:: Time to Fail Data Type] start or failure time unknown; hidden failure such as fuse, safety device
+- Fig 6.19 Case 5 [has_category:: Left Censored Data] book label; actually both left and right censored (RBMM p.171-172)
+- Fig 6.19 Case 4 [has_category:: Left Censored Data] unknown start, failed in window
+- Fig 6.19 Case 6 [has_category:: Interval Censored Data]
+- RBMM ch6 Left Censored Definition [differs_from:: RBMM ch12 Left Censored Definition] ch6 p.171 unknown start of use; ch12 p.385 unknown failure time (hidden failure); both usable if stated
+- Complete Data [uses:: Median Rank] plotted directly (RBMM p.384-385)
+- Interval Censored Data [uses:: Interval Midpoint] also Left Censored Data
+- Right Censored Data [input_to:: MON] adjusts failure rank, not plotted itself
+- MON [has_label:: Mean Order Number]
+- MON [is_a:: Weighted Mean Of Possible Failure Positions]
+- Median Rank [has_formula:: MR = (MON - 0.3) / (N + 0.4)] N = all data F + S (RBMM p.384-385)
+- MON Example 5 Values [has_value:: 456 (F1), 597 (S1), 879 (F2), 1009 (S2), 1207 (F3)] (RBMM p.385-388)
+- MON Example 5 Values [has_value:: MON = 1, 2.25, 4.125] MON2 = (2x6 + 3x2)/8, MON3 = (3x2 + 4x3 + 5x3)/8
+- MON Example 5 Values [has_value:: β = 2.1740, η = 1163.94] Y regression, N = 5, failures = 3
+- MON Example 5 Values [has_value:: β = 2.2279, η = 1152.89] X regression
+- Motor Bearing Example [has_value:: 555 (F1), 856 (F2), 907 (S1), 936 (F3), 1,126 (S2) days] unplanned = F, planned = S (RBMM p.388-392)
+- Motor Bearing Example [has_value:: MON = 1, 2, 4] MR = 0.1296, 0.3148, 0.6852; MON3 = (2x3 + 2x4 + 2x5)/6
+- Motor Bearing Example [has_value:: β = 3.5008, η = 996.70 days] Y regression; book summary β = 3.5, η = 996.69
+- Motor Bearing Example [has_value:: β = 4.108, η = 958.15] X regression
+- Motor Bearing Example [selects:: Time-based PM] β 3.5 > 1 wear-out
+- Motor Bearing Example [input_to:: [[PM Interval Optimization]]] interval about 480 days
+- Motor Bearing Example [differs_from:: Weibull Example TTF 8500-16000] different dataset
+- [[ISO 14224]] [differs_from:: MON] Annex C does not cover censoring or MON; no left/right/interval censored definitions
+- Failure-free Period [input_to:: [[Failure Rate Estimation]]] censored estimate with confidence limits (ISO 14224 Annex B.1, cl. 8.3.2)
+- Constant Failure Rate MLE [uses:: [[Censored Data]]] aggregated τ counts unfailed items, right-censored under exponential (wiki interpretation)
+- [[Weibull Analysis]] [uses:: Failure Date] needed for lifetime analysis (ISO 14224 Table D.3)
+- Scheduled Consumable Replacement [has_category:: Right Censored Data] not a failure for reliability or availability (ISO 14224 Table B.1, p.177)
+- Failure Found During PM [detected_by:: PM Type] planned maintenance excluded from failures (ISO 14224 cl. 9.6.3, p.43)
+- Planned Seal Or Bearing Replacement [has_category:: Right Censored Data] in [[Compressor]], suspension not failure
+- [[Censored Data]] [uses:: [[Failure Cause Codes]]] with [[Resolution Codes]]: install date, failure date, hours, planned/unplanned per item and mode
+- Protective Device Hidden Failure [has_category:: Left Censored Data] also interval censored; PSV, trip; see [[Failure Finding Interval]]
+- [[Censored Data]] [related_to:: [[Statistical Distributions for Maintenance]]]

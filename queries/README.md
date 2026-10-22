@@ -19,5 +19,6 @@ contested: false
 - [[Which maintainable item and mode pairs drive failure rate]]
 - [[How to choose PM task for a compressor failure mode]]
 - [[How does Weibull help reliability]]
+- [[How to set up CMMS failure structure to support FMECA]]
 
 กติกาอยู่ใน [[SCHEMA]] และขั้นตอนใน [[Using Claude Code on a Vault]]

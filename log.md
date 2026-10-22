@@ -77,3 +77,10 @@
 - เนื้อหา: β → รูปแบบการเสียและประเภทงาน PM, η, ตัวอย่าง RBMM (β 3.7888, η 13,130.8 ชม., R/MTTF/conditional R), T(R=0.8) ≈ 8,837 ชม. derived (หนังสือพิมพ์ 13,847.81 ผิด), การใช้ต่อใน PM optimization/simulation/อะไหล่, ISO 14224 แนะนำ Weibull เมื่อ λ ไม่คงที่
 - เพิ่ม `## Triplets` 18 บรรทัด และ rebuild `graph/triplets.csv`
 - Pages: [[How does Weibull help reliability]], [[index]]
+
+## [2026-10-23] query | How to set up CMMS failure structure to support FMECA
+- ผู้ใช้ถาม "ตั้ง failure structure ใน CMMS ให้ support FMECA" และอนุมัติให้บันทึกเป็นหน้า query (ตามกติกา propose-then-approve ใน ~/.claude/CLAUDE.md)
+- เนื้อหา: โครง 3 ชั้น (master data: hierarchy ISO level 1-9 + catalog ISO Table B.2-B.6, C.2 + valid combination; FMECA library 1 แถวต่อ failure mode ต่อ MI ต่อ equipment class; WO failure report) และการปิด loop ให้ WO ปรับ O/S/D
+- ส่วนที่เป็นข้อเสนอ/ความรู้ทั่วไปติด confidence: low: valid combination จาก OREDA matrix, การ map detection method -> คะแนน D, ตัวอย่าง SAP catalog profile / Maximo failure hierarchy
+- เพิ่ม `## Triplets` 27 บรรทัด และ rebuild `graph/triplets.csv` (4,466 triplets, 0 error)
+- Pages: [[How to set up CMMS failure structure to support FMECA]], [[index]], [[queries/README]]

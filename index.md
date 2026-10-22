@@ -2,7 +2,7 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-23 | จำนวนหน้า wiki: 96 (entities 11, concepts 64, comparisons 4, guides 6, reference 6, queries 5; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-10-23 | จำนวนหน้า wiki: 97 (entities 11, concepts 64, comparisons 4, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
 Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM และ ISO 14224)
 
@@ -139,6 +139,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Which maintainable item and mode pairs drive failure rate]] — Instruments x AIR 13.54 ใหญ่สุด; 4 item รวม 57.59 (area ข)
 - [[How to choose PM task for a compressor failure mode]] — ขั้นตอน 7 ข้อ: criticality, consequence/hidden, beta/pattern, ประเภทงาน, คาบ, อะไหล่ (ไม่มี beta/P-F ของ compressor ใน sources) (area ข)
 - [[How does Weibull help reliability]] — β บอกรูปแบบการเสียและประเภทงาน PM, η, ตัวอย่าง R/MTTF/conditional R, T(R=0.8) ≈ 8,837 ชม. (หนังสือพิมพ์ผิด 13,848) (area ข)
+- [[How to set up CMMS failure structure to support FMECA]] — โครง 3 ชั้น: hierarchy + catalog ISO (B.2-B.6, C.2) + valid combination, FMECA library (S/O/D, task) และ WO ที่ปิด loop ปรับ O/S/D (area ข)
 
 ## graph/ (generated)
 

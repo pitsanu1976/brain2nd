@@ -1,10 +1,10 @@
 ---
 title: Maintenance KPIs
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224, work-management, cmrp]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -159,6 +159,49 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 
 ถือเป็นความไม่สอดคล้องภายในมาตรฐานเอง ไม่ใช่ข้อขัดแย้งกับ wiki (contested: false)
 
+## 6. มุมมองของ CMRP (เพิ่ม 2026-10-25)
+
+เนื้อหาจากหลักสูตร [[CMRP Course]] (secondary teaching source) ถอดความด้วยถ้อยคำของ wiki
+
+### 6.1 Wrench time ไม่ใช่ Utilization Factor (B5)
+
+| | Wrench time (CMRP) | Utilization Factor B5 (RBMM) |
+|---|---|---|
+| นิยาม | เวลาที่ช่างลงมือทำงานจริงกับเครื่อง ไม่รวมเดินทาง เบิกของ รอ เตรียม/เก็บ | Man-Hrs ที่ใช้ทำงานจริง (ลง WO) / Available Man-Hrs |
+| ค่าตัวอย่าง | ราว 30% ของเวลาทั้งหมด (15% PM + 15% CM) หรือ 12 ชม. จาก 40 ชม./สัปดาห์ | 58% actual, 60% budget และ 60% "สูงแล้ว" |
+| อ้างอิง | (CMRP CMPR-08 p.47-48) | (RBMM p.73-74) |
+
+- สองตัววัดคนละสิ่ง: B5 นับชั่วโมงที่ลงใน WO ซึ่งรวมเวลาเดินทาง เบิกของ และรอภายในงาน ส่วน wrench time นับเฉพาะเวลาลงมือ ตัวเลข 30% กับ 60% จึง **ไม่ขัดกัน** และห้ามเทียบตรง (การตีความของ wiki; ไม่ใช่ contested)
+- ผลของ planning ต่อ wrench time และการตรวจเลขตัวอย่างใน slide (ใช้ฐาน 12 กับ 15 ชม. ปนกัน) อยู่ที่ [[Maintenance Planning and Scheduling]]
+
+### 6.2 Planning, schedule และ backlog metrics
+
+| ตัวชี้วัด | สูตร/ค่า | อ้างอิง |
+|---|---|---|
+| Backlog (weeks) | ชั่วโมง WO เปิดที่ยังไม่ลงตาราง / capacity ต่อสัปดาห์; ดีที่ 2-3 สัปดาห์ (CMPR-09) หรือแถบ 3-6 สัปดาห์ (CMPR-10) | CMRP CMPR-09 p.39, p.43; CMPR-10 p.1 |
+| % Planned Work | planned WO / total WO (นับจำนวน WO) | CMRP CMPR-10 p.7 |
+| Planning Accuracy | Estimated Job Costs / Actual Job Costs; feedback ±15% | CMRP CMPR-10 p.7; CMPR-09 p.33 |
+| % Emergency | Emergency man-hours / Total maintenance man-hours | CMRP CMPR-10 p.7 |
+| Schedule Compliance | scheduled hours ที่ทำเสร็จ / scheduled hours | CMRP CMPR-10 p.8 |
+| Schedule Performance | scheduled hours ที่ทำเสร็จ / available hours | CMRP CMPR-10 p.8 |
+| Schedule Effectiveness | Schedule Performance x สัดส่วน direct work | CMRP CMPR-10 p.8 |
+
+- ดัชนีเหล่านี้ขยาย activity 18 Planning and Scheduling (Backlog, Work Overdue) ของ RBMM และ ISO KPI 19-20, 23-24 ในหัวข้อ 5.3 รายละเอียด การเล่นตัวเลข compliance และเหตุของ non-compliance อยู่ที่ [[Maintenance Backlog and Schedule Compliance]]
+- เป้า ISO schedule compliance มากกว่า 98% ควรอ่านคู่กับ Schedule Performance เพราะ compliance สูงได้ง่ายถ้าลงตารางเพียงส่วนน้อยของกำลังคน (CMRP CMPR-10 p.9)
+- % Planned Work ของ CMRP นับเป็นจำนวน WO ส่วนเป้า planned มากกว่า 85% ของ RBMM นับเป็น man-hours/cost ฐานต่างกัน
+
+### 6.3 การออกแบบ KPI (CMRP CMPR-03 p.31-48)
+
+- **Goal vs objective**: goal กว้าง วัดไม่ได้; objective ตอบ who/what/when/why/to what standard ความผิดพลาดที่พบบ่อยคือเขียนเป็น activity หรือ vision หรือมีมากเกิน (CMRP CMPR-03 p.31-32)
+- **SMART** = Specific, Measurable, Achievable, Realistic, Timed (p.33) ตัวอย่างแบบที่สไลด์ใช้: ลด downtime ของ critical mechanical equipment จาก 3% เป็น 2% ภายในสิ้นปี โดยระบุหน่วยงานรับผิดชอบและโปรแกรมที่ใช้ (p.34) ISO ก็แนะนำ KPI แบบ SMART (หัวข้อ 5.1)
+- จุดประสงค์หลักของ KPI คือ **เปลี่ยนพฤติกรรม** รองคือบอกสภาพระบบ; ให้วัด cause ไม่ใช่ effect และดู trend ไม่ใช่ event (p.34-37)
+- **KPI template** ควรมีองค์ประกอบ: title, purpose, relates to, target, formula, ความถี่การวัด, ความถี่การทบทวน, ผู้วัด, แหล่งข้อมูล, owner, ผู้ลงมือเมื่อผิดเกณฑ์, closed loop, notes (สไลด์บอก 13 องค์ประกอบ) (p.34-35)
+- **Warning และ action limits**: KPI ต้องมี target ที่ท้าทายแต่ทำได้ + upper/lower warning limit + upper/lower action limit ติดตามด้วย control chart (ดู [[Statistical Process Control]]) และมี owner ที่ต้องลงมือเมื่อเกิน limit; ห้ามตั้ง target โดยไม่มีทรัพยากร ไม่มี control limit หรือมอบให้คนที่คุมไม่ได้ (p.38-39)
+- **Leading vs lagging**: lagging = ผลการเงิน; leading = ลูกค้า, process, innovation (p.40) (ความรู้ทั่วไป: ในงานบำรุงรักษา ดัชนีเช่น PM compliance และ % planned work เป็น leading ส่วนต้นทุนและ availability เป็น lagging)
+- ตัวอย่าง KPI sheet "Total Maintenance Cost per Installed Horsepower": industry average 35, lowest 15, highest 60, world class 12 ไม่ระบุหน่วยเงิน **ข้อสังเกต**: world class (12) ต่ำกว่า industry lowest (15) ขัดกันเชิงตรรกะ ถ้า lowest คือค่าต่ำสุดของอุตสาหกรรม (CMRP CMPR-03 p.40-41)
+- **Balanced Scorecard**: แปลง mission/strategy เป็นชุด measure 4 มุม Financial, Customer, Internal Business Processes, Learning & Growth "balance" ระหว่างสั้น/ยาว การเงิน/ไม่ใช่การเงิน ภายนอก/ภายใน แล้ว cascade ลงถึงรายบุคคล (CMRP CMPR-03 p.41-45) สอดคล้องกับแนวคิดต้นไม้เป้าหมาย 3 ระดับของ RBMM (หัวข้อ 1-2) ที่ไล่จากองค์กรลงกิจกรรม
+- Reporting process: KRA (Quality, Profitability, Productivity, Energy, Environment) -> เลือก KPI ต่อ KRA -> ทดสอบ -> SMART -> วัดเทียบ limit -> นอกช่วงให้พิจารณา [[Root Cause Analysis]] -> review (CMRP CMPR-03 p.46-48)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ดัชนีข้อ 16 Failure Records (Failure Modes + Incidence Information) คือข้อมูลที่ [[ISO 14224]] กำหนดโครงสร้างไว้ ถ้า CMMS บันทึก failure mode ตาม [[Failure Mode]] และ cause ตาม [[Failure Cause Codes]] ได้ ดัชนี No. of failures, MTTF และ % CM-Unplanned จะแยกตาม mode/maintainable item ได้
@@ -174,6 +217,9 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - [[CMMS]]
 - [[RM Data Quality]]
 - [[Safety Critical Failure Classification]] (failure fraction, KPI #34)
+- [[Maintenance Planning and Scheduling]] (wrench time)
+- [[Maintenance Backlog and Schedule Compliance]]
+- [[Turnaround Management]] (ISO KPI 21-22)
 
 ## Triplets
 
@@ -259,3 +305,20 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - Inventory Service Level [has_value:: +/- 5%] ISO KPI 30 top quartile as printed; inconsistent with definition, reader note [confidence:: low]
 - Maintenance Productivity [has_value:: > 50%] ISO KPI 32 top quartile as printed; inconsistent with definition, reader note [confidence:: low]
 - Component Failure Rate [related_to:: [[OREDA]]] component-level index matches OREDA failure rate per maintainable item; OREDA is benchmark, not site data
+- Wrench Time [differs_from:: B5 Utilization Factor] hands-on time ~30% (CMRP CMPR-08 p.47) vs man-hours booked to WO / available, 58-60% (RBMM p.73); different measures, not contested
+- Wrench Time [is_a:: Maintenance KPI] (CMRP CMPR-08 p.47-48)
+- Backlog [has_value:: 2-3 weeks] CMRP CMPR-09 p.43; CMPR-10 p.1 gives band 3-6 weeks
+- % Planned Work [is_a:: Maintenance KPI] planned WOs / total WOs (CMRP CMPR-10 p.7)
+- Planning Accuracy [is_a:: Maintenance KPI] estimated / actual job cost (CMRP CMPR-10 p.7)
+- % Emergency [is_a:: Maintenance KPI] emergency / total maintenance man-hours (CMRP CMPR-10 p.7)
+- Schedule Performance [is_a:: Maintenance KPI] (CMRP CMPR-10 p.8)
+- Schedule Effectiveness [is_a:: Maintenance KPI] (CMRP CMPR-10 p.8)
+- Schedule Performance [related_to:: Schedule Compliance] read ISO > 98% target together with performance (CMRP CMPR-10 p.9)
+- SMART [applies_to:: Maintenance KPI] Specific, Measurable, Achievable, Realistic, Timed (CMRP CMPR-03 p.33; ISO 14224 cl. E.1)
+- Maintenance KPI [has_value:: 13 template elements] title, purpose, target, formula, frequency, owner, closed loop etc. (CMRP CMPR-03 p.34-35)
+- Maintenance KPI [has_parameter:: Warning Limit] upper and lower, plus action limits and owner (CMRP CMPR-03 p.38-39)
+- Maintenance KPI [uses:: [[Statistical Process Control]]] control chart tracking (CMRP CMPR-03 p.38-39)
+- Leading Indicator [differs_from:: Lagging Indicator] lagging = financial; leading = customer, process, innovation (CMRP CMPR-03 p.40)
+- Total Maintenance Cost per Installed Horsepower [has_value:: world class 12] industry average 35, lowest 15, highest 60; world class below lowest is illogical (CMRP CMPR-03 p.40-41)
+- Balanced Scorecard [has_part:: Financial Perspective] with Customer, Internal Business Processes, Learning and Growth (CMRP CMPR-03 p.41-45)
+- Balanced Scorecard [related_to:: [[Maintenance KPIs]]] cascade strategy to individual measures (CMRP CMPR-03 p.41-45)

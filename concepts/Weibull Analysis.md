@@ -1,10 +1,10 @@
 ---
 title: Weibull Analysis
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [weibull, reliability, statistics, failure-rate, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [weibull, reliability, statistics, failure-rate, book, iso-14224, reliability-growth, cmrp]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -105,6 +105,58 @@ Annex C.1.11 (p.209-210) ให้เกณฑ์เสริมที่ไม�
 - Simulation: ใส่ β, η, MTTR, MWT ในโมเดลได้ผล CM-Unplanned = 1.76 ครั้งใน 3 ปี, Availability 99.93% (RBMM p.199-203, ch7) ดู [[Monte Carlo Maintenance Simulation]]
 - ใช้ผล Weibull หา PM interval ที่ต้นทุนต่อหน่วยเวลาต่ำสุด (ตัวอย่าง bearing: ~480 วัน) ดู [[PM Interval Optimization]]
 
+## ส่วนเสริมจาก CMRP (CMRP CMPR-06 p.20-39)
+
+เนื้อหาจาก [[CMRP Course]] (สื่อการสอน) ยืนยันนิยาม β, η และ 63.2% ข้างบน และเพิ่มประเด็นต่อไปนี้
+
+### การตีความ β และ γ เพิ่มเติม (CMRP CMPR-06 p.20-22)
+
+- β = 1 คือ exponential, β = 2 คือ Rayleigh (hazard เพิ่มเชิงเส้น), β ≈ 3-4 รูปร่างใกล้ normal
+- γ > 0 = มีช่วงไม่เสีย (failure-free period); γ < 0 = เสียก่อนเริ่มใช้งาน (ระหว่างขนส่งหรือ shelf life)
+- การแยก Weibull กับ lognormal ด้วยข้อมูลต้องใช้ราว 50 ตัวอย่างขึ้นไป ดู [[Statistical Distributions for Maintenance]]
+
+### Mean อย่างเดียวเลือก component ไม่ได้ (CMRP CMPR-06 p.23)
+
+component A: mean 4,645 ชม., β = 0.8 (η ≈ 4,100); component B: mean 300 ชม., β = 3 (η ≈ 336) ที่ mission 100 ชม. R_A = 0.95 < R_B = 0.974 แต่ที่ 1,000 ชม. R_A = 0.723 ขณะ R_B ≈ 0 (ตรวจด้วย MTTF = ηΓ(1+1/β) แล้วถูก) ต้องรู้รูปร่าง distribution และ mission time ประกอบกัน
+
+### Case study: circuit board ระบบ railway signalling (CMRP CMPR-06 p.31-37)
+
+ประเด็นของ case: ความเชื่อว่า electronics มี λ คงที่ทำให้ไม่ทำ PM และประเมิน reliability ผิด จึง fit Weibull กับ field-return data ของ board (LRU) ด้วย least squares บน Weibull plot (ข้อมูลส่วนใหญ่ right-censored ดู [[Censored Data]])
+
+| Board | Project | β | η (ชม.) | MTBF exp. (RDF2000) | MTBF Weibull | Half-life exp. (วัน) | Half-life Weibull (วัน) | R² |
+|---|---|---|---|---|---|---|---|---|
+| Board_WS | Prj1 | 3.75 | 51,683 | 1.22 x 10^6 | 4.69 x 10^4 | 35,220 | 1,953 | 0.7513 |
+| Board_WS | Prj2 | 3.85 | 36,264 | 1.22 x 10^6 | 3.28 x 10^4 | 35,220 | 1,373 | 0.9355 |
+| Board_OB | Prj3 | 2.37 | 160,667 | 2.54 x 10^5 | 1.42 x 10^5 | 7,330 | 5,735 | 0.6101 |
+
+(ตัวเลขอ่านจากภาพความละเอียดต่ำใน raw notes และตรวจย้อนด้วยสูตรแล้วสอดคล้อง)
+
+```
+MTBF (Weibull)       = η · Γ(1 + 1/β)
+Half-life (exp.)     = ln2 / λ
+Half-life (Weibull)  = η · (ln2)^(1/β)
+```
+
+ข้อสรุปและข้อสังเกต:
+- β > 1 ทุก board = wear-out (อยู่ในช่วง early wear-out 1.0-4.0 ตามตาราง ISO ข้างบน) board ชนิดเดียวกันต่างโปรเจกต์ได้ β, η ต่างกัน แต่ prediction แบบ constant λ ให้ค่าเดียวกัน แสดงข้อจำกัดของ prediction แบบ exponential และการใช้ exponential อาจทำให้นโยบาย RCM เอนเอียง
+- **flag สไลด์:** สไลด์บอกว่า half-life แบบ Weibull ต่ำกว่าแบบ exponential "สองอันดับขนาด" แต่อัตราส่วนจริงคือ 35,220/1,953 ≈ **18 เท่า** และ 35,220/1,373 ≈ **26 เท่า** คือราวหนึ่งอันดับขนาด (MTBF ต่างกัน ~26-37 เท่าสำหรับ Board_WS และเพียง ~1.8 เท่าสำหรับ Board_OB) ส่วนที่ว่า failure rate ที่ 100,000 ชม. ต่างกัน "เกือบสี่อันดับขนาด" derived ได้ราว 550-2,300 เท่า (2.7-3.4 อันดับ)
+- **ข้อสังเกต:** สไลด์สรุปว่าข้อมูลเป็น Weibull แต่ R² ของ Prj1 (0.75) และ Prj3 (0.61) ค่อนข้างต่ำ ข้อสรุปเรื่องรูปแบบ distribution จึงอ่อนสำหรับสองโปรเจกต์นี้ แม้ทิศทาง (β > 1) ยังเป็นหลักฐานที่ขัดกับสมมติฐาน "electronics = λ คงที่" ดู [[Statistical Distributions for Maintenance]]
+
+### PM แบบเปลี่ยนเป็น as-good-as-new (CMRP CMPR-06 p.37-39)
+
+```
+C1 = (p + P) / MTBF                                   run-to-failure cost rate
+C2(θ) = [ p + P(1 - R(θ)) ] / m(θ),  m(θ) = ∫0..θ R(t) dt
+p = ค่าเปลี่ยน (CM = PM), P = ต้นทุนทางอ้อมของ failure, r = P/p
+ถ้า C2/C1 < 1 คุ้มที่จะทำ systematic PM
+```
+
+ตัวอย่าง β = 3, η = 50,000 ชม., r = 50: สไลด์ได้ θ = 10,950 ชม., C2/C1 = 0.122 (derived: minimum ที่ราว 10,780 ชม. ratio เท่ากัน ต่างกัน ~1.6% ในช่วงเส้นโค้งแบน ถือว่าสอดคล้อง) ตัวส่วน m(θ) = ∫0..θ R(t)dt เทียบเท่า tp·R(tp) + ∫0..tp t f(t)dt จึง **สนับสนุน** flag ข้างล่างว่าขอบเขตปริพันธ์ในตัวอย่างต้นทุน PM ของ RBMM ควรเป็น 0 ถึง tp ดู [[PM Interval Optimization]]
+
+### Reliability growth
+
+intensity ของ Crow-AMSAA มีรูปเดียวกับ Weibull hazard แต่ใช้กับระบบที่ซ่อมแล้วใช้ต่อ (power law process ตามที่ ISO แนะนำข้างบน) ดู [[Reliability Growth Models]]
+
 ## ข้อสังเกตเรื่องความถูกต้องของหนังสือ
 
 - สูตร **Time to Target Reliability** ที่หนังสือพิมพ์ (RBMM p.169) ผิด ดู [[Reliability Metrics]]
@@ -124,6 +176,8 @@ Annex C.1.11 (p.209-210) ให้เกณฑ์เสริมที่ไม�
 - [[Failure Patterns and Bathtub Curve]]
 - [[Statistical Distributions for Maintenance]]
 - [[Reliability Block Diagram]]
+- [[Reliability Growth Models]]
+- [[CMRP Course]]
 
 ## Triplets
 
@@ -188,3 +242,22 @@ Annex C.1.11 (p.209-210) ให้เกณฑ์เสริมที่ไม�
 - [[OREDA]] [depends_on:: Constant Failure Rate] equivalent to assuming β = 1
 - [[Weibull Analysis]] [uses:: [[CMMS]]] failure mode, install date, failure date, running hours
 - [[Weibull Analysis]] [related_to:: [[Statistical Distributions for Maintenance]]]
+- [[Weibull Analysis]] [defined_in:: [[CMRP Course]]] supplementary section (CMRP CMPR-06 p.20-39)
+- Shape Parameter Beta [has_value:: β = 2] Rayleigh, hazard increases linearly (CMRP CMPR-06 p.20-22)
+- Shape Parameter Beta [has_value:: β ≈ 3-4] shape close to normal (CMRP CMPR-06 p.20-22)
+- Location Parameter Gamma [has_value:: γ < 0] failures before use, transport or shelf life (CMRP CMPR-06 p.22)
+- Component A B Example [has_value:: R_A 0.95 vs R_B 0.974 at 100 h; 0.723 vs about 0 at 1,000 h] A mean 4,645 h β 0.8, B mean 300 h β 3 (CMRP CMPR-06 p.23)
+- MTBF Weibull [has_formula:: η · Γ(1 + 1/β)] (CMRP CMPR-06 p.35)
+- Half-life Weibull [has_formula:: η · (ln2)^(1/β)] exponential: ln2 / λ (CMRP CMPR-06 p.35)
+- Signalling Board Weibull Case [uses:: [[Censored Data]]] mostly right-censored field returns, least squares fit (CMRP CMPR-06 p.31-34)
+- Signalling Board Weibull Case [has_value:: β 3.75, η 51,683 h, R² 0.7513] Board_WS Prj1 (CMRP CMPR-06 p.35)
+- Signalling Board Weibull Case [has_value:: β 3.85, η 36,264 h, R² 0.9355] Board_WS Prj2 (CMRP CMPR-06 p.35)
+- Signalling Board Weibull Case [has_value:: β 2.37, η 160,667 h, R² 0.6101] Board_OB Prj3 (CMRP CMPR-06 p.35)
+- Signalling Board Weibull Case [has_value:: half-life ratio about 18x and 26x] exponential vs Weibull, Board_WS; derived
+- CMRP Two Orders Of Magnitude Claim [contradicts:: Signalling Board Weibull Case] actual half-life ratio 18-26x, about one order (CMRP CMPR-06 p.36)
+- Signalling Board Weibull Case [has_category:: early wear-out] β 1.0-4.0 per ISO table
+- Signalling Board Weibull Case [contradicts:: Constant Failure Rate] evidence against constant λ for electronics; weak fit R² for Prj1 and Prj3
+- Preventive Replacement Cost Rate [has_formula:: C2(θ) = ( p + P(1 - R(θ)) ) / m(θ)] m(θ) = ∫0..θ R(t) dt; C1 = (p + P)/MTBF (CMRP CMPR-06 p.37-38)
+- Preventive Replacement Cost Rate [has_value:: θ 10,950 h, C2/C1 0.122] β 3, η 50,000 h, r 50; derived optimum about 10,780 h (CMRP CMPR-06 p.39)
+- Preventive Replacement Cost Rate [input_to:: [[PM Interval Optimization]]] supports 0 to tp integral bound
+- [[Weibull Analysis]] [related_to:: [[Reliability Growth Models]]] Crow-AMSAA uses Weibull-form intensity for repaired systems

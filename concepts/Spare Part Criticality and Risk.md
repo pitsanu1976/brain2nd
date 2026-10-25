@@ -1,10 +1,10 @@
 ---
 title: Spare Part Criticality and Risk
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [spare-parts, criticality, cost, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -160,6 +160,40 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - ตารางอะไหล่-เครื่องจักรต้องสร้างจาก BOM จึงต้องมี codification มาตรฐานและกำจัดรายการซ้ำ (RBMM p.240)
 - ต้องมีนโยบายและอำนาจอนุมัติตามโซน มิฉะนั้นตัวเลขความเสี่ยงไม่ถูกนำไปใช้ (Accountability RBMM p.271)
 
+## มุมมอง CMRP: ผังตัดสินสต็อกและ risk cost vs holding cost (เพิ่ม 2026-10-25)
+
+สไลด์ [[CMRP Course]] ให้แนวทางที่สอดคล้องกับ RBMM ในหลักการ (ชั่งความเสี่ยงขาดของกับต้นทุนถือครอง) แต่ใช้กฎง่ายกว่า ไม่ขัดกัน
+
+### Top-down และผังตัดสินใจ "ควรสต็อกไหม" (CMRP CMPR-03 p.12-13; ซ้ำใน CMPR-08 p.28)
+
+- Top-down: criticality study -> critical systems -> critical equipment -> critical failures -> spares required (CMRP CMPR-03 p.12)
+
+| กรณี | ผล |
+|---|---|
+| ซ่อมได้โดยไม่ใช้อะไหล่ | ไม่สต็อก |
+| ไม่วิกฤติต่อ availability (production)/safety/environment | ไม่สต็อก |
+| failure ทำให้ต้องสลับไปตัวสำรอง (standby) | ไม่สต็อก **เว้นแต่** lead time มากกว่า 2 สัปดาห์ จึงสต็อก |
+| วิกฤติต่อ availability/safety/environment | สต็อก |
+
+- กรณีสลับตัวสำรอง: เหตุผลโดยนัยคือ ระหว่างรออะไหล่ ระบบเดินบนตัวสำรองตัวเดียวโดยไม่มี redundancy ถ้า lead time ยาว ความเสี่ยงที่ตัวสำรองจะเสียด้วยสูงขึ้น (การตีความของ wiki) ดู [[Redundancy and Standby Systems]]
+- เกณฑ์ 2 สัปดาห์เป็นตัวเลขตัวอย่างของสไลด์ ไม่มีที่มา ควรปรับตาม MTBF ของตัวสำรอง
+- เทียบ RBMM: กฎ "ถ้า P-F interval สั้นกว่า lead time ต้องสต็อก" (RBMM p.241) ใช้ lead time เป็นตัวตัดสินเช่นกัน แต่เทียบกับ P-F แทนเกณฑ์คงที่
+
+### Total stock cost = risk cost + holding cost (CMRP CMPR-03 p.13)
+
+- เส้นโค้ง total cost = **risk cost** (ลดลงเมื่อสต็อกมากขึ้น) + **holding cost** (เพิ่มขึ้น) มีจุดต่ำสุดที่ระดับสต็อกเหมาะสม
+- Risk Cost = Probability x Penalty ของการไม่มีของเมื่อต้องการ; Holding Cost = f(cost of capital, depreciation, supply base overhead); สไลด์อ้าง SPARO (Spare Parts Alignment Rationalization and Optimization)
+- Optimisation อื่น: level of repair analysis (สต็อกอะไร), interchangeability (OEM), sharing/pooling, risk-based analysis ตั้งระดับสต็อก
+- เทียบ RBMM: Cost Ratio = expected cost of stock out / expected cost of stock (หัวข้อ "เครื่องมือวัดความเสี่ยง") คือการเทียบสองพจน์เดียวกันในรูปอัตราส่วน ส่วน CMRP หาจุดต่ำสุดของผลรวม (การเทียบเป็น derived) จุด ratio = 1 ใน RBMM เป็นจุดที่ค่าขาดเท่ากับค่าเก็บ ไม่จำเป็นต้องเป็นจุด total cost ต่ำสุด
+
+### Risk-based spares และ capital spares model (CMRP CMPR-08 p.28-31)
+
+- เชื่อมกับ Maintenance Strategy Review: MEL -> failure + BOM -> ประเมินความเสี่ยงและจัดชั้นอะไหล่ -> strategy/task -> Level of Repair Analysis -> order quantity -> integrated planning (CMRP CMPR-08 p.28)
+- อะไหล่ราคาสูง lead time ยาว: ตีค่าเป็นเงินจาก risked cost (production, safety, environment, secondary damage) สมมติฐาน exponential, อะไหล่ที่เสียไม่ซ่อม, ไม่คิด discounting; input: demand rate, lead time, standby configuration, จำนวนติดตั้ง, ราคา, ค่าคลัง, consequential cost, repair lead time (p.29-30)
+- กราฟตัวอย่าง (p.30): สต็อก 1 ชิ้นมี risk cost สูงมาก (ราว 19,500) ต่ำสุดที่ 2 ชิ้น จากนั้นต้นทุน interest/warehouse/write-off โตเชิงเส้น
+- **Capital spares** (p.31) ช่วงเวลา T: non-availability cost = c_na x F(T); storage cost = c_l x ∫0..T R(t)dt; dead stock cost = c_s x R(T); สต็อกเมื่อ c_na x F(T) มากกว่า storage + dead stock cost (สัญลักษณ์บนสไลด์อ่านยาก และเงื่อนไขกรณี n systems อ่านไม่ออก confidence ต่ำ) เป็นรูปแบบต่อเนื่องของ Insurance Part ในโซนของ RBMM: อะไหล่ที่ใช้ไม่บ่อยแต่ค่าขาดสูง
+- รายละเอียด MRO inventory ดู [[Spare Parts Management]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Part Criticality ข้อ CBM/detect-ability คล้ายแนวคิด detectability ใน [[FMECA]] และ detection method ของ [[ISO 14224]]; Equipment Criticality (Commercial, Safety, Environment) สอดคล้องกับการจัด criticality ของเครื่อง เช่น [[Compressor]] ที่หยุดแล้วกระทบการผลิต
@@ -174,6 +208,7 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - [[Spare Part Demand Forecasting]]
 - [[Monte Carlo Maintenance Simulation]]
 - [[Failure Mode]]
+- [[Redundancy and Standby Systems]]
 
 ## Triplets
 
@@ -234,3 +269,17 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - Medium Criticality Example [has_value:: Cost Ratio column mismatch] stock out / stock cost e.g. 4/1 about 60.8 vs 36.69, derived (RBMM Fig 9.19) [confidence:: low]
 - Stock Decision [depends_on:: [[P-F Interval and Condition Monitoring]]] stock if P-F interval shorter than Lead Time (RBMM p.241)
 - Failure Detect-ability [related_to:: [[FMECA]]] similar to detectability
+- Stock Decision [depends_on:: Repair Without Spare] repairable without spare = do not stock (CMRP CMPR-03 p.13; CMPR-08 p.28)
+- Stock Decision [depends_on:: Equipment Criticality] not critical to availability/safety/environment = do not stock; critical = stock (CMRP CMPR-03 p.13)
+- Switch to Standby Case [depends_on:: Lead Time] stock only if lead time more than 2 weeks (CMRP CMPR-03 p.13; CMPR-08 p.28)
+- Switch to Standby Case [related_to:: [[Redundancy and Standby Systems]]] running without redundancy while waiting, interpretation [confidence:: low]
+- Total Stock Cost [has_formula:: Risk Cost + Holding Cost] curve with minimum at optimum stock level (CMRP CMPR-03 p.13)
+- Risk Cost [has_formula:: Probability x Penalty] of not having the part when needed (CMRP CMPR-03 p.13)
+- Holding Cost [depends_on:: Cost of Capital] also depreciation and supply base overhead (CMRP CMPR-03 p.13)
+- Total Stock Cost [related_to:: Cost Ratio] same two terms; CMRP minimises sum, RBMM uses ratio, derived
+- Risk Based Spare Review [uses:: Level of Repair Analysis] linked to Maintenance Strategy Review, MEL and BOM (CMRP CMPR-08 p.28)
+- Risk Based Spare Review [has_value:: minimum at 2 spares] example graph, 1 spare risk cost about 19,500 (CMRP CMPR-08 p.30)
+- Capital Spares Non-Availability Cost [has_formula:: c_na x F(T)] (CMRP CMPR-08 p.31) [confidence:: low]
+- Capital Spares Storage Cost [has_formula:: c_l x integral 0..T of R(t)dt] (CMRP CMPR-08 p.31) [confidence:: low]
+- Capital Spares Dead Stock Cost [has_formula:: c_s x R(T)] stock if c_na x F(T) exceeds storage plus dead stock cost (CMRP CMPR-08 p.31) [confidence:: low]
+- Capital Spares [related_to:: Insurance Part] rarely used, high stock out cost, interpretation

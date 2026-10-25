@@ -1,10 +1,10 @@
 ---
 title: Maintenance Efficacy Pyramid
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [maintenance-management, kpi, budget, cmms, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [maintenance-management, kpi, budget, cmms, book, work-management, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -50,7 +50,7 @@ Radar chart 16 แกน คะแนน 0-100%
 
 - Maintenance Strategies: ควบคุม downtime และ Man-Hrs, วิเคราะห์ failure mode (cause), เลือก scheduled PM อย่างวิทยาศาสตร์
 - Accountability ต่างจาก Responsibility: ผู้รับงานต้องอธิบายผลและเหตุผลการตัดสินใจเมื่อถูกทวงถาม (RBMM p.37)
-- Planning/Scheduling: ดัชนี Backlog และดัชนีว่าเลือกงานถูกหรือไม่
+- Planning/Scheduling: ดัชนี Backlog และดัชนีว่าเลือกงานถูกหรือไม่ รายละเอียดเชิงปฏิบัติจากหลักสูตร CMRP (กระบวนการวางแผน 7 ขั้น, PR1-PR4, weekly/daily schedule, wrench time) อยู่ที่ [[Maintenance Planning and Scheduling]] และดัชนี backlog weeks, schedule compliance/performance/effectiveness อยู่ที่ [[Maintenance Backlog and Schedule Compliance]] (CMRP CMPR-09, CMPR-10 p.1-9)
 - Parts and Logistics: stock คือ "ประกัน" ต่อความเสี่ยง breakdown เหมือนเบี้ยประกัน ค่าโสหุ้ย 15-20% ควรส่งกลับให้ผู้ขอสะสม (RBMM p.37-38)
 
 ### ชั้น 4-6
@@ -91,6 +91,8 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - [[Maintenance KPIs]]
 - [[Maintenance Strategic Report]]
 - [[RCM Reliability Centered Maintenance]]
+- [[Maintenance Planning and Scheduling]]
+- [[Maintenance Backlog and Schedule Compliance]]
 
 ## Triplets
 
@@ -133,3 +135,5 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - [[Maintenance KPIs]] [input_to:: [[Maintenance Efficacy Pyramid]]] self-assessment starting point (RBMM p.54)
 - [[RCM Reliability Centered Maintenance]] [has_value:: 1978] origin year as stated by book, not cross-checked (RBMM p.43)
 - Maintenance Work Control [uses:: [[Failure Data Recording]]] minimum record: failure mode/cause, Man-Hrs, PM type, parts, date-time, cost, equipment to part level (RBMM p.53)
+- Maintenance Work Control [uses:: [[Maintenance Planning and Scheduling]]] planning/scheduling element of level 3, detailed by CMRP (CMRP CMPR-09)
+- Maintenance Work Control [uses:: [[Maintenance Backlog and Schedule Compliance]]] work control indices: backlog weeks, schedule compliance (CMRP CMPR-10 p.1-9)

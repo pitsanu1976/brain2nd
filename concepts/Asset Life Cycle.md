@@ -1,10 +1,10 @@
 ---
 title: Asset Life Cycle
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [maintenance-management, criticality, spare-parts, cost, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [maintenance-management, criticality, spare-parts, cost, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -105,6 +105,35 @@ Criticality เปลี่ยนตาม Stress, Resistance และแผน
 
 Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Plan & Act (บริหารงาน) แล้ว Reporting & Control (วัดผลและรายงานรวมเงิน) ฝั่งเทคนิคใช้สถิติเลือกงาน คำนวณคาบ PM และระดับสต็อก ฝั่งบริหารตั้งงบตามเป้าบริษัท
 
+## 9. มุมมอง CMRP: Life Cycle Cost และ economic optimum (เพิ่ม 2026-10-25)
+
+สไลด์ [[CMRP Course]] เสริมด้านต้นทุนตลอดอายุ ซึ่งบทที่ 1 ของ RBMM ไม่ได้แจกแจง
+
+### Asset lifecycle (CMRP CMPR-02 p.34)
+เมื่ออายุ/การใช้งานเพิ่ม condition ลดลง ค่าบำรุงรักษาประจำเพิ่มขึ้น มี mid-life overhaul และสุดท้ายคือ renewal การตัดสินใจต้องชั่ง risk, condition และ cost ร่วมกัน
+
+### Life Cycle Cost 5 กลุ่ม (CMRP CMPR-02 p.35)
+
+| กลุ่ม | ตัวอย่างรายการ |
+|---|---|
+| Capital | design, purchase, installation, commissioning, training, documentation, facilities |
+| Operational | labor, energy, water, raw materials, feedstock |
+| Maintenance | labor, materials, spares, workshop, contractors, overhead |
+| Production and quality losses | non-availability, malfunction |
+| Disposal | cost of disposal ลบ residual value |
+
+เทียบ RBMM: Commissioning Spare Part อยู่ในกลุ่ม Capital ส่วน Maintenance Spare Part และ holding cost อยู่ในกลุ่ม Maintenance ราคาซากในช่วง 6-8 ของหัวข้อ 1 ตรงกับ residual value ของกลุ่ม Disposal (การจับคู่เป็นการตีความของ wiki)
+
+### Economic optimum ของคาบบำรุงรักษา (CMRP CMPR-02 p.35)
+- direct cost ลดลงเมื่อเว้นคาบห่างขึ้น ส่วน risk cost เพิ่มขึ้น total business impact เป็นเส้นโค้งที่มีจุดต่ำสุด = "economic optimum" (ในกราฟตัวอย่างราว 4 สัปดาห์)
+- ซ้ายของจุดนี้ = จ่ายเกินเพื่อเป้า reliability; ขวา = จ่ายเกินเพื่อเป้าต้นทุน
+- แกน x ของกราฟเขียนว่า "frequency (weeks)" แต่ความหมายจริงคือ interval (ข้อผิดพลาดของป้ายแกน)
+- หลักเดียวกับจุดต้นทุนรวม planned + unplanned ต่ำสุดของ criticality Medium ในหัวข้อ 6 ดู [[PM Interval Optimization]]
+
+### "~70% ของต้นทุน M&R ถูกกำหนดตั้งแต่ design" (CMRP CMPR-01 p.29)
+- กราฟประกอบ P-F curve ในสไลด์ระบุว่าประมาณ 70% ของต้นทุน maintenance and repair (M&R) ถูกกำหนดตั้งแต่ช่วง design; ยิ่งใกล้จุด F ต้นทุนและ OEE losses ยิ่งสูง ดู [[P-F Interval and Condition Monitoring]]
+- **อย่ารวมกับตัวเลข 70% ของ RBMM** (หัวข้อ 1): RBMM วัด "ราคา/ต้นทุนการลงทุนที่ถูกล็อก" ในช่วง Feasibility Study (อ่านจาก Fig 1.1) ส่วน CMRP วัด "ต้นทุน M&R ตลอดอายุที่ถูกกำหนดโดยการออกแบบ" คนละฐาน คนละช่วงเวลา ตัวเลขเท่ากันโดยบังเอิญ จึงไม่ใช่การยืนยันกันและไม่ใช่ข้อขัดแย้ง ทั้งสองแหล่งไม่ได้อ้างที่มาของ 70%
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - บทนี้ไม่ได้อ้าง [[OREDA]] หรือ [[ISO 14224]] และไม่มีเนื้อหา compressor โดยตรง
@@ -119,6 +148,8 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - [[Availability and OEE]]
 - [[Maintenance Strategic Report]]
 - [[Failure Hierarchy]]
+- [[PM Interval Optimization]]
+- [[CMRP Course]]
 
 ## Triplets
 
@@ -175,3 +206,13 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - Plan and Act [step_of:: Asset Management Cycle] manage work (RBMM p.30)
 - Reporting and Control [step_of:: Asset Management Cycle] measure and report with money (RBMM p.30)
 - Standby Compressor [has_failure_mode:: FTS] hidden/multiple failure of standby detected on demand, interpretation [confidence:: low]
+- Asset Condition [depends_on:: Asset Age] condition falls, routine maintenance cost rises, mid-life overhaul then renewal (CMRP CMPR-02 p.34)
+- Life Cycle Cost [has_part:: Capital Cost] design, purchase, installation, commissioning, training, documentation, facilities (CMRP CMPR-02 p.35)
+- Life Cycle Cost [has_part:: Operational Cost] labor, energy, water, raw materials, feedstock (CMRP CMPR-02 p.35)
+- Life Cycle Cost [has_part:: Maintenance Cost] labor, materials, spares, workshop, contractors, overhead (CMRP CMPR-02 p.35)
+- Life Cycle Cost [has_part:: Production and Quality Losses] non-availability, malfunction (CMRP CMPR-02 p.35)
+- Life Cycle Cost [has_part:: Disposal Cost] cost of disposal minus residual value (CMRP CMPR-02 p.35)
+- Economic Optimum Interval [depends_on:: Risk Cost] total business impact = direct cost + risk cost, minimum about 4 weeks in example (CMRP CMPR-02 p.35)
+- Economic Optimum Interval [related_to:: [[PM Interval Optimization]]] same minimum total cost principle
+- M&R Cost Fixed at Design [has_value:: about 70%] of maintenance and repair cost determined at design (CMRP CMPR-01 p.29)
+- M&R Cost Fixed at Design [differs_from:: Feasibility Study] RBMM 70% is investment cost locked at feasibility; different measure, do not merge

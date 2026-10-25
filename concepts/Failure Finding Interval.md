@@ -1,12 +1,12 @@
 ---
 title: Failure Finding Interval
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [pm, rcm, reliability, maintenance-management, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [pm, rcm, reliability, maintenance-management, book, iso-14224, cmrp]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Failure Finding Interval (FFI)
@@ -73,6 +73,28 @@ FFI เป็น % ของ MTBF ของตัวป้องกัน (ต�
 - ต้องเก็บทั้ง failure ก่อน test (hidden จริง) และ failure ที่เกิดเพราะ test (cycle failure, human error, unavailability ระหว่าง test) (cl. C.6.1, p.225)
 - failure fraction (safety critical failure ที่พบจาก test / จำนวน test) เป็นค่าประมาณแบบ conservative ของ PFDavg ไม่ใช่ safe failure fraction ของ IEC 61508 (Annex F.4, p.253-254) ดู [[Safety Critical Failure Classification]]
 
+## มุมมอง CMRP: สูตร FFM ตาม criticality (contested, เพิ่ม 2026-10-25)
+
+> [!warning] Contested
+> สไลด์ CMRP ให้สูตรคาบ FFM ที่ใช้ตัวคูณ 3 สำหรับ criticality สูง ซึ่งขัดกับสูตรมาตรฐาน FFI = 2 x U x MTBF ที่ RBMM (SAE JA1012) และ ISO 14224 (C.51) ใช้ตรงกัน ยังไม่ resolve ผู้ใช้ต้องตัดสินว่าจะใช้สูตรใด (ข้อเสนอของ wiki: ใช้สูตรมาตรฐาน เพราะมีที่มาทางคณิตศาสตร์และสองแหล่งที่น่าเชื่อถือกว่ายืนยัน CMRP เป็น secondary source)
+
+สไลด์ logic tree คาบ PM (CMRP CMPR-03 p.12, ถอดจากภาพ) เมื่อ criticality moderate หรือ high:
+
+| ระดับ criticality | สูตร CMRP | A ที่เลือก | T เป็นสัดส่วนของ MTTF (derived) |
+|---|---|---|---|
+| Moderate | T = MTTF x 2 x (1 - A) | 90% | 0.20 MTTF |
+| High | T = MTTF x 3 x (1 - A) | 95% | 0.15 MTTF |
+
+- ภาพไม่ได้ผูกบรรทัดกับระดับชัด การจับคู่ (2 กับ moderate, 3 กับ high) อนุมานตามลำดับใน raw notes
+- ถ้า criticality "extremely high" สไลด์ส่งไปกล่อง evaluation (คาบสั้นลง, พิจารณา modification) ไม่ให้สูตร (p.12)
+- สไลด์ใช้ MTTF ของอุปกรณ์ป้องกัน แทน MTBF (M_TIVE) ภายใต้ constant failure rate สองค่านี้ใกล้กันมากเมื่อเวลาซ่อมสั้น จึงเป็นความต่างเล็ก (ความรู้ทั่วไป)
+
+**เทียบกับสูตรมาตรฐาน** (FFI = 2 x U x M_TIVE, หัวข้อสูตรด้านบน; ISO τ = 2 · LPFD / λ):
+- Moderate: 2 x (1 - 0.90) = 0.20 MTBF ตรงกับสูตรมาตรฐานทุกประการ (U = 10%) ไม่ขัดกัน
+- High: สูตรมาตรฐานที่ A = 95% ให้ 2 x 0.05 = **0.10 MTBF** (ตรงกับแถว 95% -> 10% ในตาราง Fig 7.33) แต่ CMRP ให้ **0.15 MTBF** ยาวกว่า 50% (derived)
+- ผลกลับ (derived): ถ้าทดสอบทุก 0.15 MTBF ตามสูตรมาตรฐาน U = 0.15 / 2 = 7.5% คือ availability ที่ได้จริงราว 92.5% ไม่ถึงเป้า 95% ที่ตั้งไว้ ตัวคูณ 3 จึงทำให้ระดับ criticality ที่สูงกว่าได้การป้องกันที่ **ต่ำกว่าเป้าของตัวเอง** แม้คาบยังสั้นกว่า moderate (0.15 vs 0.20)
+- สไลด์ไม่ให้ที่มาของตัวคูณ 3 และไม่มีในสูตรของ SAE JA1012 หรือ ISO 14224 ที่ wiki มี
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ระบบ protection ของ [[Compressor]] (trip/shutdown, ESD, PSV, protective relay) เป็นผู้สมัครตรงของ Failure Finding; หนังสือไม่ได้ระบุ compressor ตรง ๆ และไม่ได้อ้าง IEC 61508 หรือ SIL (ความคล้ายกับ proof-test interval เป็นข้อสังเกตของเรา ซึ่งตอนนี้ได้ source ยืนยันแล้ว ดูหัวข้อ "มุมมอง ISO 14224" ด้านล่าง)
@@ -86,6 +108,7 @@ FFI เป็น % ของ MTBF ของตัวป้องกัน (ต�
 - [[P-F Interval and Condition Monitoring]]
 - [[Reliability Metrics]]
 - [[Availability and OEE]]
+- [[CMRP Course]]
 
 ## Triplets
 
@@ -139,3 +162,11 @@ FFI เป็น % ของ MTBF ของตัวป้องกัน (ต�
 - Scheduled Failure Finding [applies_to:: FTS] on-demand mode hidden until demand, suggestion [confidence:: low]
 - Scheduled Failure Finding [applies_to:: STP] on-demand mode hidden until demand, suggestion [confidence:: low]
 - M_TIVE [depends_on:: [[OREDA]]] OREDA failure rate approximates 1/M_TIVE; constant rate, RBMM p.215 warns real rate not constant
+- [[Failure Finding Interval]] [has_formula:: FFI = 2 x U x MTBF] standard, same in RBMM SAE JA1012 and ISO C.51; at A 95% gives 0.10 MTBF (RBMM p.213-215; ISO 14224 C.51, p.225-226) [contested:: true]
+- CMRP FFM Interval High [has_formula:: T = MTTF x 3 x (1 - A)] A = 95%, gives 0.15 MTTF; factor 3 not in standard formulas (CMRP CMPR-03 p.12) [contested:: true]
+- CMRP FFM Interval High [contradicts:: [[Failure Finding Interval]]] 0.15 vs 0.10 MTBF at A 95%; implied availability about 92.5%, derived [contested:: true]
+- CMRP FFM Interval Moderate [has_formula:: T = MTTF x 2 x (1 - A)] A = 90%, gives 0.20 MTTF, consistent with standard (CMRP CMPR-03 p.12)
+- CMRP FFM Interval Moderate [alias_of:: [[Failure Finding Interval]]] same as 2 x U x MTBF when MTTF approx MTBF, derived
+- CMRP FFM Interval High [depends_on:: Criticality] high criticality; pairing of lines to levels inferred from slide order (CMRP CMPR-03 p.12)
+- CMRP FFM Interval High [uses:: MTTF] slide uses MTTF of protective device instead of MTBF (CMRP CMPR-03 p.12)
+- CMRP FFM Interval High [defined_in:: [[CMRP Course]]] secondary teaching source (CMRP CMPR-03 p.12)

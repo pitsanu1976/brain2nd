@@ -1,12 +1,12 @@
 ---
 title: Maintenance Budget
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [budget, cost, maintenance-management, kpi, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [budget, cost, maintenance-management, kpi, book, turnaround, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Maintenance Budget (Maintenance Performance Budgeting)
@@ -29,7 +29,7 @@ Zero Down Time ต้องมีเป้า Minimum Cost กำกับเส
 - **Capital Expenses** — ทรัพย์สินถาวรสำหรับงานบำรุง (โรงซ่อม เครื่องมือ คอมพิวเตอร์) ตัดเป็นค่าเสื่อมราคา ไม่ตัดทีเดียว
   - ลงทุนเพิ่มสมรรถนะเครื่อง (Improvement Maintenance) ค่าเสื่อมเป็นต้นทุนผลิต ไม่ใช่ต้นทุนบำรุงรักษา (RBMM p.277-278)
   - อะไหล่คลังเป็นทรัพย์สินหมุนเวียน ค่าครอบครองอยู่ในความรับผิดชอบฝ่ายบำรุงรักษา
-  - ค่า Plant Turnaround ทุก 3-4 ปี กระจายเป็นรายปี (เช่น 3 ปีหาร 3) เฉพาะ Materials และค่าจ้างเหมา ไม่รวมค่าแรงภายใน
+  - ค่า Plant Turnaround ทุก 3-4 ปี กระจายเป็นรายปี (เช่น 3 ปีหาร 3) เฉพาะ Materials และค่าจ้างเหมา ไม่รวมค่าแรงภายใน (CMRP เห็นต่างเรื่องค่าแรงภายใน ดูหัวข้อ 8)
 - **Operating Expenses Budget** — Fixed Cost (Man-Hrs) + ค่าใช้จ่ายแปรผัน (Materials: Stock Parts, Direct Purchase Parts, Outsource) ดู [[Maintenance Cost Structure]]
 
 ## 3. สูตรลำดับการคำนวณงบสุทธิ (RBMM p.291-294)
@@ -149,6 +149,20 @@ Provision for Losses แบ่งต่อเป็นจากงานตา�
 
 หมายเหตุ: ต้นทุนต่อหน่วยจริง P1 152.00 เทียบงบ 147.37 (variance 4.63) P2 151.00 เทียบ 157.89 และ P3 153.50 เทียบ 164.91 (RBMM รูป 10.25 p.306-309) ค่า Variance ที่เป็นวงเล็บในหนังสือหมายถึงจริงต่ำกว่างบ
 
+## 8. Contested: ค่าแรงพนักงานภายในในต้นทุน turnaround (เพิ่ม 2026-10-25)
+
+สองแหล่งให้แนวทางต่างกันว่าค่าแรงพนักงานโรงงานช่วง turnaround เป็นต้นทุนของ turnaround หรือไม่
+
+| แหล่ง | แนวทาง | เหตุผล |
+|---|---|---|
+| RBMM | ต้นทุน Plant Turnaround ที่กระจายรายปีนับ **เฉพาะ Materials และค่าจ้างเหมา ไม่รวมค่าแรงภายใน** (RBMM p.276-279) | ค่าแรงภายในอยู่ใน Full Fixed Cost ที่คิดผ่าน Man-Hr rate อยู่แล้ว (การตีความของ wiki จากโครงสร้าง [[Maintenance Cost Structure]]) |
+| CMRP | ค่าแรงพนักงานโรงงานช่วง turnaround **ควรนับเป็นต้นทุนของ event** (CMRP CMPR-10 p.19) | ถ้าไม่นับ event จะดูถูกกว่าความจริง และต้นทุนผลิตช่วงนั้นดูสูงเกินจริง |
+
+- มุมมองต่างกันที่จุดประสงค์: RBMM ทำ budget allocation (เลี่ยงนับ fixed cost ซ้ำ) ส่วน CMRP ต้องการ total cost visibility ของ event เพื่อตัดสินใจเชิงกลยุทธ์ เช่นการเลือกทำหรือกำจัด turnaround ดู [[Turnaround Management]]
+- ผลต่อการใช้งาน: ถ้าใช้วิธี RBMM แล้วเทียบต้นทุน turnaround ระหว่างโรงงานหรือกับ contractor จะต่ำกว่าวิธี CMRP; ถ้าใช้วิธี CMRP ในงบ ต้องหัก Man-Hrs ช่วง turnaround ออกจาก Full Fixed Cost ปกติเพื่อไม่ให้นับซ้ำ (การตีความของ wiki)
+- **ยังไม่ resolve** ผู้ใช้ต้องเลือกนโยบายบัญชีต้นทุน turnaround ขององค์กร ตั้ง `contested: true`
+- ส่วนที่สอดคล้องกัน: ทั้งสองแหล่งยอมรับว่ากระจายต้นทุนหลายปีได้ แต่ CMRP ย้ำว่าการกระจายไม่ได้ลดผลกระทบรวม (CMRP CMPR-10 p.13) และควรนับกำไรที่เสียทั้งช่วงหยุดและช่วงหลัง start-up (CMRP CMPR-10 p.18-19)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 หนังสือไม่มีเนื้อหาตรงเกี่ยวกับ [[OREDA]] หรือ [[ISO 14224]] ความเชื่อมทางอ้อม:
@@ -165,6 +179,7 @@ Provision for Losses แบ่งต่อเป็นจากงานตา�
 - [[Spare Part Criticality and Risk]]
 - [[Maintenance Business Models]]
 - [[Reliability Based Maintenance Management Book]]
+- [[Turnaround Management]]
 
 ## Triplets
 
@@ -238,3 +253,7 @@ Provision for Losses แบ่งต่อเป็นจากงานตา�
 - Utilization Factor [has_value:: 58.0%] actual vs budget 60.0% (RBMM Fig 10.23 p.306-309)
 - Service Factor [has_value:: 97.10%] actual vs budget 99.00% (RBMM Fig 10.23 p.306-309)
 - Stock out Rate [has_value:: 2.50%] actual vs budget 1.00% (RBMM Fig 10.23 p.306-309)
+- Plant Turnaround Cost [has_value:: excludes internal labour] annual amortised cost, Materials and contract only (RBMM p.276-279) [contested:: true]
+- Plant Turnaround Cost [has_value:: includes plant staff wages] counted as event cost (CMRP CMPR-10 p.19) [contested:: true]
+- CMRP Turnaround Cost View [contradicts:: RBMM Turnaround Cost View] total cost visibility vs budget allocation; unresolved [contested:: true]
+- Plant Turnaround [related_to:: [[Turnaround Management]]] spreading cost over years does not reduce total impact (CMRP CMPR-10 p.13)

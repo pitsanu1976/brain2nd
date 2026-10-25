@@ -1,10 +1,10 @@
 ---
 title: FMECA
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [fmeca, criticality, rcm, reliability, statistics, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [fmeca, criticality, rcm, reliability, statistics, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: high
 contested: false
 ---
@@ -85,7 +85,24 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 ## ข้อควรระวังในการใช้
 
 - RPN ต้องระวังการคูณเลข ordinal: ต่างคอมโบอาจได้ RPN เท่ากันแต่ความเสี่ยงต่างกัน (ข้อสังเกตทั่วไป ไม่ได้อยู่ในหนังสือ) ให้ดู Severity 4-5 แยกเสมอ
+  - อัปเดต 2026-10-25: ตอนนี้มี source แล้ว สไลด์ CMRP แสดง 15 คอมโบ S, O, D ที่ได้ RPN = 360 เท่ากันทั้งหมด (เช่น 10 x 9 x 4, 4 x 9 x 10) และเตือนว่า RPN เป็นแค่ threshold ไม่ใช่ตัวตัดสิน (CMRP CMPR-02 p.33, p.46) ดู [[CMRP vs RBMM FMECA Scales]] หัวข้อ 7 (RBMM ยังไม่ได้กล่าวถึงประเด็นนี้)
 - ผล FMECA ใช้จัดลำดับ FM ไม่ได้เลือกงาน PM ให้ ต้องต่อด้วย [[PM Task Selection]]
+
+## Convention ของ CMRP (สไลด์หลักสูตร, เพิ่ม 2026-10-25)
+
+สไลด์ [[CMRP Course]] สอน FMEA/FMECA ด้วย convention ต่างจาก RBMM เป็นความต่างของสเกล ไม่ใช่ข้อขัดแย้ง ตารางเทียบเต็มอยู่ใน [[CMRP vs RBMM FMECA Scales]]
+
+- **FMECA = FMEA + Criticality Analysis** ต้องมีข้อมูล failure สำหรับส่วน criticality (CMRP CMPR-02 p.47-48) ตรงกับนิยามของหน้านี้
+- ประเภท FMEA: Concept (ระดับ system ก่อนมี hardware), Design (ก่อนส่งผลิต), Process (ข้อบกพร่องจากการผลิต/ประกอบ) (CMRP CMPR-02 p.38-41); แนวทาง Functional = top-down ใช้ช่วงออกแบบต้น vs Hardware = bottom-up ใช้เมื่อแบบนิ่ง (p.42)
+- ขั้นตอน FMEA 10 ขั้น (review process -> brainstorm FM -> effects -> S, O, D -> RPN -> action -> คำนวณ RPN ใหม่) (p.43) และ FMECA 15 ขั้น (นิยามระบบ, ground rules, block diagram ... ติดตามผล) (p.48)
+- **สเกล 1-10** ทั้ง S, O, D -> RPN สูงสุด 1,000 (p.43-47) เทียบกับ 1-5 ของ RBMM (max 125); occurrence แบบ FMEA ไล่จาก 1 ใน 2 ถึงน้อยกว่า 1 ใน 1.5 ล้าน (p.45); FMECA probability มีแบบ brief 4 ระดับและ detailed 10 ระดับ 1/10,000 ถึง 1/10+ (CMRP CMPR-03 p.1)
+- MIL-STD-1629A 2 แบบ: qualitative ใช้ level A-E วางบน criticality matrix; quantitative **Mode Criticality = Item Unreliability x Mode Ratio x Probability of Loss**, Item Criticality = ผลรวม (CMRP CMPR-02 p.50-51) โครงเดียวกับ FFCr / Cr ของ RBMM ในหัวข้อ Quantitative ด้านบน
+- Severity category I-IV (I = Catastrophic, เลขน้อยรุนแรงกว่า ทิศกลับกับ RBMM) (CMRP CMPR-02 p.52)
+- Criticality index = S + P หรือ S x P ไม่มี Detection (CMRP CMPR-03 p.2) ต่างจาก RPN
+- RPN band ของสไลด์ (None 0, Low 8-40, Medium 80-240, High 320-1,000) มีช่องว่างและค่าที่เป็นไปไม่ได้ (CMRP CMPR-02 p.33) ดูหน้าเทียบ
+- ข้อจำกัดของ FMECA 4 ข้อ: ต้องคาด FM ล่วงหน้าได้, ไม่รวม multiple failure interaction, ไม่ดูอันตรายตอนระบบทำงานปกติ, ไม่รวม human factors (CMRP CMPR-03 p.4) ดู [[Human Reliability]]
+- ตัวอย่าง PFMEA ในสไลด์มีเลขคูณผิด 3 ค่า (7 x 8 x 7 พิมพ์ 382 ควรเป็น 392; 7 x 1 x 7 พิมพ์ 40 ควรเป็น 49; 7 x 2 x 6 พิมพ์ 70 ควรเป็น 84) (CMRP CMPR-02 p.41)
+- FMEA เป็นเครื่องมือ forward-looking และใช้จัดลำดับสาเหตุใน [[Root Cause Analysis]] (CMRP CMPR-03 p.21-23)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 
@@ -101,6 +118,8 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 - [[Failure Mode]]
 - [[Failure Data Recording]]
 - [[Weibull Analysis]]
+- [[CMRP vs RBMM FMECA Scales]]
+- [[Root Cause Analysis]]
 
 ## Triplets
 
@@ -159,3 +178,17 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 - [[FMECA]] [uses:: [[Failure Data Recording]]] columns Equipment, Damage Code, Object Part, Failure Mode (Fig 5.23)
 - Occurrence [depends_on:: [[OREDA]]] interpretation: OREDA % share cannot map directly to Fig 5.19 ranks [confidence:: low]
 - Detect-ability [related_to:: [[P-F Interval and Condition Monitoring]]] e.g. VIB detectable earlier than sudden modes
+- RPN [depends_on:: Ordinal Scale] source now available: 15 S, O, D combinations all give RPN 360 (CMRP CMPR-02 p.33)
+- [[FMECA]] [has_formula:: FMEA + Criticality Analysis] needs failure data for criticality part (CMRP CMPR-02 p.47-48)
+- Concept FMEA [is_a:: FMEA] system level before hardware (CMRP CMPR-02 p.38-41)
+- Design FMEA [is_a:: FMEA] before release to production (CMRP CMPR-02 p.38-41)
+- Process FMEA [is_a:: FMEA] manufacturing/assembly defects (CMRP CMPR-02 p.38-41)
+- Functional FMEA [differs_from:: Hardware FMEA] top-down early design vs bottom-up when design is frozen (CMRP CMPR-02 p.42)
+- CMRP RPN [has_value:: max 1,000] S, O, D 1-10 (CMRP CMPR-02 p.43-47)
+- CMRP RPN [differs_from:: RPN] 1-10 vs RBMM 1-5 scales, see comparison page
+- MIL-STD-1629A Mode Criticality [has_formula:: Item Unreliability x Mode Ratio x Probability of Loss] (CMRP CMPR-02 p.50-51)
+- CMRP Criticality Index [has_formula:: S + P or S x P] no Detection (CMRP CMPR-03 p.2)
+- [[FMECA]] [related_to:: Multiple Failure Interaction] limitation: not covered; also human factors and normal-operation hazards (CMRP CMPR-03 p.4)
+- PFMEA Example Row 4 Before [has_value:: 392] slide prints 382 (CMRP CMPR-02 p.41)
+- [[FMECA]] [input_to:: [[Root Cause Analysis]]] FMEA ranks possible causes (CMRP CMPR-03 p.21-22)
+- [[FMECA]] [related_to:: [[CMRP vs RBMM FMECA Scales]]]

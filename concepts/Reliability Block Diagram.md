@@ -1,10 +1,10 @@
 ---
 title: Reliability Block Diagram
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [reliability, statistics, criticality, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [reliability, statistics, criticality, book, cmrp, reliability-allocation, fta]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -40,6 +40,12 @@ Failure tree : Ft = 1 - Π (1 - Fi),  Fi = 1 - Ri          (ตรงข้า�
 - ระบบ standby หรือ k-out-of-n ต้องใช้แบบจำลองเฉพาะ ดู [[Redundancy and Standby Systems]]
 - Availability ของระบบต้องรวม MTTR ด้วย ไม่ใช่ R อย่างเดียว ดู [[Availability and OEE]]
 
+## มุมมอง CMRP (เพิ่ม 2026-10-25, sources: cmrp.md)
+
+- สไลด์ [[CMRP Course]] ใช้สูตร series Rs = ΠRi และ parallel Rp = 1 - Π(1 - Ri) แบบเดียวกัน (CMRP CMPR-04 p.42-43) และระบุว่า RBD แปลงเป็น success tree / fault tree ได้ด้วยกฎ De Morgan ดู [[Fault Tree Analysis]]; ถ้า block ไม่ independent ให้ใช้ dynamic RBD (p.44) ซึ่งยืนยันสมมติฐาน independence ที่หน้านี้เคยติดป้ายว่าเป็นความรู้ทั่วไป
+- **Flag ข้อผิดในสไลด์ CMRP (p.44)**: ตัวอย่าง R1 = 0.905 อนุกรมกับ (R2 = 0.580 ขนาน R3 = 0.600) อนุกรมกับ R4 = 0.861 ส่วนขนาน 0.832 ถูก แต่ผลรวม 0.905 x 0.832 x 0.861 = **0.648** ไม่ใช่ 0.541 ตามสไลด์ (ความผิดเลขคณิตแบบเดียวกับที่พบใน RBMM ไม่ใช่ contested)
+- RBD เป็นฐานของการกระจายเป้า reliability ระดับระบบลง subsystem (equal, ARINC, cost optimization) ดู [[Reliability Allocation]]; RBD/FTA ยังใช้คำนวณ availability ระดับระบบ (CMRP CMPR-04 p.21)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - กรอบ RBD สอดคล้องกับลำดับชั้นใน [[Failure Hierarchy]]: [[Compressor]] ประกอบด้วย sub unit หลายส่วน (เช่น power transmission, lubrication, control and monitoring) ซึ่งส่วนใหญ่ต่ออนุกรมเชิง function ถ้าหนึ่งส่วนเสียแล้วเครื่องหยุด
@@ -52,6 +58,8 @@ Failure tree : Ft = 1 - Π (1 - Fi),  Fi = 1 - Ri          (ตรงข้า�
 - [[Weibull Analysis]]
 - [[Redundancy and Standby Systems]]
 - [[Criticality Assessment]]
+- [[Reliability Allocation]]
+- [[Fault Tree Analysis]]
 
 ## Triplets
 
@@ -80,3 +88,10 @@ Failure tree : Ft = 1 - Π (1 - Fi),  Fi = 1 - Ri          (ตรงข้า�
 - [[CTMN Control and Monitoring]] [part_of:: [[Compressor]]] mostly functional series in RBD
 - Compressor 2x100% Or 3x50% [is_a:: Parallel Configuration] train level, no Valeura asset data
 - [[Criticality Assessment]] [uses:: [[Reliability Block Diagram]]] with failure tree and [[FMECA]], which item failure mode fails system function
+- [[Reliability Block Diagram]] [related_to:: [[Fault Tree Analysis]]] convertible to success/fault tree via De Morgan (CMRP CMPR-04 p.44)
+- Dynamic RBD [applies_to:: Dependent Block Failures] when blocks are not independent (CMRP CMPR-04 p.44)
+- [[Reliability Block Diagram]] [depends_on:: Independent Block Failures] now stated by CMRP (CMRP CMPR-04 p.44)
+- CMRP RBD Example Result [has_value:: 0.541] as printed, wrong (CMRP CMPR-04 p.44)
+- Correct CMRP RBD Example Result [has_value:: 0.648] 0.905 x 0.832 x 0.861; parallel part 0.832 correct
+- CMRP RBD Example Result [contradicts:: Correct CMRP RBD Example Result] slide arithmetic error, not contested
+- [[Reliability Allocation]] [uses:: [[Reliability Block Diagram]]] system model for apportionment (CMRP CMPR-06 p.1)

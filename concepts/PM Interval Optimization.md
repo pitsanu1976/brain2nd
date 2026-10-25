@@ -1,10 +1,10 @@
 ---
 title: PM Interval Optimization
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [pm, cost, weibull, reliability, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [pm, cost, weibull, reliability, maintenance-management, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -74,6 +74,26 @@ Cost per unit time = [Cu*F(tp) + Cp*R(tp)] / [tp*R(tp) + integral 0..tp of t*f(t
 - หนังสือพิมพ์ตัวส่วนเป็น integral จาก tp ถึง infinity (หนังสือพิมพ์ผิด); ทฤษฎี age replacement และสูตรบทที่ 8 ใช้ integral จาก 0 ถึง tp หน้านี้ใช้รูปหลัง (confidence medium) ไม่ถือเป็น source conflict ของ wiki
 - ตัวเลขตาราง 480 วันเป็นค่าที่หนังสือคำนวณ ไม่ได้ตรวจคำนวณซ้ำ
 
+## โมเดล C2/C1 ของ CMRP (เพิ่ม 2026-10-25, sources: cmrp.md)
+
+สไลด์ [[CMRP Course]] ใช้ case study circuit board ของระบบ railway signaling ที่ fit Weibull ได้ β > 1 (wear-out) แล้วเทียบ cost rate ของการเปลี่ยนเชิงป้องกันแบบ as-good-as-new กับ run-to-failure (CMRP CMPR-06 p.37-39)
+
+สัญลักษณ์: p = ต้นทุนเปลี่ยน (สมมติเท่ากันทั้ง CM และ PM), P = ต้นทุนทางอ้อมของ failure (เช่น ค่าปรับ unavailability), θ = เวลาเปลี่ยน, x = θ/η, r = P/p
+
+```
+C1     = (p + P) / MTBF                                  run-to-failure cost rate
+C2(θ)  = [p + P(1 - R(θ))] / m(θ),   m(θ) = ∫0..θ R(t) dt   preventive cost rate
+C2/C1  = [1 + r(1 - exp(-x^β))] / m(x) × Γ(1 + 1/β) / (1 + r)
+```
+
+- ถ้า C2/C1 < 1 ควรทำ systematic PM; สไลด์มี abacus ตาม β และ r
+- ตัวอย่าง β = 3, η = 50,000 ชม., r = 50: สไลด์ได้ θ = 10,950 ชม., C2/C1 = 0.1220 (ต้นทุนต่อเวลาเหลือราว 12% ของ run-to-failure)
+- **ตรวจซ้ำ (derived)**: minimize สมการได้ θ ≈ **10,780 ชม.** ที่ C2/C1 = 0.1220 เท่ากัน ค่าของสไลด์ 10,950 ชม. ให้ ratio 0.12204 ต่างกันเพียงหลักที่ 5 จึงเป็นความคลาดเล็กน้อย (~1.6%) ในช่วงที่ optimum แบนมาก ไม่ใช่ข้อขัดแย้ง ข้อสรุปเดียวกับตัวอย่าง RBMM ว่าเส้นต้นทุนรอบ optimum แบน เลือกคาบตามรอบแผนงานได้
+- **เทียบกับสูตร RBMM**: รูปแบบนี้เทียบเท่าวิธีที่ 1 ด้านบน ถ้าให้ Cp = p และ Cf = p + P (Cf/Cp = 1 + r) เพราะตัวส่วน m(θ) = ∫0..θ R(t) dt = θ·R(θ) + ∫0..θ t·f(t) dt (integration by parts) จึงเป็นความยาวรอบคาดหวังเดียวกัน
+- ตัวส่วนของ CMRP ใช้ขอบเขต 0 ถึง θ ซึ่ง **สนับสนุน flag เดิมของหน้านี้** ว่าสูตรบทที่ 12 ของ RBMM ที่พิมพ์ปริพันธ์จาก tp ถึง infinity เป็นการพิมพ์ผิด และรูปที่ถูกคือ 0 ถึง tp (ตอนนี้มีสอง sources ยืนยันรูป 0..tp: RBMM บทที่ 8 และ CMRP CMPR-06 p.38)
+- สไลด์เสริมหลักการทั่วไปที่ตรงกับหัวข้อ "หลักการ" ข้างบน (CMRP CMPR-04 p.37-38): replacement ก่อนเสียคุ้มเฉพาะเมื่อ failure rate เพิ่มขึ้น ยกเว้น PM แบบ servicing (เช่นหล่อลื่น) บน unit ที่ λ คงที่ซึ่งถ้าไม่ทำ λ จะเพิ่ม; PM อาจ induce failure; ข้อมูลที่ต้องใช้หาช่วงเปลี่ยน (อ้าง O'Connor 2002) ได้แก่ distribution และ parameter, ผลต่อระบบ, ต้นทุน failure (รวม downtime/safety), ต้นทุน PM, ผลของ PM ต่อ reliability, operator ตรวจพบได้หรือไม่, ต้นทุน inspection
+- ข้อเตือนจาก case study: การใช้ exponential (λ คงที่) กับ electronics ทำให้มองไม่เห็น wear-out (board β = 2.37-3.85) และทำให้นโยบาย RCM เอนเอียง (CMRP CMPR-06 p.31-37) ดู [[Weibull Analysis]]
+
 ## เมื่อใช้ไม่ได้ผล (RBMM p.231-232)
 
 1. ทำไม่ได้กับทุก failure mode
@@ -139,3 +159,15 @@ Cost per unit time = [Cu*F(tp) + Cp*R(tp)] / [tp*R(tp) + integral 0..tp of t*f(t
 - [[PM Interval Optimization]] [depends_on:: [[CMMS]]] needs cost per event, MTTR/MWT, failure mode, failure date (RBMM p.229)
 - [[PM Interval Optimization]] [depends_on:: [[Criticality Assessment]]] criticality-based strategy is the more important starting point (RBMM p.232)
 - [[PM Interval Optimization]] [depends_on:: Site-Specific History] OREDA constant rate cannot give tp; need beta/eta from site repair history (RBMM p.223, p.231)
+- Run-to-failure Cost Rate C1 [has_formula:: (p + P) / MTBF] p = replacement cost, P = indirect failure cost (CMRP CMPR-06 p.38)
+- Preventive Cost Rate C2 [has_formula:: (p + P(1 - R(θ))) / m(θ), m(θ) = ∫0..θ R(t) dt] page uses square brackets (CMRP CMPR-06 p.38)
+- C2/C1 Ratio [has_formula:: (1 + r(1 - exp(-x^β))) / m(x) × Γ(1 + 1/β) / (1 + r)] x = θ/η, r = P/p (CMRP CMPR-06 p.38)
+- C2/C1 Ratio [selects:: Systematic PM] when C2/C1 < 1 (CMRP CMPR-06 p.38-39)
+- CMRP Optimum Replacement Time [has_value:: 10,950 h] β = 3, η = 50,000 h, r = 50, C2/C1 = 0.1220 (CMRP CMPR-06 p.39)
+- Recomputed Optimum Replacement Time [has_value:: about 10,780 h] same inputs, C2/C1 = 0.1220, derived; flat optimum [confidence:: medium]
+- CMRP Optimum Replacement Time [differs_from:: Recomputed Optimum Replacement Time] about 1.6% difference in flat region, not contested
+- Preventive Cost Rate C2 [maps_to:: Cost per Unit Time] Cp = p, Cf = p + P; ∫0..θ R dt = θR(θ) + ∫0..θ t f(t) dt
+- Preventive Cost Rate C2 [contradicts:: RBMM Chapter 12 Integral Limits] CMRP denominator 0..θ supports wiki flag that tp..infinity is a misprint
+- [[PM Interval Optimization]] [applies_to:: Servicing PM] exception: lubrication on constant-λ unit (CMRP CMPR-04 p.37-38)
+- Optimum Replacement Interval Inputs [has_value:: 7 inputs] distribution, system effect, failure cost, PM cost, PM effect, operator detection, inspection cost (O'Connor 2002 via CMRP CMPR-04 p.38)
+- [[PM Interval Optimization]] [depends_on:: Shape Parameter Beta] railway board β 2.37-3.85 justify PM (CMRP CMPR-06 p.31-37); see [[Weibull Analysis]]

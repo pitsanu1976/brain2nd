@@ -1,10 +1,10 @@
 ---
 title: Redundancy and Standby Systems
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [pm, criticality, reliability, maintenance-management, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [pm, criticality, reliability, maintenance-management, book, iso-14224, cmrp, reliability-allocation]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -60,6 +60,11 @@ Redundancy (ระบบสำรอง) เป็นวิธีเพิ่ม
 - **CCF**: redundancy ใช้ผลได้ไม่เต็มเมื่อหลายตัวเสียจากสาเหตุร่วม (common cause) หรือ mode เดียวกัน (common mode) ถ้าสมมติอิสระต่อกัน ผลจะดีเกินจริง ซึ่งไม่ conservative; ใช้ beta-factor เมื่อวิเคราะห์ละเอียดไม่ได้ (ISO 14224 cl. C.1.4-C.1.7, p.206-207; cl. 3.5-3.6, p.3) ดู [[Safety Critical Failure Classification]]
 - ความหมายของ "critical" ในหน้านี้กับ ISO ต่างกัน ดู [[Failure Impact Classification]]
 
+## Redundancy กับการกระจายเป้า reliability (เพิ่ม 2026-10-25, sources: cmrp.md)
+
+- เมื่อเป้า reliability ของระบบสูงกว่าที่ชิ้นส่วนเดิมทำได้ ทางเลือกคือยก reliability ของชิ้นเดียว (ผ่าน cost/penalty function) หรือเพิ่มการต่อขนาน สไลด์ [[CMRP Course]] แสดงว่าในระบบขนาน 0.6/0.7/0.8 (R = 0.976) ยกชิ้นเดียวก็ถึงเป้า 0.99 ได้ แต่ระบบอนุกรม 0.7/0.8/0.9 ยกชิ้นเดียวไม่พอถึง 0.85 (CMRP CMPR-04 p.46-47) วิธีหาชุดที่ต้นทุนรวมต่ำสุดดู [[Reliability Allocation]]
+- การคำนวณ availability ของระบบด้วย RBD/FTA ต้องรวม redundancy, common cause และ dormant failure (CMRP CMPR-04 p.21) สอดคล้องกับข้อเตือนเรื่อง hidden failure และ CCF ด้านบน
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - กรณี compressor A/B (1 out of 2 หรือ 2 out of 3) ตามตัวอย่างของหนังสือ ต้องแยก failure mode ราย [[Compressor]] และ failure mode ของ switching/auto-changeover; ข้อความเดิม "ISO 14224 ไม่ได้บันทึก redundancy เป็นฟิลด์ใน sources" เขียนก่อน ingest มาตรฐาน ตอนนี้ ISO 14224 อธิบายชนิด redundancy และ ERF ไว้ (ดูหัวข้อมุมมอง ISO ด้านบน) แต่ notes ที่ ingest ไม่ได้ระบุว่ามีฟิลด์ redundancy ใน equipment data ของ compressor (Table A.10)
@@ -73,6 +78,7 @@ Redundancy (ระบบสำรอง) เป็นวิธีเพิ่ม
 - [[Reliability Block Diagram]]
 - [[Criticality Assessment]]
 - [[PM Task Selection]]
+- [[Reliability Allocation]]
 
 ## Triplets
 
@@ -113,3 +119,5 @@ Redundancy (ระบบสำรอง) เป็นวิธีเพิ่ม
 - Compressor A/B [is_a:: k out of n] 1 out of 2 or 2 out of 3; separate failure modes per [[Compressor]] and changeover
 - Hidden Standby Failure [related_to:: FTS] failure on demand, wiki suggestion [confidence:: low]
 - [[OREDA]] [has_value:: No Redundancy Configuration Data] item-level data in wiki sources
+- Redundancy [related_to:: [[Reliability Allocation]]] alternative to raising a single unit's reliability (CMRP CMPR-04 p.46-47)
+- System Availability Calculation [depends_on:: Redundancy] with common cause and dormant failure via RBD/FTA (CMRP CMPR-04 p.21)

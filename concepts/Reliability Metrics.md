@@ -1,10 +1,10 @@
 ---
 title: Reliability Metrics
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [reliability, statistics, weibull, kpi, failure-rate, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [reliability, statistics, weibull, kpi, failure-rate, book, iso-14224, cmrp, maintainability]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: true
 ---
@@ -96,6 +96,13 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 
 ถ้าเวลาซ่อมเป็น Exponential: M(t) = 1 - exp(-t/MTTR) ตัวอย่าง MTTR = 3.5 ชม., t = 3 ชม. ได้ M(3) = 0.5756 หมายถึงโอกาส 57.56% ที่ซ่อมเสร็จใน 3 ชม. ต้องเทียบ maintainability ภายใต้หน่วยงานบำรุงรักษาเดียวกัน เพราะเวลาซ่อมขึ้นกับ work control และทีม
 
+### มุมมอง CMRP ต่อ MTTR (เพิ่ม 2026-10-25, sources: cmrp.md)
+
+- สไลด์ [[CMRP Course]] ใช้สูตร M(t) แบบ exponential เดียวกัน และให้ μ = 1/MTTR, λ = 1/MTBF เฉพาะกรณี exponential (CMRP CMPR-04 p.13-14, p.30)
+- แต่ **MTTR ของ CMRP จำกัดที่ active repair** 7 ขั้นตาม MIL-HDBK-472 (localization ถึง checkout) ไม่รวมเวลารออะไหล่/เครื่องมือ/admin ซึ่งเป็น inactive time (CMRP CMPR-04 p.39-40) ต่างจาก MTTR ของ RBMM ที่รวมเวลารอแรงงาน (RBMM p.49-51) และใกล้ MART ของ ISO 14224 เป็นความต่างของขอบเขตศัพท์ ไม่ใช่ตัวเลขขัดกัน ดู [[Maintenance Time Definitions]]
+- CMRP แนะนำ lognormal สำหรับเวลาซ่อม (MTTR = exp(t' + s²/2)) และนิยาม Mmax ที่ percentile; ถ้าเป็น exponential Mmax(95%) ≈ 3 x MTTR (derived) รายละเอียด การจัดสรร MTTR และระดับงาน NF X60-000 อยู่ใน [[Maintainability]]
+- ตัวอย่างของสไลด์ (CMRP CMPR-04 p.16): MTTF ของ 10 ชิ้น = 1538/10 = 153.8 ชม.; MTBF = n·m/r = 100 x 1000/25 = 4,000 ชม. (สไลด์ p.15 เรียก t ในสูตร MTTF ว่า "failure rates" ที่ถูกคือ failure times)
+
 ## Failure Tree (RBMM p.175)
 
 ใช้คำนวณ F รวม = 1 - R รวม ตรงข้ามกับ RBD: Ft = 1 - Π(1 - Fi) โดย Fi = 1 - Ri (อนุกรมใน RBD เทียบเท่า OR-gate; หนังสือใช้สัญลักษณ์ขนาน) ดู [[Reliability Block Diagram]]
@@ -120,6 +127,7 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 - [[Reliability Block Diagram]]
 - [[Statistical Distributions for Maintenance]]
 - [[Maintenance KPIs]]
+- [[Maintainability]]
 
 ## Triplets
 
@@ -177,3 +185,10 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 - [[ISO 14224]] [source_of:: MTTR] with MWT, from downtime and man-hours in maintenance records; used for [[Compressor]] unit availability
 - [[Reliability Metrics]] [applies_to:: [[Failure Mode]]] per failure mode, not whole machine
 - [[Reliability Metrics]] [related_to:: [[Availability and OEE]]]
+- [[Reliability Metrics]] [related_to:: [[Maintainability]]] M(t), lognormal repair time, Mmax, allocation
+- CMRP MTTR [applies_to:: Active Repair] seven MIL-HDBK-472 steps, excludes inactive waiting time (CMRP CMPR-04 p.39-40)
+- CMRP MTTR [differs_from:: RBMM MTTR] RBMM includes labor wait (RBMM p.49-51); scope difference, not contested
+- Repair Rate [has_formula:: μ = 1/MTTR] (CMRP CMPR-04 p.13, 17)
+- Failure Rate [has_formula:: λ = 1/MTBF] only for exponential (CMRP CMPR-04 p.14)
+- CMRP MTTF Example [has_value:: 153.8 h] 1538/10 for 10 units (CMRP CMPR-04 p.16)
+- CMRP MTBF Example [has_value:: 4,000 h] n·m/r = 100 x 1000/25 (CMRP CMPR-04 p.16)

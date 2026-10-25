@@ -1,10 +1,10 @@
 ---
 title: Maintenance Time Definitions
 created: 2026-10-21
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [iso-14224, kpi, reliability, maintenance-management, data-quality]
-sources: [iso-14224.md, reliability-based-maintenance-management.md]
+tags: [iso-14224, kpi, reliability, maintenance-management, data-quality, cmrp, maintainability]
+sources: [iso-14224.md, reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -65,6 +65,22 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 
 การจับคู่นี้เป็นการตีความของ wiki (confidence medium) เนื่องจาก RBMM ไม่ได้อ้างนิยามของ ISO 14224 ดู [[Availability and OEE]] ที่ใช้ MDT เป็นตัวหารของ availability และ [[Maintenance KPIs]]
 
+## 4. จับคู่กับ CMRP (เพิ่ม 2026-10-25, sources: cmrp.md)
+
+สไลด์ [[CMRP Course]] (secondary teaching source) แบ่ง downtime เป็น run-down, preparation/delay, active repair, waiting/delay, start-up (CMRP CMPR-04 p.22) และจำกัด MTTR ไว้ที่ active repair 7 ขั้นตาม MIL-HDBK-472: localization, isolation, disassembly, interchange, reassembly, alignment, checkout ส่วนเวลารออะไหล่/เครื่องมือ/ขนส่ง/admin เรียก inactive time (CMRP CMPR-04 p.39-40)
+
+| CMRP | ISO 14224 | RBMM | ข้อสังเกต |
+|---|---|---|---|
+| MTTR (active repair 7 ขั้น) | ใกล้ MART | MTTR รวม wait labor | MTTR ของ CMRP แคบที่สุดในสามแหล่ง |
+| Preparation/delay + waiting/delay, inactive time | preparation/delay, logistic และ administrative delay | MWT (รออะไหล่) | ISO แยก logistic กับ administrative delay ส่วน CMRP รวมเป็น inactive |
+| Downtime (รวม run-down และ start-up ในรูป) | Down time ไม่รวม run-down/start-up (cl. 8.3.3, p.34) | MDT = MTTR + MWT | ขอบเขตต่างกัน |
+| MDT ใน Ao = MTBM/(MTBM + MDT) | MDT ใน Ao = MUT/(MUT + MDT) | MDT ใน Availability | ดู [[Availability and OEE]] (contested ที่หน้านั้น) |
+| MAMT (corrective + PM ถ่วงความถี่) ใน Aa | active maintenance time (รวม technical delay) | ไม่มี | ใกล้กันเชิงแนวคิด |
+
+- ความต่างเป็น convention/ขอบเขตศัพท์ ไม่ใช่ข้อขัดแย้งของตัวเลข หน้านี้จึงคง `contested: false`; เวลาบันทึกข้อมูลใน CMMS ให้ยึดนิยามของ ISO 14224 (มาตรฐาน) และระบุทุกครั้งว่า MTTR ที่รายงานรวมเวลารอหรือไม่
+- การที่รูปของสไลด์วาง run-down/start-up ในแผนภาพ downtime น่าจะสะท้อนมุมมองเวลาสูญเสียการผลิต ไม่ใช่นิยาม down time ของ item (การตีความของ wiki, confidence medium)
+- ทฤษฎี M(t), lognormal repair time, Mmax และการจัดสรร MTTR ดู [[Maintainability]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ข้อมูล [[OREDA]] ไม่ให้ MTTR/MWT ให้เก็บ down time และ active maintenance time ต่อ failure record จาก [[CMMS]] ตาม Table 8 ของ ISO 14224 ข้อควรระวังคือ CMMS ยังบันทึกสองค่านี้น้อย (Table 8 note d, p.45)
@@ -77,6 +93,7 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 - [[Failure Rate Estimation]]
 - [[RM Data Quality]]
 - [[Failure Impact Classification]]
+- [[Maintainability]]
 
 ## Triplets
 
@@ -124,3 +141,10 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 - MART [input_to:: Availability] compare with MRT/MDT to split slow repair from waiting, for [[Compressor]]
 - [[UST Spurious Stop]] [has_category:: Unplanned Down Time] trip/spurious stop counted for availability only (ISO 14224 Annex B.1, p.176)
 - [[Maintenance Time Definitions]] [related_to:: [[Maintenance KPIs]]]
+- CMRP Downtime [has_part:: Active Repair] with run-down, preparation/delay, waiting/delay, start-up (CMRP CMPR-04 p.22)
+- CMRP MTTR [applies_to:: Active Repair] seven MIL-HDBK-472 steps, localization to checkout (CMRP CMPR-04 p.39)
+- CMRP MTTR [maps_to:: MART] narrowest MTTR of CMRP, ISO, RBMM [confidence:: medium]
+- Inactive Time [maps_to:: Logistic Delay] plus administrative delay; spares, tools, transport, admin (CMRP CMPR-04 p.39-40) [confidence:: medium]
+- CMRP Downtime [differs_from:: Down Time] slide figure includes run-down and start-up; ISO 14224 cl. 8.3.3 excludes them; convention, not contested
+- MAMT [maps_to:: Active Maintenance Time] corrective + PM weighted by frequency, used in Aa (CMRP CMPR-04 p.23) [confidence:: medium]
+- [[Maintenance Time Definitions]] [related_to:: [[Maintainability]]] M(t), lognormal repair time, Mmax

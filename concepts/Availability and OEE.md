@@ -1,10 +1,10 @@
 ---
 title: Availability and OEE
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [kpi, reliability, maintenance-management, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [kpi, reliability, maintenance-management, book, iso-14224, cmrp, maintainability]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: true
 ---
@@ -36,6 +36,8 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 
 หัวข้อย่อยนี้ไม่ได้มาจาก RBMM เป็นการแบ่งที่ใช้ทั่วไปในงาน reliability engineering ความต่างอยู่ที่ว่านับเวลาหยุดประเภทใดบ้าง
 
+> อัปเดต 2026-10-25: หัวข้อนี้เดิมเขียนจากความรู้ทั่วไป ตอนนี้มี **secondary source** แล้ว คือสไลด์ [[CMRP Course]] (CMRP CMPR-04 p.21-23) ที่ให้นิยามและสูตร Ai/Aa/Ao ชุดเดียวกัน ดูหัวข้อ "นิยามของ CMRP" ด้านล่าง ข้อความเดิมด้านล่างคงไว้เป็นประวัติ ระดับความเชื่อถือของชุดนี้ยกจาก low เป็น medium (สื่อการสอน ไม่ใช่มาตรฐาน) และยังคง contested กับชุดของ ISO 14224
+
 | ประเภท | สูตร | นับเวลาหยุดอะไร | ใช้ทำอะไร |
 |---|---|---|---|
 | Inherent availability (Ai) | MTBF / (MTBF + MTTR) | เฉพาะเวลาซ่อมแก้ (corrective) | ความสามารถของการออกแบบ ไม่รวมผลของ PM และ logistics |
@@ -46,6 +48,24 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - สูตร Availability ~ MTTF / (MTTF + MDT) ในหัวข้อ 1 ที่ใช้ MDT = MTTR + MWT จึงใกล้เคียง Ao มากที่สุด เพราะรวมเวลารอ (MWT)
 - ปกติ Ai ≥ Aa ≥ Ao ถ้า Ai สูงแต่ Ao ต่ำ แปลว่าปัญหาอยู่ที่ logistics/อะไหล่หรือการวางแผน ไม่ใช่ที่ตัวเครื่อง (เชื่อมกับ MWT ใน [[Spare Parts Management]] และ MTTR ใน [[Maintenance KPIs]])
 - ตัวป้อน MTBF/MTTF ดูการคำนวณใน [[Reliability Metrics]]
+
+### นิยามของ CMRP (sources: cmrp.md, เพิ่ม 2026-10-25)
+
+สไลด์ CMRP ให้นิยาม availability = สัดส่วนเวลาที่อยู่ในสภาพพร้อมใช้เมื่อถูกเรียกใช้ ณ เวลาสุ่ม; A = E[uptime] / (E[uptime] + E[downtime]) และถ้าไม่มี PM และซ่อมทันที A = MTBF/(MTBF + MTTR) (CMRP CMPR-04 p.17, 20)
+
+| ประเภท (CMRP) | สูตร | downtime ที่รวม |
+|---|---|---|
+| Inherent Ai | MTBF / (MTBF + MTTR) | corrective เท่านั้น (ideal support) (p.21-22) |
+| Achieved Aa | MTBMA / (MTBMA + MAMT) | active corrective + preventive ไม่รวม logistics/admin delay (p.22-23) |
+| Operational Ao | MTBM / (MTBM + MDT) (p.23) | ทุกอย่าง รวม logistics รออะไหล่ admin |
+
+- ชื่อตัวแปรต่างจากชุดความรู้ทั่วไปด้านบนเล็กน้อย: Aa ใช้ MTBMA (mean time between maintenance actions) และ MAMT (mean active maintenance time = เวลาเฉลี่ย corrective และ PM ถ่วงด้วยความถี่) แทน MTBM และ M; แนวคิดตรงกัน
+- MTBMA = 1/(λ + f_PM) โดย f_PM = ความถี่ PM (สไลด์ p.23 อ่านไม่ชัด เขียนคล้าย "1/(λ/z)")
+- **ความไม่สอดคล้องภายใน CMRP**: p.21 นิยาม Ao ด้วย MTBF/(MTBF + MDT) แต่ p.23 ใช้ MTBM/(MTBM + MDT) wiki บันทึกทั้งสองไว้ ไม่เลือก (ถ้ามี PM ตัวหารควรเป็น MTBM เพราะ PM ก็ทำให้หยุด เป็นการตีความของ wiki)
+- MTTR ในสูตร Ai ของ CMRP จำกัดที่ active repair (CMRP CMPR-04 p.39) ดู [[Maintainability]] และ [[Maintenance Time Definitions]]
+- นิยามเชิงเวลา (p.20): A(t) = Pr[X(t) = 1] (point availability), average availability บน [0, c] = (1/c)∫0..c A(t) dt และ limiting (steady-state) availability = limit เมื่อ c ไปอนันต์
+- ระบบ high availability ระบุเป็น 99.98% หรือ 99.999% (p.18); RBD/FTA ใช้คำนวณ availability ระดับระบบโดยรวม redundancy, common cause, dormant failure, test coverage, spare stocking, logistics (p.21)
+- Trade-off (p.18-19): maintenance ยก reliability ได้ไม่เกิน inherent reliability; ตัวอย่าง oil platform ยอมจ่าย cost of ownership สูงเพื่อ availability ที่เพิ่มเล็กน้อยเพราะ revenue loss สูงกว่ามาก
 
 ### นิยามของ ISO 14224 Annex C (sources: iso-14224.md)
 
@@ -73,6 +93,8 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 | Operational | Ao = MTBM / (MTBM + MDT) | Ao = MUT / (MUT + MDT) |
 | รวมเวลา PM | Aa รวม PM, Ai ไม่รวม | Ao รวม PM ได้ (ทางเลือก), AT ไม่รวม PM |
 | ชื่อ "technical" | ไม่ใช้ | AT/technical = intrinsic ใช้แทนกันได้ |
+
+อัปเดต 2026-10-25: ฝั่งซ้ายของตาราง (Ai/Aa/Ao) ตอนนี้มี source รองรับคือ CMRP CMPR-04 p.21-23 (secondary teaching source) จึงไม่ใช่ "ไม่มีใน sources" อีกต่อไป แต่ยังขัดกับ ISO 14224 (sourced standard) ในประเด็นเดิม SCHEMA ให้ถือว่า CMRP ที่ขัดกับ ISO เป็น contested จึงคง `contested: true` ไว้ ผู้ใช้ยังต้องเลือก convention
 
 ทั้งสองชุดใช้แนวเดียวกัน (Ai/AI = ฝั่งเครื่อง, Ao = ฝั่งหน้างาน) ต่างที่ตัวแปรและการมีหรือไม่มี Aa ข้อสังเกตของ wiki (ไม่ใช่ข้อความมาตรฐาน): สูตรแบบ MTBM น่าจะมาจากธรรมเนียม MIL/DoD (ความรู้ทั่วไป, confidence: low) wiki ยังไม่เลือกว่าจะยึดชุดใด ถ้ารายงานต้องเทียบ benchmark แบบ [[OREDA]] หรือ ISO ควรใช้ AI/Ao/AT ของ ISO และระบุว่ารวม PM หรือไม่ สูตร Availability ~ MTTF / (MTTF + MDT) ในหัวข้อ 1 ใกล้เคียง Ao ของ ISO (MUT / (MUT + MDT)) มากที่สุด (derived)
 
@@ -116,6 +138,7 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - [[Reliability Metrics]]
 - [[Asset Life Cycle]]
 - [[Spare Parts Management]]
+- [[Maintainability]]
 
 ## Triplets
 
@@ -171,3 +194,17 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - [[LOO Low Output]] [contributes_to:: OEE] speed/output, degraded
 - MWT [related_to:: [[Spare Part Criticality and Risk]]] critical spares of [[Maintainable Item]]
 - [[Availability and OEE]] [related_to:: [[Spare Parts Management]]]
+- Inherent Availability Ai [has_formula:: MTBF / (MTBF + MTTR)] corrective only, ideal support; CMRP now a secondary source (CMRP CMPR-04 p.21-22) [contested:: true]
+- Achieved Availability Aa [has_formula:: MTBMA / (MTBMA + MAMT)] active corrective + preventive, no logistics/admin delay (CMRP CMPR-04 p.22-23) [contested:: true]
+- Operational Availability Ao General [has_formula:: MTBM / (MTBM + MDT)] all downtime (CMRP CMPR-04 p.23) [contested:: true]
+- CMRP Ao Definition p.21 [has_formula:: MTBF / (MTBF + MDT)] (CMRP CMPR-04 p.21)
+- CMRP Ao Definition p.21 [contradicts:: Operational Availability Ao General] internal CMRP inconsistency, p.21 MTBF vs p.23 MTBM; not resolved
+- MTBMA [has_formula:: 1/(λ + f_PM)] slide text unclear (CMRP CMPR-04 p.23) [confidence:: low]
+- MAMT [has_label:: Mean Active Maintenance Time] corrective and PM times weighted by frequency (CMRP CMPR-04 p.23)
+- Availability [has_formula:: E(uptime) / (E(uptime) + E(downtime))] (CMRP CMPR-04 p.17, 20)
+- Point Availability [has_formula:: A(t) = Pr(X(t) = 1)] (CMRP CMPR-04 p.20)
+- Average Availability [has_formula:: (1/c) ∫0..c A(t) dt] over (0, c) (CMRP CMPR-04 p.20)
+- Limiting Availability [is_a:: Availability] steady state, limit as c goes to infinity (CMRP CMPR-04 p.20)
+- Inherent Availability Ai [depends_on:: [[Maintainability]]] MTTR limited to active repair in CMRP (CMRP CMPR-04 p.39)
+- Maintenance [depends_on:: Inherent Reliability] maintenance cannot raise reliability above inherent level (CMRP CMPR-04 p.18-19)
+- Availability [defined_in:: [[CMRP Course]]] Ai/Aa/Ao set, secondary teaching source (CMRP CMPR-04 p.21-23)

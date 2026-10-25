@@ -1,10 +1,10 @@
 ---
 title: LUBS Lubrication System
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: entity
-tags: [sub-unit, maintainable-item, compressor, failure-rate]
-sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__failure-hierarchy.csv, compressor-failure-hierarchy__sheet5.csv, compressor-failure-hierarchy__subunit-code.csv, failure-structure__sheet1.csv]
+tags: [sub-unit, maintainable-item, compressor, failure-rate, lubrication, cmrp]
+sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__failure-hierarchy.csv, compressor-failure-hierarchy__sheet5.csv, compressor-failure-hierarchy__subunit-code.csv, failure-structure__sheet1.csv, cmrp.md]
 confidence: medium
 contested: true
 ---
@@ -40,6 +40,13 @@ Sub Unit ของ [[Compressor]] ที่จ่ายและปรับส�
 ## Top failure mechanisms
 
 Blockage/plugged (filters), Wear (pump), Contamination (oil), Leakage (pump seals, oil, tanks), Corrosion (cooler/piping)
+
+## Lubrication, contamination และ oil analysis (CMRP)
+
+ส่วนนี้เพิ่มจาก [[CMRP Course]] รายละเอียดอยู่ที่ [[Lubrication and Oil Analysis]] และ [[Wear Mechanisms]]
+- slide อธิบายว่า contamination (อนุภาคแข็ง น้ำ) เป็นตัวขับ abrasive wear และ contact fatigue และน้ำมันเสื่อมผ่าน oxidation -> varnish และ additive depletion (CMRP CMPR-01 p.16-17; CMPR-02 p.4, p.7-8) ตรงกับ mechanism เด่นของ LUBS: Contamination (oil), Blockage/plugged (filter), Wear (pump)
+- cavitation ที่ pump inlet เป็นตัวอย่างใน slide (CMRP CMPR-02 p.6) ตรงกับ `CAVT` ของ Pump w/motor
+- การตีความ (ไม่ใช่ข้อมูลใน sources): particle count และ varnish monitoring เป็นวิธีจับอาการล่วงหน้าของ Filter(s) x SER (high DP); crackle/water test จับ water ingress ของ Oil x INL; การเก็บตัวอย่างควรทำจากสายที่ flow เป็น turbulent ตาม ISO 4021 (CMRP CMPR-02 p.12)
 
 ## ข้อควรระวัง (contested)
 
@@ -202,3 +209,8 @@ Blockage/plugged (filters), Wear (pump), Contamination (oil), Leakage (pump seal
 - [[LUBS Lubrication System]] [has_mechanism:: CTMN] top mechanism; oil
 - [[LUBS Lubrication System]] [has_mechanism:: LEAK] top mechanism; pump seals, oil, tanks
 - [[LUBS Lubrication System]] [has_mechanism:: CORR] top mechanism; cooler/piping
+- [[LUBS Lubrication System]] [related_to:: [[Lubrication and Oil Analysis]]] contamination, varnish, additive depletion (CMRP CMPR-01 p.16-17; CMPR-02 p.8)
+- CTMN [contributes_to:: WEAR] contamination drives abrasive wear (CMRP CMPR-02 p.4)
+- LUBS-PMTR [has_mechanism:: CAVT] cavitation at pump inlet, slide example (CMRP CMPR-02 p.6)
+- LUBS-FILT [detected_by:: Particle Count] interpretation [confidence:: low]
+- LUBS-OILS [detected_by:: Crackle Test] water ingress for Oil x INL, interpretation [confidence:: low]

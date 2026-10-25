@@ -1,10 +1,10 @@
 ---
 title: Criticality Assessment
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224, cmrp]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -105,6 +105,22 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - Fig 9.6 ตารางนับจำนวนชิ้นในเครื่อง A/B/C จาก BOM [ตัวเลขรายแถวอ่านไม่ออก]
 - ดู [[Spare Part Criticality and Risk]] และ [[Spare Parts Management]]
 
+## มุมมอง CMRP: risk matrix 5 x 5 และ RPN bands (เพิ่ม 2026-10-25)
+
+สไลด์ [[CMRP Course]] ใช้ convention ต่างจาก RBMM (ความต่างของสเกล ไม่ใช่ข้อขัดแย้ง; ตารางเทียบเต็มใน [[CMRP vs RBMM FMECA Scales]])
+
+- นิยาม: อุปกรณ์ critical เมื่อผลของ failure มีนัย ทนไม่ได้ ไม่มี redundancy หรือผลนั้นครอบงำปัจจัยอื่น; สไลด์ตั้งคำถามว่าควรให้เครดิต redundancy หรือไม่ (ตัวอย่าง level indicator 3 ตัว) (CMRP CMPR-02 p.28) สอดคล้องกับหัวข้อ Boundary, Redundancy ด้านบน
+- ขั้นตอน: ไล่ทุก functional failure -> component ที่เป็นเหตุ -> FM เด่นและผล -> criticality matrix; ทนไม่ได้ = critical, ทนได้ = non-critical, บันทึกเหตุผลใน Remarks (CMRP CMPR-02 p.29)
+- ตาราง importance 3 ระดับ (High/Moderate/Low) 6 มิติ: availability, production rate, quality, safety, environment, cost (CMRP CMPR-02 p.30) มากกว่า 3 มิติของ RBMM (Commercial, Safety, Environment) ข้อผิดพลาดในสไลด์: availability High = "96" และ Medium = "96-98" ขอบ 96 ซ้ำสองระดับ ควรอ่าน High ว่า "ต่ำกว่า 96"
+- **Risk = Probability x Effect** โดย effect ประเมินภายใต้ "realistic scenario" ที่ทีมตกลงกัน แยก availability/safety/environment/cost (CMRP CMPR-02 p.31-32)
+- **Risk matrix 5 x 5** (CMRP CMPR-02 p.32): Effect 1-5 (no, negligible, marginal, critical, catastrophic) x Probability 1-5 (1/25 ปี, 1/10 ปี, 1/5 ปี, 1/ปี, 1/เดือน) ค่าเซลล์ = ผลคูณ 1-25; band Low 1-3, Medium 4-9, High 10-25
+  - เทียบ RBMM: 5 x 6 คะแนน 1-30 band C 1-4 / B 5-12 / A 15-30 จึงเทียบคะแนนข้ามระบบตรง ๆ ไม่ได้
+  - ข้อบกพร่อง: แถว "No effects" ที่ probability 1/ปี และ 1/เดือน (ค่า 4, 5) ถูกระบายเป็น Medium ทั้งที่ไม่มีผลกระทบ ขัดกับความหมายของ Risk = P x Effect
+- Policy ตาม band (CMRP CMPR-02 p.33): Low = ไม่ทำ preventive; Medium/High = ทำ preventive ต่างกันที่ระดับ เช่น การสำรองอะไหล่ (เทียบได้กับ A/B/C ในหัวข้อ "กลยุทธ์ตามระดับ")
+- **RPN bands** (CMRP CMPR-02 p.33): None 0, Low 8-40, Medium 80-240, High 320-1,000 มีข้อบกพร่อง: "None = 0" เป็นไปไม่ได้ (RPN ต่ำสุด = 1), ช่วง 1-7, 41-79, 241-319 ไม่ถูกจัดระดับทั้งที่เกิดได้จริง (derived) จึงไม่ควรใช้ตามที่พิมพ์โดยไม่กำหนดช่วงที่หายไป
+- สไลด์ใช้คำว่า criticality กับ risk/RPN สลับกันโดยไม่นิยามแยก (CMRP CMPR-02 p.31-33) เพิ่มความหมายที่ 4 ให้คำว่า "critical" นอกเหนือจาก 3 ความหมายใน callout ด้านบน: ในสไลด์ CMRP "critical" = ผลยอมรับไม่ได้ ต้องมีมาตรการ (CMRP CMPR-03 p.5) ซึ่งใกล้กับ A/B/C ของ RBMM
+- Total organizational risk: Risk = Threats x Vulnerabilities x Impact และ Composite Risk Index = Impact x Probability x Detectability (CMRP CMPR-02 p.36) โครงเดียวกับ RPN
+
 ## ใช้ใน RCM
 
 กระบวนการ 2 ของ [[RCM Reliability Centered Maintenance]]: เลือกเครื่องจักร/กรอบตาม criticality ก่อน แล้วค่อยลง Function และ FM Fast Track RCM ถือว่า criticality ของ equipment อยู่นอกกระบวนการ ผู้ใช้เลือกกรอบเอง (RBMM p.150) ระดับ equipment ละเอียดขึ้นด้วย [[FMECA]]
@@ -128,6 +144,7 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - [[Spare Part Criticality and Risk]]
 - [[Maintenance Budget]]
 - [[Asset Life Cycle]]
+- [[CMRP vs RBMM FMECA Scales]]
 
 ## Triplets
 
@@ -188,3 +205,15 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - Equipment Criticality [input_to:: Maintenance Strategy] Criticality field of Equipment Database in CMMS (Fig 4.3, RBMM p.96)
 - Likelihood [depends_on:: [[FMECA]]] when no history, e.g. new plant; or designer/manufacturer knowledge (RBMM p.137)
 - [[Criticality Assessment]] [applies_to:: [[Compressor]]] equipment level; no Valeura failure data so no actual ranking
+- [[Criticality Assessment]] [defined_in:: [[CMRP Course]]] CMRP risk matrix and RPN bands (CMRP CMPR-02 p.28-33)
+- CMRP Risk [has_formula:: Probability x Effect] effect under agreed realistic scenario (CMRP CMPR-02 p.31-32)
+- CMRP Risk Matrix [has_value:: 5 x 5, max 25] Effect 1-5 x Probability 1-5, 1 per 25 years to 1 per month (CMRP CMPR-02 p.32)
+- CMRP Risk Matrix [has_value:: Low 1-3, Medium 4-9, High 10-25] (CMRP CMPR-02 p.32)
+- CMRP Risk Matrix [differs_from:: Criticality Score] 5 x 5 max 25 vs RBMM 5 x 6 max 30
+- CMRP Risk Matrix [has_value:: No effects row coloured Medium] cells 4 and 5, slide flaw (CMRP CMPR-02 p.32)
+- CMRP Low Risk [selects:: No Preventive Maintenance] Medium/High get preventive of different level, e.g. spares (CMRP CMPR-02 p.33)
+- CMRP RPN Band [has_value:: None 0, Low 8-40, Medium 80-240, High 320-1,000] (CMRP CMPR-02 p.33)
+- CMRP RPN Band [has_value:: gaps 1-7, 41-79, 241-319] None = 0 impossible, derived
+- CMRP Importance Table [has_category:: availability, production rate, quality, safety, environment, cost] 3 levels High/Moderate/Low (CMRP CMPR-02 p.30)
+- Composite Risk Index [has_formula:: Impact x Probability x Detectability] (CMRP CMPR-02 p.36)
+- Organizational Risk [has_formula:: Threats x Vulnerabilities x Impact] (CMRP CMPR-02 p.36)

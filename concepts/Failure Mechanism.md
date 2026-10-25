@@ -1,10 +1,10 @@
 ---
 title: Failure Mechanism
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [failure-mechanism, taxonomy, oreda, coding, iso-14224]
-sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__notes.csv, compressor-failure-hierarchy__failure-cause-code.csv, compressor-failure-hierarchy__resolution-matrix.csv, failure-structure.md, failure-structure__sheet2.csv, coce-failure-mechanism.jpg, reliability-based-maintenance-management.md, iso-14224.md]
+tags: [failure-mechanism, taxonomy, oreda, coding, iso-14224, cmrp]
+sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__notes.csv, compressor-failure-hierarchy__failure-cause-code.csv, compressor-failure-hierarchy__resolution-matrix.csv, failure-structure.md, failure-structure__sheet2.csv, coce-failure-mechanism.jpg, reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: high
 contested: false
 ---
@@ -104,6 +104,13 @@ ISO Table B.2 (p.179-180) มี **6 หมวด 38 รหัส** (1.0-6.4) �
 - ในทางปฏิบัติ mechanism คือ failure mode ที่ระดับ maintainable item และเป็นสาเหตุที่ "สังเกตได้" ส่วน root cause อยู่อีกฟิลด์ (cl. B.2.2, p.178)
 
 ภาพรวมระดับ taxonomy ดู [[ISO 14224 Taxonomy]] และ [[ISO 14224]]
+
+## กลไกการสึกเชิง tribology (CMRP)
+
+ส่วนนี้เพิ่มจาก [[CMRP Course]] รายละเอียดอยู่ที่ [[Wear Mechanisms]] หลักสูตรแบ่งการสึกเป็น abrasive, adhesive, erosion, cavitation, fretting, contact fatigue และ corrosive พร้อมสาเหตุและวิธีควบคุม (CMRP CMPR-02 p.1-7) ทั้งหมดเป็นรายละเอียดของหมวด **2 Material failure** ของ ISO Table B.2:
+- abrasive และ adhesive -> WEAR (2.4); erosion -> EROS (2.3); cavitation -> CAVT (2.1); contact fatigue -> FATG (2.6); corrosive -> CORR (2.2); fretting -> WEAR หรือ FATG (การจับคู่เป็นการตีความของ wiki)
+- contamination (CTMN, 5.2) เป็นตัวเร่งของ abrasive wear และ contact fatigue ตาม slide (p.4, p.7) แต่ตามกติกา ISO ให้ลง mechanism ตามสิ่งที่เห็นที่ item แล้วบันทึก contamination เป็นสาเหตุเมื่อเหมาะสม
+- การตรวจจับล่วงหน้าด้วย wear particle analysis ดู [[Lubrication and Oil Analysis]]
 
 ## ดูเพิ่ม (RBMM)
 
@@ -289,3 +296,7 @@ ISO Table B.2 (p.179-180) มี **6 หมวด 38 รหัส** (1.0-6.4) �
 - Human Error [differs_from:: [[Failure Mechanism]]] recorded as failure cause, not mechanism (Table B.2 fn b)
 - [[Failure Mechanism]] [defined_in:: [[ISO 14224]]] Table B.2; select subdivision before general (cl. B.2.1, p.178)
 - [[Failure Mechanism]] [related_to:: [[Failure Data Recording]]] RBMM Fig 5.13 (p.131) 7-level causation
+- FATG [maps_to:: ISO:B.2-2.6] Material failure (Table B.2)
+- [[Wear Mechanisms]] [part_of:: ISO:B.2-2] tribology detail of Material failure (CMRP CMPR-02 p.1-7), interpretation
+- [[Failure Mechanism]] [related_to:: [[Wear Mechanisms]]] abrasive/adhesive -> WEAR, erosion -> EROS, cavitation -> CAVT, contact fatigue -> FATG, corrosive -> CORR, interpretation
+- CTMN [contributes_to:: WEAR] contamination accelerates abrasive wear and fatigue (CMRP CMPR-02 p.4, p.7)

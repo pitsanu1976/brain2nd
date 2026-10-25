@@ -1,10 +1,10 @@
 ---
 title: CMMS
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality]
-sources: [reliability-based-maintenance-management.md, iso-14224.md]
+tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality, work-management, cmrp]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
 confidence: high
 contested: false
 ---
@@ -38,7 +38,7 @@ contested: false
 | 7 | Purchasing System | งานบำรุงรักษาต้องการ Purchase Requisition มากกว่า Purchasing |
 | 8 | Report and KPI Analysis | ผลลัพธ์ที่จับต้องได้ ดู [[Maintenance KPIs]] |
 | 9 | Maintenance Performance Budgeting | แนะนำ Activity Based Budgeting ดู [[Maintenance Budget]] |
-| 10 | Turnaround Management | เฉพาะโรงงานใหญ่ |
+| 10 | Turnaround Management | เฉพาะโรงงานใหญ่ ดู [[Turnaround Management]] |
 
 Core modules ตาม Fig 4.1 (RBMM p.94): Asset Register, Work Order Backlog, Work Order History, Planned Maintenance, Spare Part Management, Report and Analysis โดย Backlog + History สำคัญสุด เพราะเป็นข้อมูลระดับ shop floor สำหรับวิเคราะห์ระยะยาว หนังสือเห็นว่า Work Control สำคัญกว่า Planned Maintenance ที่ผู้ใช้มักคิดว่าสำคัญสุด (RBMM p.93)
 
@@ -100,6 +100,24 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - ISO ระบุว่า active maintenance time และ downtime สำคัญต่อ RAM/RCM แต่ CMMS ยังบันทึกน้อย ต้องปรับปรุง (Table 8 note d, p.45) และ cost data อยู่นอก scope ของมาตรฐาน ให้ดึงจาก CMMIS (cl. 5.4, p.21-22)
 - สอดคล้องกับ RBMM เรื่อง Process และ Content ของ CMMS: ระบบอย่างเดียวไม่พอ ต้องออกแบบฟิลด์และวินัยการป้อนข้อมูล ฟิลด์ที่ ISO แนะนำเทียบกับ Work Order ของ RBMM ที่ [[Failure Data Recording]]
 
+## CMMS ในมุมของ CMRP: planning และ backlog (เพิ่ม 2026-10-25)
+
+หลักสูตร [[CMRP Course]] มอง CMMS จากฝั่งผู้ใช้งาน work management รายละเอียดอยู่ที่ [[Maintenance Planning and Scheduling]] และ [[Maintenance Backlog and Schedule Compliance]]
+
+- CMMS คือเครื่องมือสำคัญที่สุดของ planner; planner ควรเป็น **super-user** ดูแล configuration และคุณภาพข้อมูล (CMRP CMPR-09 p.10-11) สอดคล้องกับเรื่อง Content ของ RBMM ข้างบน
+- WO จาก CMMS (PM, PdM, inspection ตามกฎหมาย) เป็นขั้น 2 ของ work order flow 7 ขั้น; job plan ใน CMMS มี work plan, labor, materials, tools, safety plan (CMRP CMPR-09 p.6-7, p.21) PM master เป็น template สร้าง PM รอบต่อ ๆ ไป (p.23)
+- Backlog ใน CMMS ต้องแม่น: backlog ที่ไม่แม่นแทบไร้ค่า ให้ purge (WO เก่า ซ้ำ ทำเสร็จแต่ยังไม่ปิด) ทบทวน formal ทุก 3 เดือน และ informal รายเดือน (CMRP CMPR-10 p.2-3) สถานะ "Wait for Shutdown" ใน Work Backlog Basket เชื่อมกับ golden rule ของ [[Turnaround Management]] (การเชื่อมของ wiki)
+- Material take-off ใช้ฟังก์ชันจอง (reserve) ของคลังใน CMMS สำหรับงานตามแผน (CMRP CMPR-09 p.30) ซึ่งตรงกับ transaction "จอง" ที่กระทบ Available ใน RBMM (Fig 4.9, p.103) แต่ต่างจากหลักการใช้ของคลังของ RBMM ดู [[Spare Parts Management]]
+
+### จุดอนุมัติ: CMRP ต่างจาก RBMM
+
+| แหล่ง | จุดอนุมัติ |
+|---|---|
+| RBMM | **2 จุด** คืออนุมัติแจ้งซ่อม และอนุมัติปิดงาน (Fig 4.10, RBMM p.104) |
+| CMRP | ตรวจการอนุมัติตั้งแต่ work screening (p.15), เร่งอนุมัติตามวงเงินประมาณการหลังแตกงาน ทั้งด้าน operational, financial, engineering (p.21) และ loop ให้ผู้แจ้งยอมรับงานก่อนปิด (p.5) แปลว่าอาจมีหลายจุดตามวงเงิน |
+
+(CMRP CMPR-09 p.5, p.15, p.21) เป็นความต่างของแนวปฏิบัติ ไม่ใช่ข้อขัดแย้งเชิงข้อเท็จจริง: RBMM เน้นลดขั้นตอนให้น้อยที่สุด ส่วน CMRP ผูกการอนุมัติกับวงเงินงาน องค์กรต้องเลือกเองว่าจะใช้ approval matrix ตามวงเงินหรือไม่ (ไม่ตั้ง contested)
+
 ## ดูเพิ่ม
 
 - [[Failure Data Recording]]
@@ -108,6 +126,8 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - [[Criticality Assessment]]
 - [[Maintenance Strategic Report]]
 - [[Spare Parts Management]]
+- [[Maintenance Planning and Scheduling]]
+- [[Maintenance Backlog and Schedule Compliance]]
 
 ## Triplets
 
@@ -125,7 +145,7 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - Purchasing System [part_of:: [[CMMS]]] module 7, maintenance needs Purchase Requisition more than Purchasing (RBMM p.92-94)
 - Report and KPI Analysis [part_of:: [[CMMS]]] module 8 (RBMM p.92-94)
 - Maintenance Performance Budgeting Module [part_of:: [[CMMS]]] module 9, Activity Based Budgeting recommended (RBMM p.92-94)
-- Turnaround Management [part_of:: [[CMMS]]] module 10, large plants only (RBMM p.92-94)
+- [[Turnaround Management]] [part_of:: [[CMMS]]] module 10, large plants only (RBMM p.92-94)
 - Work Order Backlog [part_of:: [[CMMS]]] core module, most important with History (Fig 4.1, RBMM p.94)
 - Work Order History [part_of:: [[CMMS]]] core module, shop-floor data for long-term analysis (Fig 4.1, RBMM p.94)
 - Work Control System [differs_from:: Planned Maintenance] book: Work Control more important than Planned Maintenance (RBMM p.93)
@@ -155,3 +175,8 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - [[CMMS]] [source_of:: Active Maintenance Time] important for RAM/RCM but poorly recorded (ISO 14224 Table 8 note d, p.45)
 - [[Compressor]] [at_level:: Equipment] Running Number; sub unit/maintainable item as Object Part, interpretation [confidence:: low]
 - Work Order Failure Mode Field [uses:: [[Failure Mode]]] 3-letter codes as in wiki
+- Planner [uses:: [[CMMS]]] most important planner tool; planner is CMMS super-user (CMRP CMPR-09 p.10-11)
+- [[CMMS]] [input_to:: [[Maintenance Planning and Scheduling]]] WOs from PM, PdM, statutory inspection; job plan fields (CMRP CMPR-09 p.6-7, p.21)
+- Work Order Backlog [depends_on:: Backlog Purging] inaccurate backlog nearly useless; formal review every 3 months, informal monthly (CMRP CMPR-10 p.2-3)
+- Stock Reservation [part_of:: [[CMMS]]] planner reserves stock for planned jobs (CMRP CMPR-09 p.30); RBMM reservation transaction affects Available (Fig 4.9, RBMM p.103)
+- CMRP Approval Points [differs_from:: CMMS Work Flow] authorization at screening, by estimate value, requester acceptance vs RBMM 2 approval points (CMRP CMPR-09 p.5, p.15, p.21; RBMM p.104)

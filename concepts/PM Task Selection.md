@@ -1,10 +1,10 @@
 ---
 title: PM Task Selection
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [pm, rcm, reliability, weibull, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [pm, rcm, reliability, weibull, maintenance-management, book, cbm, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -92,6 +92,39 @@ TTF 4 ครั้ง (16,000, 12,000, 11,000, 8,500 ชม.) fit ได้ beta
 - งานบน Hidden Failure ของ protective/standby ใช้ Failure Finding ไม่ใช่ replace ตามอายุ
 - ถ้า failure mode เสียสุ่มและกระทบ Safety/Environment ต้อง redesign หรือ condition-based ไม่ใช่เพิ่มความถี่ PM
 
+## 8. มุมมอง CMRP: 5 กลยุทธ์และ decision tree (เพิ่ม 2026-10-25)
+
+สไลด์ [[CMRP Course]] ใช้ชุดกลยุทธ์ 5 แบบที่เทียบได้กับงาน 5 ประเภทของ Nowlan & Heap ในหัวข้อ 1 (CMRP CMPR-03 p.7):
+
+| CMRP | ความหมาย | เทียบ Nowlan & Heap (RBMM p.180) |
+|---|---|---|
+| RtF (Run to Failure) | ซ่อมหลังเสีย | Run to Failure |
+| FFM (Failure Finding Maintenance) | functional test หา hidden failure ไม่ได้ป้องกันการเสีย | Scheduled Failure Finding |
+| SM (Scheduled Maintenance) | ทำตามเวลา/ชั่วโมงเดิน ไม่สนสภาพ | Scheduled Overhaul or Discard |
+| CBM (Condition Based Maintenance) | วัดสภาพแล้วตัดสินว่าทำเมื่อไร | Condition Monitoring |
+| MOD (Modification) | ไม่ใช่ maintenance ต้องเปลี่ยนแปลง (ไม่จำเป็นต้องเป็นเรื่องเทคนิค) | Redesign |
+
+4 คำถามเลือกกลยุทธ์ (CMRP CMPR-03 p.4): failure ซ่อน (hidden) หรือไม่, วิกฤติ (critical) หรือไม่, มี condition indicator ใช้ได้ไหม, คาบการเสียรู้และคงที่ไหม; นิยาม hidden ผูกกับ hidden function เช่นอุปกรณ์ป้องกัน ไม่ได้ขึ้นกับว่ากลไกการเสื่อมมองเห็นยาก (p.5)
+
+Decision tree (CMRP CMPR-03 p.7, ถอดจากภาพ):
+
+```
+Hidden failure?  Yes -> CBM ได้? Yes = CBM / No = FFM
+                 No  -> Critical? No = RtF
+                        Yes -> FAR (Failure Related Ageing)? No = MOD
+                               Yes -> CBM ได้? Yes = CBM
+                                      No -> CFI (Constant Failure Interval)? Yes = SM / No = SM (ผังผิด)
+```
+
+ข้อสังเกตและข้อผิดพลาด:
+- **ผังผิด**: กิ่ง CFI = No ในภาพลากไป "SM" เช่นกัน (มีกล่อง SM สองกล่อง) ทำให้คำถาม CFI ไม่มีผล ตามตรรกะกิ่งนี้ควรไป MOD หรือทบทวนใหม่ เพราะ SM ใช้ได้เมื่อคาบการเสียคงที่เท่านั้น (raw notes CMPR-03 หัวข้อ 3)
+- ไม่มี economic test: ผัง CMRP ให้ RtF เมื่อไม่ critical ทันที ขณะที่ Nowlan & Heap / RBMM ถาม applicable และ feasible (หัวข้อ 4) จึงอาจเลือก CBM ให้ failure ที่ไม่ critical แต่คุ้มทำได้ ไม่ได้ขัดกันตรง ๆ แต่เกณฑ์ต่าง
+- กิ่ง FAR = No -> MOD ข้ามการถาม CBM สำหรับ failure แบบ random บนเครื่อง critical ขัดกับผัง RCM ของสไลด์เอง (p.2) ที่ให้ CBM กับ random pattern และกับ RBMM ที่ให้ condition monitoring เมื่อ beta = 1 (หัวข้อ 5) (ข้อสังเกตของ wiki derived จากการเทียบผัง)
+- ผัง RCM 4 กลุ่มของสไลด์ (p.2): Reactive (ชิ้นเล็ก ไม่วิกฤติ มี redundancy), Interval/PM (wear-out, consumable, รู้ pattern), CBM (random, ไม่ wear, failure ที่ PM ก่อ), Proactive (RCFA ดู [[Root Cause Analysis]], age exploration, FMEA, acceptance testing)
+- สไลด์อ้างว่าราว 60% ของอุปกรณ์มีแค่ช่วง infant และ random ของ bathtub ไม่ระบุแหล่ง (CMRP CMPR-03 p.5) ดู [[Failure Patterns and Bathtub Curve]]
+
+คาบงานตาม criticality (CMRP CMPR-03 p.9-12): ผังไม่ได้ให้คาบ ต้องดู criticality, MTBF, redundancy, failure characteristics, กฎหมาย สไลด์ให้สูตร FFM T = MTTF x 2 x (1 - A) หรือ x 3 x (1 - A), CBM T = PF หรือ 0.75 PF, SM T = TTF หรือ 0.75 TTF (moderate / high) สูตร FFM ขัดกับสูตรมาตรฐาน ดู [[Failure Finding Interval]] (contested) และคาบ CBM ยาวกว่า P-F/2 ของ RBMM ดู [[P-F Interval and Condition Monitoring]]; การตั้ง SM = TTF ไม่มี safety margin ขัดกับภาพของสไลด์เองที่ว่า SM ต้องมี margin (p.10)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - หน่วยวิเคราะห์ตรงกับระดับ [[Failure Mode]] ของ [[ISO 14224]] / [[OREDA]] และต่อยอดเป็นคอลัมน์ "recommended task type" ต่อ [[Maintainable Item]] ของ [[Compressor]] ได้ (ข้อเสนอแนะ ไม่ใช่ข้อมูลใน sources)
@@ -107,6 +140,7 @@ TTF 4 ครั้ง (16,000, 12,000, 11,000, 8,500 ชม.) fit ได้ beta
 - [[Redundancy and Standby Systems]]
 - [[RCM Reliability Centered Maintenance]]
 - [[Criticality Assessment]]
+- [[Root Cause Analysis]]
 
 ## Triplets
 
@@ -154,3 +188,20 @@ TTF 4 ครั้ง (16,000, 12,000, 11,000, 8,500 ชม.) fit ได้ beta
 - [[PM Task Selection]] [uses:: [[Failure Cause Codes]]] separate mode and cause coding in CMMS, since pooling gives beta near 1
 - Scheduled Failure Finding [applies_to:: [[AIR Abnormal Instrument Reading]]] protective/instrument loop, suggestion not in sources [confidence:: low]
 - Scheduled Failure Finding [applies_to:: [[UST Spurious Stop]]] suggestion not in sources [confidence:: low]
+- CMRP Strategy Tree [selects:: Run to Failure] RtF when not hidden and not critical (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [selects:: Scheduled Failure Finding] FFM when hidden and CBM not possible (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [selects:: Condition Monitoring] CBM when hidden or critical with ageing and condition indicator (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [selects:: Scheduled Overhaul or Discard] SM when critical, ageing, no CBM (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [selects:: Redesign] MOD when critical and no failure related ageing (CMRP CMPR-03 p.7)
+- RtF [alias_of:: Run to Failure] CMRP term (CMRP CMPR-03 p.7)
+- FFM [alias_of:: Scheduled Failure Finding] CMRP term (CMRP CMPR-03 p.7)
+- SM [alias_of:: Scheduled Overhaul or Discard] CMRP Scheduled Maintenance, time/runtime based (CMRP CMPR-03 p.7)
+- MOD [alias_of:: Redesign] CMRP Modification, not necessarily technical (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [uses:: Hidden Failure] question 1 (CMRP CMPR-03 p.4, p.7)
+- CMRP Strategy Tree [uses:: Criticality] question 2 (CMRP CMPR-03 p.4, p.7)
+- CMRP Strategy Tree [uses:: Failure Related Ageing] FAR question (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [uses:: Constant Failure Interval] CFI question; both branches go to SM in slide, chart error (CMRP CMPR-03 p.7)
+- CMRP Strategy Tree [differs_from:: Nowlan and Heap Decision Chart] no applicable/feasible economic test; RtF whenever not critical
+- CMRP Strategy Tree [defined_in:: [[CMRP Course]]] (CMRP CMPR-03 p.7)
+- Proactive Maintenance [uses:: [[Root Cause Analysis]]] RCFA, age exploration, FMEA, acceptance testing (CMRP CMPR-03 p.2)
+- CMRP Interval Rules [depends_on:: Criticality] moderate vs high, see Failure Finding Interval and P-F pages (CMRP CMPR-03 p.12)

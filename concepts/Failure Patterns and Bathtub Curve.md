@@ -1,10 +1,10 @@
 ---
 title: Failure Patterns and Bathtub Curve
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [reliability, weibull, failure-rate, rcm, pm, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [reliability, weibull, failure-rate, rcm, pm, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -64,6 +64,28 @@ contested: false
 **หลักฐานเชิงตัวเลขเมื่อ β = 1** (RBMM p.186-187): R(t) = exp(-t/η); ถ้าไม่เปลี่ยนตามแผนได้ R(120) = 47.0158% (conditional R(120/80) = 77.758%) ส่วนถ้าเปลี่ยนทุก 80 ชม. ได้ R(80) x R(40) = 60.4639% x 77.7585% = 47.0158% เท่ากัน ดังนั้น replacement ตามแผนไม่เพิ่ม reliability (η ในตัวอย่างอนุมานได้ราว 160 ชม. เป็น derived ไม่ได้ระบุในหน้า) ตัวอย่างหลอดไฟใน ch12 ให้ข้อสรุปเดียวกัน (เปลี่ยนทุก 1,000 หรือ 500 ชม. ยังได้ 72.57% ที่ 2,000 ชม., RBMM p.378) ดู [[Statistical Distributions for Maintenance]]
 
 ตัวอย่างข้อมูล TTF 8,500-16,000 ชม. ได้ β ≈ 3.8 จึงเป็น pattern A (เกาะกลุ่ม) ไม่ใช่ pattern D ซึ่งทำให้สมมติ constant failure rate ผิด (RBMM p.199, ch7) ดู [[Weibull Analysis]]
+
+## สัดส่วน failure pattern ตาม CMRP
+
+ส่วนนี้เพิ่มจาก [[CMRP Course]] RBMM ไม่ให้สัดส่วน % ของแต่ละ pattern จึงไม่ขัดกับเนื้อหาเดิมโดยตรง
+
+**CMPR-01 p.28** แสดง bathtub 3 ช่วง (infant, random/externally caused, wear-out) แล้วแสดง 4 รูปแบบพร้อมสัดส่วน (รวม 100%, ไม่ระบุแหล่ง):
+
+| รูปแบบ (CMRP) | % | เทียบ Nowlan & Heap (ตีความ) | เทียบ RBMM (ตีความ) |
+|---|---|---|---|
+| Wear-out | 2 | B | A |
+| Bathtub | 4 | A | ไม่มีใน A-E (เป็นภาพระดับเครื่อง) |
+| Random | 26 | C 5 + D 7 + E 14 | C, D (บางส่วน B) |
+| Infant mortality | 68 | F | E |
+
+- คอลัมน์ Nowlan & Heap เป็นการตีความของ wiki: ตัวเลขของ Nowlan & Heap (1978, การบินพลเรือน) ที่รู้จักทั่วไปคือ A bathtub 4%, B wear-out 2%, C ค่อย ๆ เพิ่ม 5%, D ต่ำแล้วคงที่ 7%, E random 14%, F infant 68% (general knowledge, confidence low, ไม่อยู่ใน sources) slide ยุบ C+D+E = 26% เป็น "Random" โดยไม่บอก
+- **ระบบตัวอักษรต่างกัน**: Nowlan & Heap ใช้ A = bathtub และ F = infant แต่ RBMM (ตารางข้างบน) ใช้ A = wear-out ชัด และ E = infant ห้ามเทียบตัวอักษรข้ามแหล่งตรง ๆ
+- นัยของ slide: มีเพียงราว 6% (2 + 4) ที่มีช่วง wear-out ชัด time-based replacement จึงได้ผลกับ failure ส่วนน้อย สอดคล้องกับกฎเลือกงานตาม β ข้างบน
+
+**CMPR-03 p.5** อ้างว่าราว **60%** ของอุปกรณ์แสดงแค่ช่วง infant และ random ไม่ถึง wear-out (ไม่ระบุแหล่ง, confidence low)
+- ตัวเลขนี้ไม่สอดคล้องกับ p.28 ของหลักสูตรเดียวกัน: ถ้านับ infant + random จาก p.28 จะได้ 68 + 26 = 94% (derived) ความต่างน่าจะมาจากคนละการศึกษาหรือคนละนิยามว่า "ไม่มี wear-out"
+- ความรู้ทั่วไป (confidence low, ไม่ยืนยัน): การศึกษาภายหลังของ US Navy (เช่น SUBMEPP 2001) ให้สัดส่วน pattern E + F ราว 60% ซึ่งอาจเป็นที่มาของตัวเลขนี้
+- เป็นข้อไม่สอดคล้องภายใน CMRP ที่ไม่มีแหล่ง ไม่ใช่ข้อขัดแย้งกับ RBMM หรือ ISO จึงไม่ตั้ง contested
 
 ## จุดที่หนังสือไม่สอดคล้องกัน (flag)
 
@@ -137,3 +159,14 @@ contested: false
 - Infant Mortality [has_cause:: Assembly Or Installation] see [[Failure Cause Codes]]
 - [[Failure Patterns and Bathtub Curve]] [related_to:: [[Weibull Analysis]]]
 - [[Failure Patterns and Bathtub Curve]] [related_to:: [[PM Task Selection]]]
+- CMRP Wear-Out Pattern [has_value:: 2%] (CMRP CMPR-01 p.28)
+- CMRP Bathtub Pattern [has_value:: 4%] (CMRP CMPR-01 p.28)
+- CMRP Random Pattern [has_value:: 26%] (CMRP CMPR-01 p.28)
+- CMRP Infant Mortality Pattern [has_value:: 68%] (CMRP CMPR-01 p.28)
+- CMRP Random Pattern [maps_to:: Nowlan And Heap Patterns C D E] 5 + 7 + 14 = 26%, interpretation; N&H figures general knowledge [confidence:: low]
+- CMRP Wear-Out Pattern [maps_to:: Pattern A] RBMM letter, interpretation; Nowlan And Heap B
+- CMRP Infant Mortality Pattern [maps_to:: Pattern E] RBMM letter, interpretation; Nowlan And Heap F
+- Nowlan And Heap Pattern Letters [differs_from:: RBMM Pattern Letters] N&H A = bathtub, F = infant; RBMM A = wear-out, E = infant
+- Equipment Without Wear-Out Phase [has_value:: about 60%] infant and random only, unsourced (CMRP CMPR-03 p.5) [confidence:: low]
+- CMRP 60 Percent No Wear-Out Claim [contradicts:: CMRP Pattern Shares 68 26 4 2] p.28 implies 94% infant + random (derived); internal CMRP inconsistency (CMRP CMPR-03 p.5 vs CMPR-01 p.28)
+- [[Failure Patterns and Bathtub Curve]] [defined_in:: [[CMRP Course]]] pattern shares (CMRP CMPR-01 p.28)

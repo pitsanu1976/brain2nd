@@ -1,12 +1,12 @@
 ---
 title: P-F Interval and Condition Monitoring
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [pm, cbm, rcm, reliability, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [pm, cbm, rcm, reliability, maintenance-management, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # P-F Interval and Condition Monitoring
@@ -76,6 +76,32 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - beta สูงมาก: ไม่จำเป็นต้องเข้มข้นตอนต้นอายุ เริ่มช่วงหลัง (p.188)
 - CM-Planned กับ lead time ของอะไหล่: ต้อง stock อะไหล่หรือไม่ขึ้นกับว่า lead time ยาวกว่าเวลาที่เหลือก่อน CM-Unplanned หรือไม่ (RBMM p.241) ดู [[Spare Parts Management]]
 
+## D-I-P-F curve และลำดับอาการ (CMRP CMPR-01 p.29)
+
+ส่วนนี้เพิ่มจาก [[CMRP Course]] นิยาม P และ F ของ CMRP ตรงกับ RBMM ข้างบน (CMRP CMPR-01 p.29; CMPR-03 p.6)
+
+- เส้น **D-I-P-F** (ภาพของ Dustin Etchison 2015 ใน slide) ขยาย P-F ไปทางซ้าย: D = design (design for reliability และ maintainability), I = installation, ช่วง **I-P** = precision maintenance (laser alignment, thermal growth, pipe strain) ที่ยืดเวลาก่อนเริ่มเสื่อม
+- **ลำดับอาการบนช่วง P-F** จากเร็วไปช้า: ultrasonic -> vibration -> oil analysis -> audible noise -> hot to touch (thermography) -> mechanically loose -> ancillary damage -> catastrophic failure เทคนิคต้นลำดับให้ lead time ยาวกว่า รายละเอียดเทคนิคใน [[Condition Monitoring Techniques]]
+- จับคู่กลยุทธ์กับตำแหน่งบนเส้น: precision maintenance (ก่อน P), CBM/predictive (ต้น P-F), preventive (กลาง), corrective/run-to-failure (ใกล้ F)
+- slide วางเส้นความปลอดภัยคู่ (งานนอกแผนยิ่งใกล้ F ยิ่งเสี่ยงบาดเจ็บ) และกราฟต้นทุน (ราว 70% ของต้นทุน M&R ถูกกำหนดตั้งแต่ design ไม่มีแหล่งอ้างใน slide; คนละ metric กับตัวเลข 70% ใน [[Asset Life Cycle]])
+
+## คาบตรวจ: RBMM vs CMRP (contested)
+
+สองแหล่งให้สูตรคาบตรวจ CM ต่างกันสำหรับเรื่องเดียวกัน จึงตั้ง `contested: true` ให้ผู้ใช้ตัดสิน
+
+| แหล่ง | สูตร | เงื่อนไข |
+|---|---|---|
+| RBMM (p.208, p.211) | CM interval = (P-F) / 2 | ทุกกรณี; ตัวอย่าง simulator ยืนยันว่า optimum อยู่ที่ (P-F)/2 |
+| CMRP (CMPR-03 p.12, logic tree จากภาพ) | T = PF | criticality moderate |
+| CMRP (CMPR-03 p.12) | T = 0.75 x PF | criticality high |
+| CMRP (CMPR-03 p.12) | ไม่ให้สูตร ไปกล่อง evaluation (คาบสั้นลง/ปรับแบบ) | criticality extremely high |
+
+ข้อวิเคราะห์ (general knowledge, confidence low):
+- ถ้าตรวจทุก T = PF จะมีการตรวจอย่างน้อยหนึ่งครั้งในช่วง P-F แต่กรณีแย่สุดพบอาการตอนใกล้ F จนแทบไม่เหลือ lead time สำหรับวางแผนซ่อม; T = (P-F)/2 รับประกันว่าเหลืออย่างน้อยครึ่งหนึ่งของ P-F หลังตรวจพบ
+- 0.75 PF ของ CMRP ยังยาวกว่า (P-F)/2 ของ RBMM; notes ของ CMPR-03 ก็ flag ว่าแนวทั่วไปใช้ P-F/2
+- ในทางปฏิบัติคาบที่เหมาะขึ้นกับ lead time ของอะไหล่/การวางแผนที่ต้องใช้หลังพบอาการ (RBMM p.241) และความแปรปรวนของ P-F (F1 vs F2) ซึ่งสูตรของ CMRP ไม่ได้รวม
+- logic tree เดียวกันของ CMRP ให้สูตร FFI ที่ต่างจาก [[Failure Finding Interval]] และ SM = TTF ที่ไม่มี safety margin ด้วย ดูหน้านั้น
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - CM เหมาะกับ failure mode ที่มีอาการล่วงหน้าและกลไกสึกหรอ เช่น VIB (vibration), OHE (overheating), NOI (noise), PDE (parameter deviation) ใน [[Failure Mode]] และ mechanism ใน [[Failure Mechanism]] (การจับคู่เป็นข้อเสนอแนะ ไม่ใช่ข้อมูลใน sources)
@@ -89,6 +115,8 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - [[Failure Finding Interval]]
 - [[Monte Carlo Maintenance Simulation]]
 - [[Failure Patterns and Bathtub Curve]]
+- [[Condition Monitoring Techniques]]
+- [[Lubrication and Oil Analysis]]
 
 ## Triplets
 
@@ -106,7 +134,7 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - CM Age Zone 2 [has_value:: F(t) < 0.1] some failures, CM not yet full scale (Fig 7.24)
 - CM Age Zone 3 [has_value:: F(t) > 0.1] likely to fail, full CM (Fig 7.24)
 - CM Age Zone 1 [depends_on:: [[Weibull Analysis]]] F(t) from Weibull
-- CM Interval [has_formula:: (P-F interval) / 2] (RBMM p.208, p.211)
+- CM Interval [has_formula:: (P-F interval) / 2] (RBMM p.208, p.211) [contested:: true]
 - CM Interval [depends_on:: P-F Interval] too long risks failure before next check; too short wastes cost
 - Condition Monitoring [uses:: In-House Labour] cheap; limits are utilization and tools (RBMM p.208)
 - P-F Interval [has_value:: 120 days] simulator example, 4 months; figures read from print, verify (Fig 7.28-7.30, RBMM p.209-212)
@@ -128,3 +156,16 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - Condition Monitoring [applies_to:: NOI] suggestion, not in sources [confidence:: low]
 - Condition Monitoring [applies_to:: [[PDE Parameter Deviation]]] suggestion, not in sources [confidence:: low]
 - [[Failure Data Recording]] [uses:: [[Failure Detection Method]]] ISO 14224 detection method field separates CM-Planned from CM-Unplanned; general knowledge, not verified [confidence:: low]
+- P-F Interval [defined_in:: [[CMRP Course]]] same P and F definitions as RBMM (CMRP CMPR-01 p.29; CMPR-03 p.6)
+- D-I-P-F Curve [has_part:: I-P Interval] precision maintenance: laser alignment, thermal growth, pipe strain (CMRP CMPR-01 p.29)
+- D-I-P-F Curve [has_part:: P-F Interval] extends P-F to design and installation (CMRP CMPR-01 p.29)
+- D-I-P-F Curve [has_value:: ultrasonic, vibration, oil analysis, audible noise, hot to touch, mechanically loose, ancillary damage, catastrophic failure] symptom order earliest to latest (CMRP CMPR-01 p.29)
+- Precision Maintenance [applies_to:: I-P Interval] before P (CMRP CMPR-01 p.29)
+- Condition Monitoring [applies_to:: P-F Interval] early P-F; preventive mid, corrective near F (CMRP CMPR-01 p.29)
+- M&R Cost Determined At Design [has_value:: about 70%] unsourced on slide; different metric from [[Asset Life Cycle]] (CMRP CMPR-01 p.29) [confidence:: low]
+- CM Interval [has_formula:: T = PF] criticality moderate, CMRP logic tree (CMRP CMPR-03 p.12) [contested:: true]
+- CM Interval [has_formula:: T = 0.75 x PF] criticality high, CMRP logic tree (CMRP CMPR-03 p.12) [contested:: true]
+- CMRP CM Interval T = PF [contradicts:: RBMM CM Interval (P-F)/2] CMRP CMPR-03 p.12 vs RBMM p.208 [contested:: true]
+- RBMM CM Interval (P-F)/2 [contradicts:: CMRP CM Interval T = PF] RBMM p.208, p.211 vs CMRP CMPR-03 p.12 [contested:: true]
+- CM Interval [depends_on:: [[Criticality Assessment]]] CMRP view: interval shortened for high criticality (CMRP CMPR-03 p.12)
+- [[P-F Interval and Condition Monitoring]] [related_to:: [[Condition Monitoring Techniques]]]

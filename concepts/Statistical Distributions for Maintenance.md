@@ -1,10 +1,10 @@
 ---
 title: Statistical Distributions for Maintenance
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [statistics, reliability, weibull, spare-parts, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [statistics, reliability, weibull, spare-parts, book, spc, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -28,6 +28,8 @@ Data Collection → Data Presentation (ตาราง กราฟ สมกา
 - เกณฑ์เลือก: (1) ลักษณะการวิเคราะห์ (2) สมมติฐานตรงกับงานหรือไม่ (3) ข้อมูลเหมาะกับสมการหรือไม่ (ตรวจหลังหา parameter)
 
 Binomial, Lognormal, Geometric, Hypergeometric ถูกเอ่ยชื่อแต่ไม่มีสูตรในบทนี้ (หนังสือไม่ได้ครอบคลุม) และไม่มี mean/variance ของแต่ละ distribution
+
+(เพิ่ม 2026-10-25) สไลด์ CMRP ให้สูตร binomial, hypergeometric, lognormal พร้อม mean/σ ดูหัวข้อ "ส่วนเสริมจาก CMRP" ด้านล่าง
 
 ## Poisson (RBMM p.371-373)
 
@@ -93,6 +95,84 @@ pdf = λ e^(-λx);   cdf = 1 - e^(-λx);   λ = 1/mean = 1/MTTF
 | การเสียสุ่ม | Exponential | failure rate คงที่ |
 | ทุกรูปแบบ β | Weibull | ต้องแยกราย failure mode |
 
+## ส่วนเสริมจาก CMRP (CMRP CMPR-06, CMPR-08)
+
+เนื้อหาจาก [[CMRP Course]] (สื่อการสอน, secondary source) เติมส่วนที่ RBMM ไม่ครอบคลุม และ flag จุดที่สไลด์ผิด
+
+### Dispersion, กฎ normal และ CLT (CMRP CMPR-06 p.4-7)
+
+- sample SD หารด้วย n-1, population SD หารด้วย N (p.7) **ยืนยัน** flag เรื่อง σ ของ RBMM ด้านบนว่าธรรมเนียมที่ถูกคือ n-1 สำหรับ sample
+- กฎ normal: ±1σ ≈ 68.27%, ±2σ ≈ 95.45%, ±3σ ≈ 99.73% **flag สไลด์:** รูป p.4 เขียน ±2σ = 96% และรูป p.7 เขียน 99.74% และหางระหว่าง 2σ-3σ = 2.15% (ค่ามาตรฐาน 95.45%, 99.73%, 2.14%)
+- **Central Limit Theorem**: ค่าเฉลี่ยของ sample กระจายใกล้ normal แม้ประชากรไม่ normal ยิ่ง n มากยิ่งดี เป็นฐานของ ±3σ limit ใน control chart ดู [[Statistical Process Control]]
+- skewness 0 = สมมาตร, > 0 เบ้ขวา, < 0 เบ้ซ้าย; excess kurtosis ของ normal = 0 (p.30)
+- ตัวอย่างที่สองของปัญหา N vs n-1: confidence interval แบบ t ในสไลด์ (CMRP CMPR-08 p.14) ใช้ SD หารด้วย n (1.02) แทน n-1 (1.18) ช่วง 95% ที่ถูกคือ ≈ 26.20-29.95 ไม่ใช่ 26.46-29.70 ดู [[Statistical Process Control]]
+
+### เกณฑ์เลือก discrete distribution (CMRP CMPR-06 p.10, อ้าง Juran)
+
+| เงื่อนไข | ใช้ |
+|---|---|
+| รู้จำนวน defect ใน population, สุ่มไม่คืน, n > 10% ของ N | Hypergeometric |
+| n < 10% ของ N | Binomial (ประมาณ hypergeometric) |
+| ใช้ Poisson แทน binomial | Poisson ด้วย μ = np |
+| np > 5 | Normal ประมาณ binomial |
+
+### Binomial (CMRP CMPR-06 p.13-14)
+
+```
+P(X = x) = n! / ( x!(n-x)! ) · p^x · (1-p)^(n-x)
+μ = np,   σ = sqrt( np(1-p) )
+```
+
+ตัวอย่าง n = 6, p = 0.25: P(0..3) = 0.18, 0.36, 0.30, 0.13; μ = 1.5, σ ≈ 1.06 (ตรวจถูก) สไลด์ได้ F(2) = 0.84 จากค่าปัด ค่าจริง ≈ 0.831 ใช้กับ p chart และ np chart ดู [[Statistical Process Control]]
+
+### Hypergeometric (CMRP CMPR-06 p.15)
+
+สุ่มไม่คืน ความน่าจะเป็นเปลี่ยนทุกครั้งที่หยิบ
+
+```
+P(x; N, n, m) = C(m,x) · C(N-m, n-x) / C(N,n);    μ = n·m/N
+```
+
+ตัวอย่าง N = 50, n = 5, m = 4: P(0) = 0.64696, P(1) = 0.30808, P(< 2) = 0.95504 (ผลลัพธ์ถูก)
+
+**flag สไลด์:** บรรทัดแทนค่าพิมพ์ C(46,4) = 163,135 และ C(46,5) = 1,370,740 ค่าที่ถูกคือ **C(46,4) = 163,185** และ **C(46,5) = 1,370,754** (ผลลัพธ์สุดท้ายใช้ค่าที่ถูก) และหัวสไลด์ "Hypergeometric (Geometric)" ผิด เพราะ geometric เป็นคนละ distribution (จำนวนครั้งจนสำเร็จครั้งแรก)
+
+### Exponential: สิ่งที่ CMRP เพิ่มและจุดผิด (CMRP CMPR-06 p.17-20)
+
+- R(MTTF) = e^-1 ≈ 0.368 คือราว 63% เสียก่อนถึง MTTF; variance = θ² เมื่อ θ = 1/λ
+- **flag สไลด์ (p.18):** อ้างว่าถ้า x เป็น exponential แล้ว 1/x เป็น Poisson ซึ่ง **ผิด** ความสัมพันธ์ที่ถูกคือ ใน Poisson process เวลาระหว่างเหตุการณ์กระจายแบบ exponential และจำนวนเหตุการณ์ต่อช่วงเวลากระจายแบบ Poisson (ไม่ใช่ส่วนกลับของตัวแปรเดียวกัน)
+- **flag เชิงแนวคิด:** สไลด์ตีความ f(1000) = 0.00031 ว่าเป็น "probability of failure at 1000 h" แต่ค่า pdf เป็น density ต่อชั่วโมง ไม่ใช่ความน่าจะเป็น (ตรงกับนิยาม pdf ด้านบนที่ความน่าจะเป็นคือพื้นที่ใต้กราฟ)
+
+### ข้อแม้: "electronics มี failure rate คงที่"
+
+- หน้านี้ (จาก RBMM) ระบุว่า Exponential เหมาะกับอุปกรณ์ไฟฟ้า และสไลด์ CMRP p.18 ก็ว่ามักใช้กับ electronics
+- แต่ case study ในไฟล์เดียวกัน (CMRP CMPR-06 p.31-36) fit Weibull กับ field-return data ของ circuit board ระบบ railway signalling ได้ β = 2.37-3.85 (wear-out) และ prediction แบบ constant λ (RDF2000) ให้ MTBF สูงกว่า Weibull ราว 1.8-37 เท่า (derived จากตาราง) รายละเอียดใน [[Weibull Analysis]]
+- จึงควรถือ "electronics = λ คงที่" เป็น **สมมติฐานที่ต้องตรวจด้วยข้อมูล** ไม่ใช่ข้อเท็จจริงทั่วไป ไม่ตั้ง contested เพราะ RBMM ให้เป็นแนวทางการเลือกใช้ ไม่ได้ยืนยันว่า electronics ทุกชนิดมี λ คงที่ และหลักฐานของ CMRP เองก็มีข้อจำกัด (R² ต่ำในสองโปรเจกต์)
+
+### Normal และ Z (CMRP CMPR-06 p.23-27)
+
+```
+Z = (x - μ) / σ
+Z_lower = (X-bar - LSL) / σ,   Z_upper = (USL - X-bar) / σ
+```
+
+- ตัวอย่าง μ = 150, σ = 20: P(x > 170) = 0.1587; μ = 300, σ = 5: P(x > 310) = 0.0228 (ตรวจถูก)
+- **flag Example 4.16** (μ = 200, σ = 1.84, P(201 < x < 202) = 0.1567 ถูก): z ของ 201 เขียน -0.54 ที่ถูกคือ +0.54 และเรียกพื้นที่ cumulative (ทางซ้าย) ว่า "ทางขวา"
+- Z_lower/Z_upper ใช้ต่อใน process capability (Cpk) ดู [[Statistical Process Control]]
+
+### Lognormal (CMRP CMPR-06 p.27-29)
+
+```
+ln(t) ~ Normal(μ, σ)
+mean = exp(μ + σ²/2)
+σ_t  = sqrt( e^(2μ + σ²) · (e^(σ²) - 1) )
+```
+
+- เหมาะกับ transistor, bearing, insulation และ **เวลาซ่อม** (ดู [[Maintainability]]); เบ้ขวา ยิ่ง σ มากยิ่งเบ้; hazard เพิ่มขึ้นแล้วลดเข้าหาศูนย์
+- แยก Weibull กับ lognormal ด้วยข้อมูลต้องใช้ราว 50 ตัวอย่างขึ้นไป (CMRP CMPR-06 p.21)
+- ตัวอย่างหลอดไฟ 115/155/183/217 ชม.: mean ของ ln t = 5.0944 (ตรวจถูก; derived ต่อ: s ≈ 0.27, R(100) ≈ 0.965)
+- **flag:** p.27 เรียก μ ว่า shape และ σ ว่า scale แต่ p.28 เรียก μ ว่า location และ σ ว่า scale ใช้คำไม่สอดคล้องกัน
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - [[OREDA]] ใช้ failure rate คงที่ (Exponential, ต่อ 10^6 ชม.) ใช้ตั้งต้นได้ แต่ failure mode ที่ wear-out ควรใช้ Weibull หรือ Normal
@@ -103,6 +183,7 @@ pdf = λ e^(-λx);   cdf = 1 - e^(-λx);   λ = 1/mean = 1/MTTF
 ## ดูเพิ่ม
 
 - [[Weibull Analysis]]
+- [[Statistical Process Control]]
 - [[Reliability Metrics]]
 - [[Censored Data]]
 - [[Spare Part Demand Forecasting]]
@@ -162,3 +243,31 @@ pdf = λ e^(-λx);   cdf = 1 - e^(-λx);   λ = 1/mean = 1/MTTF
 - Lack Of Accurate Failure History [is_a:: Root Problem] not the statistical method (RBMM p.392)
 - [[Statistical Distributions for Maintenance]] [related_to:: [[Censored Data]]]
 - [[Statistical Distributions for Maintenance]] [related_to:: [[PM Interval Optimization]]]
+- [[Statistical Distributions for Maintenance]] [defined_in:: [[CMRP Course]]] supplementary section (CMRP CMPR-06, CMPR-08)
+- Statistical Convention Sigma Rule [defined_in:: [[CMRP Course]]] sample SD uses n-1, population N (CMRP CMPR-06 p.7)
+- Normal Distribution [has_value:: ±1σ 68.27%, ±2σ 95.45%, ±3σ 99.73%] standard values
+- CMRP Normal Figure 96% And 99.74% [contradicts:: Normal Distribution] slide figures p.4 and p.7; correct 95.45% and 99.73%, tail 2.14% not 2.15%
+- Central Limit Theorem [applies_to:: [[Statistical Process Control]]] sample means near normal (CMRP CMPR-06 p.7)
+- Hypergeometric Distribution [applies_to:: Sampling Without Replacement] n > 10% of N (CMRP CMPR-06 p.10)
+- Binomial Distribution [applies_to:: Sampling Without Replacement] approximation when n < 10% of N (CMRP CMPR-06 p.10)
+- Normal Distribution [applies_to:: Binomial Approximation] np > 5 (CMRP CMPR-06 p.10)
+- Discrete Distribution [has_part:: Binomial Distribution]
+- Discrete Distribution [has_part:: Hypergeometric Distribution]
+- Binomial Distribution [has_formula:: P(X = x) = n! / ( x!(n-x)! ) · p^x · (1-p)^(n-x)] μ = np, σ = sqrt( np(1-p) ) (CMRP CMPR-06 p.13-14)
+- Binomial Example [has_value:: μ 1.5, σ 1.06] n = 6, p = 0.25; F(2) exact 0.831, slide 0.84 from rounding
+- Binomial Distribution [input_to:: [[Statistical Process Control]]] p and np charts
+- Hypergeometric Distribution [has_formula:: P(x; N, n, m) = C(m,x) · C(N-m, n-x) / C(N,n)] μ = n·m/N (CMRP CMPR-06 p.15)
+- Hypergeometric Example [has_value:: P(0) 0.64696, P(1) 0.30808, P(<2) 0.95504] N 50, n 5, m 4
+- Hypergeometric Example [has_value:: C(46,4) = 163,185 and C(46,5) = 1,370,754] correct values
+- CMRP Combination Values 163,135 And 1,370,740 [contradicts:: Hypergeometric Example] slide substitution typo (CMRP CMPR-06 p.15)
+- Exponential Distribution [has_value:: R(MTTF) = 0.368] (CMRP CMPR-06 p.17-20)
+- CMRP Reciprocal Claim [contradicts:: Poisson Process Relation] slide p.18 says 1/x of exponential is Poisson, wrong
+- Poisson Process Relation [has_value:: interarrival times exponential, counts per interval Poisson] correct relation
+- Exponential Distribution [applies_to:: Electronics] RBMM and CMRP CMPR-06 p.18; assumption to verify with data
+- Signalling Board Weibull Case [contradicts:: Exponential Distribution] β 2.37-3.85 for circuit boards, evidence against constant λ for electronics (CMRP CMPR-06 p.31-36); not contested
+- Normal Distribution [has_formula:: Z = (x - μ) / σ] (CMRP CMPR-06 p.23-27)
+- Example 4.16 [has_value:: P(201 < x < 202) = 0.1567] correct result; slide z sign and tail wording wrong (CMRP CMPR-06 p.26)
+- Continuous Distribution [has_part:: Lognormal Distribution]
+- Lognormal Distribution [has_formula:: mean = exp(μ + σ²/2)] ln t normal (CMRP CMPR-06 p.27-29)
+- Lognormal Distribution [applies_to:: Repair Time] also transistor, bearing, insulation; see [[Maintainability]]
+- Lognormal Distribution [differs_from:: Weibull Distribution] about 50 samples needed to distinguish (CMRP CMPR-06 p.21)

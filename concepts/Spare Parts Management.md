@@ -1,10 +1,10 @@
 ---
 title: Spare Parts Management
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [spare-parts, maintenance-management, cmms, kpi, cost, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -44,6 +44,13 @@ contested: false
 - ถ้า CMMS เห็นอะไหล่ซื้อตรงใช้ในงานนอกแผนสูง แปลว่าการสำรองสต็อกทำไม่ถูกหรืองานนอกแผนเกินคาด (RBMM p.307, ch10)
 - ควรแยก Turnover ของอะไหล่ซื้อตรงออกจากอะไหล่คลัง มิฉะนั้นสับสนและ On Hand จะสูงกว่า Max (RBMM p.243)
 - ข้อยกเว้น: อะไหล่ใช้ร่วมหลายเครื่องที่ตาราง PM ไม่พร้อมกัน (ตัวอย่างรถ 30 คัน PM ทุก 10,000 km) ต้องรวมความต้องการตามแผนและนอกแผน แล้วตั้ง Max/Min ด้วยสถิติ (RBMM p.236)
+
+### มุมมอง CMRP: planner จองของคลังให้งานตามแผน (เพิ่ม 2026-10-25)
+
+- ในขั้น material take-off ของ [[Maintenance Planning and Scheduling]] planner ทำ BOM ตรวจของในคลังแล้ว **จอง (reserve)** และออก stock requisition ให้งานตามแผน ส่วนของที่ไม่มีจึงวางแผนจัดหากับ Purchasing (CMRP CMPR-09 p.30)
+- ของที่ควร stage ใกล้หน้างาน: ของซื้อตรง/non-stock, ของที่สต็อกต่ำหรือ CMMS แสดงว่าหมด, ของหมุนเร็ว; ไม่ควร stage: ของเฉพาะเครื่องเดียว, ของใหญ่ย้ายยาก, consumable ทั่วไป (CMRP CMPR-09 p.31)
+- เทียบกับกฎของ RBMM ข้างบน: CMRP ไม่ได้แยกแหล่งอะไหล่ตามประเภทงาน งานตามแผนใช้ได้ทั้งของคลังและของซื้อตรง ขณะที่ RBMM ตั้งเป้าให้ Stock Parts ของงานตามแผนเป็น 0 (ดู [[Maintenance Budget]]) ความต่างนี้เป็นเรื่องนโยบายการจัดอะไหล่ ไม่ใช่ข้อเท็จจริงขัดกัน: กฎ RBMM เป็นข้อเสนอของหนังสือพร้อมข้อยกเว้นอะไหล่ใช้ร่วม และในทางปฏิบัติ ถ้าใช้กฎ RBMM การจองของคลังแบบ CMRP จะเหลือเฉพาะอะไหล่ใช้ร่วมตามข้อยกเว้น (การตีความของ wiki; ไม่ตั้ง contested)
+- ทั้งสองแหล่งเห็นตรงกันว่าขาดของทำให้งานล่าช้า เสียเงิน คุณภาพงานตก (CMRP CMPR-09 p.30) และ stock-out บ่อยเป็นสาเหตุหนึ่งของ schedule non-compliance ดู [[Maintenance Backlog and Schedule Compliance]]
 
 ## Demand Side และ Supply Side
 
@@ -144,6 +151,7 @@ contested: false
 - [[Maintenance Cost Structure]]
 - [[CMMS]]
 - [[Maintenance KPIs]]
+- [[Maintenance Planning and Scheduling]]
 
 ## Triplets
 
@@ -210,3 +218,6 @@ contested: false
 - Spare Part DSx Model [uses:: [[Failure Mode]]] needs Equipment, Failure Mode, Beta, Eta (RBMM p.263)
 - [[OREDA]] [input_to:: Basic Average Method] constant item failure rate, not for PM interval
 - Spare Level Setting [depends_on:: [[Redundancy and Standby Systems]]] standby compressors, hidden failure
+- Material Take-off [uses:: Stock Reservation] CMRP planner reserves stock items for planned jobs and stages them (CMRP CMPR-09 p.30-31)
+- Stock Reservation [differs_from:: Stock Parts] CMRP allows stock for planned work; RBMM reserves stock for CM-Unplanned (RBMM p.45, p.236); policy difference, not contested
+- Staging [applies_to:: Direct Purchase Parts] also low-stock and fast-moving items (CMRP CMPR-09 p.31)

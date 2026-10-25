@@ -123,7 +123,7 @@ Hidden failure?  Yes -> CBM ได้? Yes = CBM / No = FFM
 - ผัง RCM 4 กลุ่มของสไลด์ (p.2): Reactive (ชิ้นเล็ก ไม่วิกฤติ มี redundancy), Interval/PM (wear-out, consumable, รู้ pattern), CBM (random, ไม่ wear, failure ที่ PM ก่อ), Proactive (RCFA ดู [[Root Cause Analysis]], age exploration, FMEA, acceptance testing)
 - สไลด์อ้างว่าราว 60% ของอุปกรณ์มีแค่ช่วง infant และ random ของ bathtub ไม่ระบุแหล่ง (CMRP CMPR-03 p.5) ดู [[Failure Patterns and Bathtub Curve]]
 
-คาบงานตาม criticality (CMRP CMPR-03 p.9-12): ผังไม่ได้ให้คาบ ต้องดู criticality, MTBF, redundancy, failure characteristics, กฎหมาย สไลด์ให้สูตร FFM T = MTTF x 2 x (1 - A) หรือ x 3 x (1 - A), CBM T = PF หรือ 0.75 PF, SM T = TTF หรือ 0.75 TTF (moderate / high) สูตร FFM ขัดกับสูตรมาตรฐาน ดู [[Failure Finding Interval]] (contested) และคาบ CBM ยาวกว่า P-F/2 ของ RBMM ดู [[P-F Interval and Condition Monitoring]]; การตั้ง SM = TTF ไม่มี safety margin ขัดกับภาพของสไลด์เองที่ว่า SM ต้องมี margin (p.10)
+คาบงานตาม criticality (CMRP CMPR-03 p.9-12): ผังไม่ได้ให้คาบ ต้องดู criticality, MTBF, redundancy, failure characteristics, กฎหมาย สไลด์ให้สูตร FFM T = MTTF x 2 x (1 - A) หรือ x 3 x (1 - A), CBM T = PF หรือ 0.75 PF, SM T = TTF หรือ 0.75 TTF (moderate / high) สูตร FFM ขัดกับสูตรมาตรฐาน ดู [[Failure Finding Interval]] (contested) และคาบ CBM ยาวกว่า P-F/2 ของ RBMM ดู [[P-F Interval and Condition Monitoring]]; กรณี moderate ที่ตั้ง SM = TTF เต็มค่า (ไม่มี safety margin) ขัดกับภาพของสไลด์เองที่ว่า SM ต้องมี margin (p.10) ส่วนกรณี high ใช้ 0.75 TTF ซึ่งมี margin 25% (ตรวจกับภาพ CMPR-03 p.12 แล้ว 2026-10-25)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 

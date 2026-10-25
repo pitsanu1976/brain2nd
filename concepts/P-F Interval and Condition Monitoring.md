@@ -100,7 +100,7 @@ Output: จำนวน CM-Unplanned, PM, CM-Planned, Availability,
 - ถ้าตรวจทุก T = PF จะมีการตรวจอย่างน้อยหนึ่งครั้งในช่วง P-F แต่กรณีแย่สุดพบอาการตอนใกล้ F จนแทบไม่เหลือ lead time สำหรับวางแผนซ่อม; T = (P-F)/2 รับประกันว่าเหลืออย่างน้อยครึ่งหนึ่งของ P-F หลังตรวจพบ
 - 0.75 PF ของ CMRP ยังยาวกว่า (P-F)/2 ของ RBMM; notes ของ CMPR-03 ก็ flag ว่าแนวทั่วไปใช้ P-F/2
 - ในทางปฏิบัติคาบที่เหมาะขึ้นกับ lead time ของอะไหล่/การวางแผนที่ต้องใช้หลังพบอาการ (RBMM p.241) และความแปรปรวนของ P-F (F1 vs F2) ซึ่งสูตรของ CMRP ไม่ได้รวม
-- logic tree เดียวกันของ CMRP ให้สูตร FFI ที่ต่างจาก [[Failure Finding Interval]] และ SM = TTF ที่ไม่มี safety margin ด้วย ดูหน้านั้น
+- logic tree เดียวกันของ CMRP ให้สูตร FFI ที่ต่างจาก [[Failure Finding Interval]] และ SM = TTF (moderate, ไม่มี safety margin) หรือ 0.75 TTF (high) ดูหน้านั้นและ [[PM Task Selection]] (ตรวจกับภาพ CMPR-03 p.12 แล้ว 2026-10-25)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 

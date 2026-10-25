@@ -1,10 +1,10 @@
 ---
 title: EOQ and Reorder Point
 created: 2026-10-21
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
-tags: [spare-parts, statistics, cost, maintenance-management, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp]
+sources: [reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -111,6 +111,45 @@ ROP = (12/365) x 90 + 2 = 2.95 + 2 ~ 5 ชิ้น   (ใช้เป็น Min
 - ไม่คำนึงความวิกฤติของ item; ต้องจัดกลุ่มก่อน (ดู [[Spare Part Criticality and Risk]]) อะไหล่ Medium/High ใช้ Cost Ratio และ Simulation
 - รวมความต้องการตามแผนและนอกแผนเฉพาะอะไหล่ใช้ร่วมที่ตาราง PM ไม่พร้อมกัน (RBMM p.236)
 
+## ส่วนเสริมจาก CMRP: MRO inventory (CMRP CMPR-08 p.31-45)
+
+เนื้อหาจาก [[CMRP Course]] (สื่อการสอน) สอดคล้องกับ RBMM ข้างบน และเพิ่มแบบจำลองการเติมสต็อก 4 แบบ
+
+### นิยามและชนิด MRO stock (CMRP CMPR-08 p.32-37)
+
+- MRO inventory = ของในคลัง + ของที่สั่งแล้วยังไม่ส่ง ลูกค้าคือฝ่ายบำรุงรักษา/ผลิต
+- ชนิด: operating spares, rotatable spares, overhaul spares, insurance spares และ consumables
+- เป้าระยะสั้น (control) = มีของพอในที่ที่ถูกต้อง; ระยะยาว (management) = สมดุลต้นทุนถือครองกับความเสี่ยง stock-out; total cost = inventory cost + stock-out consequence มีจุดต่ำสุดที่ optimum stock level (หลักเดียวกับ [[Spare Part Criticality and Risk]])
+
+### ระดับสต็อกและ safety stock (CMRP CMPR-08 p.38-41)
+
+- 3 ระดับ: replenishment level (สูงสุด, เทียบ Max), reorder level (เทียบ ROP/Min), safety stock ใช้ safety stock กับรายการ non-insurance ของเครื่องวิกฤต
+- ROP = เมื่อไรสั่ง, ROQ = สั่งเท่าไร
+
+```
+Safety stock (CMRP) = K × σ × sqrt(Lead Time)
+K = safety factor (เทียบ Z),  σ = SD ของ demand ต่อหน่วยเวลา (หน่วยเดียวกับ Lead Time)
+```
+
+**เทียบกับสูตร RBMM ข้างบน:** ถ้า Lead Time คงที่ (sigma_LT = 0) สูตร sigma_combined = sqrt( (sigma_D)^2 x LT_avg ) = sigma_D x sqrt(LT_avg) ดังนั้น SS = z x sigma_D x sqrt(LT_avg) ตรงกับสูตร CMRP สูตร CMRP จึงเป็น **กรณีพิเศษ** ที่ไม่คิดความแปรปรวนของ Lead Time ไม่ใช่ความขัดแย้ง (derived) ในตัวอย่าง RBMM ข้างบน เทอม LT มีสัดส่วนราว 30% ของความแปรปรวนรวม ถ้าใช้สูตร CMRP จะได้ SS = 1.2816 x 0.14 x sqrt(90) ≈ 1.70 แทน 2.04 (derived) จึงต่ำไปเมื่อ Lead Time แปรปรวนมาก
+
+### 4 basic inventory models (CMRP CMPR-08 p.43-45)
+
+สัญลักษณ์ของสไลด์: **B** = ติดตามสต็อกต่อเนื่อง (continuous review), **s** = ตรวจตามรอบ (periodic review)
+
+| Model | ปริมาณสั่ง | เวลาสั่ง | เหมาะกับ |
+|---|---|---|---|
+| BS (Min-Max) | แปรผัน (เติมถึง max) | แปรผัน (เมื่อถึง reorder level) | การเบิกผันผวนมาก |
+| BQ | คงที่ | แปรผัน (เมื่อถึง reorder level) | การเบิกผันผวนน้อย |
+| sS | แปรผัน (เติมถึง max) | คงที่ (ตามรอบ) | การเบิกผันผวนน้อย |
+| sQ | คงที่ | คงที่ (ตามรอบ) | การเบิกผันผวนมาก |
+
+**flag สไลด์:** ตาราง 2x2 สรุปใน p.42 ขัดกับสไลด์รายละเอียด p.43-45 (p.42 จัด sS/sQ เป็นปริมาณคงที่ และ BS/BQ เป็นปริมาณแปรผัน และจัด BQ/sQ เป็นจุดสั่งแปรผัน) ตารางข้างบนยึด p.43-45 ซึ่งสอดคล้องกันเองและตรงกับชื่อ model (S = เติมถึงระดับ, Q = ปริมาณคงที่)
+
+ข้อสังเกต (ความรู้ทั่วไป ไม่อยู่ในสไลด์): สัญลักษณ์ B/s ของสไลด์ต่างจากตำรามาตรฐาน ซึ่งใช้ s = reorder point เช่น (s, Q) = continuous review ปริมาณคงที่ (ใกล้ BQ), (s, S) = min-max (ใกล้ BS), (R, S) = periodic order-up-to (ใกล้ sS) เมื่ออ่านแหล่งอื่นต้องเทียบความหมาย ไม่ใช่ตัวอักษร [confidence: low]
+
+EOQ ของ RBMM ข้างบนให้ค่า Q ของ model แบบปริมาณคงที่ (BQ, sQ) ส่วน ROP + SS ให้ reorder level ของ BS/BQ (การเชื่อมโยง derived)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ฟิลด์ Min, Max, ROP, EOQ ถูกเก็บเป็นกลุ่มที่ 3 (ค่าจากการคำนวณ) ใน Spare Part Database ของ [[CMMS]] (RBMM p.102) ผูกกับ [[Maintainable Item]] ผ่าน BOM
@@ -123,6 +162,7 @@ ROP = (12/365) x 90 + 2 = 2.95 + 2 ~ 5 ชิ้น   (ใช้เป็น Min
 - [[Spare Part Criticality and Risk]]
 - [[Spare Part Demand Forecasting]]
 - [[Statistical Distributions for Maintenance]]
+- [[CMRP Course]]
 
 ## Triplets
 
@@ -167,3 +207,21 @@ ROP = (12/365) x 90 + 2 = 2.95 + 2 ~ 5 ชิ้น   (ใช้เป็น Min
 - Reorder Point [related_to:: [[Statistical Distributions for Maintenance]]]
 - Reorder Point [part_of:: Spare Part Database] group 3 calculated field in [[CMMS]] (RBMM p.102)
 - EOQ [part_of:: Spare Part Database] group 3 calculated field in [[CMMS]] (RBMM p.102)
+- [[EOQ and Reorder Point]] [defined_in:: [[CMRP Course]]] MRO inventory supplement (CMRP CMPR-08 p.31-45)
+- MRO Inventory [has_category:: operating, rotatable, overhaul, insurance spares, consumables] (CMRP CMPR-08 p.32-34)
+- MRO Inventory [has_part:: Replenishment Level] also reorder level and safety stock (CMRP CMPR-08 p.38-39)
+- Replenishment Level [alias_of:: Max]
+- Safety Stock [has_formula:: K × σ × sqrt(Lead Time)] CMRP form, K = safety factor (CMRP CMPR-08 p.39)
+- CMRP Safety Stock Formula [is_a:: Safety Stock] special case of z x sigma_combined with sigma_LT = 0, derived
+- CMRP Safety Stock Formula [has_value:: 1.70 pieces] applied to RBMM example ignoring LT variation vs 2.04, derived [confidence:: low]
+- BS Model [is_a:: Inventory Model] Min-Max, continuous review, variable quantity and time (CMRP CMPR-08 p.43-45)
+- BQ Model [is_a:: Inventory Model] continuous review, fixed quantity, variable time
+- sS Model [is_a:: Inventory Model] periodic review, order up to max, fixed time
+- sQ Model [is_a:: Inventory Model] periodic review, fixed quantity, fixed time
+- CMRP Inventory Model Summary Table [contradicts:: BS Model] p.42 2x2 table inconsistent with p.43-45 detail slides
+- BQ Model [maps_to:: (s, Q) Policy] standard notation, general knowledge [confidence:: low]
+- BS Model [maps_to:: (s, S) Policy] standard notation, general knowledge [confidence:: low]
+- sS Model [maps_to:: (R, S) Policy] standard notation, general knowledge [confidence:: low]
+- EOQ [input_to:: BQ Model] fixed order quantity, derived
+- Total Inventory Cost [has_part:: Stock-out Consequence] optimum stock level at minimum (CMRP CMPR-08 p.37)
+- [[EOQ and Reorder Point]] [related_to:: [[Spare Part Criticality and Risk]]]

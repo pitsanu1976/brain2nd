@@ -1,7 +1,7 @@
 ---
 title: Maintenance Cost Structure
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
 tags: [cost, budget, maintenance-management, kpi, spare-parts, book]
 sources: [reliability-based-maintenance-management.md]
@@ -123,7 +123,7 @@ Total Variance = Efficiency Variance + Cost Variance
 | รายการ | ผลบัญชี |
 |---|---|
 | ปรับปรุงสมรรถนะเครื่อง | งบลงทุน ค่าเสื่อมเป็นต้นทุนผลิต ไม่ใช่ของบำรุงรักษา |
-| Plant Turnaround | เฉลี่ยรายปี เฉพาะ Materials และจ้างเหมา |
+| Plant Turnaround | เฉลี่ยรายปี เฉพาะ Materials และจ้างเหมา (CMRP นับค่าแรงพนักงานโรงงานระหว่าง turnaround เป็นต้นทุน event ด้วย ดูข้อขัดแย้งที่ [[Maintenance Budget]] หัวข้อ 8) |
 | เครื่องมือ โรงซ่อม คอมพิวเตอร์ | ค่าเสื่อมเป็นต้นทุนบำรุงรักษา |
 | อะไหล่สะสมคลัง | ไม่มีค่าเสื่อม มีค่าครอบครอง 15-20% |
 

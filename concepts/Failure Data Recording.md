@@ -1,7 +1,7 @@
 ---
 title: Failure Data Recording
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
 tags: [cmms, failure-mode, iso-14224, taxonomy, coding, data-quality, book]
 sources: [reliability-based-maintenance-management.md, iso-14224.md]
@@ -211,7 +211,7 @@ RBMM Fig 5.14 (RBMM p.132-134) แสดง boundary ปั๊มที่มี
 - Failure Data [has_part:: [[Failure Detection Method]]]
 - Failure Data [has_part:: Operating Condition At Failure] minimum data (*)
 - Failure Data [has_part:: [[Safety Critical Failure Classification]]] SIS failure mode DU, DD, SU, SD
-- Root Cause Analysis [applies_to:: Worst Actors] required for high impact, high repair cost/downtime or unusually frequent failures (Table 6 note d, p.41)
+- [[Root Cause Analysis]] [applies_to:: Worst Actors] required for high impact, high repair cost/downtime or unusually frequent failures (Table 6 note d, p.41)
 - Maintenance Data [defined_in:: [[ISO 14224]]] cl. 9.6, Tables 7-8, p.42-45
 - Maintenance Data [has_category:: corrective, preventive] (cl. 9.6.1-9.6.2, p.42)
 - Modification [differs_from:: Maintenance Data] not a maintenance category (cl. 9.6.1-9.6.2, p.42)

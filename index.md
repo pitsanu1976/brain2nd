@@ -2,9 +2,9 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-23 | จำนวนหน้า wiki: 97 (entities 11, concepts 64, comparisons 4, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-10-25 | จำนวนหน้า wiki: 115 (entities 12, concepts 80, comparisons 5, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
-Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM และ ISO 14224)
+Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224 และ CMRP)
 
 ## Raw sources (Layer 1, immutable; area ข)
 
@@ -13,6 +13,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - `raw/assets/` — ภาพตาราง OREDA (failure descriptor, failure mode vs maintainable item, failure mechanism, resolution)
 - [[raw/reliability-based-maintenance-management]] — หนังสือ Reliability Based Maintenance Management (SE-ED 2553, 400 หน้า) reading notes 12 บทใน `raw/reliability-based-maintenance-management/`
 - [[raw/iso-14224]] — ISO 14224:2016 (280 หน้า, licensed ไม่เก็บ PDF) reading notes ถอดความ 6 ส่วนใน `raw/iso-14224/` (clauses 1-7, 8-9, Annex A, B, C-D, E-F)
+- [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)
@@ -28,6 +29,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[SHSS Shaft Seal System]] — Sub Unit SHSS 10 item, 78 CAUSE_CODE, สัดส่วนต่ำ (2.60)
 - [[MISC Miscellaneous]] — Sub Unit MISC 7 item, 56 CAUSE_CODE, Base frame/piping/corrosion
 - [[Reliability Based Maintenance Management Book]] — hub หนังสือ RBMM: ข้อมูลบรรณานุกรม ตาราง 12 บท กรอบ CMMS ถึงธุรกิจบำรุงรักษา ข้อผิดพลาดในหนังสือ และความสัมพันธ์กับ compressor hierarchy
+- [[CMRP Course]] — hub สไลด์ CMRP (PETROSYNC): SMRP BOK 5 pillars, AEO model, แผนที่ไฟล์ไปยังหน้า wiki, ข้อผิดพลาดในสไลด์ 21 จุด และ 4 ข้อ contested กับ RBMM/ISO
 
 ## concepts/
 
@@ -106,11 +108,33 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Maintenance Business Models]] — เปรียบเทียบ Cost Center / Profit Centered / Service Company, Service Gap, 16 กิจกรรมบำรุงรักษา และปัญหาการแปลงเป็นธุรกิจ
 - [[Job Order Costing]] — บัญชีต้นทุนตามใบสั่งงานสำหรับธุรกิจบริการ: Job Budget, Reference Cost, WIP/Provision, Absorption, ตัวอย่าง 4 เดือน
 
+### Area ข: CMRP (PETROSYNC course)
+
+หน้าสังเคราะห์จาก [[CMRP Course]] (ingest 2026-10-25) หน้าเดิมหลายหน้าได้หัวข้อเสริมจาก CMRP ด้วย (ดู hub)
+
+- [[Wear Mechanisms]] — กลไกการสึก 7 แบบ, Archard, การควบคุม และการจับคู่กับรหัส ISO Table B.2
+- [[Lubrication and Oil Analysis]] — ส่วนประกอบสารหล่อลื่น, API base oil group I-V, additive, contamination/varnish, การทดสอบน้ำมัน/จาระบี, ISO 4021, NLGI
+- [[Condition Monitoring Techniques]] — inspection boundaries, vibration (ISO 10816-1), thermography, motor current, ultrasonic, optimization matrix, D-I-P-F
+- [[Root Cause Analysis]] — RCA/RCFA 4 ขั้น, 5 Whys, why-because graph, stress-strength, ปัจจัยความสำเร็จ และ RCA บังคับของ ISO
+- [[Maintenance Planning and Scheduling]] — planning vs scheduling, 7 ขั้นวางแผน, span of control, estimating, priority PR1-PR4, กติกาจัดตาราง, wrench time
+- [[Maintenance Backlog and Schedule Compliance]] — backlog เป็นสัปดาห์ (2-3 vs 3-6 สัปดาห์), ready/total, purging, schedule compliance/performance/effectiveness
+- [[Turnaround Management]] — กลยุทธ์ eliminate-first, golden rule ของ work list, emergent work, 4 phase, single point responsibility
+- [[Maintainability]] — M(t), lognormal repair time, MIL-HDBK-472 7 ขั้น, maintainability allocation, maintenance level NF X60-000
+- [[Reliability Allocation]] — equal, ARINC, penalty function ตาม feasibility index และ NLP
+- [[Statistical Process Control]] — X-bar/R, p/np/c/u, run rules, Cp/Cpk, confidence interval (พร้อมข้อผิดพลาดในสไลด์)
+- [[Fault Tree Analysis]] — gate, cut set, minimal cut set, common cause, เทียบ RBD
+- [[Reliability Growth Models]] — Duane postulate, Crow-AMSAA (NHPP)
+- [[Human Reliability]] — P(HE), ประเภท error, performance shaping factors, culture change
+- [[TPM and Lean Maintenance]] — Lean, TPM pillars, 5S, SMED, JIT, Six Sigma
+- [[Maintenance Business Case]] — 6 ขั้น business case, DCF/IRR/hurdle rate, business case vs business plan
+- [[Digital Maintenance and Predictive Analytics]] — Maintenance 4.0, framework ผู้ขาย, predictive modelling และข้อจำกัด
+
 ## comparisons/ (area ข)
 
 - [[Compressor Type Failure Profiles]] — เปรียบเทียบ % 19 โหมดของ centrifugal vs reciprocating vs screw
 - [[Resolution Matrix by Mechanism]] — 37 mechanism x 13 resolution (233 คู่ที่เป็นไปได้)
 - [[Compressor Subdivision Wiki vs ISO 14224]] — subunit และ maintainable item ของ dataset เทียบ ISO Table A.9 รายตัว, type code CE/RE/SC/AX, boundary
+- [[CMRP vs RBMM FMECA Scales]] — สเกล FMECA 1-10 vs 1-5, matrix 5x5 vs 5x6, RPN band และเลขผิดในสไลด์
 - [[RBMM Concepts vs Compressor Failure Hierarchy]] — ตารางเทียบแนวคิดหนังสือ (Object Part, Damage Code, criticality, task, Weibull, spares) กับ 7 ระดับของ hierarchy พร้อมที่มา
 
 ## guides/ (area ก)

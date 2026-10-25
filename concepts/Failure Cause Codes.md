@@ -1,7 +1,7 @@
 ---
 title: Failure Cause Codes
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-25
 type: concept
 tags: [failure-cause, coding, taxonomy, data-quality, iso-14224]
 sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__failure-cause-code.csv, compressor-failure-hierarchy__sheet5.csv, compressor-failure-hierarchy__subunit-code.csv, iso-14224.md]
@@ -128,7 +128,7 @@ contested: true
 - ISO:B.3-5.5 [has_label:: Other] avoid when possible (cl. B.2.1, p.178)
 - ISO:B.3-5.6 [has_label:: Unknown] avoid when possible (cl. B.2.1, p.178)
 - ISO:B.3-3.2 [differs_from:: ISO:B.2] human error is recorded as cause, not mechanism
-- Root Cause Analysis [applies_to:: High Impact Failure] complex, high impact, unusually frequent or high repair cost (p.181)
+- [[Root Cause Analysis]] [applies_to:: High Impact Failure] complex, high impact, unusually frequent or high repair cost (p.181)
 - Common Cause Failure [uses:: ISO:B.3-5.2] record each item separately, true cause on one item, others 5.2 (cl. B.2.3.2, p.182)
 - Cascading Failure [differs_from:: Common Cause Failure] record only the first failure
 - [[Failure Cause Codes]] [related_to:: [[Failure Data Recording]]]

@@ -151,7 +151,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Resolution Matrix by Mechanism]] — 37 mechanism x 13 resolution (233 คู่ที่เป็นไปได้)
 - [[Compressor Subdivision Wiki vs ISO 14224]] — subunit และ maintainable item ของ dataset เทียบ ISO Table A.9 รายตัว, type code CE/RE/SC/AX, boundary
 - [[CMRP vs RBMM FMECA Scales]] — สเกล FMECA 1-10 vs 1-5, matrix 5x5 vs 5x6, RPN band และเลขผิดในสไลด์
-- [[SPO vs RBMM Spare Parts Approaches]] — เทียบหนังสือ SPO กับ RBMM 10 ประเด็น (มุมมอง, การจำแนก, ตัดสินสต็อก, safety stock, ABC, holding cost, เป้ามูลค่าสต็อก, planned vs unplanned, Blanket Order, KPI); contested 2 ข้อ
+- [[SPO vs RBMM Spare Parts Approaches]] — เทียบหนังสือ SPO กับ RBMM 10 ประเด็น (มุมมอง, การจำแนก, ตัดสินสต็อก, safety stock, ABC, holding cost, เป้ามูลค่าสต็อก, planned vs unplanned, Blanket Order, KPI); contested 1 ข้อ (เป้ามูลค่าสต็อก; ABC กลุ่ม A resolve แล้ว)
 - [[RBMM Concepts vs Compressor Failure Hierarchy]] — ตารางเทียบแนวคิดหนังสือ (Object Part, Damage Code, criticality, task, Weibull, spares) กับ 7 ระดับของ hierarchy พร้อมที่มา
 
 ## guides/ (area ก)

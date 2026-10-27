@@ -11,7 +11,7 @@ contested: true
 
 # SPO vs RBMM Spare Parts Approaches
 
-หน้านี้เทียบแนวทางบริหารอะไหล่ของหนังสือไทยสองเล่ม: **SPO** ([[Spare Parts Optimization Book]], สุชาติ ศุภมงคล 2546) กับ **RBMM** ([[Reliability Based Maintenance Management Book]], บทที่ 9-10) และอ้าง [[CMRP Course]] เมื่อเกี่ยวข้อง สองเล่มมอง "อะไหล่" จากคนละฝั่งขององค์กร: SPO เขียนจากมุม **คลังพัสดุ/จัดซื้อ** (อดีตผู้จัดการคลังโรงกลั่น อิงคู่มือ Esso และ COSAL ของกองทัพเรือสหรัฐฯ) ส่วน RBMM เขียนจากมุม **reliability/ความเสี่ยง** (RCM, Weibull, Monte Carlo) ความต่างส่วนใหญ่จึงเป็นเรื่องบริบทหรือตัวหาร ไม่ใช่ข้อเท็จจริงที่ขัดกัน แต่มี 2 ประเด็นที่ยังไม่ resolve (ดูหัวข้อ "ข้อขัดแย้ง (contested)") รายละเอียดแต่ละฝั่งดู [[Spare Parts Management]] และ [[Spare Part Criticality and Risk]]
+หน้านี้เทียบแนวทางบริหารอะไหล่ของหนังสือไทยสองเล่ม: **SPO** ([[Spare Parts Optimization Book]], สุชาติ ศุภมงคล 2546) กับ **RBMM** ([[Reliability Based Maintenance Management Book]], บทที่ 9-10) และอ้าง [[CMRP Course]] เมื่อเกี่ยวข้อง สองเล่มมอง "อะไหล่" จากคนละฝั่งขององค์กร: SPO เขียนจากมุม **คลังพัสดุ/จัดซื้อ** (อดีตผู้จัดการคลังโรงกลั่น อิงคู่มือ Esso และ COSAL ของกองทัพเรือสหรัฐฯ) ส่วน RBMM เขียนจากมุม **reliability/ความเสี่ยง** (RCM, Weibull, Monte Carlo) ความต่างส่วนใหญ่จึงเป็นเรื่องบริบทหรือตัวหาร ไม่ใช่ข้อเท็จจริงที่ขัดกัน แต่มี 2 ประเด็นที่ขัดกัน (C1 resolve แล้ว 2026-10-27, C2 ยังไม่ resolve) (ดูหัวข้อ "ข้อขัดแย้ง (contested)") รายละเอียดแต่ละฝั่งดู [[Spare Parts Management]] และ [[Spare Part Criticality and Risk]]
 
 ## 1. สรุปภาพรวม
 
@@ -21,7 +21,7 @@ contested: true
 | การจัดประเภทอะไหล่ | 9 ประเภท (SPO p.26) | 4 ประเภท: commissioning, ซื้อตรง, สำรองคลัง, insurance (RBMM p.15-16, p.235-236, p.251) | ต่างความละเอียด; commissioning ตรงกัน |
 | เกณฑ์ตัดสินว่าจะสต็อก | Engineering Basic Practice (ตาราง % ต่อจำนวนเครื่อง) + ปัจจัย 5 ข้อ / 7 ข้อ + คณะกรรมการ (SPO p.40-54, p.129) | Criticality + Confidence Level + Cost Ratio + Monte Carlo (RBMM p.238-264) | ต่างวิธี (กฎเชิงประสบการณ์ vs เชิงสถิติ) |
 | Safety stock | % ของ D x LT (ตัวอย่าง 20%) (SPO p.105) | z x sigma_combined (RBMM p.253-255) | ต่างวิธี ไม่ขัดกัน |
-| ABC | ABU = จำนวนเบิกต่อปี x ราคา; A = มูลค่าใช้สูง (SPO p.115-117) | Turnover = Qty x Unit Price; ข้อความ A = มูลค่าสูง แต่รูปที่ 9.4 ป้าย A = Very Slow (RBMM p.242-243) | **contested** (ป้ายกลุ่ม A) |
+| ABC | ABU = จำนวนเบิกต่อปี x ราคา; A = มูลค่าใช้สูง (SPO p.115-117) | Turnover = Qty x Unit Price; ข้อความ A = มูลค่าสูง แต่รูปที่ 9.4 ป้าย A = Very Slow (RBMM p.242-243) | resolved: ยึด SPO (A = มูลค่าใช้สูง) |
 | Holding cost | ตัวอย่าง 30%; ให้คำนวณ COP 7 รายการ (SPO p.104, p.120) | 15-20%/ปี (RBMM p.16, p.234); เป้าบทที่ 10 15-25% | ต่างสมมติฐานตัวอย่าง ไม่ใช่ข้อขัดแย้ง |
 | เป้ามูลค่าสต็อก | 3% ของเงินลงทุนสร้างโรงงาน (นโยบายตัวอย่าง), ไม่เกิน 4% GPI, benchmark 2/4/10%, ท้ายเล่ม 3-4% GPI (SPO p.55, p.113-115, p.128, p.143-145) | 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314); B7 budget 3% (RBMM p.74) | **contested** (ระดับเป้า) |
 | งานตามแผน vs นอกแผน | สต็อกมีไว้ซ่อมปกติ; turnaround ทำแผน MR/MS แยก (SPO p.35-38, p.55) | ตามแผน = ซื้อตรง, นอกแผน = สต็อก (RBMM p.45, p.236) | สอดคล้องในหลักการ ต่างรายละเอียด |
@@ -141,11 +141,12 @@ contested: true
 
 ## ข้อขัดแย้ง (contested)
 
-### C1. ความหมายของกลุ่ม A ใน ABC
+### C1. ความหมายของกลุ่ม A ใน ABC (resolved 2026-10-27)
 
 - มุมมอง SPO (spare-parts-optimization.md): A = รายการมูลค่าใช้ต่อปี (ABU) สูงสุดราว 80% ตัวอย่างกลุ่ม A รวมรายการที่เบิก 200,000 หน่วย/ปี จึงไม่ได้หมายถึงหมุนช้า (SPO p.115-117)
 - มุมมอง RBMM (reliability-based-maintenance-management.md): ข้อความหน้า 242 ให้ A = มูลค่า turnover สูงสุด 80% (ตรงกับ SPO) แต่รูปที่ 9.4 ติดป้าย A = Very Slow และ C = fast moving (RBMM p.242-243)
-- สถานะ: ยังไม่ resolve ข้อความของทั้งสองเล่มตรงกัน แต่ป้ายในรูปของ RBMM ขัดกับทั้งข้อความ RBMM เองและ SPO น่าจะเป็นความผิดพลาดของรูป แต่ยังไม่ได้ตรวจกับหน้าหนังสือ RBMM ต้นฉบับ (ข้อเสนอ: ใช้ความหมาย "A = มูลค่าใช้สูง" ไปก่อน)
+- สถานะ: ยังไม่ resolve ข้อความของทั้งสองเล่มตรงกัน แต่ป้ายในรูปของ RBMM ขัดกับทั้งข้อความ RBMM เองและ SPO น่าจะเป็นความผิดพลาดของรูป แต่ยังไม่ได้ตรวจกับหน้าหนังสือ RBMM ต้นฉบับ (ข้อเสนอ: ใช้ความหมาย "A = มูลค่าใช้สูง" ไปก่อน) (ข้อความเดิมก่อน resolve)
+- ผู้ใช้ตัดสิน 2026-10-27: ยึดตาม SPO คือ A = มูลค่าใช้สูง ป้าย Very Slow ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป (resolved)
 
 ### C2. ระดับเป้ามูลค่าสต็อกอะไหล่ต่อมูลค่าโรงงาน
 
@@ -192,8 +193,8 @@ contested: true
 - SPO Safety Stock [differs_from:: Safety Stock] RBMM z x sigma_combined (RBMM p.253-255); method difference, not contested
 - ABU [has_formula:: annual issue qty x unit cost] (SPO p.116)
 - ABU [related_to:: Turnover] same basis as RBMM Qty x Unit Price (RBMM p.242-243)
-- ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117) [contested:: true]
-- ABC Turnover Group A [has_category:: Very Slow] RBMM Fig 9.4 label (RBMM p.243) [contested:: true]
+- ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117); resolved 2026-10-27 by user
+- ABC Turnover Group A [contradicts:: Very Slow] RBMM Fig 9.4 label judged wrong (RBMM p.243)
 - Holding Cost [has_value:: 30%] SPO example in inventory reduction saving (SPO p.120)
 - Holding Cost [has_value:: 15-20%] RBMM per year (RBMM p.16, p.234); differs from SPO example, assumption not contradiction
 - Cost of Possession [has_part:: 7 cost items] return on investment, insurance, rent, handling, administration, obsolescence, loss (SPO p.104)

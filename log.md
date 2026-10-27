@@ -109,3 +109,9 @@
 - ข้อผิดพลาดในหนังสือที่ flag (ตรวจคำนวณซ้ำ) เช่น DOS variance 22,000→22,500 (สุทธิ 47,500), %GPI ธ.ค. 3.58→3.98, retail 1.4/11.16→1.33/11.11, 13 รอบ ≈ 28 วัน ไม่ใช่ 20, "95% ของรายการ" ควรเป็นของมูลค่า, Table 2 air fin 7 เครื่อง 1.4, coupling "1%"; รายการเต็มใน [[Spare Parts Optimization Book]]
 - Lint: ไม่มี broken link, frontmatter/tag ครบ, ทุกหน้าอยู่ใน [[index]] (126 หน้า); `graph/triplets.csv` rebuild 0 error
 - Pages: [[Spare Parts Optimization Book]], [[raw/spare-parts-optimization]], [[index]], [[SCHEMA]]
+
+## [2026-10-27] resolve | ABC กลุ่ม A (C1)
+- ผู้ใช้ตัดสิน: ABC กลุ่ม A ยึดตาม SPO คือ "มูลค่าใช้สูง" (ตรงกับข้อความ RBMM p.242) ป้าย "Very Slow" ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป
+- คงข้อความประวัติไว้ และเพิ่มบรรทัดผลตัดสิน; [[Spare Part Criticality and Risk]] ตั้ง `contested: false` (ไม่มีข้อขัดแย้งอื่นในหน้า) แก้คำอธิบายกลุ่ม A ในตาราง ABC; triplet ป้าย Very Slow เปลี่ยนเป็น `contradicts` และถอด `[contested:: true]`
+- [[SPO vs RBMM Spare Parts Approaches]] ยัง `contested: true` เพราะ C2 (เป้ามูลค่าสต็อก) ยังรอผู้ใช้ตัดสิน; เพิ่มหมายเหตุผลตัดสินใน [[MRO Inventory Reduction Program]] และอัปเดต [[index]]
+- Pages: [[Spare Part Criticality and Risk]], [[SPO vs RBMM Spare Parts Approaches]], [[MRO Inventory Reduction Program]], [[index]]

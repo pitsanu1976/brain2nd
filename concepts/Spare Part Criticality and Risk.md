@@ -6,7 +6,7 @@ type: concept
 tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp, spo, inventory-control]
 sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
-contested: true
+contested: false
 ---
 
 # Spare Part Criticality and Risk
@@ -27,11 +27,12 @@ Turnover = Qty x Unit Price (มูลค่าเบิกใช้)
 
 | กลุ่ม | ความหมายตามหนังสือ | สัดส่วนมูลค่า turnover |
 |---|---|---|
-| A | หมุนเวียนช้า (very slow) | ส่วนแรกถึง 80% ของ total |
+| A | มูลค่า turnover สูง (รูปที่ 9.4 ติดป้าย very slow ซึ่ง resolve แล้วว่าผิด ดูด้านล่าง) | ส่วนแรกถึง 80% ของ total |
 | B | หมุนเวียนปานกลาง | 15% ถัดไป (สะสมถึง 95%) |
 | C | หมุนเวียนเร็ว (fast moving) | 5% สุดท้าย (หลายรายการมูลค่าต่ำ) |
 
 - ข้อควรระวังความไม่สอดคล้องในต้นฉบับ: ข้อความหน้า 242 บอกว่า A คือรายการที่มีมูลค่า turnover สูงสุด 80% แต่รูปที่ 9.4 ติดป้าย A = Very Slow และ C = fast moving จึงต้องอ่านว่า "A = กลุ่มมูลค่าสูงที่หมุนช้า" อย่างระวัง (คำอธิบายนี้เป็นการตีความ confidence medium) ชื่อ A/B/C ในหัวข้อนี้เป็นเรื่อง turnover คนละเรื่องกับ criticality A/B/C ของเครื่องจักร
+  - ผู้ใช้ตัดสิน 2026-10-27: ยึดตาม SPO คือ A = มูลค่าใช้สูง ป้าย Very Slow ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป (resolved)
 - ABC ไม่คำนึงถึงความวิกฤติ; turnover มี 2 ตัวแปร (qty, price) รายการหมุนสูงราคาต่ำหรือหมุนต่ำราคาสูงอาจอยู่ผิดกลุ่ม
 - ควรคิดแยกอะไหล่ซื้อตรง (PM) ออกจากอะไหล่สำรองคลัง
 
@@ -211,10 +212,11 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - SPO ใช้ฐาน **ABU (Annual Baht Usage) = จำนวนเบิกต่อปี x ราคาต่อหน่วย** ซึ่งเท่ากับ Turnover ของ RBMM และใช้สัดส่วน 80/15/5 เหมือนกัน (ปรับเป็น 75/20/5 หรือ 70/20/10 ได้)
 - ตัวอย่าง 10 รายการของ SPO: กลุ่ม A (3 รายการแรก, ราว 80% ของมูลค่า) มีรายการที่เบิก 200,000 และ 1,210,000 หน่วยต่อปี จึงเป็นกลุ่ม **มูลค่าใช้สูง** ไม่ได้แปลว่าหมุนช้า
 - SPO ใช้ ABC เพื่อลดสต็อก (กลุ่ม C จำนวนมากเปลี่ยนเป็น OAR, รายการไม่เคลื่อนไหว 3 ปีถือว่าล้าสมัย) ไม่ได้ใช้คัดกรอง criticality ดู [[MRO Inventory Reduction Program]]
-- **ข้อขัดแย้ง (contested)**:
+- **ข้อขัดแย้ง (resolved 2026-10-27)**:
   - มุมมอง SPO (spare-parts-optimization.md): A = มูลค่าใช้สูง (SPO p.115-117)
   - มุมมอง RBMM (reliability-based-maintenance-management.md): ข้อความ p.242 ให้ A = มูลค่า turnover สูงสุด (ตรงกับ SPO) แต่รูปที่ 9.4 ติดป้าย A = Very Slow (RBMM p.243) ตามที่บันทึกในหัวข้อ ABC ข้างบน
-  - สถานะ: ยังไม่ resolve; ข้อความของสองเล่มตรงกัน ป้ายในรูป RBMM น่าจะผิด แต่ยังไม่ได้ตรวจกับต้นฉบับ RBMM ระหว่างนี้ให้อ่าน A ว่า "มูลค่าใช้สูง"
+  - สถานะ: ยังไม่ resolve; ข้อความของสองเล่มตรงกัน ป้ายในรูป RBMM น่าจะผิด แต่ยังไม่ได้ตรวจกับต้นฉบับ RBMM ระหว่างนี้ให้อ่าน A ว่า "มูลค่าใช้สูง" (ข้อความเดิมก่อน resolve)
+  - ผู้ใช้ตัดสิน 2026-10-27: ยึดตาม SPO คือ A = มูลค่าใช้สูง ป้าย Very Slow ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป (resolved)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 
@@ -245,11 +247,11 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - Risk Assessment [step_of:: Supply Side] step 4 (RBMM p.241-242)
 - Stock Level Calculation [step_of:: Supply Side] step 5, EOQ / average + Safety Stock / simulation (RBMM p.241-242)
 - Turnover [has_formula:: Qty x Unit Price] issue value (RBMM p.242-243)
-- ABC Turnover Group A [is_a:: ABC Analysis] very slow, first 80% of total turnover value (RBMM p.242-243)
+- ABC Turnover Group A [is_a:: ABC Analysis] high turnover value, first 80% of total turnover value (RBMM p.242-243)
 - ABC Turnover Group B [is_a:: ABC Analysis] medium, next 15% (cumulative 95%) (RBMM p.242-243)
 - ABC Turnover Group C [is_a:: ABC Analysis] fast moving, last 5% (RBMM p.242-243)
-- ABC Turnover Group A [has_category:: high value] text p.242 (RBMM p.242) [contested:: true]
-- ABC Turnover Group A [has_category:: Very Slow] label in Fig 9.4 (RBMM p.243) [contested:: true]
+- ABC Turnover Group A [has_category:: high value] text p.242 (RBMM p.242); resolved 2026-10-27 by user, follow SPO
+- ABC Turnover Group A [contradicts:: Very Slow] label in Fig 9.4 judged wrong (RBMM p.243)
 - ABC Turnover Group A [differs_from:: Criticality A] turnover grouping vs equipment criticality
 - ABC Analysis [differs_from:: Part Criticality] ABC ignores criticality
 - Price [part_of:: Part Criticality] COST, score 1 = highest, 2 = medium, 3 = low (RBMM p.243)
@@ -316,6 +318,6 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - Insurance and Standby Parts [related_to:: [[Redundancy and Standby Systems]]]
 - Insurance and Standby Parts [differs_from:: Switch to Standby Case] CMRP stocks only if lead time more than 2 weeks; context difference, not contested (CMRP CMPR-03 p.13)
 - ABU [has_formula:: annual issue qty x unit cost] same basis as RBMM Turnover (SPO p.116)
-- ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117) [contested:: true]
+- ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117)
 - ABC Turnover Group A [has_value:: 80 / 15 / 5 split] same in SPO and RBMM; SPO allows 75/20/5 or 70/20/10 (SPO p.115)
 - ABC Analysis [related_to:: [[MRO Inventory Reduction Program]]] SPO uses ABC to cut stock and move C items to OAR (SPO p.117-118)

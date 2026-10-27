@@ -195,5 +195,5 @@ contested: false
 - Air Freight Control [has_value:: 6 rules] (SPO p.97-98)
 - Claim Handling [uses:: Claim Number] with Status of Claims monthly report (SPO p.99)
 - Claim Handling [depends_on:: Evidence] no evidence, no compensation (SPO p.99)
-- Over Shipment [uses:: Average Pricing] for MRO items (SPO p.99)
+- Over Shipment [uses:: Average Pricing] for MRO items (SPO p.98-99)
 - Blanket Order [related_to:: Lead Time] removes per-order quotation and PO steps, derived [confidence:: low]

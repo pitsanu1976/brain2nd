@@ -79,8 +79,8 @@ PDF สแกน 143 หน้าขาดหน้าว่างหลัง�
 | 2 (p.20) | MMC แปลเป็น "Material Central Committee" | อักษรย่อไม่ตรง น่าจะ Materials Management Committee | หน้านี้ |
 | 3 (p.27) | interchangeable parts อ้าง "บทที่ 9" | เนื้อหาอยู่บทที่ 6; การอ้างข้ามบทอื่นใช้ชื่อบทไม่ตรงสารบัญ | [[Parts Interchangeability]] |
 | 3 (p.27-28) | เกณฑ์ OAR ข้อ 4 ให้อะไหล่ราคาแพงลักษณะสินทรัพย์ถาวรเป็น OAR ได้ | ดูขัดกับหัวข้อ capitalized parts ที่ต้องสต็อก; น่าจะหมายถึงชิ้นที่วางแผนซ่อมล่วงหน้าได้ | [[MRO Material Classification]] |
-| 4 (p.36-37) | ETD = "Estimate Time Delivery"; Brick ETD 20/7 แต่ ETA 2/7; Oil Gun ไม่มีทั้งในคลังและ PR/PO | ETD สากล = Estimated Time of Departure; วันที่ขัดกัน; Oil Gun ควรต้องจัดซื้อ | [[Turnaround Management]] |
-| 4 (p.33) | ชื่อบท "...สำหรับงานโครงการ" | เนื้อหาเป็นแผนซ่อมใหญ่/turnaround | [[Turnaround Management]] |
+| 4 (p.36-37) | ETD = "Estimate Time Delivery"; Brick ETD 20/7 แต่ ETA 2/7; Oil Gun ไม่มีทั้งในคลังและ PR/PO | ETD สากล = Estimated Time of Departure; วันที่ขัดกัน; Oil Gun ควรต้องจัดซื้อ | หน้านี้ |
+| 4 (p.33) | ชื่อบท "...สำหรับงานโครงการ" | เนื้อหาเป็นแผนซ่อมใหญ่/turnaround | หน้านี้ |
 | 5 (p.45) | Table 2 แถว spring housing gasket: 6 ชุด = 2 แต่ ≥7 = 20% | 7 x 20% = 1.4 ไม่ต่อเนื่องแบบแถวอื่น | [[Spare Parts Recommendation by Equipment Type]] |
 | 5 (p.51, p.53) | coupling ของ centrifugal compressor และ blower "1%" | น่าจะหมายถึง 1 ชุดต่อชนิด/ขนาด | [[Spare Parts Recommendation by Equipment Type]] |
 | 5 (p.53) | "Valve seal or guard gasket" | น่าจะเป็น valve seat or guard gasket | [[Spare Parts Recommendation by Equipment Type]] |

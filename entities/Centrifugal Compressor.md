@@ -1,10 +1,10 @@
 ---
 title: Centrifugal Compressor
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-27
 type: entity
-tags: [compressor, centrifugal, oreda, failure-rate]
-sources: [failure-structure.md, failure-structure__sheet1.csv, compressor-centrifugal-failure-descriptor.png, compressor-centrifugal-failure-mode-vs-item-1.png, compressor-centrifugal-failure-mode-vs-item-2.png, compressor-centrifugal-failure-mode-vs-item-3.png, compressor-centrifugal-failure-mode-vs-item-4.png]
+tags: [compressor, centrifugal, oreda, failure-rate, spare-parts, spo]
+sources: [failure-structure.md, failure-structure__sheet1.csv, compressor-centrifugal-failure-descriptor.png, compressor-centrifugal-failure-mode-vs-item-1.png, compressor-centrifugal-failure-mode-vs-item-2.png, compressor-centrifugal-failure-mode-vs-item-3.png, compressor-centrifugal-failure-mode-vs-item-4.png, spare-parts-optimization.md]
 confidence: medium
 contested: false
 ---
@@ -47,6 +47,16 @@ Instruments ทั้ง 7 type รวม = 31.87 (derived) ใน centrifugal (
 ## โครงสร้างใน failure-structure.md
 
 Sheet1 ของ `failure-structure.md` ระบุคู่ mode/item/sub unit/descriptor ของ centrifugal จำนวน 1,810 แถว (เป็นโครงสร้างความเป็นไปได้ ไม่ใช่จำนวนเหตุการณ์) ใช้ sub unit ตามที่ระบุใน [[Failure Hierarchy]] (มีข้อขัดแย้งบางรายการกับ dataset หลัก) เปรียบเทียบกับประเภทอื่นที่ [[Compressor Type Failure Profiles]]
+
+## อะไหล่แนะนำ (SPO)
+
+ตัวอย่างแบบบริษัทญี่ปุ่นใน [[Spare Parts Optimization Book]] (% ของจำนวนชิ้นที่ติดตั้ง ตีความ) รายละเอียดเต็มที่ [[Spare Parts Recommendation by Equipment Type]]
+
+- Gaskets และ O-rings 200%; seal springs & O-rings 200%; ชิ้นหลักของ seal (contact, liquid film, restrictive type) 100% (SPO p.50-51)
+- Thrust bearing pad (complete set), bearing liner/pad, labyrinth for balance piston, shaft sleeve 100% (SPO p.50)
+- Coupling พิมพ์ "1%" ต่อชนิด น่าจะหมายถึง 1 ชุด; set screw for coupling 100% (SPO p.51)
+- Auxiliary: lube & seal oil filter cartridge 200%, accumulator bladder 50%; driver turbine ส่วนใหญ่ 100% (SPO p.51-52)
+- การตีความของ wiki: seal O-ring/gasket 200% สอดคล้องกับโหมด ELU ที่สูง แต่ Instruments, Valves และ Antisurge ซึ่งเด่นใน OREDA ไม่มีในตาราง compressor ของ SPO
 
 ## Triplets
 
@@ -97,3 +107,8 @@ Sheet1 ของ `failure-structure.md` ระบุคู่ mode/item/sub unit
 - [[ELP External Leakage Process Medium]] [has_mechanism:: LEAK] 1.89% within [[Centrifugal Compressor]]
 - [[Centrifugal Compressor]] [has_value:: 1,810] rows in failure-structure.md Sheet1 (possible mode/item/sub unit/descriptor combinations, not events)
 - [[OREDA]] [source_of:: [[Centrifugal Compressor]]] per-type table images
+- [[Centrifugal Compressor]] [related_to:: [[Spare Parts Recommendation by Equipment Type]]] SPO Japanese example 3.3 (SPO p.50-52)
+- [[Centrifugal Compressor]] [has_part:: Labyrinth For Balance Piston] spare 100% (SPO p.50)
+- Thrust Bearing Pad [has_value:: 100%] complete set, centrifugal compressor (SPO p.50)
+- Compressor Seal O-rings [has_value:: 200%] centrifugal compressor (SPO p.50-51)
+- Lube And Seal Oil Filter Cartridge [has_value:: 200%] centrifugal compressor auxiliary (SPO p.52)

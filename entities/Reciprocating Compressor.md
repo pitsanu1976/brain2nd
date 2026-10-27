@@ -1,10 +1,10 @@
 ---
 title: Reciprocating Compressor
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-27
 type: entity
-tags: [compressor, reciprocating, oreda, failure-rate]
-sources: [failure-structure.md, failure-structure__sheet1.csv, compressor-reciprocating-failure-descriptor.png, compressor-reciprocating-failure-mode-vs-item-1.png, compressor-reciprocating-failure-mode-vs-item-2.png]
+tags: [compressor, reciprocating, oreda, failure-rate, spare-parts, spo]
+sources: [failure-structure.md, failure-structure__sheet1.csv, compressor-reciprocating-failure-descriptor.png, compressor-reciprocating-failure-mode-vs-item-1.png, compressor-reciprocating-failure-mode-vs-item-2.png, spare-parts-optimization.md]
 confidence: medium
 contested: false
 ---
@@ -53,6 +53,15 @@ Cylinder liner **28.77**, Filter(s) **14.80**, Valves 10.94, Unknown 5.03, Pump 
 ## โครงสร้างใน failure-structure.md
 
 Sheet1 ระบุคู่ mode/item/sub unit/descriptor ของ reciprocating 732 แถว (โครงสร้างความเป็นไปได้) เปรียบเทียบที่ [[Compressor Type Failure Profiles]]
+
+## อะไหล่แนะนำ (SPO)
+
+ตัวอย่างแบบบริษัทญี่ปุ่นใน [[Spare Parts Optimization Book]] (% ของจำนวนชิ้นที่ติดตั้ง ตีความ) รายละเอียดเต็มที่ [[Spare Parts Recommendation by Equipment Type]]
+
+- ชิ้นส่วนวาล์วได้ % สูงสุด: valve plate, valve spring, valve cover gasket, valve seat/guard gasket **400%**; suction/discharge valve assembly 100% (SPO p.52-53)
+- Rod packing element ทุก stage 200%, packing case 100%, piston ring 100%, rider ring 200% (non-lube) (SPO p.52-53)
+- Running gear สำรองเป็นชุด: main bearings, crank pin bearings, crosshead bearings, crosshead shoe อย่างละ 1 set (2 pcs.); big end bolt 50% (min.4) (SPO p.52-53)
+- การตีความของ wiki: Valves (10.94% ของ failure rate) สอดคล้องกับ % สำรองสูงสุด แต่ Cylinder liner (28.77%) และ Filter(s) (14.80%) ไม่อยู่ในรายการอะไหล่ reciprocating ของ SPO
 
 ## Triplets
 
@@ -113,3 +122,8 @@ Sheet1 ระบุคู่ mode/item/sub unit/descriptor ของ reciprocati
 - Mechanical Failure - general [has_value:: 0] rows in main dataset, though very high in reciprocating descriptors
 - [[Reciprocating Compressor]] [has_value:: 732] rows in failure-structure.md Sheet1 (possible combinations, not events)
 - [[OREDA]] [source_of:: [[Reciprocating Compressor]]] per-type table images
+- [[Reciprocating Compressor]] [related_to:: [[Spare Parts Recommendation by Equipment Type]]] SPO Japanese example 3.4 (SPO p.52-53)
+- Valve Plate [has_value:: 400%] recommended spare, reciprocating compressor (SPO p.52)
+- Rod Packing Element [has_value:: 200%] each stage, reciprocating compressor (SPO p.52)
+- Main Bearings [has_value:: 1 set (2 pcs.)] reciprocating compressor (SPO p.52)
+- VALV [related_to:: Valve Plate] Valves 10.94% aligns with highest SPO spare ratio 400%, wiki interpretation [confidence:: low]

@@ -2,9 +2,9 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-25 | จำนวนหน้า wiki: 115 (entities 12, concepts 80, comparisons 5, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-10-27 | จำนวนหน้า wiki: 126 (entities 13, concepts 89, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
-Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224 และ CMRP)
+Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224, CMRP และ SPO)
 
 ## Raw sources (Layer 1, immutable; area ข)
 
@@ -14,6 +14,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/reliability-based-maintenance-management]] — หนังสือ Reliability Based Maintenance Management (SE-ED 2553, 400 หน้า) reading notes 12 บทใน `raw/reliability-based-maintenance-management/`
 - [[raw/iso-14224]] — ISO 14224:2016 (280 หน้า, licensed ไม่เก็บ PDF) reading notes ถอดความ 6 ส่วนใน `raw/iso-14224/` (clauses 1-7, 8-9, Annex A, B, C-D, E-F)
 - [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
+- [[raw/spare-parts-optimization]] — หนังสือ Spare Parts Optimization (สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/spare-parts-optimization/`
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)
@@ -30,6 +31,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[MISC Miscellaneous]] — Sub Unit MISC 7 item, 56 CAUSE_CODE, Base frame/piping/corrosion
 - [[Reliability Based Maintenance Management Book]] — hub หนังสือ RBMM: ข้อมูลบรรณานุกรม ตาราง 12 บท กรอบ CMMS ถึงธุรกิจบำรุงรักษา ข้อผิดพลาดในหนังสือ และความสัมพันธ์กับ compressor hierarchy
 - [[CMRP Course]] — hub สไลด์ CMRP (PETROSYNC): SMRP BOK 5 pillars, AEO model, แผนที่ไฟล์ไปยังหน้า wiki, ข้อผิดพลาดในสไลด์ 21 จุด และ 4 ข้อ contested กับ RBMM/ISO
+- [[Spare Parts Optimization Book]] — hub หนังสือ SPO (มุมมองคลังพัสดุ/จัดซื้อ MRO, ที่มา COSAL + Esso): ตาราง 12 บทไปยังหน้า wiki, offset หน้า PDF/book, ข้อผิดพลาด OCR/หนังสือประมาณ 28 จุด
 
 ## concepts/
 
@@ -129,12 +131,27 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Maintenance Business Case]] — 6 ขั้น business case, DCF/IRR/hurdle rate, business case vs business plan
 - [[Digital Maintenance and Predictive Analytics]] — Maintenance 4.0, framework ผู้ขาย, predictive modelling และข้อจำกัด
 
+### Area ข: Spare Parts Optimization (SPO)
+
+หน้าสังเคราะห์จาก [[Spare Parts Optimization Book]] (ingest 2026-10-27) หน้าเดิมที่ได้หัวข้อเสริม: [[Spare Parts Management]], [[Spare Part Criticality and Risk]], [[EOQ and Reorder Point]], [[Maintenance KPIs]], [[Turnaround Management]], [[Centrifugal Compressor]], [[Reciprocating Compressor]]
+
+- [[MRO Material Classification]] — วัสดุ 4 ประเภท, นิยาม MRO, ประเภทโรงงาน, การบันทึกบัญชี, อะไหล่ 9 กลุ่ม (Insurance/Standby รหัส S, OAR 4 เกณฑ์, Capitalized, Commissioning) และปัจจัย 7 ข้อว่าควรสต็อกไหม
+- [[Parts Interchangeability]] — คู่มืออะไหล่ใช้ร่วมหลายเครื่อง 6 ขั้น, ตาราง 7 คอลัมน์, commodity code vs OEM part number
+- [[Spare Parts Recommendation by Equipment Type]] — หลักปฏิบัติวิศวกรรม: สต็อกขั้นต่ำ startup + 1 ปี, % อะไหล่ต่ออุปกรณ์ (pump, centrifugal/reciprocating compressor, valve plates 400%, gaskets 200%) และการจับคู่กับ maintainable item
+- [[Warehouse Design and Storage]] — หน้าที่คลัง, ขนาดคลัง (425 ft² ต่อ 1 M USD GPI), แสง 30/50 fc, popularity storage 20/60/20, aisle, layout A-F, การเก็บท่อ/วาล์ว/ถังก๊าซ, free issue
+- [[Tool Crib and Warehouse Security]] — ประเภทเครื่องมือ 4 กลุ่ม, ระบบยืม tag/shadow board vs ใบยืม, หลักความมั่นคง 4 ข้อ, gate pass, การเบิกนอกเวลา
+- [[MRO Purchasing and Contracting]] — PR ที่ดี, proactive purchasing 10,000→200 รายการ, Blanket Order (BOR/PDR), System Contracting, Consignment vs Vendor Stocking, outsourcing, air freight, claims
+- [[MRO Inventory Control Methods]] — EOQ แบบ SPO (CO 90-120 บาท/รายการ), COP 7 องค์ประกอบ, ROP = D×LT + SS (%), High/Low, Periodic Review, Order Up-to, OAR, ตารางวิธีต่อประเภทอะไหล่
+- [[Inventory Turnover and GPI Benchmarks]] — turnover, MOS/DOS, Inventory % GPI benchmark 2/4/10%, ≤4% (≤1.5% labour intensive), ตัวเลข Esso และการเทียบกับ B7 ของ RBMM
+- [[MRO Inventory Reduction Program]] — ABC/ABU (A = มูลค่าใช้สูง), obsolete 3 ปี, danger signals, ตัวอย่าง 3→5 รอบประหยัด 3 ล้านบาท, Materials Control Committee 18 หน้าที่
+
 ## comparisons/ (area ข)
 
 - [[Compressor Type Failure Profiles]] — เปรียบเทียบ % 19 โหมดของ centrifugal vs reciprocating vs screw
 - [[Resolution Matrix by Mechanism]] — 37 mechanism x 13 resolution (233 คู่ที่เป็นไปได้)
 - [[Compressor Subdivision Wiki vs ISO 14224]] — subunit และ maintainable item ของ dataset เทียบ ISO Table A.9 รายตัว, type code CE/RE/SC/AX, boundary
 - [[CMRP vs RBMM FMECA Scales]] — สเกล FMECA 1-10 vs 1-5, matrix 5x5 vs 5x6, RPN band และเลขผิดในสไลด์
+- [[SPO vs RBMM Spare Parts Approaches]] — เทียบหนังสือ SPO กับ RBMM 10 ประเด็น (มุมมอง, การจำแนก, ตัดสินสต็อก, safety stock, ABC, holding cost, เป้ามูลค่าสต็อก, planned vs unplanned, Blanket Order, KPI); contested 2 ข้อ
 - [[RBMM Concepts vs Compressor Failure Hierarchy]] — ตารางเทียบแนวคิดหนังสือ (Object Part, Damage Code, criticality, task, Weibull, spares) กับ 7 ระดับของ hierarchy พร้อมที่มา
 
 ## guides/ (area ก)

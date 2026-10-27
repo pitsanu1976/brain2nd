@@ -1,12 +1,12 @@
 ---
 title: Spare Parts Management
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-27
 type: concept
-tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp, spo, warehousing, procurement, inventory-control]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Spare Parts Management
@@ -134,6 +134,38 @@ contested: false
 - ปัจจัยสำเร็จ (RBMM p.265-266): การคิดค่าใช้จ่ายครบถ้วน, ดัชนีและรายงาน, ระบบ Maintenance Management แข็งแรง, เครื่องมือ, เลือกงาน/คาบ PM ถูกต้อง, เข้าใจ Risk Based Stock Recommendation และความร่วมมือระหว่างบำรุงรักษา คลัง จัดซื้อ
 - Accountability: ต้องอธิบายได้ว่าทำไมสั่ง/เก็บเท่านั้น; ฝ่ายบริหารต้องชี้ขาดว่ากลุ่มอะไหล่ไหนใครกำหนดระดับ; คำนวณมืออาจไม่มีประสิทธิภาพ ควรใช้เครื่องมือ (RBMM p.271)
 
+## มุมมองจาก SPO (เพิ่ม 2026-10-27)
+
+หนังสือ [[Spare Parts Optimization Book]] (SPO, สุชาติ ศุภมงคล 2546) มองอะไหล่จากฝั่ง **คลังพัสดุ จัดซื้อ และบัญชี** ซึ่ง RBMM แตะน้อย จึงเสริมกันมากกว่าขัดกัน การเทียบทีละประเด็นอยู่ที่ [[SPO vs RBMM Spare Parts Approaches]] สิ่งที่ SPO เพิ่มเข้ามาในหัวข้ออะไหล่:
+
+| เรื่อง | สาระที่ SPO เพิ่ม | หน้ารายละเอียด |
+|---|---|---|
+| ขอบเขต MRO และการจัดประเภท | MRO = วัสดุที่ไม่เป็นส่วนผสมของสินค้า; 9 ประเภท เช่น Insurance and Standby (รหัส "S"), OAR, Capitalized Parts, Commissioning spares (SPO p.12, p.26-31) | [[MRO Material Classification]] |
+| อะไหล่ใช้ร่วม | คู่มือ Interchangeable Book รวมของจากหลายเครื่องไว้ที่เดียว ใช้ commodity code แทน OEM part no. (SPO p.59-62) | [[Parts Interchangeability]] |
+| จำนวนแนะนำตามชนิดเครื่อง | Engineering Basic Practice: ตาราง % ต่อจำนวนเครื่อง (30/50/130%) และ % ต่อชิ้นติดตั้ง รวม compressor (SPO p.40-54) | [[Spare Parts Recommendation by Equipment Type]] |
+| คลังและการจัดเก็บ | หน้าที่คลัง 7 ข้อ, จุดรับเดียว, การวางผังและเก็บรักษา (SPO p.20-23, บทที่ 7) | [[Warehouse Design and Storage]] |
+| เครื่องมือและความมั่นคง | tool crib, กุญแจ 2 ชุด, log book การเข้าคลังนอกเวลา (บทที่ 11-12) | [[Tool Crib and Warehouse Security]] |
+| จัดซื้อ | Blanket Order, System Contract, Consignment/Vendor Stocking, Outsourcing (SPO p.90-95) | [[MRO Purchasing and Contracting]] |
+| ควบคุมระดับคงเหลือ | 6 วิธี: ROP/EOQ, High/Low Limit, Min-Max, Periodic Review, Order Up-to, OAR และตารางวิธี x ประเภทอะไหล่ (SPO p.102-110) | [[MRO Inventory Control Methods]] |
+| KPI และ benchmark | Turnover, MOS/DOS, Inventory Value % GPI (2/4/10%) (SPO p.112-115, p.126-129) | [[Inventory Turnover and GPI Benchmarks]] |
+| ลดสต็อก | ABC ด้วย ABU, ไม่เคลื่อนไหว 3 ปี = ล้าสมัย, เป้า MOS/DOS, Materials Control Committee (SPO p.115-132) | [[MRO Inventory Reduction Program]] |
+| Turnaround | แผน MR/MS แยกจากสต็อกประจำ (SPO p.33-38) | [[Turnaround Management]] |
+
+ประเด็นเทียบกับเนื้อหา RBMM ในหน้านี้:
+
+- **Holding cost**: SPO ใช้ 30% เป็นตัวอย่าง (SPO p.120) และให้คำนวณ COP (Cost of Possession) จาก 7 รายการ: ผลตอบแทนเงินลงทุน, ประกันภัย, ค่าเช่าคลัง, ค่ายกขน, ค่าบริหาร, ล้าสมัย/เสื่อม, ของหาย (SPO p.104) ต่างจาก 15-20% ของ RBMM ในฐานะสมมติฐานตัวอย่าง ไม่ใช่ข้อขัดแย้ง; RBMM นับค่าจัดซื้อไว้ใน holding cost แต่ SPO แยกเป็นค่าสั่งซื้อ (CO ราว 90-120 บาทต่อรายการต่อครั้ง) ในสูตร EOQ
+- **Commissioning spares**: ตรงกับ RBMM ว่าเป็นภาระผู้รับเหมา เจ้าของงานอาจเลือกซื้อเมื่อจบงานตามเงื่อนไข (SPO p.30-31)
+- **งานตามแผน**: SPO ให้สต็อกมีไว้ซ่อมปกติ ส่วน overhaul/turnaround วางแผนแยก (SPO p.55) สอดคล้องกับกฎ Stock vs Direct Purchase ของ RBMM แต่ยอมให้จองของที่มีในคลังให้ turnaround (SPO p.36-37)
+- **Blanket Order**: SPO ใช้คำนี้กับสัญญาซื้อทั้งปีที่ทยอยรับ (SPO p.91-92) ส่วนกลไก "ผู้ขายเก็บของในคลังเรา คิดเงินเมื่อเบิก" ที่ RBMM เรียก Blanket Order (หัวข้อ Lead Time ข้างบน) SPO เรียกว่า Consignment / Vendor Stocking (SPO p.95) ต่างที่ศัพท์
+- **KPI**: SPO เห็นว่า turnover ใช้ได้กับของหมุนเร็วเท่านั้น จึงวัด MRO เป็น % ของ GPI (Gross Plant Investment มูลค่าปัจจุบันของเครื่องจักรผลิตหลักและ infrastructure ไม่รวมที่ดิน/อาคารสำนักงาน) (SPO p.113-115) เทียบได้กับ B7 และ Stock Value / Asset Replacement Value ของ RBMM
+- **ตัดสินระดับสต็อก**: SPO ใช้ Basic Practice + ปัจจัย 7 ข้อ (อายุ, จำนวนติดตั้ง, เปลี่ยน/ซ่อมได้, ความสำคัญของเครื่อง, ความซับซ้อน, lead time, จุดประสงค์) (SPO p.129) และคณะกรรมการ แล้วปรับด้วยสถิติหลังเดินเครื่อง 2-3 ปี (SPO p.57-58, p.112) ส่วน RBMM ใช้ criticality + Cost Ratio ตั้งแต่ต้น
+
+### ข้อขัดแย้ง: เป้ามูลค่าอะไหล่ต่อมูลค่าโรงงาน
+
+- มุมมอง RBMM (reliability-based-maintenance-management.md): เป้า B7 = 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314)
+- มุมมอง SPO (spare-parts-optimization.md): ไม่เกิน 4% ของ GPI สำหรับโรงงานเน้นเครื่องจักร (SPO p.115); ท้ายเล่มแนะนำ 3-4% GPI สำหรับโรงงานไทย (SPO p.143-145); นโยบายตัวอย่าง 3% ของเงินลงทุนสร้างโรงงาน (SPO p.55)
+- สถานะ: ยังไม่ resolve (ช่วงทับกันที่ 3%; ตัวหารใกล้เคียงแต่ไม่เหมือนกัน) รายละเอียดและสาเหตุที่เป็นไปได้ดู [[SPO vs RBMM Spare Parts Approaches]] หัวข้อ C2
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Spare demand เป็นฟังก์ชันของ failure mode ต่อ equipment: Spare Part DSx Model (RBMM p.263) ต้องรู้ Equipment, Failure Mode, Beta, Eta ซึ่งตรงกับระดับ [[Failure Mode]] และ [[Maintainable Item]] ใน ISO 14224/OREDA ([[ISO 14224]], [[OREDA]])
@@ -152,6 +184,17 @@ contested: false
 - [[CMMS]]
 - [[Maintenance KPIs]]
 - [[Maintenance Planning and Scheduling]]
+- [[Spare Parts Optimization Book]]
+- [[SPO vs RBMM Spare Parts Approaches]]
+- [[MRO Material Classification]]
+- [[Parts Interchangeability]]
+- [[Spare Parts Recommendation by Equipment Type]]
+- [[Warehouse Design and Storage]]
+- [[Tool Crib and Warehouse Security]]
+- [[MRO Purchasing and Contracting]]
+- [[MRO Inventory Control Methods]]
+- [[Inventory Turnover and GPI Benchmarks]]
+- [[MRO Inventory Reduction Program]]
 
 ## Triplets
 
@@ -221,3 +264,23 @@ contested: false
 - Material Take-off [uses:: Stock Reservation] CMRP planner reserves stock items for planned jobs and stages them (CMRP CMPR-09 p.30-31)
 - Stock Reservation [differs_from:: Stock Parts] CMRP allows stock for planned work; RBMM reserves stock for CM-Unplanned (RBMM p.45, p.236); policy difference, not contested
 - Staging [applies_to:: Direct Purchase Parts] also low-stock and fast-moving items (CMRP CMPR-09 p.31)
+- [[Spare Parts Management]] [related_to:: [[Spare Parts Optimization Book]]] stores, purchasing and accounting viewpoint (SPO)
+- [[Spare Parts Management]] [related_to:: [[SPO vs RBMM Spare Parts Approaches]]]
+- [[MRO Material Classification]] [part_of:: [[Spare Parts Management]]] SPO 9 categories (SPO p.26-31)
+- [[Parts Interchangeability]] [part_of:: [[Spare Parts Management]]] SPO chapter 6 (SPO p.59-62)
+- [[Spare Parts Recommendation by Equipment Type]] [input_to:: Stock Decision] Engineering Basic Practice starting quantities (SPO p.40-54)
+- [[Warehouse Design and Storage]] [part_of:: [[Spare Parts Management]]] SPO chapters 2 and 7
+- [[Tool Crib and Warehouse Security]] [part_of:: [[Spare Parts Management]]] SPO chapters 11-12
+- [[MRO Purchasing and Contracting]] [part_of:: [[Spare Parts Management]]] SPO chapter 8 (SPO p.90-95)
+- [[MRO Inventory Control Methods]] [part_of:: Supply Side] SPO 6 reorder control methods (SPO p.102-110)
+- [[Inventory Turnover and GPI Benchmarks]] [related_to:: [[Maintenance KPIs]]] SPO turnover, MOS, % GPI (SPO p.112-115)
+- [[MRO Inventory Reduction Program]] [uses:: ABC Analysis] ABU basis (SPO p.115-118)
+- Holding Cost [has_value:: 30%] SPO example, not contested; SPO recommends computing COP (SPO p.104, p.120)
+- Cost of Possession [alias_of:: Holding Cost] 7 cost items (SPO p.104, p.143-145)
+- Commissioning Spare Part [defined_in:: [[Spare Parts Optimization Book]]] contractor responsibility, owner may buy at end (SPO p.30-31)
+- Stock Parts [applies_to:: Routine Maintenance] SPO warehouse policy; overhaul and turnaround planned separately (SPO p.55)
+- Blanket Order [differs_from:: Consignment] SPO terminology; RBMM Blanket Order matches SPO consignment (SPO p.91-95; RBMM p.289, p.298)
+- Stock Decision [depends_on:: 7 Stocking Factors] SPO (SPO p.129)
+- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314) [contested:: true]
+- Inventory Value % GPI [has_value:: not above 4%] SPO target for capital intensive plants (SPO p.115) [contested:: true]
+- Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 3-4% vs RBMM 1-3%, unresolved (SPO p.143-145) [contested:: true]

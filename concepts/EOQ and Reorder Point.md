@@ -1,10 +1,10 @@
 ---
 title: EOQ and Reorder Point
 created: 2026-10-21
-updated: 2026-10-25
+updated: 2026-10-27
 type: concept
-tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp, spo, inventory-control]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
 contested: false
 ---
@@ -150,6 +150,36 @@ K = safety factor (เทียบ Z),  σ = SD ของ demand ต่อหน
 
 EOQ ของ RBMM ข้างบนให้ค่า Q ของ model แบบปริมาณคงที่ (BQ, sQ) ส่วน ROP + SS ให้ reorder level ของ BS/BQ (การเชื่อมโยง derived)
 
+## ส่วนเสริมจาก SPO (SPO p.103-110)
+
+[[Spare Parts Optimization Book]] บทที่ 9 ใช้สูตรเดียวกันในมุมคลังพัสดุ รายละเอียดทั้ง 6 วิธีและตารางวิธี x ประเภทพัสดุอยู่ที่ [[MRO Inventory Control Methods]]
+
+### สัญลักษณ์ EOQ ของ SPO (SPO p.104)
+
+```
+EOQ = sqrt( 2 x A x CO / (C x I) )
+A  = ความต้องการทั้งปี           (= A ของ RBMM)
+CO = ค่าสั่งซื้อ 1 รายการ 1 ครั้ง  (= Cp ของ RBMM) ไทยราว 90-120 บาท
+C  = ราคาต่อหน่วย
+I  = Investment Factor สัดส่วนค่าเก็บต่อมูลค่าสต็อกต่อปี  (C x I = Ch ของ RBMM)
+```
+
+- สูตรเทียบเท่าสูตร RBMM ข้างบน (derived) และสนับสนุนความหมาย Ch = อัตราค่าถือครอง x ราคาต่อหน่วย ที่หน้านี้ระบุว่าเป็น derived
+- SPO ให้คำนวณ I จากรายงาน **Cost of Possession (COP)** 7 รายการ: ผลประโยชน์จากเงินลงทุน, ประกันภัย, ค่าเช่าพื้นที่คลัง, ค่ายกขน, ค่าบริหาร/ควบคุม, ของล้าสมัย/เสื่อม, ของหาย (SPO p.104) SPO ไม่ให้ค่า I เป็นตัวเลข จึงไม่ขัดกับ holding cost 15-20% ต่อปีของ RBMM (RBMM p.16, p.234) ข้างบน; ต่างกันที่ RBMM รวมค่าจัดซื้อจัดหาไว้ใน holding cost (RBMM p.68) ขณะที่ SPO แยกเป็น CO (derived) ไม่ตั้ง contested
+- ข้อจำกัดเหมือน RBMM: ต้องมีสถิติการใช้ เหมาะกับของหมุนเร็ว; ถ้า EOQ เล็กจนต้องสั่งบ่อยให้ใช้ Blanket Order / System Contract ดู [[MRO Purchasing and Contracting]] (SPO p.105)
+
+### ROP และ safety stock แบบ % (SPO p.105-107)
+
+```
+ROP = (D x LT) + SS,   SS = % ของ D x LT
+ตัวอย่าง: D 20/เดือน, LT 2 เดือน, SS 20% -> 40 + 8 = 48
+```
+
+- % ของ SS = % เบี่ยงเบน lead time + % เบี่ยงเบนอัตราใช้ (ตัวอย่าง 10% + 10%); ตัวอย่างก๊าซออกซิเจนใช้ 10% -> ROP = 20 + 2 = 22 (SPO p.107)
+- เทียบ Min-Max: Mid = ROP = 48, Min = SS = 8, จำนวนสั่ง = EOQ (SPO p.105-106)
+- **ความต่างจาก RBMM:** SS ของ SPO เป็นกฎง่าย (rule of thumb) ไม่มี confidence level กำกับ ต่างจาก SS = z x sigma_combined ข้างบนที่มาจากการกระจายของ demand และ lead time ตามความรู้ทั่วไป SS แบบ % โตเป็นเส้นตรงตาม D x LT ส่วนแบบสถิติขึ้นกับความแปรปรวนจริง (โตตาม sqrt(LT) เมื่อ LT คงที่) [confidence:: low] เป็นวิธีต่างระดับความละเอียด ไม่ใช่ข้อเท็จจริงขัดกัน ดู [[SPO vs RBMM Spare Parts Approaches]]
+- High/Low Limit ของ SPO (High = D x Stockage Objective, Low = ROP) ใกล้กับ BS Model (Min-Max) ของ CMRP ข้างบน และ Periodic Review (สั่ง M - (OH + QOD) ตามรอบ) ใกล้ sS Model (การเทียบ derived)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ฟิลด์ Min, Max, ROP, EOQ ถูกเก็บเป็นกลุ่มที่ 3 (ค่าจากการคำนวณ) ใน Spare Part Database ของ [[CMMS]] (RBMM p.102) ผูกกับ [[Maintainable Item]] ผ่าน BOM
@@ -163,6 +193,8 @@ EOQ ของ RBMM ข้างบนให้ค่า Q ของ model แบ
 - [[Spare Part Demand Forecasting]]
 - [[Statistical Distributions for Maintenance]]
 - [[CMRP Course]]
+- [[MRO Inventory Control Methods]]
+- [[Spare Parts Optimization Book]]
 
 ## Triplets
 
@@ -225,3 +257,15 @@ EOQ ของ RBMM ข้างบนให้ค่า Q ของ model แบ
 - EOQ [input_to:: BQ Model] fixed order quantity, derived
 - Total Inventory Cost [has_part:: Stock-out Consequence] optimum stock level at minimum (CMRP CMPR-08 p.37)
 - [[EOQ and Reorder Point]] [related_to:: [[Spare Part Criticality and Risk]]]
+- [[EOQ and Reorder Point]] [defined_in:: [[Spare Parts Optimization Book]]] SPO supplement, chapter 9 (SPO p.103-110)
+- [[EOQ and Reorder Point]] [related_to:: [[MRO Inventory Control Methods]]]
+- EOQ [has_formula:: sqrt( 2 x A x CO / (C x I) )] SPO notation, equivalent to RBMM form, derived (SPO p.104)
+- CO [maps_to:: Cp] cost of one order line, about 90-120 baht in Thailand (SPO p.104)
+- C x I [maps_to:: Ch] I = Investment Factor, holding cost fraction per year, derived (SPO p.104)
+- Cost of Possession [input_to:: I] 7 items incl. investment return, insurance, rent, handling, admin, obsolescence, loss (SPO p.104)
+- Cost of Possession [differs_from:: Holding Cost] SPO separates ordering cost as CO; RBMM holding cost includes procurement cost (RBMM p.68), not contested, derived
+- Reorder Point [has_formula:: (D x LT) + SS] SPO form (SPO p.105)
+- Safety Stock [has_formula:: percent of D x LT] SPO rule of thumb, e.g. 10% + 10% = 20% (SPO p.105)
+- Safety Stock [differs_from:: z x sigma_combined] SPO percent rule vs RBMM statistical, not contested, general knowledge [confidence:: low]
+- Reorder Point [has_value:: 48] SPO example D 20, LT 2 months, SS 8 (SPO p.105)
+- Reorder Point [maps_to:: Min-Max] Mid = ROP, Min = SS, order quantity = EOQ (SPO p.105-106)

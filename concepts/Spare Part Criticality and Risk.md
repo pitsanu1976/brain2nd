@@ -1,12 +1,12 @@
 ---
 title: Spare Part Criticality and Risk
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-27
 type: concept
-tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp, spo, inventory-control]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Spare Part Criticality and Risk
@@ -194,6 +194,28 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - **Capital spares** (p.31) ช่วงเวลา T: non-availability cost = c_na x F(T); storage cost = c_l x ∫0..T R(t)dt; dead stock cost = c_s x R(T); สต็อกเมื่อ c_na x F(T) มากกว่า storage + dead stock cost (สัญลักษณ์บนสไลด์อ่านยาก และเงื่อนไขกรณี n systems อ่านไม่ออก confidence ต่ำ) เป็นรูปแบบต่อเนื่องของ Insurance Part ในโซนของ RBMM: อะไหล่ที่ใช้ไม่บ่อยแต่ค่าขาดสูง
 - รายละเอียด MRO inventory ดู [[Spare Parts Management]]
 
+## มุมมอง SPO: insurance/standby และ ABC (เพิ่ม 2026-10-27)
+
+ส่วนเสริมจาก [[Spare Parts Optimization Book]] (SPO) การเทียบเต็มดู [[SPO vs RBMM Spare Parts Approaches]]
+
+### Insurance and Standby Parts (SPO p.26-27)
+
+- ที่มา 2 ทาง: (ก) อะไหล่ของ **เครื่อง standby ที่ติดตั้งคู่** กับเครื่องหลัก หยุด A เปิด B แล้วนำ A ไปซ่อม จึงต้องมั่นใจว่ามีอะไหล่แน่นอน ซ่อมเสร็จ A กลายเป็น standby และต้องสั่งอะไหล่ที่ใช้ไปเข้าแทน; หน่วยที่สำคัญมากอาจมี standby ถึง 3 ชุด (A/B/C) (ข) อะไหล่สำคัญที่ขาดแล้วซ่อมไม่ได้จนโรงงานหยุด เลือกโดยวิศวกรซ่อมบำรุงร่วมกับฝ่ายผลิต ผู้ขายแนะนำได้แต่วิศวกรของเราตัดสิน
+- เครื่องแบบเดียวกันมักเสียชิ้นเดิมซ้ำ จึงกำหนดรายการจากสถิติการเบิกเปลี่ยนได้
+- ใส่ **รหัสต่อท้าย "S"** ในรายการวัสดุ เพื่อเรียกดูเฉพาะอะไหล่ประกันได้ตลอด
+- การควบคุม: Order Up-to (เบิกเท่าไรสั่งแทนเท่านั้น) หรือ Min-Max ที่คณะกรรมการอนุมัติ (SPO p.109-110); ราคาสูงต้องผ่านคณะกรรมการ (SPO p.55-57, p.131-132); ถ้าราคาสูงและอายุเกิน 1 ปีอาจ capitalize (SPO p.28-29)
+- เทียบ RBMM: Insurance Part ของ RBMM นิยามแคบกว่า (ค่าขาดต่อครั้งสูงจนเก็บแม้ Cost Ratio ต่ำกว่า 1) แต่ทั้งสองเล่มให้ระดับบริหารอนุมัติ; เทียบ CMRP: ผังตัดสินของ CMRP ไม่สต็อกกรณีสลับตัว standby เว้นแต่ lead time มากกว่า 2 สัปดาห์ (หัวข้อ CMRP ข้างบน) ต่างจาก SPO ที่ให้มีอะไหล่ของคู่ A/B เสมอ อธิบายได้ด้วยบริบท lead time ยาวของอะไหล่นำเข้าในโรงงานไทย (การตีความของ wiki; ไม่ contested) ดู [[Redundancy and Standby Systems]]
+
+### ABC ของ SPO และความขัดแย้งเรื่องป้ายกลุ่ม A (SPO p.115-118)
+
+- SPO ใช้ฐาน **ABU (Annual Baht Usage) = จำนวนเบิกต่อปี x ราคาต่อหน่วย** ซึ่งเท่ากับ Turnover ของ RBMM และใช้สัดส่วน 80/15/5 เหมือนกัน (ปรับเป็น 75/20/5 หรือ 70/20/10 ได้)
+- ตัวอย่าง 10 รายการของ SPO: กลุ่ม A (3 รายการแรก, ราว 80% ของมูลค่า) มีรายการที่เบิก 200,000 และ 1,210,000 หน่วยต่อปี จึงเป็นกลุ่ม **มูลค่าใช้สูง** ไม่ได้แปลว่าหมุนช้า
+- SPO ใช้ ABC เพื่อลดสต็อก (กลุ่ม C จำนวนมากเปลี่ยนเป็น OAR, รายการไม่เคลื่อนไหว 3 ปีถือว่าล้าสมัย) ไม่ได้ใช้คัดกรอง criticality ดู [[MRO Inventory Reduction Program]]
+- **ข้อขัดแย้ง (contested)**:
+  - มุมมอง SPO (spare-parts-optimization.md): A = มูลค่าใช้สูง (SPO p.115-117)
+  - มุมมอง RBMM (reliability-based-maintenance-management.md): ข้อความ p.242 ให้ A = มูลค่า turnover สูงสุด (ตรงกับ SPO) แต่รูปที่ 9.4 ติดป้าย A = Very Slow (RBMM p.243) ตามที่บันทึกในหัวข้อ ABC ข้างบน
+  - สถานะ: ยังไม่ resolve; ข้อความของสองเล่มตรงกัน ป้ายในรูป RBMM น่าจะผิด แต่ยังไม่ได้ตรวจกับต้นฉบับ RBMM ระหว่างนี้ให้อ่าน A ว่า "มูลค่าใช้สูง"
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Part Criticality ข้อ CBM/detect-ability คล้ายแนวคิด detectability ใน [[FMECA]] และ detection method ของ [[ISO 14224]]; Equipment Criticality (Commercial, Safety, Environment) สอดคล้องกับการจัด criticality ของเครื่อง เช่น [[Compressor]] ที่หยุดแล้วกระทบการผลิต
@@ -209,6 +231,9 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - [[Monte Carlo Maintenance Simulation]]
 - [[Failure Mode]]
 - [[Redundancy and Standby Systems]]
+- [[SPO vs RBMM Spare Parts Approaches]]
+- [[MRO Inventory Reduction Program]]
+- [[MRO Material Classification]]
 
 ## Triplets
 
@@ -223,8 +248,8 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - ABC Turnover Group A [is_a:: ABC Analysis] very slow, first 80% of total turnover value (RBMM p.242-243)
 - ABC Turnover Group B [is_a:: ABC Analysis] medium, next 15% (cumulative 95%) (RBMM p.242-243)
 - ABC Turnover Group C [is_a:: ABC Analysis] fast moving, last 5% (RBMM p.242-243)
-- ABC Turnover Group A [has_category:: high value] text p.242 (RBMM p.242)
-- ABC Turnover Group A [has_category:: Very Slow] label in Fig 9.4 (RBMM p.243)
+- ABC Turnover Group A [has_category:: high value] text p.242 (RBMM p.242) [contested:: true]
+- ABC Turnover Group A [has_category:: Very Slow] label in Fig 9.4 (RBMM p.243) [contested:: true]
 - ABC Turnover Group A [differs_from:: Criticality A] turnover grouping vs equipment criticality
 - ABC Analysis [differs_from:: Part Criticality] ABC ignores criticality
 - Price [part_of:: Part Criticality] COST, score 1 = highest, 2 = medium, 3 = low (RBMM p.243)
@@ -283,3 +308,14 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - Capital Spares Storage Cost [has_formula:: c_l x integral 0..T of R(t)dt] (CMRP CMPR-08 p.31) [confidence:: low]
 - Capital Spares Dead Stock Cost [has_formula:: c_s x R(T)] stock if c_na x F(T) exceeds storage plus dead stock cost (CMRP CMPR-08 p.31) [confidence:: low]
 - Capital Spares [related_to:: Insurance Part] rarely used, high stock out cost, interpretation
+- Insurance and Standby Parts [related_to:: Insurance Part] SPO broader: standby A/B equipment parts and critical parts (SPO p.26-27)
+- Insurance and Standby Parts [has_code:: S] suffix in material list (SPO p.27)
+- Insurance and Standby Parts [applies_to:: Standby Equipment] A/B pair, up to 3 sets A/B/C for very important units (SPO p.26-27)
+- Insurance and Standby Parts [selects:: Order Up-to] or committee-approved Min-Max (SPO p.109-110)
+- Insurance and Standby Parts [depends_on:: Materials Control Committee] high-value items need committee approval (SPO p.55-57, p.131-132)
+- Insurance and Standby Parts [related_to:: [[Redundancy and Standby Systems]]]
+- Insurance and Standby Parts [differs_from:: Switch to Standby Case] CMRP stocks only if lead time more than 2 weeks; context difference, not contested (CMRP CMPR-03 p.13)
+- ABU [has_formula:: annual issue qty x unit cost] same basis as RBMM Turnover (SPO p.116)
+- ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117) [contested:: true]
+- ABC Turnover Group A [has_value:: 80 / 15 / 5 split] same in SPO and RBMM; SPO allows 75/20/5 or 70/20/10 (SPO p.115)
+- ABC Analysis [related_to:: [[MRO Inventory Reduction Program]]] SPO uses ABC to cut stock and move C items to OAR (SPO p.117-118)

@@ -1,10 +1,10 @@
 ---
 title: Maintenance KPIs
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-27
 type: concept
-tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224, work-management, cmrp]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
+tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224, work-management, cmrp, spo]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
 contested: false
 ---
@@ -202,6 +202,20 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - **Balanced Scorecard**: แปลง mission/strategy เป็นชุด measure 4 มุม Financial, Customer, Internal Business Processes, Learning & Growth "balance" ระหว่างสั้น/ยาว การเงิน/ไม่ใช่การเงิน ภายนอก/ภายใน แล้ว cascade ลงถึงรายบุคคล (CMRP CMPR-03 p.41-45) สอดคล้องกับแนวคิดต้นไม้เป้าหมาย 3 ระดับของ RBMM (หัวข้อ 1-2) ที่ไล่จากองค์กรลงกิจกรรม
 - Reporting process: KRA (Quality, Profitability, Productivity, Energy, Environment) -> เลือก KPI ต่อ KRA -> ทดสอบ -> SMART -> วัดเทียบ limit -> นอกช่วงให้พิจารณา [[Root Cause Analysis]] -> review (CMRP CMPR-03 p.46-48)
 
+## 7. ดัชนีคลังอะไหล่จาก SPO (เพิ่ม 2026-10-27)
+
+จาก [[Spare Parts Optimization Book]] บทที่ 10 รายละเอียด ตัวอย่าง และข้อผิดพลาดที่ตรวจพบอยู่ที่ [[Inventory Turnover and GPI Benchmarks]]
+
+| ดัชนี | สูตร | ค่าอ้างอิง | อ้างอิง |
+|---|---|---|---|
+| Inventory Turnover | ยอดจ่ายทั้งปี / Average Inventory (รอบ/ปี) | ตัวอย่าง 90/30 = 3 | SPO p.112 |
+| MOS (Month of Supply) | 12 / Turnover หรือ สต็อก / ความต้องการต่อเดือน | ตัวอย่าง 4 เดือน | SPO p.113, p.123 |
+| DOS (Day of Supply) | On Hand / Usage per Day | ตั้งเป้ารายรายการ | SPO p.125 |
+| Inventory Value % GPI | Inventory Value / GPI x 100 | spare parts 2 / 4 / 10% ตามพื้นที่; MRO รวมไม่เกิน 4% (แรงงานมาก 1.5%) | SPO p.113-115 |
+
+- SPO ชี้ว่า turnover/MOS ใช้ได้กับของหมุนเร็วเท่านั้น คลัง MRO ที่มีของหมุนช้าปนต้องดู %GPI ด้วย (SPO p.113)
+- เทียบ RBMM: B8 Stock Turn Ratio 40% = 0.40 รอบ/ปี = MOS 30 เดือน (derived) และ B7 เป้า 1-3% ของราคาเครื่องจักร ใกล้เคียงแต่ต่ำกว่า benchmark พื้นที่แบบไทยของ SPO (3-4%) ความต่างมาจากขอบเขตตัวเศษและบริบทพื้นที่ ไม่ถือเป็น contested (การตีความ ดู [[Inventory Turnover and GPI Benchmarks]])
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ดัชนีข้อ 16 Failure Records (Failure Modes + Incidence Information) คือข้อมูลที่ [[ISO 14224]] กำหนดโครงสร้างไว้ ถ้า CMMS บันทึก failure mode ตาม [[Failure Mode]] และ cause ตาม [[Failure Cause Codes]] ได้ ดัชนี No. of failures, MTTF และ % CM-Unplanned จะแยกตาม mode/maintainable item ได้
@@ -220,6 +234,7 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - [[Maintenance Planning and Scheduling]] (wrench time)
 - [[Maintenance Backlog and Schedule Compliance]]
 - [[Turnaround Management]] (ISO KPI 21-22)
+- [[Inventory Turnover and GPI Benchmarks]] (SPO stock KPIs)
 
 ## Triplets
 
@@ -322,3 +337,10 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - Total Maintenance Cost per Installed Horsepower [has_value:: world class 12] industry average 35, lowest 15, highest 60; world class below lowest is illogical (CMRP CMPR-03 p.40-41)
 - Balanced Scorecard [has_part:: Financial Perspective] with Customer, Internal Business Processes, Learning and Growth (CMRP CMPR-03 p.41-45)
 - Balanced Scorecard [related_to:: [[Maintenance KPIs]]] cascade strategy to individual measures (CMRP CMPR-03 p.41-45)
+- Inventory Turnover [is_a:: Maintenance KPI] annual issues / average inventory (SPO p.112)
+- Month of Supply [is_a:: Maintenance KPI] 12 / Inventory Turnover (SPO p.113)
+- Day of Supply [is_a:: Maintenance KPI] On Hand / Usage per Day (SPO p.125)
+- Inventory Value % GPI [is_a:: Maintenance KPI] spare parts 2 / 4 / 10% by area (SPO p.113-115)
+- B8 Stock Turn Ratio [related_to:: Inventory Turnover] 40% = 0.4 turns = MOS 30 months, derived
+- B7 Spare Part Inventory per Plant Asset [related_to:: Inventory Value % GPI] RBMM 1-3% vs SPO 3-4% Thai benchmark; not contested
+- [[Maintenance KPIs]] [related_to:: [[Inventory Turnover and GPI Benchmarks]]]

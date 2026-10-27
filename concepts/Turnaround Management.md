@@ -1,10 +1,10 @@
 ---
 title: Turnaround Management
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-27
 type: concept
-tags: [turnaround, work-management, maintenance-management, budget, cost, cmrp]
-sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md]
+tags: [turnaround, work-management, maintenance-management, budget, cost, cmrp, spare-parts, spo, procurement]
+sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, spare-parts-optimization.md]
 confidence: medium
 contested: false
 ---
@@ -102,6 +102,65 @@ contested: false
 - **"five" vs 6 ประเภทความรู้**: CMPR-10 p.30 บอกว่ารวมความรู้ห้าประเภท แต่รายการมี 6 (ดูหัวข้อ 4) ใช้รายการ 6 ข้อเป็นหลัก
 - **นิยาม risk = probability อย่างเดียว**: CMPR-10 p.25 นิยาม risk เป็นความน่าจะเป็นเชิงตัวเลขที่จะเกิดความสูญเสีย ไม่รวม consequence ต่างจากนิยามทั่วไป risk = likelihood x consequence และต่างจากไฟล์เดียวกันของหลักสูตร CMPR-09 p.3 ที่นิยาม risk = ผลกระทบ x ความน่าจะเป็น และจาก [[Criticality Assessment]] / [[FMECA]] ที่ใช้ consequence ร่วมด้วย ถือเป็นความคลาดเคลื่อนของสไลด์ ใช้นิยาม likelihood x consequence เมื่อทำ risk analysis ของ major task
 
+## 7. วัสดุและอะไหล่สำหรับ turnaround: แผน MR/MS ของ SPO (เพิ่ม 2026-10-27)
+
+ที่มา: [[Spare Parts Optimization Book]] บทที่ 4 (SPO p.33-38) ชื่อไทยของบทว่า "...สำหรับงานโครงการ" แต่เนื้อหาเป็นแผนวัสดุของซ่อมใหญ่/turnaround (ชื่ออังกฤษ Maintenance Repair & Materials Supplies Plan) เติมช่องว่างด้าน materials ของ phase Preparation (หัวข้อ 5: long-lead items, logistics)
+
+### Dependent vs independent demand (SPO p.34-35)
+
+- **Dependent demand (แปรตาม)**: เกิดจากความต้องการส่วนหน้า (เช่น แผนซ่อม) จึงวางแผนจัดหาล่วงหน้าตาม procurement lead time ได้ ถ้ามี system contract อาจไม่ต้องสต็อกเลย (หลักเดียวกับ JIT) สต็อกมีแค่ชั่วคราว
+- **Independent demand (อิสระ)**: เกิดได้ตลอดโดยไม่มีแผนกำหนด ต้องพยากรณ์ด้วยสถิติและมีสต็อกต่อเนื่อง ดู [[Spare Part Demand Forecasting]]
+
+ตาราง 4.1 ของ SPO: ชนิดของ demand ตามประเภทงานบำรุงรักษา x ประเภทวัสดุ (SPO p.34)
+
+| Maintenance Category | Unique | Insurance & Standby | Interchangeable | OAR | General Used |
+|---|---|---|---|---|---|
+| Breakdown | อิสระ | อิสระ | อิสระ | แปรตาม | อิสระ |
+| Predictive | อิสระ | อิสระ | อิสระ | แปรตาม | อิสระ |
+| Preventive | แปรตาม | แปรตาม | อิสระ | แปรตาม | อิสระ |
+| Planned Shutdown / Turnaround | แปรตาม | แปรตาม | อิสระ | แปรตาม | อิสระ |
+
+- อ่านได้ว่า turnover ของอะไหล่เฉพาะเครื่องและอะไหล่ประกันในงาน turnaround เป็น dependent demand จึงวางแผนจัดหาได้ ไม่ต้องพึ่งสต็อก ส่วน Interchangeable และ General Used ยังเป็นอิสระทุกกรณี และ OAR เป็นแปรตามทุกกรณี ผู้เขียนไม่ได้ให้เหตุผลของการจัดนี้ (ข้อสังเกตใน raw notes) ประเภทวัสดุดู [[MRO Material Classification]]
+- สอดคล้องกับนโยบายคลังของ SPO ที่ให้สต็อกมีไว้ซ่อมปกติ ส่วน overhaul/turnaround ต้องวางแผนความต้องการล่วงหน้า (SPO p.55) และกฎของ RBMM ที่ให้งานตามแผนใช้อะไหล่ซื้อตรง (RBMM p.45, p.236) เทียบเต็มที่ [[SPO vs RBMM Spare Parts Approaches]]
+
+### การวางแผนซ่อมใหญ่ล่วงหน้า (SPO p.35-36)
+
+- วางแผน **หลายเดือนถึง 1 ปี** ล่วงหน้า เพื่อให้มีเวลาสั่งของจากต่างประเทศ
+- ใช้ผลตรวจสภาพทำรายงาน **Need Repair** แยกว่าต้องซ่อมทันที (หยุดยูนิต) หรือรอใส่แผนซ่อมใหญ่ได้ บันทึกใน Equipment Record; วิศวกร หน่วยซ่อม และฝ่ายผลิตเสนอ Need Repair ผ่านฝ่ายตรวจสอบเข้าแผน (เทียบได้กับ initial work list ในหัวข้อ 5 และ golden rule ในหัวข้อ 2; การเทียบของ wiki)
+- จัดซื้อแบบแปรตามแผนผ่าน system contract กำหนด ex-work date, ETD, ETA ผลคือไม่ต้องลงทุนสต็อกอะไหล่ราคาแพงล่วงหน้า ดู [[MRO Purchasing and Contracting]]
+
+### ตาราง MR/MS: ติดตามวัสดุ 13 คอลัมน์ (SPO p.36-38)
+
+MR = Maintenance Repair, MS = Materials Supply ติดตามตั้งแต่เครื่องที่ต้องซ่อม -> วัสดุ -> มีในคลังหรือไม่ -> สถานะจัดหา -> ความคืบหน้า
+
+| # | คอลัมน์ | ความหมาย |
+|---|---|---|
+| 1 | Equipment (Need Repair) | ชื่อ/หมายเลขเครื่อง สถานที่ |
+| 2 | MR Details | งานซ่อมโดยสังเขป |
+| 3 | MS Required | อะไหล่/ส่วนประกอบที่คาดว่าใช้ และจำนวน |
+| 4 | Ex Stock | ยอดคลังขณะนั้น: ถ้าพอให้ **จอง (reserve)** ไว้สำหรับวันปิดซ่อม แล้วพิจารณาสั่งแทนที่; ถ้าไม่มีให้ออกใบขอซื้อและบันทึก On Order |
+| 5 | PR/PO | เลขที่.วัน/เดือน เช่น PR 1515 ลงวันที่ 15/6 |
+| 6 | Supplier / Contractor & Mode of Shipment | เช่น ทางเรือ, ทางอากาศ, รถบรรทุกในประเทศ |
+| 7 | Date Wanted in Field | วันที่ต้องการของถึงโรงงาน |
+| 8 | ETD | หนังสือเขียนว่า Estimate Time Delivery (ความหมายสากลคือ Estimated Time of Departure) |
+| 9 | ETA | Estimated Time of Arrival |
+| 10 | REC | ได้รับของแล้ว |
+| 11 | QC | ผ่านตรวจคุณภาพ |
+| 12 | OH | ปรับยอดคงเหลือแล้ว |
+| 13 | Flag | สัญลักษณ์รับเข้าคลัง: ทึบ = Complete, ครึ่ง = Partial Received |
+
+- ตัวอย่างในตาราง 4.2 (SPO p.37): boiler retube, furnace เปลี่ยนอิฐและซ่อม burner, overhaul ปั๊มหอยโข่ง A/B (shaft, bearing, gasket, repair kit, mechanical seal) รายการที่มีในคลังพอไม่ต้องออก PR/PO; ตัวอย่างมีวันที่ ETA ก่อน ETD หนึ่งแถว เป็นความผิดพลาดของต้นฉบับหรือ OCR
+- ซอฟต์แวร์คลังต้องรองรับ Stock Reserve, Order Control Procedure และ On Order Report (SPO p.36)
+
+### ข้อเสนอแนะของ SPO (SPO p.38)
+
+1. ข้อมูลต้องเป็นปัจจุบันแบบ online/real time แต่ละหน่วยเติมคอลัมน์ของตน
+2. ประชุมติดตามรายเดือน/รายสัปดาห์ เร่งรัดไม่ให้ซ่อมใหญ่ติดขัดด้านวัสดุ
+3. Need Repair ที่พบหลังเปิดเครื่องแล้ว = รายการฉุกเฉิน (ตรงกับ emergent work ในหัวข้อ 2) ให้เลือก: ไม่ซ่อมถ้ายืดอายุได้แล้วหยุดเฉพาะยูนิตภายหลัง, ซ่อมถ้าสั่งด่วนทางอากาศหรือไปรับเองได้ทัน, และทบทวนรายการอะไหล่ประกันและสต็อกประจำให้ครอบคลุมชิ้นที่เสียแบบนี้
+
+- สอดคล้องกับ CMRP: วัสดุผิดเป็นภัยต่อ reliability ของ turnaround (CMRP CMPR-10 p.14) และ long-lead items อยู่ใน phase Preparation (CMRP CMPR-11 p.3) SPO ให้เครื่องมือปฏิบัติ (ตาราง MR/MS) ที่ CMRP ไม่มี; การจองของคลังให้ turnaround ของ SPO ใกล้กับ stock reservation ของ CMRP (CMRP CMPR-09 p.30) ดู [[Spare Parts Management]]
+- SPO ยังแนะนำให้พนักงานคลังทำงานกลางคืนช่วงปิดซ่อมใหญ่ (บทที่ 12) ดู [[Tool Crib and Warehouse Security]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Major task ของ turnaround เช่น overhaul [[Compressor]] ขนาดใหญ่ ควรถูก challenge ด้วยข้อมูล failure mode และ conditional reliability ถึงรอบหยุดถัดไป (ดู [[Reliability Metrics]] ที่ใช้ตอบว่าเครื่องจะรอดถึง turnaround หรือไม่) แทนการ overhaul ตามรอบแบบ ritual (การตีความ ไม่ใช่ข้อความสไลด์)
@@ -115,6 +174,9 @@ contested: false
 - [[CMMS]] (module 10 Turnaround Management)
 - [[Maintenance KPIs]] (ISO KPI 21-22)
 - [[CMRP Course]]
+- [[Spare Parts Optimization Book]] (บทที่ 4 แผน MR/MS)
+- [[Spare Parts Management]]
+- [[SPO vs RBMM Spare Parts Approaches]]
 
 ## Triplets
 
@@ -152,3 +214,17 @@ contested: false
 - Turnaround Knowledge Integration [has_value:: 6 knowledge types] slide says five but lists six (CMRP CMPR-10 p.30)
 - Slide Risk Definition [differs_from:: Risk] CMPR-10 p.25 probability only vs likelihood x consequence (CMPR-09 p.3, Criticality Assessment)
 - [[Turnaround Management]] [related_to:: [[Maintenance KPIs]]] ISO KPI 21 duration, 22 time between turnarounds
+- [[Turnaround Management]] [related_to:: [[Spare Parts Optimization Book]]] chapter 4 MR/MS plan (SPO p.33-38)
+- Dependent Demand [differs_from:: Independent Demand] plannable from upstream requirement vs statistical forecast with continuous stock (SPO p.34-35)
+- Independent Demand [uses:: [[Spare Part Demand Forecasting]]] statistical forecast (SPO p.35)
+- Dependent Demand [applies_to:: Turnaround] unique and insurance/standby parts in planned shutdown (SPO p.34, Table 4.1)
+- Interchangeable Parts [has_category:: independent demand] all maintenance categories (SPO p.34, Table 4.1)
+- Order as Required [has_category:: dependent demand] all maintenance categories (SPO p.34, Table 4.1)
+- Advance Turnaround Planning [has_value:: several months to 1 year] lead time for imported parts (SPO p.35-36)
+- Need Repair Report [input_to:: MR/MS Table] from condition inspection, via inspection department (SPO p.35-36)
+- MR/MS Table [has_value:: 13 columns] Equipment, MR, MS, Ex Stock, PR/PO, Supplier and shipment, Date Wanted, ETD, ETA, REC, QC, OH, Flag (SPO p.36-38)
+- MR/MS Table [part_of:: Preparation] materials planning for turnaround, wiki mapping
+- MR/MS Table [uses:: Stock Reservation] Ex Stock items reserved for shutdown date (SPO p.36-37)
+- MR/MS Table [uses:: System Contract] purchasing with ex-work date, ETD, ETA (SPO p.35-36)
+- ETD [has_label:: Estimate Time Delivery] SPO wording; standard meaning Estimated Time of Departure (SPO p.36)
+- Emergency Need Repair [related_to:: Emergent Work] found after opening; defer, expedite by air, or review insurance list (SPO p.38)

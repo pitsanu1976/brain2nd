@@ -120,7 +120,7 @@ contested: false
 | Preventive | แปรตาม | แปรตาม | อิสระ | แปรตาม | อิสระ |
 | Planned Shutdown / Turnaround | แปรตาม | แปรตาม | อิสระ | แปรตาม | อิสระ |
 
-- อ่านได้ว่า turnover ของอะไหล่เฉพาะเครื่องและอะไหล่ประกันในงาน turnaround เป็น dependent demand จึงวางแผนจัดหาได้ ไม่ต้องพึ่งสต็อก ส่วน Interchangeable และ General Used ยังเป็นอิสระทุกกรณี และ OAR เป็นแปรตามทุกกรณี ผู้เขียนไม่ได้ให้เหตุผลของการจัดนี้ (ข้อสังเกตใน raw notes) ประเภทวัสดุดู [[MRO Material Classification]]
+- อ่านได้ว่าความต้องการอะไหล่เฉพาะเครื่องและอะไหล่ประกันในงาน turnaround เป็น dependent demand จึงวางแผนจัดหาได้ ไม่ต้องพึ่งสต็อก ส่วน Interchangeable และ General Used ยังเป็นอิสระทุกกรณี และ OAR เป็นแปรตามทุกกรณี ผู้เขียนไม่ได้ให้เหตุผลของการจัดนี้ (ข้อสังเกตใน raw notes) ประเภทวัสดุดู [[MRO Material Classification]]
 - สอดคล้องกับนโยบายคลังของ SPO ที่ให้สต็อกมีไว้ซ่อมปกติ ส่วน overhaul/turnaround ต้องวางแผนความต้องการล่วงหน้า (SPO p.55) และกฎของ RBMM ที่ให้งานตามแผนใช้อะไหล่ซื้อตรง (RBMM p.45, p.236) เทียบเต็มที่ [[SPO vs RBMM Spare Parts Approaches]]
 
 ### การวางแผนซ่อมใหญ่ล่วงหน้า (SPO p.35-36)

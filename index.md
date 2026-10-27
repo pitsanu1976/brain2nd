@@ -12,6 +12,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/failure-structure]] — failure structure.xlsx (Sheet1 โครงสร้าง mode/item/sub unit/descriptor ต่อประเภท, Sheet2 category ของ mechanism)
 - `raw/assets/` — ภาพตาราง OREDA (failure descriptor, failure mode vs maintainable item, failure mechanism, resolution)
 - [[raw/reliability-based-maintenance-management]] — หนังสือ Reliability Based Maintenance Management (SE-ED 2553, 400 หน้า) reading notes 12 บทใน `raw/reliability-based-maintenance-management/`
+- [[raw/reliability-based-maintenance-management-ocr]] — OCR ข้อความเต็มของหนังสือ RBMM (เก็บในเครื่องเท่านั้น) ใช้ตรวจทาน notes เดิม ผลตรวจ 6 ไฟล์ใน `raw/reliability-based-maintenance-management/ocr-check/`
 - [[raw/iso-14224]] — ISO 14224:2016 (280 หน้า, licensed ไม่เก็บ PDF) reading notes ถอดความ 6 ส่วนใน `raw/iso-14224/` (clauses 1-7, 8-9, Annex A, B, C-D, E-F)
 - [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
 - [[raw/spare-parts-optimization]] — หนังสือ Spare Parts Optimization (สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/spare-parts-optimization/`

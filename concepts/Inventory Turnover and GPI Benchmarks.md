@@ -6,7 +6,7 @@ type: concept
 tags: [spo, book, spare-parts, kpi, inventory-control, cost]
 sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md]
 confidence: medium
-contested: true
+contested: false
 ---
 
 # Inventory Turnover and GPI Benchmarks (ดัชนีความเหมาะสมของคลังอะไหล่ MRO)
@@ -157,7 +157,8 @@ Inventory Value % GPI = Inventory Value / GPI x 100
 
 - **Turnover: ไม่ขัดกัน** เป็นแนวคิดเดียวกัน ต่างหน่วย (รอบ vs %) และตัวหาร (ค่าเฉลี่ยทั้งปี vs ยอด ณ จุดเวลา) แปลงได้: B8 40% = 0.40 รอบ/ปี = MOS 12/0.40 = 30 เดือน (derived) ซึ่งใกล้กับตัวอย่าง MRO ของ SPO (30 เดือนในตารางลดสต็อก p.121-122, 41 เดือนในรายงาน p.127) สอดคล้องกับข้อสังเกตของ SPO ว่าอะไหล่ซ่อมบำรุงหมุนช้ามาก
 - **มูลค่าคลังต่อทรัพย์สิน: ไม่ใช่ข้อขัดแย้งแท้** ตัวหารใกล้เคียงกัน (ทั้งคู่ใช้มูลค่าปัจจุบัน/ทดแทนของเครื่องจักร) แต่ SPO ไม่รวมที่ดิน/อาคารสำนักงานชัดเจน ส่วน RBMM ใช้ "plant asset" ตัวเศษของ SPO หลายเกณฑ์รวม MRO ทั้งหมด ส่วน RBMM นับอะไหล่อย่างเดียว ช่วงตัวเลขซ้อนกันที่ 2-3%: RBMM 1-3% ตรงกับช่วง "ประเทศอุตสาหกรรม 2%" ถึง "นโยบาย 3%" ของ SPO แต่ benchmark พื้นที่แบบไทยของ SPO (4%, 3-4%) สูงกว่าเพดาน 3% ของ RBMM ผลในทางปฏิบัติ: โรงงานในไทยที่ 3.5% จะ "เกินเป้า" ตาม RBMM แต่ "อยู่ใน benchmark" ตาม SPO ให้ระบุว่าเทียบกับเกณฑ์ใดและนับตัวเศษอะไร
-  - **contested (2026-10-27, รอผู้ใช้ตัดสิน):** หน้า [[SPO vs RBMM Spare Parts Approaches]] ถือ "ระดับเป้า" (SPO 4% GPI / 3-4% สำหรับไทย vs RBMM เพดาน 3%) เป็นข้อขัดแย้งที่ยังไม่ resolve ส่วนการวิเคราะห์ข้างบนเห็นว่าต่างที่ตัวเศษ/ภูมิภาค จึงเก็บทั้งสองมุมมองไว้จนกว่าผู้ใช้เลือกเกณฑ์
+  - **contested (2026-10-27, resolved):** หน้า [[SPO vs RBMM Spare Parts Approaches]] ถือ "ระดับเป้า" (SPO 4% GPI / 3-4% สำหรับไทย vs RBMM เพดาน 3%) เป็นข้อขัดแย้งที่ยังไม่ resolve ส่วนการวิเคราะห์ข้างบนเห็นว่าต่างที่ตัวเศษ/ภูมิภาค จึงเก็บทั้งสองมุมมองไว้จนกว่าผู้ใช้เลือกเกณฑ์ (ข้อความเดิมก่อน resolve)
+  - ผู้ใช้ตัดสิน 2026-10-27: ยึดเป้ามูลค่าสต็อกตาม SPO คือไม่เกิน 4% ของ GPI (3-4% สำหรับโรงงานเน้นเครื่องจักรในไทย, 1-1.5% สำหรับเครื่องจักรไม่ซับซ้อน) ค่า 1-3% ของ RBMM เก็บไว้เป็นข้อมูลอ้างอิง (resolved)
 - ทั้งสองเล่มเตือนตรงกันว่าดัชนีนี้เป็นแนวทาง ไม่ใช่ตัวชี้ขาด (RBMM p.74; SPO ให้หาค่าเองได้ p.143-145)
 - เรื่องอัตราค่าถือครอง 30% vs 15-20% ดูการวิเคราะห์ที่ [[MRO Inventory Reduction Program]] (สรุป: 30% ของ SPO เป็นค่าสมมติในตัวอย่าง ไม่ขัดแท้)
 - ภาพรวมการเทียบสองเล่มอยู่ที่ [[SPO vs RBMM Spare Parts Approaches]]
@@ -212,8 +213,8 @@ Inventory Value % GPI = Inventory Value / GPI x 100
 - Inventory Value % GPI [has_value:: 1-1.5%] suggestion for simple-machine plants (SPO p.143-145)
 - Inventory Value % GPI [has_value:: 3.98%] December example derived 49.8/1250; book prints 3.58 (SPO p.126)
 - Inventory Value % GPI [related_to:: B7 Spare Part Inventory per Plant Asset] similar denominator; SPO 2-4% vs RBMM 1-3%; numerator scope and region differ
-- Inventory Value % GPI [has_value:: 4%] max MRO stock, 3-4% suggested for Thai plants (SPO) [contested:: true]
-- B7 Spare Part Inventory per Plant Asset [has_value:: 1-3%] target ceiling 3% (RBMM p.295, p.314) [contested:: true]
+- Inventory Value % GPI [has_value:: 4%] max MRO stock, 3-4% suggested for Thai plants (SPO); adopted by user 2026-10-27
+- B7 Spare Part Inventory per Plant Asset [has_value:: 1-3%] target ceiling 3% (RBMM p.295, p.314); reference only, not adopted
 - Inventory Turnover [related_to:: B8 Stock Turn Ratio] same concept, times per year vs percent; 40% = 0.4 turns = MOS 30 months, derived
 - Inventory Turnover [differs_from:: Stock Turnover Rate] SPO uses average inventory, RBMM uses total store value (RBMM p.239)
 - [[Inventory Turnover and GPI Benchmarks]] [related_to:: [[Maintenance KPIs]]]

@@ -115,3 +115,9 @@
 - คงข้อความประวัติไว้ และเพิ่มบรรทัดผลตัดสิน; [[Spare Part Criticality and Risk]] ตั้ง `contested: false` (ไม่มีข้อขัดแย้งอื่นในหน้า) แก้คำอธิบายกลุ่ม A ในตาราง ABC; triplet ป้าย Very Slow เปลี่ยนเป็น `contradicts` และถอด `[contested:: true]`
 - [[SPO vs RBMM Spare Parts Approaches]] ยัง `contested: true` เพราะ C2 (เป้ามูลค่าสต็อก) ยังรอผู้ใช้ตัดสิน; เพิ่มหมายเหตุผลตัดสินใน [[MRO Inventory Reduction Program]] และอัปเดต [[index]]
 - Pages: [[Spare Part Criticality and Risk]], [[SPO vs RBMM Spare Parts Approaches]], [[MRO Inventory Reduction Program]], [[index]]
+
+## [2026-10-27] resolve | เป้ามูลค่าสต็อก (C2)
+- ผู้ใช้ตัดสิน: เป้ามูลค่าสต็อกอะไหล่ยึดตาม SPO คือไม่เกิน 4% ของ GPI (3-4% สำหรับโรงงานเน้นเครื่องจักรในไทย, 1-1.5% สำหรับเครื่องจักรไม่ซับซ้อน) ค่า 1-3% ของราคาเครื่องจักรของ RBMM เก็บไว้เป็นข้อมูลอ้างอิง ไม่ใช้เป็นเป้า
+- คงข้อความประวัติไว้ และเพิ่มบรรทัดผลตัดสิน; ตั้ง `contested: false` ใน [[SPO vs RBMM Spare Parts Approaches]], [[Spare Parts Management]], [[Inventory Turnover and GPI Benchmarks]] และถอด `[contested:: true]` ของ triplet ที่เกี่ยวข้อง; อัปเดต [[index]]
+- ข้อขัดแย้งจากการ ingest SPO ทั้ง 2 ข้อ (C1, C2) resolve ครบ
+- Pages: [[SPO vs RBMM Spare Parts Approaches]], [[Spare Parts Management]], [[Inventory Turnover and GPI Benchmarks]], [[index]]

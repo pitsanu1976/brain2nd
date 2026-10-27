@@ -6,12 +6,12 @@ type: comparison
 tags: [comparison, spare-parts, inventory-control, criticality, kpi, cost, book, spo, cmrp]
 sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
-contested: true
+contested: false
 ---
 
 # SPO vs RBMM Spare Parts Approaches
 
-หน้านี้เทียบแนวทางบริหารอะไหล่ของหนังสือไทยสองเล่ม: **SPO** ([[Spare Parts Optimization Book]], สุชาติ ศุภมงคล 2546) กับ **RBMM** ([[Reliability Based Maintenance Management Book]], บทที่ 9-10) และอ้าง [[CMRP Course]] เมื่อเกี่ยวข้อง สองเล่มมอง "อะไหล่" จากคนละฝั่งขององค์กร: SPO เขียนจากมุม **คลังพัสดุ/จัดซื้อ** (อดีตผู้จัดการคลังโรงกลั่น อิงคู่มือ Esso และ COSAL ของกองทัพเรือสหรัฐฯ) ส่วน RBMM เขียนจากมุม **reliability/ความเสี่ยง** (RCM, Weibull, Monte Carlo) ความต่างส่วนใหญ่จึงเป็นเรื่องบริบทหรือตัวหาร ไม่ใช่ข้อเท็จจริงที่ขัดกัน แต่มี 2 ประเด็นที่ขัดกัน (C1 resolve แล้ว 2026-10-27, C2 ยังไม่ resolve) (ดูหัวข้อ "ข้อขัดแย้ง (contested)") รายละเอียดแต่ละฝั่งดู [[Spare Parts Management]] และ [[Spare Part Criticality and Risk]]
+หน้านี้เทียบแนวทางบริหารอะไหล่ของหนังสือไทยสองเล่ม: **SPO** ([[Spare Parts Optimization Book]], สุชาติ ศุภมงคล 2546) กับ **RBMM** ([[Reliability Based Maintenance Management Book]], บทที่ 9-10) และอ้าง [[CMRP Course]] เมื่อเกี่ยวข้อง สองเล่มมอง "อะไหล่" จากคนละฝั่งขององค์กร: SPO เขียนจากมุม **คลังพัสดุ/จัดซื้อ** (อดีตผู้จัดการคลังโรงกลั่น อิงคู่มือ Esso และ COSAL ของกองทัพเรือสหรัฐฯ) ส่วน RBMM เขียนจากมุม **reliability/ความเสี่ยง** (RCM, Weibull, Monte Carlo) ความต่างส่วนใหญ่จึงเป็นเรื่องบริบทหรือตัวหาร ไม่ใช่ข้อเท็จจริงที่ขัดกัน แต่มี 2 ประเด็นที่ขัดกัน (C1 และ C2 resolve แล้ว 2026-10-27 โดยยึด SPO) (ดูหัวข้อ "ข้อขัดแย้ง (contested)") รายละเอียดแต่ละฝั่งดู [[Spare Parts Management]] และ [[Spare Part Criticality and Risk]]
 
 ## 1. สรุปภาพรวม
 
@@ -23,7 +23,7 @@ contested: true
 | Safety stock | % ของ D x LT (ตัวอย่าง 20%) (SPO p.105) | z x sigma_combined (RBMM p.253-255) | ต่างวิธี ไม่ขัดกัน |
 | ABC | ABU = จำนวนเบิกต่อปี x ราคา; A = มูลค่าใช้สูง (SPO p.115-117) | Turnover = Qty x Unit Price; ข้อความ A = มูลค่าสูง แต่รูปที่ 9.4 ป้าย A = Very Slow (RBMM p.242-243) | resolved: ยึด SPO (A = มูลค่าใช้สูง) |
 | Holding cost | ตัวอย่าง 30%; ให้คำนวณ COP 7 รายการ (SPO p.104, p.120) | 15-20%/ปี (RBMM p.16, p.234); เป้าบทที่ 10 15-25% | ต่างสมมติฐานตัวอย่าง ไม่ใช่ข้อขัดแย้ง |
-| เป้ามูลค่าสต็อก | 3% ของเงินลงทุนสร้างโรงงาน (นโยบายตัวอย่าง), ไม่เกิน 4% GPI, benchmark 2/4/10%, ท้ายเล่ม 3-4% GPI (SPO p.55, p.113-115, p.128, p.143-145) | 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314); B7 budget 3% (RBMM p.74) | **contested** (ระดับเป้า) |
+| เป้ามูลค่าสต็อก | 3% ของเงินลงทุนสร้างโรงงาน (นโยบายตัวอย่าง), ไม่เกิน 4% GPI, benchmark 2/4/10%, ท้ายเล่ม 3-4% GPI (SPO p.55, p.113-115, p.128, p.143-145) | 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314); B7 budget 3% (RBMM p.74) | resolved: ยึด SPO (ไม่เกิน 4% GPI) |
 | งานตามแผน vs นอกแผน | สต็อกมีไว้ซ่อมปกติ; turnaround ทำแผน MR/MS แยก (SPO p.35-38, p.55) | ตามแผน = ซื้อตรง, นอกแผน = สต็อก (RBMM p.45, p.236) | สอดคล้องในหลักการ ต่างรายละเอียด |
 | Blanket Order | standing PO + ทยอยรับด้วย BOR (SPO p.91-92); consignment แยกต่างหาก (SPO p.95) | ผู้ขายเก็บของในคลังเรา คิดเงินเมื่อเบิก (RBMM p.289, p.298) | ต่างนิยามศัพท์ |
 | KPI | Turnover, MOS/DOS, Inventory Value % GPI (SPO p.112-115, p.123-127) | Stock Turnover Rate, Service Factor, Stock out Rate, Stock Value / ARV (RBMM p.239) | นิยาม turnover ตรงกัน; ชุด KPI ต่างกัน |
@@ -139,7 +139,7 @@ contested: true
 - นิยาม turnover **โดยหลักตรงกัน** (มูลค่าใช้ต่อมูลค่าคงคลัง) ต่างที่หน่วย: SPO เป็นจำนวนรอบ/ปี ใช้คงคลังเฉลี่ย, RBMM เป็น % ไม่ระบุว่าใช้คงคลังเฉลี่ยหรือ ณ จุดเวลา (derived: B8 = 40% เท่ากับ 0.4 รอบ/ปี หรือ MOS 30 เดือน)
 - ทั้งสองเห็นว่า turnover เดี่ยว ๆ ไม่พอสำหรับอะไหล่: SPO บอกว่าใช้ได้กับของหมุนเร็วเท่านั้น จึงใช้ %GPI แทน และตัวอย่าง MOS รวม 4.9 เดือนบดบังอะไหล่ที่ 41 เดือน (SPO p.113, p.127); RBMM ให้แยก turnover ของอะไหล่ซื้อตรงออก (RBMM p.243) และอ่านคู่กับ B7, B9, B10 ดู [[Maintenance KPIs]]
 
-## ข้อขัดแย้ง (contested)
+## ข้อขัดแย้ง (contested, resolved 2026-10-27)
 
 ### C1. ความหมายของกลุ่ม A ใน ABC (resolved 2026-10-27)
 
@@ -148,11 +148,12 @@ contested: true
 - สถานะ: ยังไม่ resolve ข้อความของทั้งสองเล่มตรงกัน แต่ป้ายในรูปของ RBMM ขัดกับทั้งข้อความ RBMM เองและ SPO น่าจะเป็นความผิดพลาดของรูป แต่ยังไม่ได้ตรวจกับหน้าหนังสือ RBMM ต้นฉบับ (ข้อเสนอ: ใช้ความหมาย "A = มูลค่าใช้สูง" ไปก่อน) (ข้อความเดิมก่อน resolve)
 - ผู้ใช้ตัดสิน 2026-10-27: ยึดตาม SPO คือ A = มูลค่าใช้สูง ป้าย Very Slow ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป (resolved)
 
-### C2. ระดับเป้ามูลค่าสต็อกอะไหล่ต่อมูลค่าโรงงาน
+### C2. ระดับเป้ามูลค่าสต็อกอะไหล่ต่อมูลค่าโรงงาน (resolved 2026-10-27)
 
 - มุมมอง SPO (spare-parts-optimization.md): โรงงานเน้นเครื่องจักรในพื้นที่แบบไทย ใช้ 4% ของ GPI (benchmark อะไหล่ 4%, เกณฑ์ MRO รวมไม่เกิน 4%, ท้ายเล่ม 3-4%) (SPO p.113-115, p.143-145) และอาจถึง 5-10% สำหรับเครื่องหมุนต่อเนื่อง (SPO p.128)
 - มุมมอง RBMM (reliability-based-maintenance-management.md): เป้า 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314) และตัวอย่าง budget B7 = 3% (RBMM p.74)
-- สถานะ: ยังไม่ resolve ช่วงทับกันที่ 3% แต่ค่าแนะนำหลักของ SPO (4%) สูงกว่าขอบบนของ RBMM ความต่างอาจมาจาก (1) ข้อมูลของ SPO มาจากโครงการ Esso ปี 1978-1980 และโรงปุ๋ย (SPO p.113, p.143-145) (2) ตัวตั้งของ SPO บางจุดรวม MRO ทั้งหมด (3) ตัวหารต่างกันเล็กน้อย แต่ไม่มีเล่มใดอธิบายความต่างนี้ ควรใช้เป็นช่วง 1-4% และเทียบกับ benchmark ของอุตสาหกรรมเดียวกันเอง
+- สถานะ: ยังไม่ resolve ช่วงทับกันที่ 3% แต่ค่าแนะนำหลักของ SPO (4%) สูงกว่าขอบบนของ RBMM ความต่างอาจมาจาก (1) ข้อมูลของ SPO มาจากโครงการ Esso ปี 1978-1980 และโรงปุ๋ย (SPO p.113, p.143-145) (2) ตัวตั้งของ SPO บางจุดรวม MRO ทั้งหมด (3) ตัวหารต่างกันเล็กน้อย แต่ไม่มีเล่มใดอธิบายความต่างนี้ ควรใช้เป็นช่วง 1-4% และเทียบกับ benchmark ของอุตสาหกรรมเดียวกันเอง (ข้อความเดิมก่อน resolve)
+- ผู้ใช้ตัดสิน 2026-10-27: ยึดเป้ามูลค่าสต็อกตาม SPO คือไม่เกิน 4% ของ GPI (3-4% สำหรับโรงงานเน้นเครื่องจักรในไทย, 1-1.5% สำหรับเครื่องจักรไม่ซับซ้อน) ค่า 1-3% ของ RBMM เก็บไว้เป็นข้อมูลอ้างอิง (resolved)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 
@@ -200,11 +201,11 @@ contested: true
 - Cost of Possession [has_part:: 7 cost items] return on investment, insurance, rent, handling, administration, obsolescence, loss (SPO p.104)
 - Cost of Possession [alias_of:: Holding Cost] SPO afterword calls COP carrying cost (SPO p.143-145)
 - Procurement Cost [part_of:: Holding Cost] RBMM includes it; SPO keeps order cost separate in EOQ, possible double count (RBMM p.68; SPO p.104)
-- Inventory Value % GPI [has_value:: 4%] SPO target for capital intensive plants in average area (SPO p.115, p.126) [contested:: true]
-- Inventory Value % GPI [has_value:: 3-4%] SPO afterword recommendation for Thai machinery plants (SPO p.143-145) [contested:: true]
+- Inventory Value % GPI [has_value:: 4%] SPO target for capital intensive plants in average area (SPO p.115, p.126); adopted by user 2026-10-27
+- Inventory Value % GPI [has_value:: 3-4%] SPO afterword recommendation for Thai machinery plants (SPO p.143-145); adopted by user 2026-10-27
 - Standard Inventory Value [has_value:: not above 3% of plant construction investment] SPO warehouse policy example (SPO p.55)
-- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314) [contested:: true]
-- Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 4% above RBMM upper 3%; denominators close but not identical [contested:: true]
+- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314); reference only, not adopted
+- Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 4% above RBMM upper 3%; denominators close but not identical; resolved 2026-10-27, follow SPO
 - Inventory Value % GPI [related_to:: Stock Value / Asset Replacement Value] similar denominator, GPI current value including infrastructure
 - Direct Purchase Parts [applies_to:: Planned Maintenance] RBMM rule (RBMM p.45, p.236)
 - MR/MS Table [applies_to:: Turnaround] SPO plans turnaround materials separately from regular stock (SPO p.35-38, p.55)

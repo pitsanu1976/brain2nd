@@ -6,7 +6,7 @@ type: concept
 tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp, spo, warehousing, procurement, inventory-control]
 sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
 confidence: medium
-contested: true
+contested: false
 ---
 
 # Spare Parts Management
@@ -160,11 +160,12 @@ contested: true
 - **KPI**: SPO เห็นว่า turnover ใช้ได้กับของหมุนเร็วเท่านั้น จึงวัด MRO เป็น % ของ GPI (Gross Plant Investment มูลค่าปัจจุบันของเครื่องจักรผลิตหลักและ infrastructure ไม่รวมที่ดิน/อาคารสำนักงาน) (SPO p.113-115) เทียบได้กับ B7 และ Stock Value / Asset Replacement Value ของ RBMM
 - **ตัดสินระดับสต็อก**: SPO ใช้ Basic Practice + ปัจจัย 7 ข้อ (อายุ, จำนวนติดตั้ง, เปลี่ยน/ซ่อมได้, ความสำคัญของเครื่อง, ความซับซ้อน, lead time, จุดประสงค์) (SPO p.129) และคณะกรรมการ แล้วปรับด้วยสถิติหลังเดินเครื่อง 2-3 ปี (SPO p.57-58, p.112) ส่วน RBMM ใช้ criticality + Cost Ratio ตั้งแต่ต้น
 
-### ข้อขัดแย้ง: เป้ามูลค่าอะไหล่ต่อมูลค่าโรงงาน
+### ข้อขัดแย้ง: เป้ามูลค่าอะไหล่ต่อมูลค่าโรงงาน (resolved 2026-10-27)
 
 - มุมมอง RBMM (reliability-based-maintenance-management.md): เป้า B7 = 1-3% ของราคาเครื่องจักร (RBMM p.295, p.314)
 - มุมมอง SPO (spare-parts-optimization.md): ไม่เกิน 4% ของ GPI สำหรับโรงงานเน้นเครื่องจักร (SPO p.115); ท้ายเล่มแนะนำ 3-4% GPI สำหรับโรงงานไทย (SPO p.143-145); นโยบายตัวอย่าง 3% ของเงินลงทุนสร้างโรงงาน (SPO p.55)
-- สถานะ: ยังไม่ resolve (ช่วงทับกันที่ 3%; ตัวหารใกล้เคียงแต่ไม่เหมือนกัน) รายละเอียดและสาเหตุที่เป็นไปได้ดู [[SPO vs RBMM Spare Parts Approaches]] หัวข้อ C2
+- สถานะ: ยังไม่ resolve (ช่วงทับกันที่ 3%; ตัวหารใกล้เคียงแต่ไม่เหมือนกัน) รายละเอียดและสาเหตุที่เป็นไปได้ดู [[SPO vs RBMM Spare Parts Approaches]] หัวข้อ C2 (ข้อความเดิมก่อน resolve)
+- ผู้ใช้ตัดสิน 2026-10-27: ยึดเป้ามูลค่าสต็อกตาม SPO คือไม่เกิน 4% ของ GPI (3-4% สำหรับโรงงานเน้นเครื่องจักรในไทย, 1-1.5% สำหรับเครื่องจักรไม่ซับซ้อน) ค่า 1-3% ของ RBMM เก็บไว้เป็นข้อมูลอ้างอิง (resolved)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 
@@ -281,6 +282,6 @@ contested: true
 - Stock Parts [applies_to:: Routine Maintenance] SPO warehouse policy; overhaul and turnaround planned separately (SPO p.55)
 - Blanket Order [differs_from:: Consignment] SPO terminology; RBMM Blanket Order matches SPO consignment (SPO p.91-95; RBMM p.289, p.298)
 - Stock Decision [depends_on:: 7 Stocking Factors] SPO (SPO p.129)
-- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314) [contested:: true]
-- Inventory Value % GPI [has_value:: not above 4%] SPO target for capital intensive plants (SPO p.115) [contested:: true]
-- Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 3-4% vs RBMM 1-3%, unresolved (SPO p.143-145) [contested:: true]
+- B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314); reference only, not adopted
+- Inventory Value % GPI [has_value:: not above 4%] SPO target for capital intensive plants (SPO p.115); adopted by user 2026-10-27
+- Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 3-4% vs RBMM 1-3%; resolved 2026-10-27, follow SPO (SPO p.143-145)

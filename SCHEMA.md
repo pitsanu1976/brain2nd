@@ -17,9 +17,9 @@ wiki นี้ครอบคลุม 2 พื้นที่ (area) ในโ�
 
 หัวข้อ 2 แกน:
 1. **Compressor failure hierarchy** ตาม taxonomy ของ [[OREDA]] / [[ISO 14224]]: ประเภท compressor (centrifugal, reciprocating, screw), sub unit, maintainable item, failure mode, failure mechanism, failure cause, resolution และรหัสที่เกี่ยวข้อง
-2. **Reliability-based maintenance management**: RCM, FMECA, Weibull/สถิติ reliability, การเลือกและ optimize PM, อะไหล่, งบประมาณ/ต้นทุนบำรุงรักษา, CMMS และ KPIs (ที่มา: หนังสือ [[Reliability Based Maintenance Management Book]]) และฝั่งคลังพัสดุ/จัดซื้อ MRO (ที่มา: หนังสือ [[Spare Parts Optimization Book]])
+2. **Reliability-based maintenance management**: RCM, FMECA, Weibull/สถิติ reliability, การเลือกและ optimize PM, อะไหล่, งบประมาณ/ต้นทุนบำรุงรักษา, CMMS และ KPIs (ที่มา: หนังสือ [[Reliability Based Maintenance Management Book]]) และฝั่งคลังพัสดุ/จัดซื้อ MRO (ที่มา: หนังสือ [[Spare Parts Optimization Book]]) และมุมมองการเงิน/ผลกำไรของงานบำรุงรักษา (ที่มา: หนังสือ [[Maintenance Profit Maker Book]])
 
-- แหล่งความรู้: raw sources 6 ชุด (ดูหัวข้อ 9) ตัวเลข failure rate ของ compressor ทั้งหมดมาจาก OREDA ที่ transcribe ไว้ใน raw ส่วนรหัสและนิยามมาตรฐานยึด ISO 14224:2016
+- แหล่งความรู้: raw sources 7 ชุด (ดูหัวข้อ 9) ตัวเลข failure rate ของ compressor ทั้งหมดมาจาก OREDA ที่ transcribe ไว้ใน raw ส่วนรหัสและนิยามมาตรฐานยึด ISO 14224:2016
 - ตัวอย่างในหนังสือ RBMM เป็นข้อมูลทั่วไป ไม่ใช่ compressor ให้เชื่อมกับ hierarchy ผ่านหัวข้อ "เชื่อมโยงกับ compressor failure hierarchy" ในแต่ละหน้า และระบุว่าเป็นการตีความ
 - หน้าอยู่ใน `entities/`, `concepts/`, `comparisons/`, `queries/`
 - ตัวอย่างการใช้วิธีของ (ก) กับงานจริง: [[Maintenance Reliability Example]]
@@ -33,7 +33,7 @@ wiki นี้ครอบคลุม 2 พื้นที่ (area) ในโ�
 
 | Layer | ที่อยู่ | สถานะ |
 |---|---|---|
-| 1. Raw sources | `raw/` (`raw/datasets/`, `raw/assets/`, `raw/reliability-based-maintenance-management/`, `raw/iso-14224/`, `raw/CMRP/`, `raw/spare-parts-optimization/`) | **IMMUTABLE** หลัง ingest อ่านอย่างเดียว ห้ามแก้/ลบ |
+| 1. Raw sources | `raw/` (`raw/datasets/`, `raw/assets/`, `raw/reliability-based-maintenance-management/`, `raw/iso-14224/`, `raw/CMRP/`, `raw/spare-parts-optimization/`, `raw/maintenance-profit-maker/`) | **IMMUTABLE** หลัง ingest อ่านอย่างเดียว ห้ามแก้/ลบ |
 | 2. Wiki pages | `entities/`, `concepts/`, `comparisons/`, `guides/`, `reference/`, `queries/` | LLM เขียนและดูแล |
 | 3. Rules | `SCHEMA.md`, `index.md`, `log.md`, `README.md` | กติกาและแค็ตตาล็อก |
 
@@ -138,6 +138,7 @@ immutable: true
 - Budget/cost: `budget`, `cost`
 - CMRP topics (เพิ่ม 2026-10-25): `cmrp` (source tag), `work-management`, `turnaround`, `rca`, `lubrication`, `vibration`, `spc`, `maintainability`, `reliability-allocation`, `reliability-growth`, `fta`, `human-reliability`, `tpm`, `business-case`
 - Spare Parts Optimization topics (เพิ่ม 2026-10-27): `spo` (source tag), `warehousing`, `procurement`, `inventory-control`
+- Maintenance Profit Maker topics (เพิ่ม 2026-10-28): `mpm` (source tag), `outsourcing`, `lcc`, `engineering-economics`, `audit`, `work-order`
 
 **ใช้ร่วม**
 - Domain: `maintenance-reliability`, `fleet-engineering`
@@ -203,6 +204,7 @@ Area ก ไม่มี raw source ดู [[LLM Wiki Pattern]] สำหรั�
 - [[raw/cmrp]] (ingest 2026-10-25; สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า สแกน + OCR, PDF มีลิขสิทธิ์ เก็บในเครื่องเท่านั้น gitignored) reading notes ถอดความต่อไฟล์ `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md` ใช้ `sources: [cmrp.md]` และอ้างแบบ `(CMRP CMPR-0X p.N)` ด้วยเลข PDF page; เป็นสื่อการสอน (secondary source) ระดับความเชื่อถือต่ำกว่ามาตรฐาน ISO ถ้าขัดกับ ISO ให้ถือเป็น contested และระบุ
 - [[raw/spare-parts-optimization]] (ingest 2026-10-27; หนังสือ Spare Parts Optimization ของ เรือเอก สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่ม `raw/sparepart_optimizaton.md` มีลิขสิทธิ์ เก็บในเครื่องเท่านั้น gitignored) reading notes ถอดความต่อบทใน `raw/spare-parts-optimization/` (`ch01-04.md`, `ch05-06.md`, `ch07.md`, `ch08.md`, `ch09.md`, `ch10.md`, `ch11-12.md`) ใช้ `sources: [spare-parts-optimization.md]` และอ้างแบบ `(SPO p.NN)` ด้วยเลขหน้าที่พิมพ์ในหนังสือ; มุมมองฝั่งคลังพัสดุ/จัดซื้อ ถ้าขัดกับ RBMM ให้เก็บทั้งสองมุมมอง
 
+- [[raw/maintenance-profit-maker]] (ingest 2026-10-28; หนังสือ Maintenance: The Profit Maker — บำรุงรักษา : งานเพิ่มกำไรบริษัท ของ วัฒนา เชียงกูล และ เกรียงไกร ดำรงรัตน์, SE-ED 2556, 277 หน้า; OCR ทั้งเล่ม `raw/maintenance_profit_maker.md` มีลิขสิทธิ์ เก็บในเครื่องเท่านั้น gitignored) reading notes ถอดความใน `raw/maintenance-profit-maker/` (`ch01-03.md`, `ch04-05.md`, `ch06-07.md`, `ch08-09.md`, `ch10-11.md`, `ch12.md`, `ch13-15.md`) ใช้ `sources: [maintenance-profit-maker.md]` และอ้างแบบ `(MPM p.NN)` ด้วยเลขหน้าที่พิมพ์ในหนังสือ (marker `printed:` ของ OCR ผิดบางช่วง notes ใช้เลขที่แก้แล้ว); ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM ถ้าขัดกับ RBMM ให้เก็บทั้งสองมุมมอง
 หมายเหตุ: `raw/README.md` เป็นไฟล์เดิมของ area ก ที่ระบุว่า raw ยังว่าง ข้อความนั้นล้าสมัยแล้ว (ไฟล์ immutable ไม่แก้) ให้ยึดหัวข้อนี้เป็นหลัก ประวัติ log ของ area ข ก่อนรวม vault อยู่ที่ [[_archive/log-maintenance-reliability-2026-10-20]]
 
 ## 10. Knowledge graph triplets (area ข)

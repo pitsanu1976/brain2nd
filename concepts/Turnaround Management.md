@@ -1,10 +1,10 @@
 ---
 title: Turnaround Management
 created: 2026-10-25
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [turnaround, work-management, maintenance-management, budget, cost, cmrp, spare-parts, spo, procurement]
-sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, spare-parts-optimization.md]
+tags: [turnaround, work-management, maintenance-management, budget, cost, cmrp, spare-parts, spo, procurement, mpm]
+sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -161,6 +161,57 @@ MR = Maintenance Repair, MS = Materials Supply ติดตามตั้งแ
 - สอดคล้องกับ CMRP: วัสดุผิดเป็นภัยต่อ reliability ของ turnaround (CMRP CMPR-10 p.14) และ long-lead items อยู่ใน phase Preparation (CMRP CMPR-11 p.3) SPO ให้เครื่องมือปฏิบัติ (ตาราง MR/MS) ที่ CMRP ไม่มี; การจองของคลังให้ turnaround ของ SPO ใกล้กับ stock reservation ของ CMRP (CMRP CMPR-09 p.30) ดู [[Spare Parts Management]]
 - SPO ยังแนะนำให้พนักงานคลังทำงานกลางคืนช่วงปิดซ่อมใหญ่ (บทที่ 12) ดู [[Tool Crib and Warehouse Security]]
 
+## 8. มุมมองของ MPM: ลดเวลาหยุด ดัชนี และคันโยก 4+7 ข้อ (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 1 และ 12 ในการจำแนกงาน 4 กลุ่ม 16 งานของ MPM, Overhaul/Turnaround อยู่ในกลุ่ม Preventive-Proactive: เปลี่ยนอะไหล่ทั้งตามอายุและที่พบชำรุด ข้อมูล PM/predictive ที่ดีย่นเวลาหยุดได้มาก (MPM p.18-21)
+
+### ตัวอย่าง 45 -> 20 วัน และการลด scope ด้วย RBI (MPM p.33)
+
+- โรงงานตัวอย่างลดเวลาหยุดซ่อมใหญ่จาก **45 วัน เหลือ 20 วัน** แล้วยังลดได้อีกโดย **ลด Scope of Work** ด้วย Risk Based Inspection (RBI): รายการที่ความเสี่ยงของการไม่ซ่อมรับได้ตามมาตรฐาน/ความปลอดภัย ไม่ต้องซ่อม/เปลี่ยน หรือเลื่อนไปทำ on-line
+- การบริหารอะไหล่และ outsource ดีขึ้นด้วย เพราะผู้รับเหมาเตรียมงานล่วงหน้าคู่ขนานได้
+- สอดคล้องกับหลัก eliminate first และ golden rule ของ CMRP ในหัวข้อ 2 (การเทียบของ wiki)
+
+### ดัชนี turnaround (MPM p.222-223)
+
+```
+Turnaround Frequency หรือ Mean Time Between Turnaround (MTBTA)
+Turnaround Time / Mean Time Between Turnaround
+Turnaround Cost / Plant Asset
+```
+
+- ตรงกับ ISO KPI 21 (duration) และ 22 (time between turnarounds) ใน [[Maintenance KPIs]]
+- กรณีศึกษา XYZ: ซ่อมใหญ่ 3 ปี/ครั้ง ค่าใช้จ่าย 110.0 ล้านบาท -> 36.7 ล้านบาท/ปี และ Turnaround Cost/Plant Asset = 0.33% ซึ่งคิดจากค่าเฉลี่ยรายปี ไม่ใช่ค่าต่อครั้ง (ต่อครั้ง 110/11,000 = 1.0%, derived) (MPM p.230-233) เมื่อเทียบตัวเลขต้องตรวจว่าใช้ฐานรายปีหรือต่อครั้ง
+- Turnaround Time ของ XYZ ในรูป 12.10 (45/45/40) ไม่ตรงกับรูป 12.12 (35) ทั้งที่เป็นข้อมูลชุดเดียวกัน notes ให้ใช้รูป 12.12 (MPM p.228, p.232-233)
+
+### ปัจจัยที่ 1: ความถี่ (MTBTA) ขับโดย 4 ข้อ (MPM p.222)
+
+ความถี่มีผลต่อ LCC:
+1. คุณภาพการใช้งาน
+2. คุณภาพการซ่อม โดยเฉพาะ PM/งานเชิงรุก
+3. คุณภาพอะไหล่
+4. การนำ Reliability Engineering มาใช้
+
+### ปัจจัยที่ 2: ระยะเวลาแต่ละครั้ง (Turn Around Time) 7 คันโยก (MPM p.222-223)
+
+ระยะเวลากระทบผลผลิต/กำไรที่เสียโอกาส ส่วนค่าใช้จ่ายไม่เพิ่มมากเพราะส่วนใหญ่เป็นงานเหมาที่ทำสัญญาไว้แล้ว
+
+| # | ทิศทาง | คันโยก |
+|---|---|---|
+| 1 | ลด | ปริมาณงาน ด้วย Reliability Engineering และ RBI ตรวจขณะเครื่องเดินว่าจำเป็นต้องซ่อมหรือไม่ ใช้กับ **Stationary Equipment** เช่น ท่อ อุปกรณ์แลกเปลี่ยน/ให้ความร้อน หอกลั่น |
+| 2 | เพิ่ม | ความสามารถ Project Management |
+| 3 | เพิ่ม | การเตรียมงานด้วย CMMS รวบรวม backlog/งานที่เลื่อนมาทำในโอกาสเดียว |
+| 4 | เพิ่ม | ขนาดชุดงานจ้างเหมา (ชุดย่อยเกินไป = รอยต่อมาก ตรวจรับยาก ไม่ถึง critical mass ที่จะได้ผู้รับเหมาคุณภาพ) |
+| 5 | เพิ่ม | การบริหารความปลอดภัย |
+| 6 | ลด | จำนวนคนเข้าโรงงานช่วงซ่อมใหญ่ |
+| 7 | เพิ่ม | การเตรียม Logistics (อะไหล่ เครื่องจักรกลหนัก) |
+
+- การลงทุนที่ต้องมี: Project Management Software, CMMS + Inventory Management System, Reliability Engineering System (MPM p.223)
+- คันโยกที่ 3 เชื่อมกับสถานะ Wait for Shutdown / รอเครื่องจักรหยุด ใน [[Work Order Lifecycle]] และคันโยกที่ 4 สอดคล้องกับข้อสังเกตเรื่องงานเหมาที่แตกเป็นงานย่อยจำนวนมากของ MPM บทเดียวกัน (MPM p.221-222)
+
+### หมายเหตุคำย่อ RBI
+
+MPM บทที่ 12 ขยาย RBI เป็น "Reliability Based Inspection" (MPM p.223) ขณะที่บทที่ 1 ของเล่มเดียวกันใช้ Risk Based Inspection (MPM p.33) และ [[Asset Life Cycle]] ใช้ Risk Based Inspection ความหมายสากลคือ **Risk-Based Inspection** (API 580/581; ความรู้ทั่วไป ไม่มีใน sources) ถือเป็นข้อผิดพลาดของหนังสือ ไม่ใช่ข้อขัดแย้งของแหล่ง wiki ใช้ Risk-Based Inspection
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Major task ของ turnaround เช่น overhaul [[Compressor]] ขนาดใหญ่ ควรถูก challenge ด้วยข้อมูล failure mode และ conditional reliability ถึงรอบหยุดถัดไป (ดู [[Reliability Metrics]] ที่ใช้ตอบว่าเครื่องจะรอดถึง turnaround หรือไม่) แทนการ overhaul ตามรอบแบบ ritual (การตีความ ไม่ใช่ข้อความสไลด์)
@@ -177,6 +228,8 @@ MR = Maintenance Repair, MS = Materials Supply ติดตามตั้งแ
 - [[Spare Parts Optimization Book]] (บทที่ 4 แผน MR/MS)
 - [[Spare Parts Management]]
 - [[SPO vs RBMM Spare Parts Approaches]]
+- [[Maintenance Profit Maker Book]] (บทที่ 1, 12)
+- [[Work Order Lifecycle]]
 
 ## Triplets
 
@@ -228,3 +281,14 @@ MR = Maintenance Repair, MS = Materials Supply ติดตามตั้งแ
 - MR/MS Table [uses:: System Contract] purchasing with ex-work date, ETD, ETA (SPO p.35-36)
 - ETD [has_label:: Estimate Time Delivery] SPO wording; standard meaning Estimated Time of Departure (SPO p.36)
 - Emergency Need Repair [related_to:: Emergent Work] found after opening; defer, expedite by air, or review insurance list (SPO p.38)
+- Turnaround Duration Example [has_value:: 45 to 20 days] then further cut by reducing scope with RBI (MPM p.33)
+- Risk Based Inspection [applies_to:: Turnaround Work List] reduce scope: items with acceptable risk not repaired or moved on-line (MPM p.33)
+- Mean Time Between Turnaround [measures:: Turnaround Frequency] MPM turnaround index (MPM p.222)
+- Turnaround Time per MTBTA [is_a:: KPI] MPM turnaround index (MPM p.222)
+- Turnaround Cost per Plant Asset [has_value:: 0.33%] XYZ, annualized 110.0 M / 3 years; per event 1.0% derived (MPM p.230-233)
+- Mean Time Between Turnaround [depends_on:: Operating Quality] also repair quality, spare part quality, reliability engineering (MPM p.222)
+- Turnaround Time [depends_on:: Work Volume Reduction] reduce with reliability engineering and RBI on stationary equipment (MPM p.222-223)
+- Turnaround Time [has_value:: 7 levers] reduce work, more PM capability, CMMS preparation, larger contract packages, safety, fewer people, logistics (MPM p.222-223)
+- Turnaround Time [uses:: [[CMMS]]] gather backlog and deferred work for one opportunity (MPM p.223)
+- MPM RBI Expansion [contradicts:: Risk Based Inspection] book p.223 says Reliability Based Inspection; book error, standard is Risk-Based Inspection [confidence:: low]
+- [[Turnaround Management]] [related_to:: [[Maintenance Profit Maker Book]]] chapters 1 and 12

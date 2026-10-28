@@ -1,10 +1,10 @@
 ---
 title: Maintenance Planning and Scheduling
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [work-management, maintenance-management, cmms, spare-parts, kpi, cmrp]
-sources: [cmrp.md, reliability-based-maintenance-management.md]
+tags: [work-management, maintenance-management, cmms, spare-parts, kpi, cmrp, mpm, work-order]
+sources: [cmrp.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -152,6 +152,39 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - ถ้าผสมฐาน คือใช้ +1.5 ชม. แต่หารด้วย wrench 12 ชม./คน ได้ 60 x 1.5 / 12 = **7.5 คน** ไม่ใช่ 6
 - สรุป: ตัวเลข 6 คนถูกเมื่อใช้ฐานเดียวกัน ความผิดอยู่ที่ slide ใช้ 12 กับ 15 ชม. ปนกัน ค่าที่ควรใช้กับข้อความ "wrench 12 ชม." คือ +1.2 ชม./คน และเทียบเท่า 6 คน ตัวเลขนี้ไม่ใช่ contested (เป็นความผิดเลขคณิตของ slide)
 
+## 9. มุมมองของ MPM: งานวางแผน งานรอ และผลของ planner (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 4 และ 12 รายละเอียดวงจร WO 6 ขั้นอยู่ที่ [[Work Order Lifecycle]]
+
+### คำถามวางแผนและเงื่อนไข scheduling (MPM p.68-70)
+
+- งานวางแผนตอบ 7 คำถาม (ทรัพยากร, วิธีทำ, ขั้นตอนความปลอดภัย/ตัดแยกระบบ, ชั่วโมง, เครื่องมือและอะไหล่, ค่าใช้จ่ายรวม, งบและผู้อนุมัติ) ใกล้กับ 6 องค์ประกอบของ CMRP ในหัวข้อ 1 (ดูรายการเต็มที่ [[Work Order Lifecycle]])
+- เงื่อนไข scheduling 2 ข้อ: เครื่องพร้อมให้ซ่อมตาม Production Plan และทรัพยากรพร้อมในวันทำงาน; อุปสรรคใหญ่ที่สุดคือความพร้อมของอะไหล่ (MPM p.69)
+- ประชุมประจำวันสั้น ๆ ตรวจความพร้อมงานพรุ่งนี้และสัปดาห์หน้า สอดคล้องกับ daily meeting ของ CMRP ในหัวข้อ 7; Resource Leveling Function ของ CMMS ช่วยปรับตารางแต่จัดอัตโนมัติไม่ง่าย (MPM p.69-70)
+
+### หมวดงานรอ (Wait) 5 หมวด (MPM p.70)
+
+| หมวด | ความหมาย |
+|---|---|
+| รออะไหล่ | อะไหล่ยังไม่พร้อม/ยังไม่มาถึง |
+| รอกำลังคน | ช่าง/ผู้เชี่ยวชาญไม่ว่าง |
+| รอเครื่องมือ | เครื่องมือพิเศษไม่พร้อม |
+| รอเครื่องจักรหยุด | ต้องรอโอกาสหยุดเครื่อง/ซ่อมใหญ่ |
+| อื่น ๆ | สาเหตุอื่น |
+
+ละเอียดกว่า RBMM ที่มี Wait for Material / Shutdown / Others (RBMM p.106) ใช้แยกติดตามเร่งรัด และสอดคล้องกับกฎ CMRP "ห้ามลงตารางงานที่ของยังไม่ครบ" ในหัวข้อ 7
+
+### ตัวอย่างผลของ planner ต่อการใช้กำลังคน (MPM p.227)
+
+| กรณี | คน | UF ที่เป็นเนื้องาน | เนื้องานรวม |
+|---|---|---|---|
+| ไม่มี planner | ช่าง 3 | 35% ต่อคน | 3 x 35% = 105% |
+| มี planner 1 คน | ช่าง 3 + planner 1 | ช่าง 55%, planner 0% | 3 x 55% = 165% |
+
+- หนังสือสรุปว่าเพิ่ม 165/105 = **1.57 เท่า** และโดยทั่วไป **ช่าง 20-30 คนต่อ planner 1 คน** (ยืนยันสัดส่วน 1:20-30 ของ CMRP ในหัวข้อ 3); ช่าง 30 คน + planner 1 คน เสมือนช่าง 30 x 1.57 = 47 คน ส่วนเกิน 17 คนนำไปทำ PM (MPM p.227)
+- **ข้อควรระวัง (derived)**: 1.57 เทียบเนื้องานของช่างกลุ่มเดิมโดยไม่นับต้นทุนหัวของ planner ถ้านับต่อหัวทั้ง 4 คน = 165%/4 = 41.25% ต่อหัว เทียบ 35% ต่อหัว = ดีขึ้นเพียง **1.18 เท่า** นอกจากนี้ตัวอย่างใช้ ratio planner 1:3 แต่ข้อสรุปใช้ 1:30 จึงเป็นการสมมติว่า UF 55% ยังทำได้เมื่อ planner 1 คนดูแล 30 คน และข้อความนำพิมพ์ "ช่าง 35 คน" ขณะที่ตัวอย่างใช้ช่าง 3 คน (น่าจะพิมพ์ผิด)
+- คำว่า Utilization Factor ในตัวอย่างนี้หมายถึงสัดส่วน "เนื้องาน" (35% -> 55%) ซึ่งใกล้แนวคิด wrench time ในหัวข้อ 8 มากกว่า B5 ของ RBMM; ทิศทางสอดคล้องกับ CMRP ที่งานวางแผนแล้วมี direct work 65% vs 35% (CMRP CMPR-08 p.50)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - งาน repetitive job plan และ bad actor (CMRP CMPR-09 p.22-24) ระบุได้จาก failure mode ที่เกิดซ้ำของ [[Compressor]] ตาม [[Failure Mode]] เช่นงานแก้ leakage ([[ELP External Leakage Process Medium]]) ซึ่งช่วยสร้าง standard job plan ต่อ [[Maintainable Item]] (การตีความ ไม่ใช่ข้อความสไลด์)
@@ -166,6 +199,8 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - [[Spare Parts Management]]
 - [[Maintenance Efficacy Pyramid]]
 - [[CMRP Course]]
+- [[Work Order Lifecycle]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -223,3 +258,13 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - Wrench Time [differs_from:: B5 Utilization Factor] hands-on time vs man-hours booked to WO, see Maintenance KPIs
 - [[Maintenance Planning and Scheduling]] [part_of:: [[Maintenance Efficacy Pyramid]]] level 3 work control
 - [[Maintenance Planning and Scheduling]] [related_to:: [[Maintenance Backlog and Schedule Compliance]]]
+- Planning Questions [applies_to:: [[Maintenance Planning and Scheduling]]] 7 questions of MPM planning stage (MPM p.68-69)
+- Work Order Scheduling [depends_on:: Spare Part Availability] biggest scheduling obstacle (MPM p.69)
+- Wait Status [has_category:: parts, manpower, tools, machine shutdown, others] 5 wait categories (MPM p.70)
+- Wait Status [differs_from:: Work Backlog Basket] RBMM has Material, Shutdown, Others only (RBMM p.106)
+- Planner [has_value:: 1:20-30] craftsmen per planner, confirms CMRP ratio (MPM p.227)
+- Planner Effect [has_value:: 1.57 times] 3 x 55% / 3 x 35% work content, excludes planner head (MPM p.227)
+- Planner Effect [has_value:: 1.18 times] per head incl. planner, 41.25% vs 35%, derived (MPM p.227)
+- Planner Effect [has_value:: 47 equivalent craftsmen] 30 craftsmen x 1.57, 17 extra to PM (MPM p.227)
+- MPM Utilization Factor Work Content [related_to:: Wrench Time] 35% to 55% work content, closer to wrench time than B5, wiki interpretation
+- [[Maintenance Planning and Scheduling]] [related_to:: [[Work Order Lifecycle]]]

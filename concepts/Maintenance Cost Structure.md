@@ -1,17 +1,17 @@
 ---
 title: Maintenance Cost Structure
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [cost, budget, maintenance-management, kpi, spare-parts, book]
-sources: [reliability-based-maintenance-management.md]
+tags: [cost, budget, maintenance-management, kpi, spare-parts, book, mpm]
+sources: [reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Maintenance Cost Structure
 
-โครงสร้างต้นทุนบำรุงรักษาตาม RBMM แบ่งเป็น **Full Fixed Cost** (ค่าใช้จ่ายคงที่ครบถ้วนที่เห็นในรูป Man-Hrs ใน Work Order) กับ **Materials** (ค่าใช้จ่ายแปรผัน: อะไหล่ + จ้างเหมา) และมีกลไกเชื่อมคือ **Full Fixed Cost Rate** (อัตราค่าแรงมาตรฐาน) กับ **Over/(Under) Absorption** (ส่วนต่างระหว่างค่าที่คิดด้วยอัตรามาตรฐานกับค่าจริง) หน้านี้รวมเนื้อหาจากบท 3, 10 และ 11 ของหนังสือ การนำไปทำงบดู [[Maintenance Budget]] ตัวเลขทั้งหมดเป็นตัวอย่างสมมติของหนังสือ
+โครงสร้างต้นทุนบำรุงรักษาตาม RBMM แบ่งเป็น **Full Fixed Cost** (ค่าใช้จ่ายคงที่ครบถ้วนที่เห็นในรูป Man-Hrs ใน Work Order) กับ **Materials** (ค่าใช้จ่ายแปรผัน: อะไหล่ + จ้างเหมา) และมีกลไกเชื่อมคือ **Full Fixed Cost Rate** (อัตราค่าแรงมาตรฐาน) กับ **Over/(Under) Absorption** (ส่วนต่างระหว่างค่าที่คิดด้วยอัตรามาตรฐานกับค่าจริง) หน้านี้รวมเนื้อหาจากบท 3, 10 และ 11 ของหนังสือ การนำไปทำงบดู [[Maintenance Budget]] ตัวเลขทั้งหมดเป็นตัวอย่างสมมติของหนังสือ หัวข้อ 9-13 เพิ่มมุมมองจาก [[Maintenance Profit Maker Book]] (MPM บทที่ 6, 7, 10, 14) ซึ่งใช้ชุดตัวอย่างบริษัท XYZ ต่างจาก RBMM และมีข้อขัดแย้งเรื่องค่าครอบครองอะไหล่ (MPM-C1, หัวข้อ 13)
 
 ## 1. ภาพรวมโครงสร้าง (RBMM p.278-279)
 

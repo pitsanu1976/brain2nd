@@ -1,12 +1,12 @@
 ---
 title: Asset Life Cycle
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [maintenance-management, criticality, spare-parts, cost, book, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [maintenance-management, criticality, spare-parts, cost, book, cmrp, mpm, lcc]
+sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Asset Life Cycle (วงจรชีวิตทรัพย์สินและกลุ่มงานบำรุงรักษา)
@@ -29,6 +29,22 @@ contested: false
 - หลัง Commissioning ต้นทุนทั้งหมดโอนเข้าบัญชีสินทรัพย์และเริ่มคิด Depreciation (RBMM p.15)
 - ผู้ซื้อควรถามตั้งแต่ต้นว่า โรงงานมีโอกาสเดินต่อเนื่องไม่มี breakdown จนถึง Major Overhaul/Turnaround ครั้งถัดไปกี่ % (RBMM p.16) นำไปสู่ Zero Plant Breakdown
 
+### แหล่งที่สอง: MPM รูป 1.1 / 2.1 / 13.1 และข้อขัดแย้ง MPM-C2 (เพิ่ม 2026-10-28)
+
+[[Maintenance Profit Maker Book]] (ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM) ใช้รูปวงจรชีวิตเดียวกันซ้ำ 3 ครั้ง (รูป 1.1 MPM p.14, รูป 2.1 MPM p.38, รูป 13.1 MPM p.244) ลำดับ Feasibility -> Project -> Engineering -> EPC -> Commissioning -> warranty -> ช่วงผลิตและซ่อมบำรุง (เสีย/ชำรุด, ซ่อมใหญ่, โครงการขยาย/ปรับปรุง) -> ราคาซาก พร้อมป้าย 70/85/95/100% จึงยืนยัน Fig 1.1 ของ RBMM เป็นแหล่งที่สอง (ป้ายในรูปอ่านจาก OCR ไม่ครบทุกจุด)
+
+**ข้อขัดแย้ง MPM-C2 (% ต้นทุนที่ถูกล็อกตั้งแต่ engineering/design):** ข้อความของ MPM ไม่ตรงกับป้ายในรูปของตัวเองและไม่ตรงกับ RBMM ยังไม่ resolve
+
+| มุมมอง | Feasibility | Project | Engineering | EPC / Commissioning |
+|---|---|---|---|---|
+| RBMM Fig 1.1 (RBMM p.14) | ประมาณ 70% | - | 85% ถึง 95% | 100% |
+| MPM ข้อความ p.39 | 70% | 80% | 90% | ใกล้ 100% |
+| MPM ข้อความ p.14 | - | - | 80% ("ถึงจุดนี้กำหนดราคาได้แล้ว") | - |
+
+- ป้ายในรูป MPM 1.1 / 2.1 / 13.1 คือ 70 / 85 / 95 / 100% เหมือน RBMM (ตำแหน่งที่ผูกกับแต่ละช่วงอ่านจาก OCR ได้ไม่ชัด) ขัดกับข้อความ p.39 และ p.14 ของเล่มเดียวกัน
+- ทุกมุมมองเห็นตรงกันว่าต้นทุนส่วนใหญ่ถูกกำหนดก่อนก่อสร้าง ต่างกันที่ตัวเลขของช่วง Project/Engineering ใช้เป็นแนวโน้ม ไม่ใช่ค่าแม่นยำ
+- เนื้อหา LCC 3 ช่วงของ MPM อยู่ที่ [[Life Cycle Cost and Life Cycle Profit]]
+
 ## 2. อะไหล่ 2 ประเภทหลัง Commissioning (RBMM p.15-16)
 
 | ประเภท | วัตถุประสงค์ | บัญชี | หมายเหตุ |
@@ -37,6 +53,8 @@ contested: false
 | Maintenance Spare Part | สำรองคลังไว้ใช้ตลอดอายุปกติ | Current Asset ไม่คิดค่าเสื่อม | holding cost รวมราว 15-20% ของราคาอะไหล่ (RBMM p.16) |
 
 Long Term Asset (ตัวโรงงาน) ตัดค่าเสื่อมรายปีอัตราคงที่ เช่น 15-20-25 ปี (RBMM p.15) เครื่องจักรต้องมีอายุใช้งานตลอดช่วงตัดค่าเสื่อม ซึ่งหนังสือระบุว่าเป็นหน้าที่ของบำรุงรักษา (RBMM p.18)
+
+**ข้อขัดแย้ง MPM-C7 (อายุตัดค่าเสื่อม):** MPM ระบุว่าสินทรัพย์ถาวรทั่วไปตัดเป็นค่าใช้จ่ายได้ **10-20 ปีตามกฎหมาย** (MPM p.256) ขณะที่ RBMM ให้ 15-20-25 ปี (RBMM p.15) ผู้แต่งชุดเดียวกันให้ช่วงต่างกัน น่าจะเป็นค่าตัวอย่างทั้งคู่ (MPM ยังเขียนการตัดค่าเสื่อมงานปรับปรุงเป็น 1/5, 1/10 หรือ 1/15 ต่อปี MPM p.22) ยังไม่ resolve; อายุจริงต้องยึดนโยบายบัญชีของบริษัท (ไม่มีใน sources) ส่วนการจัด Maintenance Spare Part เป็น Current Asset นั้น MPM ยืนยันตรงกัน (รูป 14.6, MPM p.262-263)
 
 ## 3. เส้นแดง: งานเทคนิคเชื่อมงบการเงิน (Fig 1.2, RBMM p.16-20)
 
@@ -77,6 +95,9 @@ Criticality เปลี่ยนตาม Stress, Resistance และแผน
 | 3 Target | เสียเฉพาะ C/B ที่ไม่กระทบหยุดโรงงาน = Zero Plant Down Time |
 
 ค่าใช้จ่ายต่ำสุดขึ้นกับยุทธศาสตร์เชิงรุก เช่น RCM, RBI (Risk Based Inspection), Condition Monitoring PM และการตั้งงบ ดู [[Criticality Assessment]] และ [[RCM Reliability Centered Maintenance]]
+
+- **หมายเหตุชื่อ RBI**: MPM p.248 เขียน "Risk Base Inspection" ตรงกับหน้านี้ แต่ MPM p.252 เขียน "Reliability Based Inspection (RBI)" ซึ่งเป็นความคลาดเคลื่อนของหนังสือ ชื่อที่ถูกคือ **Risk-Based Inspection** (API 580/581, ความรู้ทั่วไป) MPM เพิ่มว่า RBI ได้ผลเมื่อมีกฎหมายรองรับการลดความถี่/เวลาหยุด และใช้กับ stationary equipment (ท่อ, ภาชนะความดัน, pipe hanger, heater, heat exchanger) (MPM p.248)
+- MPM รูป 13.4 แสดงพลวัตเดียวกันด้วยการแบ่ง 30/50/20% (MPM p.247) รายละเอียดที่ [[Criticality Assessment]]
 
 ## 6. Zero (Plant) Breakdown @ Minimum Cost (Fig 1.5, RBMM p.25-27)
 
@@ -134,6 +155,30 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - กราฟประกอบ P-F curve ในสไลด์ระบุว่าประมาณ 70% ของต้นทุน maintenance and repair (M&R) ถูกกำหนดตั้งแต่ช่วง design; ยิ่งใกล้จุด F ต้นทุนและ OEE losses ยิ่งสูง ดู [[P-F Interval and Condition Monitoring]]
 - **อย่ารวมกับตัวเลข 70% ของ RBMM** (หัวข้อ 1): RBMM วัด "ราคา/ต้นทุนการลงทุนที่ถูกล็อก" ในช่วง Feasibility Study (อ่านจาก Fig 1.1) ส่วน CMRP วัด "ต้นทุน M&R ตลอดอายุที่ถูกกำหนดโดยการออกแบบ" คนละฐาน คนละช่วงเวลา ตัวเลขเท่ากันโดยบังเอิญ จึงไม่ใช่การยืนยันกันและไม่ใช่ข้อขัดแย้ง ทั้งสองแหล่งไม่ได้อ้างที่มาของ 70%
 
+## 10. มุมมอง MPM: Physical Asset Management (เพิ่ม 2026-10-28)
+
+[[Maintenance Profit Maker Book]] บทที่ 13 สรุปงานบำรุงรักษาทั้งเล่มเป็นภาพเดียว: Physical Asset Management คือทำให้ทรัพย์สินที่ครอบครอง "ทำงานคุ้มค่า" เต็มศักยภาพ แบบองค์รวม (เทคนิค + การจัดการ) โดยพิจารณาค่าครอบครอง ค่าบำรุงรักษา และคุณค่าที่คาดหวัง (MPM p.244, p.252)
+
+### 3 ช่วงของทรัพย์สินในงบดุล (MPM p.244-245)
+
+| ช่วง | สถานะในงบดุล | ประเด็น |
+|---|---|---|
+| 1. Acquisition | กำลังจะเข้างบดุล | สำคัญมาก เพราะเป็นการ implement กลยุทธ์ธุรกิจและกำหนดกิจกรรมที่ตามมาทั้งหมด ต้องใช้ข้อมูลในอดีตกำหนด spec |
+| 2. ช่วงใช้งาน | เป็นทรัพย์สินในงบดุล มีค่าใช้จ่ายและรายได้ | เป้าคือผลผลิตสูงสุดเท่าที่เครื่องทำได้ ปรับปรุงตามจำเป็น |
+| 3. Disposal | ออกจากงบดุล | อาจมีรายได้ขายซากหรือค่ากำจัด |
+
+ตรงกับ 3 ช่วงค่าใช้จ่ายของ LCC ใน [[Life Cycle Cost and Life Cycle Profit]]
+
+### กรอบ Strategy -> Plan -> Implement ของช่วงใช้งาน (MPM p.245-251)
+
+1. **Strategy**: เป้าหมาย = ลดผลกระทบของการชำรุดต่อธุรกิจ; หลักคิด 5 ข้อ: ปรัชญาการบริหาร, ธรรมชาติของกระบวนการ/เครื่องจักร, เงื่อนไขตลาด/ที่มารายได้, ความสำคัญด้านคุณภาพสินค้า, ความสำคัญด้านความปลอดภัย (MPM p.245-246)
+2. **Plan (แยกกลุ่มตามความวิกฤติ)**: ขึ้นทะเบียนทรัพย์สินใน [[CMMS]] -> วิเคราะห์ความวิกฤติ 7 เกณฑ์ -> จัดอันดับ (ทบทวนสม่ำเสมอ) -> แบ่ง 30/50/20% แล้วเลือกกลยุทธ์และ service level อะไหล่ต่อกลุ่ม (รูป 13.2, MPM p.245-250) รายละเอียดที่ [[Criticality Assessment]]
+3. **Implement**: ให้ทุกฝ่ายมีส่วนร่วมผ่าน 3 แนวทาง TPM (เพิ่ม OEE), คุณภาพ (รวมความปลอดภัยและสิ่งแวดล้อม) และการปฏิบัติการผลิต (เทียบเงื่อนไขออกแบบกับที่ทำได้จริง); ทุกระดับเลือก outsource ได้; มี focused team, benchmarking และ 5ส กำกับ (รูป 13.8, MPM p.250-251) ดู [[TPM and Lean Maintenance]] และ [[Availability and OEE]]
+
+- ผลลัพธ์ปลายทางในรูป 13.2: Improved Reliability / Availability / Maintainability
+- ผู้เขียนมองว่า Reliability Engineering / RCM จะเป็นบรรทัดฐานในอนาคตอันใกล้ แต่ได้ผลเมื่อมีประวัติชำรุด/ซ่อมสมบูรณ์ต่อเนื่องและโมเดลค่าใช้จ่ายของบริษัทที่ถูกต้อง (MPM p.252)
+- เทียบวงจร Think -> Plan & Act -> Reporting & Control ของ RBMM ในหัวข้อ 8: โครงคล้ายกัน แต่ MPM ไม่มีขั้น Reporting & Control แยก (การเทียบเป็นการตีความของ wiki)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - บทนี้ไม่ได้อ้าง [[OREDA]] หรือ [[ISO 14224]] และไม่มีเนื้อหา compressor โดยตรง
@@ -150,6 +195,9 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - [[Failure Hierarchy]]
 - [[PM Interval Optimization]]
 - [[CMRP Course]]
+- [[Life Cycle Cost and Life Cycle Profit]]
+- [[Engineering Economics and Time Value of Money]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -216,3 +264,26 @@ Think (เป้าหมาย/ยุทธศาสตร์) แล้ว Pla
 - Economic Optimum Interval [related_to:: [[PM Interval Optimization]]] same minimum total cost principle
 - M&R Cost Fixed at Design [has_value:: about 70%] of maintenance and repair cost determined at design (CMRP CMPR-01 p.29)
 - M&R Cost Fixed at Design [differs_from:: Feasibility Study] RBMM 70% is investment cost locked at feasibility; different measure, do not merge
+- [[Asset Life Cycle]] [defined_in:: [[Maintenance Profit Maker Book]]] same life cycle figure reused (MPM Fig 1.1 p.14, Fig 2.1 p.38, Fig 13.1 p.244)
+- MPM Life Cycle Figure Labels [has_value:: 70/85/95/100%] confirms RBMM Fig 1.1 labels (MPM p.14, p.244)
+- MPM Text Cost Locked at Engineering [has_value:: 90%] Feasibility 70, Project 80, EPC near 100 (MPM p.39) [contested:: true]
+- MPM Text Cost Locked at Engineering [contradicts:: RBMM Cost Locked at Engineering Design] MPM-C2; MPM p.14 says 80% [contested:: true]
+- RBMM Cost Locked at Engineering Design [has_value:: 85% to 95%] (RBMM Fig 1.1 p.14) [contested:: true]
+- RBMM Cost Locked at Engineering Design [contradicts:: MPM Text Cost Locked at Engineering] MPM-C2 [contested:: true]
+- MPM Depreciation Life [has_value:: 10-20 years] by law (MPM p.256) [contested:: true]
+- MPM Depreciation Life [contradicts:: RBMM Depreciation Life] MPM-C7 [contested:: true]
+- RBMM Depreciation Life [has_value:: 15-20-25 years] (RBMM p.15) [contested:: true]
+- RBMM Depreciation Life [contradicts:: MPM Depreciation Life] MPM-C7 [contested:: true]
+- Maintenance Spare Part [has_category:: Current Asset] also MPM Fig 14.6 (MPM p.262-263)
+- Risk-Based Inspection [alias_of:: RBI] MPM p.252 Reliability Based Inspection is a book error (MPM p.248, p.252)
+- Risk-Based Inspection [applies_to:: Stationary Equipment] piping, pressure vessels, heaters, heat exchangers; needs legal backing (MPM p.248)
+- Physical Asset Management [has_part:: Acquisition] asset entering balance sheet, implements business strategy (MPM p.244-245)
+- Physical Asset Management [has_part:: Operation Phase] asset on balance sheet (MPM p.244-245)
+- Physical Asset Management [has_part:: Disposal] asset leaves balance sheet, salvage revenue or disposal cost (MPM p.244-245)
+- Strategy [step_of:: Physical Asset Management] goal reduce failure impact on business; 5 principles (MPM p.245-246)
+- Plan [step_of:: Physical Asset Management] register, criticality, rank, 30/50/20 groups (MPM p.245-250)
+- Implement [step_of:: Physical Asset Management] TPM, quality, production operation (MPM p.250-251)
+- Implement [uses:: [[TPM and Lean Maintenance]]] raise OEE (MPM p.250-251)
+- Physical Asset Management [produces:: Improved Reliability Availability Maintainability] (Fig 13.2, MPM p.245)
+- Physical Asset Management [related_to:: Asset Management Cycle] similar to RBMM Think/Plan and Act/Reporting and Control, interpretation [confidence:: low]
+- [[Asset Life Cycle]] [related_to:: [[Life Cycle Cost and Life Cycle Profit]]]

@@ -1,10 +1,10 @@
 ---
 title: CMMS
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality, work-management, cmrp]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
+tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality, work-management, cmrp, mpm, work-order]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: high
 contested: false
 ---
@@ -118,6 +118,58 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 
 (CMRP CMPR-09 p.5, p.15, p.21) เป็นความต่างของแนวปฏิบัติ ไม่ใช่ข้อขัดแย้งเชิงข้อเท็จจริง: RBMM เน้นลดขั้นตอนให้น้อยที่สุด ส่วน CMRP ผูกการอนุมัติกับวงเงินงาน องค์กรต้องเลือกเองว่าจะใช้ approval matrix ตามวงเงินหรือไม่ (ไม่ตั้ง contested)
 
+## CMMS ในมุมของ MPM: ระบบงาน 9 ข้อ, road map และประโยชน์ (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] (ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM) วงจร WO 6 ขั้นแบบละเอียดอยู่ที่ [[Work Order Lifecycle]]
+
+### ระบบบริหารงานบำรุงรักษา (MMS) ที่ดีต้องมี 9 ข้อ (MPM p.60-61)
+
+1. ขึ้นทะเบียนเครื่องจักรทั้งหมดพร้อมข้อมูลเทคนิค การเงิน และการบริหาร
+2. จัดหมวดเครื่องตาม Criticality Classification เพื่อกำหนดชนิดงานและลำดับ ดู [[Criticality Assessment]]
+3. ติดตามงานทั้ง 16 ประเภทตั้งแต่ต้นจนจบ เก็บประวัติครบ
+4. ตอบสนองข้อกำหนดด้านสิ่งแวดล้อม
+5. รวมการบริหารความปลอดภัยทั้งคนและทรัพย์สิน
+6. บันทึกค่าใช้จ่ายด้วยระบบบัญชีที่ถูกต้อง โดยเฉพาะการตั้งและใช้งบ
+7. ทำงานสอดคล้องกับระบบอื่น (ผลิต บัญชี/การเงิน บุคคล คลัง) โดย **ไม่บันทึกซ้ำ (No Double Entry)**
+8. บันทึกข้อมูลเทคนิคเพื่อใช้ร่วมกับข้อมูลการเงินทำแผนยุทธศาสตร์
+9. ให้รายงานเชิงวิเคราะห์ทั้งเทคนิคและเศรษฐศาสตร์
+
+MPM เน้นว่า MMS ที่ดีใช้ได้ทั้งแบบมีและไม่มีคอมพิวเตอร์ (MPM p.60)
+
+### Single Entry และการแก้ข้อมูลประวัติ (MPM p.73-74, p.203-204)
+
+- ข้อมูลเกิดที่ระบบเดียวเท่านั้น MMS ต้องกระทบยอดกับระบบอื่นตลอด การแก้ข้อมูลจุดเดียวโดยพลการ (เช่น จำนวนอะไหล่ใน WO โดยไม่แก้ใบเบิกคลัง) ทำให้ค่าใช้จ่ายไม่ตรงงบการเงิน
+- งานที่ปิดแล้วแก้ได้เฉพาะผู้มีอำนาจตามขั้นตอนที่ถูกต้อง; ถ้าแก้ประวัติหลังปิดงวดบัญชี รายงานบำรุงรักษาจะไม่ตรงบัญชี
+- บทที่ 12 เรียกหลักเดียวกันว่า **Entry Once Basis** (ลดข้อมูลซ้ำซ้อน) (MPM p.224-227)
+
+### Road Map to Maintenance Excellence 5 ระดับ (MPM p.25-33)
+
+| ระดับ | สถานะ | ลักษณะ (ย่อ) |
+|---|---|---|
+| 1 | Without MMS | งานเร่งด่วนสูงมาก ไม่มีประวัติ/รายงาน ตั้งงบโดยบวก % จากปีก่อน วัด OEE ไม่ได้ |
+| 2 | With MMS (ไม่มีคอมพิวเตอร์) | ชั่วโมงงานรวมลดลง ซ่อมใหญ่ดีขึ้น PM ถูกจุดขึ้น |
+| 3 | With CMMS (ใช้ไม่เต็มที่) | breakdown ลด proactive เพิ่ม ซ่อมใหญ่สั้นลง |
+| 4 | With CMMS & ME beginning | ระบบแข็งแรง พร้อม Sustainable Operation |
+| 5 | With CMMS & ME ongoing | หยุดไม่คาดหมายลดมาก งานเกือบทั้งหมดวางแผนได้ Predictive แม่นขึ้น |
+
+(ME = Maintenance Engineering) ผู้เขียนย้ำว่าการใช้ Reliability Engineering โดยไม่มีข้อมูลเป็นเรื่องเหลวไหล (MPM p.32-33) เป็นกรอบคู่ขนานกับพีระมิดของ RBMM ใน [[Maintenance Efficacy Pyramid]]
+
+### ประโยชน์ของ CMMS 8 ข้อ (MPM p.30)
+
+1. แยกความซับซ้อนด้านบริหารออกจากด้านเทคนิค (De-coupling)
+2. เชื่อม (Coupling) ข้อมูลเทคนิคให้งานส่วนต่าง ๆ เป็นระบบ
+3. ลดเวลาประเมินประวัติซ่อม
+4. เก็บ/เชื่อมประวัติและสมรรถนะเครื่องด้าน availability, speed, quality
+5. ประวัติซ่อมเป็นฐานวิเคราะห์การเสียผิดปกติ -> Modification Project -> ใช้อะไหล่เหมาะสม/ลดลง
+6. Spare Part Optimisation เป็นกิจกรรมต่อเนื่องได้
+7. เตรียมพร้อมสู่ Reliability Improvement เพราะมีประวัติการเสียครบ
+8. สนับสนุนการควบคุมด้วย Performance Indices มาตรฐานสากล
+
+### CMMS คือ "ระบบงาน" ไม่ใช่ซอฟต์แวร์ และผลตอบแทนที่ต่ำ
+
+- ซื้อ CMMS = ซื้อระบบงาน (ขั้นตอนที่ทุกคนต้องทำ ป้อนข้อมูลถูกต้อง) ความสำเร็จอยู่ที่การ Implement งานฝั่งผู้ใช้: วางโครงสร้างข้อมูลเครื่อง/อะไหล่, กำหนดงานบำรุงรักษาทุกเครื่อง, กำหนดความรับผิดชอบต่อข้อมูล, โครงสร้างประวัติซ่อมเพื่อ RCA/FMECA, รายงานและดัชนี, เชื่อมระบบอื่น, มี Planning Function และเจ้าภาพงานวางแผน (MPM p.160-161)
+- MPM อ้างว่ามีข้อมูลว่า CMMS ที่ลงทุนไป **ได้ผลไม่ถึง 25%** ของที่ตั้งใจ (ROI ต่ำกว่าเป้า) (MPM p.226) หนังสือไม่ระบุแหล่งข้อมูลของตัวเลขนี้ จึงควรถือเป็นข้อกล่าวอ้าง ไม่ใช่ benchmark (confidence ต่ำ) ทิศทางสอดคล้องกับ RBMM ที่ประเมินว่า CMMS ส่วนใหญ่ใช้ไม่คุ้ม "ราวไม่ถึงครึ่ง" (RBMM p.90) แต่ตัวเลขต่างกันเพราะเป็นการประเมินคนละมิติ (สัดส่วนผลที่ได้ vs สัดส่วนองค์กรที่คุ้ม) ไม่ตั้ง contested
+
 ## ดูเพิ่ม
 
 - [[Failure Data Recording]]
@@ -128,6 +180,8 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - [[Spare Parts Management]]
 - [[Maintenance Planning and Scheduling]]
 - [[Maintenance Backlog and Schedule Compliance]]
+- [[Work Order Lifecycle]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -180,3 +234,11 @@ ISO 14224 เรียกระบบนี้ว่า **CMMIS** (computerised 
 - Work Order Backlog [depends_on:: Backlog Purging] inaccurate backlog nearly useless; formal review every 3 months, informal monthly (CMRP CMPR-10 p.2-3)
 - Stock Reservation [part_of:: [[CMMS]]] planner reserves stock for planned jobs (CMRP CMPR-09 p.30); RBMM reservation transaction affects Available (Fig 4.9, RBMM p.103)
 - CMRP Approval Points [differs_from:: CMMS Work Flow] authorization at screening, by estimate value, requester acceptance vs RBMM 2 approval points (CMRP CMPR-09 p.5, p.15, p.21; RBMM p.104)
+- [[CMMS]] [has_value:: 9 requirements] good MMS: register, criticality, track 16 jobs, environment, safety, accounting, no double entry, technical data, analytical reports (MPM p.60-61)
+- [[CMMS]] [depends_on:: Single Entry] data born in one system; closed records changed only by authorized procedure (MPM p.73-74, p.203-204)
+- Maintenance Maturity Road Map [has_value:: 5 levels] Without MMS, With MMS, With CMMS, With CMMS and ME beginning, With CMMS and ME ongoing (MPM p.25-33)
+- Maintenance Maturity Road Map [related_to:: [[Maintenance Efficacy Pyramid]]] parallel framework, wiki interpretation
+- [[CMMS]] [produces:: De-coupling of Management Complexity] benefit 1 of 8 CMMS benefits (MPM p.30)
+- [[CMMS]] [has_value:: 8 benefits] de-coupling, coupling, faster history review, performance history, failure analysis to modification, continuous spare optimisation, reliability improvement, standard indices (MPM p.30)
+- [[CMMS]] [has_value:: less than 25%] share of intended result achieved by CMMS investment; book cites no data source [confidence:: low] (MPM p.226)
+- [[CMMS]] [related_to:: [[Work Order Lifecycle]]] 6-stage MMS process (MPM p.61)

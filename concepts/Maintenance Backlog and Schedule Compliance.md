@@ -1,10 +1,10 @@
 ---
 title: Maintenance Backlog and Schedule Compliance
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [work-management, kpi, maintenance-management, cmms, cmrp]
-sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md]
+tags: [work-management, kpi, maintenance-management, cmms, cmrp, mpm, work-order]
+sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -102,6 +102,26 @@ Schedule Effectiveness = Schedule Performance x สัดส่วนชั่�
 
 ช่วงเริ่มใช้ scheduling ปัญหาที่ซ่อนอยู่จะโผล่ขึ้น ให้บันทึก รายงาน และดู trend (p.6)
 
+## 6. Backlog ในมุมของ MPM (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] ดัชนีการบริหารข้อ 5.8 และบทที่ 4
+
+```
+Backlog (MPM) = Man-Hours ที่ต้องใช้ทำงานที่เหลือ / Man-Hours กำลังคนที่พร้อม
+```
+
+- ความหมาย: งานค้างต้องใช้อีกกี่ **วัน** จึงเสร็จ (MPM p.155-156) หนังสือ **ไม่ให้เป้าตัวเลข**
+- หัวข้อดัชนีเขียนว่า "ต่อสัปดาห์" และ "ต่องานที่เข้ามาทั้งหมด" แต่สูตรเป็น man-hours ที่เหลือ / man-hours ที่พร้อม และอธิบายเป็นจำนวนวัน หน่วยจึงขึ้นกับว่าใช้ man-hours พร้อมต่อวันหรือต่อสัปดาห์ (หนังสือไม่ระบุชัด)
+- บทที่ 4 ให้ WO ที่เปิดแล้วเข้ากลุ่ม Backlogs ทันที และมีรายงาน Work Request Backlogs แยกต่างหากสำหรับ WR ที่ยังไม่ได้ตอบสนอง (MPM p.63-67) ดู [[Work Order Lifecycle]]
+
+| ประเด็น | MPM | CMRP (หัวข้อ 1-2) |
+|---|---|---|
+| หน่วย | วัน (ไม่ชัด อาจเป็นสัปดาห์) | สัปดาห์ |
+| ขอบเขตงาน | งานที่เหลือทั้งหมด | WO เปิดที่ยังไม่ลงตาราง |
+| เป้า | ไม่ให้ | 2-3 หรือ 3-6 สัปดาห์ |
+
+ต่างที่หน่วยและขอบเขต ไม่ใช่ขัดเชิงหลักการ (ไม่ตั้ง contested) เมื่อเทียบตัวเลข ให้แปลงหน่วยและตรวจขอบเขตก่อน (การตีความของ wiki)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - % Emergency และ schedule break ส่วนใหญ่มาจาก CM-Unplanned ที่ระบุ failure mode ได้ ถ้าบันทึก [[Failure Mode]] ของ [[Compressor]] ใน WO จะแยกได้ว่างานแทรกมาจาก mode ใด (เช่น [[UST Spurious Stop]]) แล้วส่งต่อให้ [[Root Cause Analysis]] (การตีความ ไม่ใช่ข้อความสไลด์)
@@ -113,6 +133,8 @@ Schedule Effectiveness = Schedule Performance x สัดส่วนชั่�
 - [[CMMS]]
 - [[Turnaround Management]]
 - [[CMRP Course]]
+- [[Work Order Lifecycle]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -148,3 +170,6 @@ Schedule Effectiveness = Schedule Performance x สัดส่วนชั่�
 - Underestimated Job Time [has_category:: cause of schedule non-compliance] (CMRP CMPR-10 p.6)
 - Schedule Compliance [measures:: Schedule Adherence] tracked weekly by planner for corrective action, not blame (CMRP CMPR-10 p.4)
 - [[Maintenance Backlog and Schedule Compliance]] [related_to:: [[Maintenance KPIs]]]
+- MPM Backlog [has_formula:: remaining job man-hours / available man-hours] expressed in days, no target (MPM p.155-156)
+- MPM Backlog [differs_from:: Backlog] MPM days and all remaining work vs CMRP weeks and unscheduled WOs with 2-3 or 3-6 week target
+- Work Request Backlogs [related_to:: [[Work Order Lifecycle]]] unanswered WR report for expediting or cancelling (MPM p.63-64)

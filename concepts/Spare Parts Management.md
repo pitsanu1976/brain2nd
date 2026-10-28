@@ -1,12 +1,12 @@
 ---
 title: Spare Parts Management
 created: 2026-10-20
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp, spo, warehousing, procurement, inventory-control]
-sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
+tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp, spo, warehousing, procurement, inventory-control, mpm]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Spare Parts Management
@@ -167,6 +167,102 @@ contested: false
 - สถานะ: ยังไม่ resolve (ช่วงทับกันที่ 3%; ตัวหารใกล้เคียงแต่ไม่เหมือนกัน) รายละเอียดและสาเหตุที่เป็นไปได้ดู [[SPO vs RBMM Spare Parts Approaches]] หัวข้อ C2 (ข้อความเดิมก่อน resolve)
 - ผู้ใช้ตัดสิน 2026-10-27: ยึดเป้ามูลค่าสต็อกตาม SPO คือไม่เกิน 4% ของ GPI (3-4% สำหรับโรงงานเน้นเครื่องจักรในไทย, 1-1.5% สำหรับเครื่องจักรไม่ซับซ้อน) ค่า 1-3% ของ RBMM เก็บไว้เป็นข้อมูลอ้างอิง (resolved)
 
+## มุมมองจาก MPM (เพิ่ม 2026-10-28)
+
+หนังสือ [[Maintenance Profit Maker Book]] (MPM, ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM) บทที่ 5 และ 12 มองอะไหล่เป็นทั้งทรัพย์สินหมุนเวียนในงบดุลและค่าใช้จ่ายในงบกำไรขาดทุน (MPM p.90)
+
+### ความสำคัญและระดับสต็อกเฉลี่ย (MPM p.84-85)
+
+- ประเทศอุตสาหกรรมเก็บสำรองอะไหล่เฉลี่ยราว **3-5% ของราคาเครื่องจักร** ใช้เป็นดัชนีสอบทานสำหรับโรงงานใหม่ (MPM p.84-85) เป็น **ค่าเฉลี่ยที่พบ ไม่ใช่เป้า** และฐานต่างกัน (ราคาเครื่องจักร vs GPI) จึงไม่ใช่ข้อขัดแย้ง; เป้าที่ผู้ใช้ตัดสินแล้ว (2026-10-27) ยังคงเป็นไม่เกิน 4% ของ GPI ตาม SPO (ดูหัวข้อข้อขัดแย้ง resolved ข้างบน) ปลายบน 5% ของ MPM เกินเกณฑ์นี้
+- MPM เน้นว่า % รวมไม่ใช่ประเด็นหลัก สิ่งสำคัญคือ **การกระจายของอะไหล่** ตามความวิกฤตของเครื่อง (MPM p.85)
+- ต้นทุนอะไหล่มี 2 ด้าน: ต้นทุนการมีและเก็บ + ต้นทุนการขาด; ในไทยอะไหล่ส่วนใหญ่นำเข้า lead time นาน จึงต้องเก็บมาก; ปัญหาที่ทำให้ส่วนน้อยได้ผลคุ้ม: อุปกรณ์หลากหลาย อะไหล่เดียวกันถูกตั้งรหัส/ชื่อต่างกัน อัตราใช้และ lead time ไม่คงที่ (MPM p.84) ดู [[Parts Interchangeability]]
+
+### ข้อขัดแย้ง MPM-C1: Holding cost (contested)
+
+| มุมมอง | ค่า | แหล่ง |
+|---|---|---|
+| MPM ข้อความหลัก | ค่าใช้จ่ายเก็บสำรองราว **20-40%** ของมูลค่าอะไหล่ที่เก็บ (ไม่ระบุว่าต่อปี แต่บริบทคือรายปี) | MPM p.84 |
+| MPM ตัวอย่างตัวเลข | คิดเฉพาะต้นทุนการเงิน **6%** (สต็อก 500 ล้าน ลด 10% ประหยัดดอกเบี้ย 3 ล้าน/ปี) และ **10%** (WACC, XYZ) | MPM p.17, p.108, p.180-181 |
+| RBMM | **15-20%** ของมูลค่าอะไหล่ต่อปี | RBMM p.16, p.34, p.234 |
+| SPO | 30% เป็นตัวอย่าง และให้คำนวณ COP | SPO p.104, p.120 |
+
+- ตัวอย่างของ MPM ใช้ขอบเขตแคบ (ดอกเบี้ยอย่างเดียว) จึงต่ำกว่าข้อความหลักของเล่มเองมาก และช่วง 20-40% สูงกว่า 15-20% ของ RBMM ทั้งที่ผู้แต่งซ้อนกัน สถานะ: ยังไม่ resolve ข้อแนะนำเชิงปฏิบัติ (การตีความของ wiki): ระบุขอบเขตของ holding cost ทุกครั้ง (เฉพาะดอกเบี้ย vs COP เต็ม) ก่อนใช้ใน EOQ หรือ business case ดู [[EOQ and Reorder Point]]
+- ตัวอย่าง p.17 ต่อ: ประหยัด 3 ล้าน/ปี = งบปรับปรุงงานอะไหล่ได้ 3 ล้าน (ค่าใช้จ่าย) หรือ 15 ล้าน (งบลงทุนตัดค่าเสื่อม 5 ปี) (derived ตรวจแล้ว: 500 x 6% x 10% = 3; 3 x 5 = 15)
+
+### เป้าหมาย 4 ข้อ (MPM p.84)
+
+Stock Level ต่ำสุด, Stock Availability / Service Level สูงสุด, Stock Turnover สูงสุด โดย Plant Availability สูงสุด ตรงกับเป้าหมายขัดกัน 4 ข้อของ RBMM (RBMM p.101) สูตร Service Level ของ MPM = จำนวนรายการที่เบิกได้ครบ / จำนวนรายการที่เบิกทั้งหมด (line fill rate) เป็นดัชนีสำคัญแต่ใช้คุมน้อยเกินไป (MPM p.86) เป้าเชิงตัวเลขของ turnover และ service level อยู่ที่ [[Inventory Turnover and GPI Benchmarks]]
+
+### อะไหล่ตามความวิกฤตของเครื่อง (Fig 5.1, MPM p.85)
+
+กลุ่มวิกฤตสูงสุด (~20% แรก) สนับสนุนด้วยอะไหล่เกือบ 100% ร่วมกับ Inspection/RBI, RCM/FMEA; กลาง (~50%) เน้นงานเชิงรุกและทำนายการเสียมากกว่าสะสมอะไหล่; ต่ำ (~30%) จัดหาเมื่อต้องการหรือจ้างเหมา รายละเอียดและการเทียบสัดส่วนกับ RBMM ที่ [[Spare Part Criticality and Risk]]
+
+### กลยุทธ์ตามอายุโรงงาน (MPM p.84-90)
+
+| ช่วง | แนวทาง |
+|---|---|
+| โรงงานใหม่ | ใช้ข้อมูลโรงงานคล้ายกัน/คำแนะนำผู้ผลิต สอบทานกับดัชนี 3-5%; วิเคราะห์ความวิกฤตก่อนจัดปริมาณ; คุมระบบเบิกให้เคร่งครัดตั้งแต่เริ่ม |
+| เดินเครื่องเข้าที่ | ทบทวนความวิกฤต, ABC, วิเคราะห์ราคาและการเคลื่อนไหว ([[MRO Inventory Control Methods]]); หมุนเร็ว -> Quantitative, ที่เหลือ -> Qualitative |
+| ผลิตมานาน | Spare Part Inventory Management Performance Analysis/Audit (สำรวจ ประเมิน SWOT ข้อแนะนำ) แล้ว optimize ต่อเนื่อง |
+
+**กลยุทธ์ปรับปรุง 5 ข้อหลังประเมิน (MPM p.89-90)**:
+1. ปรับปรุงการใช้: PM พยากรณ์ความต้องการล่วงหน้า จัดหาเมื่อต้องการ (ต้องมี MMS ที่ดี)
+2. ปรับปรุงการเก็บสำรอง: ใช้ประวัติการเบิกรวมรายการที่ขาด ตัวอย่างลดยอดสำรองได้ 16% (ดู [[MRO Inventory Reduction Program]])
+3. ปรับปรุงการจัดหา: แก้ lead time ร่วมกับผู้ขาย หรือ Consignment Stock ดู [[MRO Purchasing and Contracting]]
+4. การวัดสมรรถนะ: โยงกับผลผลิต รายงานผู้บริหารรายเดือน
+5. วัดและประเมินผล: วางดัชนี ข้อมูล และวิธีวัดตั้งแต่ต้น
+
+### ตัวอย่างความคุ้มค่า (MPM p.90)
+
+- โรงงานใหญ่ค่าบำรุงรักษารวม > 50 ล้านบาท อะไหล่ไม่ต่ำกว่า 60-70% = > 30 ล้านบาท; ถ้าไม่เคยปรับปรุง ลดได้ 10-15%; ลงทุนปรับปรุง 3-5 ล้านบาท คืนทุนใน 1 ปี
+- ตรวจเลข (derived): 10-15% x 30 ล้าน = 3-4.5 ล้าน/ปี คืนทุน 1 ปีเฉพาะเมื่อลงทุนไม่เกินราว 4.5 ล้าน ปลายบน 5 ล้านต้องใช้ฐาน 70% x 50 = 35 ล้าน (ได้ 3.5-5.25 ล้าน) สอดคล้องโดยประมาณ ดู [[Maintenance Business Case]]
+
+### สัดส่วนอะไหล่ต่อค่าบำรุงรักษา (หมายเหตุ ไม่ใช่ contested)
+
+MPM ให้ทั้ง "ไม่ต่ำกว่า 60-70%" (MPM p.90) และ "> 50%" (MPM p.159, p.216) ตรงกับคู่ "มากกว่าครึ่ง" vs "60-70%" ของ RBMM ข้างบน; ตัวอย่างตัวเลขในบทที่ 8 ของ MPM เองให้อะไหล่ใช้สิ้นเพียง 23% (หรือ 46% เมื่อรวมอะไหล่ซ่อมใหญ่และค่าถือครองคลัง, derived) จึงใช้เป็นระดับความสำคัญ ไม่ใช่ค่าแม่นยำ
+
+### สัดส่วน 20/60/20 และเป้าการลด (Fig 12.6-12.7, MPM p.87, p.217-218)
+
+| กลุ่ม | สัดส่วน | วิธี |
+|---|---|---|
+| เคลื่อนไหวเร็ว | 20% | Quantitative Inventory Management (ข้อมูลการใช้มากพอ) |
+| Optimizable | 60% | Qualitative Inventory Management (ใช้น้อย ประวัติไม่พอ) วิเคราะห์ราคาและความวิกฤต |
+| Insurance Items | 20% | ปรับปรุงไม่ค่อยได้ (ต้องมีตามเงื่อนไข) |
+
+- 80% ที่ไม่ใช่ fast-moving เป็นต้นเหตุสะสมเกิน/ขาดและค่าใช้จ่ายสูง หัก insurance 20% เหลือ 60% ที่ต้อง optimize; หนังสือไม่ระบุว่า % เป็นของจำนวนรายการหรือมูลค่า และ 20% ของกลุ่มหมุนเร็วไม่ตรงกับ A = 10% ของรายการใน ABC หน้าเดียวกัน (MPM p.87)
+- เป้าหมาย 3 ระดับ: หลัก = อะไหล่เคลื่อนไหว (ปรับ Min/ROP, Re-order Quantity, Max) ลด **10-20%**; รอง = insurance items; เสริม = ของล้าสมัย/หมดอายุและวัสดุสิ้นเปลือง; ถ้าไม่เคยจัดการมาก่อน ลดได้ **> 20%** (MPM p.217)
+- ข้อมูลการใช้/ซื้อจำเป็นแม้ไม่ถูก 100% ดึงจาก CMMS/ERP ลง Excel ได้ (MPM p.217-218)
+
+### ลดที่ต้นเหตุ: พฤติกรรมการกินอะไหล่ (MPM p.219)
+
+การปรับระดับสต็อกคือการบริหาร "ผล" ต้นเหตุคือการ consume อะไหล่ผิดปกติ ใช้ประวัติการเสีย/การแก้ทำ Failure Root Cause Analysis ([[Root Cause Analysis]]) บนรายงาน CMMS **ค่าอะไหล่สูงสุด 10 อันดับ** แล้วจัดการทีละ 10 รายการ
+
+| สาเหตุ | การแก้ |
+|---|---|
+| ออกแบบด้อยตั้งแต่ต้น | วิศวกรรม/ออกแบบใหม่ ปรับข้อกำหนดจัดซื้อ |
+| ติดตั้งไม่ถูกต้อง | ติดตั้งใหม่ |
+| ใช้งาน/สภาพแวดล้อมไม่ตามกำหนด | ปรับสภาพแวดล้อม |
+| อะไหล่ไม่มีคุณภาพ | เปลี่ยนแหล่ง ปรับการคัดสรร |
+| คุณภาพการซ่อมไม่พอ | ปรับกระบวนการควบคุมคุณภาพ |
+| กลยุทธ์ PM/CM/PDM ยังไม่เหมาะ | ปรับกลยุทธ์ ดู [[PM Task Selection]] |
+
+สอดคล้องกับหลัก Demand Side ของ RBMM ข้างบน (ลดอะไหล่ต้องทำคู่กับ PM optimization)
+
+### Spare Part Optimization System (SOS) 5 โซน (MPM p.219-221)
+
+เครื่องมือที่ต้องลงทุนมี 4 อย่าง: CMMS/ERP ที่มี Inventory Management Module, **SOS**, Reliability Engineering Program (ต้องมีประวัติครบ มิฉะนั้นลงทุนเปล่า), เครื่องมือวิเคราะห์ เช่น vibration; SOS ต่างจาก CMMS/ERP ตรงที่ต้องใช้ข้อมูลความเชื่อมโยงอะไหล่-เครื่อง ผลกระทบการผลิต และความสำคัญ ผลคือบอกความเสี่ยงของการไม่มีอะไหล่ ส่วนการตัดสินใจเป็นของผู้บริหาร:
+
+| โซน | การตัดสินใจทั่วไป |
+|---|---|
+| ความเสี่ยงต่ำ ผลกระทบน้อย | ไม่เก็บ ยอมรับความเสี่ยง (fair risk) |
+| ความเสี่ยงต่ำ ผลกระทบสูง | ถ้าราคาสูงมาก อาจซื้อ **ประกันภายนอก (external insurance policy)** แทน |
+| ความเสี่ยงปานกลาง ผลกระทบสูง | มักซื้อประกันไม่ได้ จัดเป็น insurance spares เอง |
+| ความเสี่ยงปานกลาง ผลกระทบต่ำ | ปกติเก็บสำรอง |
+| ความเสี่ยงสูง | ต้องเก็บสำรอง |
+
+ตัวอย่างหน้าจอ Stock Cost/Risk Assessment (Fig 12.8) ใช้แกนอัตราส่วน Risk ต่อ Cost of Stock และ Cost of Stockout รายละเอียดเทียบกับ Cost Ratio ของ RBMM ที่ [[Spare Part Criticality and Risk]]
+
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Spare demand เป็นฟังก์ชันของ failure mode ต่อ equipment: Spare Part DSx Model (RBMM p.263) ต้องรู้ Equipment, Failure Mode, Beta, Eta ซึ่งตรงกับระดับ [[Failure Mode]] และ [[Maintainable Item]] ใน ISO 14224/OREDA ([[ISO 14224]], [[OREDA]])
@@ -196,6 +292,8 @@ contested: false
 - [[MRO Inventory Control Methods]]
 - [[Inventory Turnover and GPI Benchmarks]]
 - [[MRO Inventory Reduction Program]]
+- [[Maintenance Profit Maker Book]]
+- [[Root Cause Analysis]]
 
 ## Triplets
 
@@ -207,7 +305,7 @@ contested: false
 - Supply Side [uses:: Risk Based Spare Part Optimization] (RBMM p.238, p.241-242)
 - Spare Parts [has_value:: more than half] share of maintenance cost (RBMM p.234)
 - Spare Parts [has_value:: more than 60-70%] share of direct and indirect maintenance cost (RBMM p.34); differs in wording from p.234, use as order of magnitude
-- Holding Cost [has_value:: 15-20%] of spare value per year (RBMM p.16, p.34, p.234)
+- Holding Cost [has_value:: 15-20%] of spare value per year (RBMM p.16, p.34, p.234) MPM-C1 [contested:: true]
 - Holding Cost [has_value:: 15-25%] chapter 10 target of total spare value, different context, not contested (RBMM ch10)
 - Holding Cost [has_value:: 75-100 million THB per year] book example, 500 million THB stock (RBMM p.234)
 - Interest on Inventory [part_of:: Holding Cost] (RBMM p.68)
@@ -285,3 +383,25 @@ contested: false
 - B7 Spare Part Inventory / Plant Asset [has_value:: 1-3%] RBMM target of machine price (RBMM p.295, p.314); reference only, not adopted
 - Inventory Value % GPI [has_value:: not above 4%] SPO target for capital intensive plants (SPO p.115); adopted by user 2026-10-27
 - Inventory Value % GPI [contradicts:: B7 Spare Part Inventory / Plant Asset] SPO 3-4% vs RBMM 1-3%; resolved 2026-10-27, follow SPO (SPO p.143-145)
+- [[Spare Parts Management]] [related_to:: [[Maintenance Profit Maker Book]]] chapters 5 and 12 (MPM p.83-90, p.216-221)
+- Spare Parts Stock [has_value:: 3-5% of machine price] average in industrial countries, review index not target; user target stays SPO not above 4% GPI (MPM p.84-85)
+- Holding Cost [has_value:: 20-40%] of stocked spare value, MPM-C1 (MPM p.84) [contested:: true]
+- MPM Holding Cost 20-40% [contradicts:: Holding Cost] RBMM 15-20% per year (RBMM p.16, p.34, p.234); MPM-C1 [contested:: true]
+- MPM Finance Cost Example [has_value:: 6-10%] finance cost only, 6% (p.17), 10% WACC (p.108, p.180-181); narrower scope than holding cost, MPM-C1 [contested:: true]
+- MPM Spare Goals [has_value:: 4 goals] min stock level, max service level, max turnover, max plant availability (MPM p.84; RBMM p.101)
+- Service Level [has_formula:: lines fully issued / total lines requested] MPM line fill rate (MPM p.86)
+- Spare Parts Distribution [depends_on:: [[Criticality Assessment]]] distribution matters more than total % (MPM p.85)
+- Spare Part Improvement Strategy [has_value:: 5 strategies] usage, stocking, procurement, performance measurement, evaluation (MPM p.89-90)
+- Spare Improvement Payback [has_value:: 1 year] invest 3-5 M THB, save 10-15% of > 30 M THB spares; 3-4.5 M per year derived (MPM p.90)
+- Spare Parts [has_value:: 60-70%] share of maintenance cost, also > 50% elsewhere in MPM (MPM p.90, p.159, p.216)
+- Fast Moving Spares [has_value:: 20%] Quantitative Inventory Management (Fig 12.7, MPM p.218)
+- Optimizable Spares [has_value:: 60%] Qualitative Inventory Management (Fig 12.7, MPM p.218)
+- Insurance Items [has_value:: 20%] hard to improve (Fig 12.7, MPM p.87, p.218)
+- Spare Optimization Saving [has_value:: 10-20%] main target moving items; > 20% if never managed (MPM p.217)
+- Abnormal Spare Consumption [has_cause:: Poor Original Design] also wrong installation, off-spec operation, poor part quality, poor repair quality, unsuitable PM/CM/PdM strategy (MPM p.219)
+- Abnormal Spare Consumption [resolved_by:: [[Root Cause Analysis]]] failure RCA on CMMS top-10 spare cost report (MPM p.219)
+- Spare Part Optimization System [has_value:: 5 zones] risk vs impact; decision belongs to management (MPM p.219-221)
+- Low Risk High Impact Zone [selects:: External Insurance Policy] when part very expensive (MPM p.220)
+- Medium Risk High Impact Zone [selects:: Insurance Part] insurance usually unavailable (MPM p.220)
+- High Risk Zone [selects:: Stock Parts] must stock (MPM p.220)
+- Spare Part Optimization System [differs_from:: [[CMMS]]] needs part-machine links, production impact, criticality (MPM p.219-220)

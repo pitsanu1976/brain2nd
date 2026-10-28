@@ -1,12 +1,12 @@
 ---
 title: Maintenance Time Definitions
 created: 2026-10-21
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [iso-14224, kpi, reliability, maintenance-management, data-quality, cmrp, maintainability]
-sources: [iso-14224.md, reliability-based-maintenance-management.md, cmrp.md]
+tags: [iso-14224, kpi, reliability, maintenance-management, data-quality, cmrp, maintainability, mpm]
+sources: [iso-14224.md, reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Maintenance Time Definitions
@@ -81,6 +81,31 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 - การที่รูปของสไลด์วาง run-down/start-up ในแผนภาพ downtime น่าจะสะท้อนมุมมองเวลาสูญเสียการผลิต ไม่ใช่นิยาม down time ของ item (การตีความของ wiki, confidence medium)
 - ทฤษฎี M(t), lognormal repair time, Mmax และการจัดสรร MTTR ดู [[Maintainability]]
 
+อัปเดต 2026-10-28: ข้อความ "หน้านี้จึงคง `contested: false`" ข้างบนเป็นประวัติของการเทียบ CMRP ตอนนี้หน้าถูกตั้ง `contested: true` เพราะข้อขัดแย้ง MPM-C4 ในหัวข้อ 5 (สองหนังสือของผู้แต่งกลุ่มเดียวกันนิยาม MTTR/MTBF ต่างกันจริง ไม่ใช่แค่ต่างศัพท์) ส่วนความต่างกับ CMRP ยังถือเป็น convention ตามเดิม
+
+## 5. จับคู่กับ MPM (เพิ่ม 2026-10-28, sources: maintenance-profit-maker.md; ข้อขัดแย้ง MPM-C4)
+
+หนังสือ [[Maintenance Profit Maker Book]] บทที่ 8 แยกเวลาหยุดหนึ่งครั้งเป็นเวลาซ่อม (D) กับเวลารอ (W) ก่อนและหลังซ่อม แล้วนิยาม (MPM p.149-151):
+
+```
+MTTR                   = Total Repair Time / Number of Failures   (ซ่อมล้วน, D)
+Mean Logistic Time MLT = Total Wait Time / Number of Failures     (รอ, W)
+Down Time              = Repair + Wait                            (ใช้ใน Availability Factor)
+MTBF                   = Total Up Time / Number of Failures
+```
+
+| MPM บทที่ 8 | RBMM | ISO 14224 | ข้อสังเกต |
+|---|---|---|---|
+| MTTR (ซ่อมล้วน) | MTTR = Repair + Wait labor (RBMM p.49-51) | ใกล้ MART หรือ MRT | **ขัดกับ RBMM** (MPM-C4) |
+| Mean Logistic Time (ความสามารถสนับสนุน: วางแผน เครื่องมือ อะไหล่) | MWT (ส่วนหนึ่งของ MDT) | logistic delay | แนวคิดตรงกัน ชื่อต่างกัน |
+| Down Time = ซ่อม + รอ | MDT = MTTR + MWT | MDT (ขอบเขตกว้างกว่า) | ตรงกันเชิงแนวคิด |
+| MTBF = Up Time / ครั้งเสีย | MTBF = MTTF + MTTR + MWT | METBF = MUT + MDT | MTBF ของ MPM ใกล้ MUT ดู [[Reliability Metrics]] |
+
+- ตัวอย่างรูป 8.3: 720 ชม. เสีย 3 ครั้ง ซ่อม 70 ชม. รอ 20 ชม. ได้ MTTR 23.33 ชม., MLT 6.67 ชม., MTBF 210 ชม. (Up Time ที่ถูกคือ 630 ชม. ข้อความในเล่มพิมพ์ 650, derived) และ Availability 87.50% ดู [[Availability and OEE]]
+- MPM บทที่ 9 (p.166) และรูป 10.6 (p.174-175) ใช้ MWT (Mean Wait Time) แทน MLT และบทที่ 9 จัดการลด MWT เป็นเป้าของ MTTR ซึ่งขัดกับบทที่ 8 ของเล่มเดียวกัน
+- รายงานรูป 4.18 (MPM p.76) คำนวณ MTTR = เวลาซ่อมรวม / ครั้งเสีย และ MTBF = (ชั่วโมงทั้งหมด - เวลาซ่อม) / ครั้งเสีย (derived) ไม่มีการแยกเวลารอ
+- ข้อแนะนำของ wiki (การตีความ): เมื่อบันทึกใน CMMS ให้เก็บเวลาซ่อมกับเวลารอแยกกัน แล้วจะรายงานได้ทั้งแบบ MPM (MTTR + MLT) และแบบ RBMM (MTTR รวมรอ) และแมปกับ MART/MRT/MDT ของ ISO ได้; ระบุทุกครั้งว่า MTTR ที่รายงานรวมเวลารอหรือไม่ wiki ยังไม่เลือกนิยามหลัก
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ข้อมูล [[OREDA]] ไม่ให้ MTTR/MWT ให้เก็บ down time และ active maintenance time ต่อ failure record จาก [[CMMS]] ตาม Table 8 ของ ISO 14224 ข้อควรระวังคือ CMMS ยังบันทึกสองค่านี้น้อย (Table 8 note d, p.45)
@@ -94,6 +119,7 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 - [[RM Data Quality]]
 - [[Failure Impact Classification]]
 - [[Maintainability]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -148,3 +174,17 @@ ISO 14224 ใช้ MTTR = time to **repair** แต่ IEC 60050-192 ใช้ 
 - CMRP Downtime [differs_from:: Down Time] slide figure includes run-down and start-up; ISO 14224 cl. 8.3.3 excludes them; convention, not contested
 - MAMT [maps_to:: Active Maintenance Time] corrective + PM weighted by frequency, used in Aa (CMRP CMPR-04 p.23) [confidence:: medium]
 - [[Maintenance Time Definitions]] [related_to:: [[Maintainability]]] M(t), lognormal repair time, Mmax
+- MPM MTTR [has_formula:: Total Repair Time / Number of Failures] repair only (MPM p.150-151) [contested:: true]
+- RBMM MTTR [has_formula:: Repair + Wait labor] (RBMM p.49-51) [contested:: true]
+- MPM MTTR [contradicts:: RBMM MTTR] MPM-C4 [contested:: true]
+- RBMM MTTR [contradicts:: MPM MTTR] MPM-C4, RBMM view [contested:: true]
+- MPM MTTR [maps_to:: MART] or MRT, repair only [confidence:: medium]
+- Mean Logistic Time [has_formula:: Total Wait Time / Number of Failures] (MPM p.150-151)
+- Mean Logistic Time [maps_to:: Logistic Delay] planning, tools, spares support [confidence:: medium]
+- Mean Logistic Time [alias_of:: MWT] MPM ch8 MLT vs ch9-10 MWT
+- MPM Down Time [has_formula:: Repair + Wait] used in Availability Factor (MPM p.149-151)
+- MPM MTBF [has_formula:: Total Up Time / Number of Failures] (MPM p.149-151) [contested:: true]
+- MPM MTBF [maps_to:: MUT] mean running time, interpretation [confidence:: medium]
+- MPM Chapter 9 MTTR Usage [contradicts:: MPM MTTR] p.166 puts MWT reduction under MTTR, internal inconsistency
+- Fig 8.3 Machine Index Example [has_value:: MTTR 23.33 h, MLT 6.67 h, MTBF 210 h, A 87.50%] 720 h, repair 70, wait 20, 3 failures (MPM p.149-151)
+- [[Maintenance Time Definitions]] [related_to:: [[Maintenance Profit Maker Book]]] MPM time definitions

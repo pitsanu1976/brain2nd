@@ -1,10 +1,10 @@
 ---
 title: Root Cause Analysis
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [rca, fmeca, fta, reliability, maintenance-management, failure-cause, cmrp]
-sources: [cmrp.md, iso-14224.md]
+tags: [rca, fmeca, fta, reliability, maintenance-management, failure-cause, cmrp, mpm]
+sources: [cmrp.md, iso-14224.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -87,6 +87,14 @@ contested: false
 - ผลของ RCA บันทึกเป็น **failure cause** (root cause, ISO Table B.3) ซึ่งเป็นคนละฟิลด์กับ failure mechanism (Table B.2) (ISO 14224 cl. B.2.2-B.2.3, p.178-181) ดู [[Failure Cause Codes]] ข้อสังเกต: รหัส 4 ตัวอักษรใน dataset ของ wiki เป็น mechanism ไม่ใช่ root cause ดังนั้นผลลัพธ์ของ RCA ต้องลงในฟิลด์ cause แยกต่างหาก
 - RCA เป็นงานกลุ่ม "Proactive" ในผัง RCM ของ CMRP (RCFA, age exploration, FMEA) และเป็นขั้น 4 ของวงล้อ RCM 7 ขั้น (หา root cause ของ FM) (CMRP CMPR-03 p.2) ดู [[RCM Reliability Centered Maintenance]]
 
+## 8. การใช้ RCA ในมุมมอง MPM (เพิ่ม 2026-10-28)
+
+หนังสือ [[Maintenance Profit Maker Book]] วาง RCA เป็นเครื่องมือแก้ "ต้นเหตุ" ของต้นทุน ไม่ใช่แค่ failure:
+
+- **ลดการกินอะไหล่**: การปรับ min/max และ reorder point เป็นการบริหาร "ผล" ต้นเหตุคือพฤติกรรมการกินอะไหล่ ให้เก็บประวัติการเสีย/การแก้ไข แล้วทำ Failure Root Cause Analysis โดยใช้รายงาน CMMS **ค่าอะไหล่สูงสุด 10 อันดับ** จัดการทีละ 10 รายการ (MPM p.219) สาเหตุที่พบ เช่น ออกแบบด้อย ติดตั้งผิด ใช้งานนอกเงื่อนไข อะไหล่ไม่มีคุณภาพ คุณภาพการซ่อมไม่พอ กลยุทธ์ PM/CM/PDM ไม่เหมาะ ดู [[Maintenance Performance Improvement]] และ [[Spare Parts Management]]
+- **กลยุทธ์ธุรกิจ**: ธุรกิจแบบ Cost Leadership (เน้น Availability/MTTR) ใช้ Failure Root Cause Analysis ร่วมกับลด MWT และ TPM ส่วน Product Differentiation (เน้น Reliability/MTBF) ใช้ root cause analysis ร่วมกับ PM และ Reliability Engineering (รูป 9.3, MPM p.165) ดู [[Maintenance Master Plan]]
+- **สัญญาณให้ทำ RCA**: ถ้า Reliability Figure ต่ำกว่ากำหนด (failure rate สูง) แสดงว่ามี root cause ฝังอยู่ (MPM p.20) และ CMMS ต้องวางโครงสร้างประวัติซ่อมให้รองรับ RCA/FMECA (MPM p.161)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ลำดับการสืบสวนบน [[Compressor]] ตาม [[Failure Hierarchy]]: failure mode (อาการ เช่น VIB) -> mechanism (เช่น WEAR, FATG) -> cause (root cause ตาม ISO Table B.3) RCA คือขั้นที่เติมระดับสุดท้ายนี้ (การตีความของ wiki)
@@ -100,6 +108,8 @@ contested: false
 - [[Failure Data Recording]]
 - [[Failure Mechanism]]
 - [[CMRP Course]]
+- [[Maintenance Performance Improvement]]
+- [[Maintenance Master Plan]]
 
 ## Triplets
 
@@ -137,3 +147,8 @@ contested: false
 - [[Root Cause Analysis]] [related_to:: [[Failure Cause Codes]]] dataset 4-letter codes are mechanism, not root cause
 - [[Root Cause Analysis]] [step_of:: [[RCM Reliability Centered Maintenance]]] step 4 of CMRP 7-step RCM wheel; Proactive group (CMRP CMPR-03 p.2)
 - [[Statistical Process Control]] [input_to:: [[Root Cause Analysis]]] KPI outside limits triggers RCA (CMRP CMPR-03 p.46-48)
+- [[Root Cause Analysis]] [applies_to:: Top 10 Spare Part Cost Items] reduce spare consumption behaviour, CMMS report (MPM p.219)
+- [[Root Cause Analysis]] [resolved_by:: Redesign] for poor original design; also reinstall, fix environment, change source, repair QC, adjust PM strategy (MPM p.219)
+- Cost Leadership [uses:: [[Root Cause Analysis]]] with MWT reduction and TPM (Fig 9.3, MPM p.165)
+- Product Differentiation [uses:: [[Root Cause Analysis]]] with PM and reliability engineering (Fig 9.3, MPM p.165)
+- Low Reliability Figure [input_to:: [[Root Cause Analysis]]] high failure rate signals embedded root cause (MPM p.20)

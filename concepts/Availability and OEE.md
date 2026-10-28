@@ -1,10 +1,10 @@
 ---
 title: Availability and OEE
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [kpi, reliability, maintenance-management, book, iso-14224, cmrp, maintainability]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
+tags: [kpi, reliability, maintenance-management, book, iso-14224, cmrp, maintainability, mpm]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: true
 ---
@@ -126,6 +126,131 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - ระดับอุปกรณ์ในรายงาน Asset Performance: Equipment = Reliability, Availability, Maintainability; Component = Failure Rate (RBMM p.62-63)
 - ระบบ redundancy เปลี่ยนความหมายของ Availability ระดับระบบ (ดู [[Reliability Block Diagram]] และ [[Redundancy and Standby Systems]])
 
+## 6. มุมมองของ MPM (เพิ่ม 2026-10-28, sources: maintenance-profit-maker.md)
+
+หนังสือ [[Maintenance Profit Maker Book]] (ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM) ขยายเรื่อง OEE ในบทที่ 3, 8, 10 และ 12 ถอดความจาก reading notes ค่าที่ wiki คำนวณเองระบุว่า derived
+
+### 6.1 Total Productivity และ Planning Factor (MPM p.48-49)
+
+ผลผลิตรวม (Total Productivity) ของเครื่องขึ้นกับ 3 ตัวแปร: Capacity (C), Planning Factor (P) และ OEE
+
+```
+Planning Factor (Pf) = Loading Time / Theoretical Production Time
+Total Productivity   = Pf x OEE
+สินค้าที่ผลิตได้      = OEE x Plant Capacity x Planning Factor     (MPM p.174, p.201)
+```
+
+- ตัวอย่าง Pf: 1 ปี 8,760 ชม. เดินวันละ 8 ชม. หยุดสัปดาห์ละ 2 วัน = (365 - 104) x 8 = 2,088 ชม. ได้ Pf = 23.84% (MPM p.49) Theoretical Production Time เป็นนโยบายที่กำหนดได้ (เช่น 5 วัน/สัปดาห์ 1 กะ)
+- องค์ประกอบหลักของ Pf คือ **Planned Down Time** เช่น พักระหว่างวัน เปลี่ยนสินค้าตามแผน ปรับปรุงตามแผนลงทุน ลดกำลังผลิตเพราะความต้องการลด **PM ตามแผน** ตรวจตามวาระ ประชุม อบรม ขาดวัตถุดิบ การไฟฟ้าดับไฟ (MPM p.49)
+- เครื่องที่หยุดซ่อมใหญ่นานกว่ามีฐานเวลาสั้นกว่า แม้ OEE เท่ากันก็ผลิตได้น้อยกว่า; ดู OEE โดยไม่ดู Total Productivity ทำให้เข้าใจผิดว่าเครื่องถูกใช้สูง (MPM p.58, p.174) การแปลงเป็นเงิน (Hidden Plant) ดู [[Maintenance Financial Impact]]
+
+### 6.2 Six Big Losses (MPM p.49-52)
+
+| กลุ่ม | Loss | ตัวอย่างย่อ |
+|---|---|---|
+| Availability | 1. Equipment failure / Breakdown | สาเหตุใหญ่สุด ทั้งเสียทันทีและเสื่อมสภาพ |
+| Availability | 2. Set up and Adjustment | ปรับตั้งหลังซ่อมหรือเปลี่ยนสินค้า |
+| Speed | 3. Reduced Speed | เดินต่ำกว่า Standard Speed (ต้องกำหนดไว้แต่แรก) |
+| Speed | 4. Idle and Minor Stoppage | เดินเปล่า หยุดสั้นๆ เช่นของติด |
+| Quality | 5. Quality Defect | ของเสีย ต้อง rework |
+| Quality | 6. Start Up Losses | สูญเสียช่วงเริ่มเดินก่อนเข้าที่ |
+
+ความสูญเสียมีทั้งแบบเรื้อรัง (chronic) และเป็นเหตุการณ์ (sporadic) OEE เป็นเพียงส่วนหนึ่งของเครื่องมือจัดการผลิต (MPM p.49-50)
+
+### 6.3 สูตร Af / Sf / Qf ของ MPM (MPM p.50-52, p.148)
+
+```
+Availability Factor = (Loading Time - Unplanned Down Time) / Loading Time
+Speed Factor        = (จำนวนที่ผลิตได้ x Theoretical Cycle Time) / (Loading Time - Down Time)
+                      หรือ ผลผลิตจริง / ผลผลิตที่ควรได้ ที่ Theoretical rate (แบบนับชิ้น, MPM p.56)
+Quality Factor      = จำนวนสินค้าดี / จำนวนที่ผลิตได้
+OEE                 = Af x Sf x Qf
+```
+
+แถบเวลา (รูป 3.3 และ 10.5): A คาบเวลาที่พิจารณา -> หัก Planned Down Time = B Loading/Available to Run (Pf) -> หัก Unplanned Down Time = C Actual Run Time (Af) -> หัก Speed Loss = D Net Actual Speed Time (Sf) -> หัก Quality Losses = E Net Valuable Time (Qf)
+
+### 6.4 ตัวอย่าง 1 กะ 8 ชม. (MPM p.53-54)
+
+| รายการ | ชม. | ดัชนี | ผล |
+|---|---|---|---|
+| A คาบเวลา | 8.0 | | |
+| B1 หยุดตามแผน (พัก 1 + PM 0.5) -> B | 1.5 -> 6.5 | Pf = B/A | 81.25% |
+| C1 หยุด (เสีย-ซ่อม 0.5 + ปรับตั้ง 0.25) -> C | 0.75 -> 5.75 | Af = C/B | 88.46% |
+| D1 speed loss เทียบเวลา -> D | 0.25 -> 5.50 | Sf = D/C | 95.65% |
+| E1 quality loss เทียบเวลา -> E | 0.1 -> 5.40 | Qf = E/D | 98.18% |
+| | | OEE = E/B | 83.07% |
+| | | Total Productivity = E/A | 67.50% |
+
+- ตรวจเลข (derived): ทุกค่าถูก แต่ 5.4/6.5 = 83.077% ปัดจริงคือ 83.08% (หนังสือตัดทศนิยม); สูตรในเล่มพิมพ์ C = B - B1 ที่ถูกคือ **C = B - C1** (ตัวเลข 5.75 ถูก)
+- แต่ละ loss แก้ต่างวิธีและต่างคน: บำรุงรักษากระทบแผนหยุด เวลาหยุดนอกแผน ความเร็ว (เครื่องบำรุงไม่ดี) และคุณภาพ (สอบเทียบเครื่องวัดไม่ดี); ฝ่ายผลิตกระทบผ่านแผนผลิตที่ทำให้เปลี่ยนสินค้าบ่อยและคุณภาพวัตถุดิบ (MPM p.54)
+
+### 6.5 ตัวอย่างโรงงาน XYZ เดิน 24 ชม. (MPM p.55-57)
+
+| รายการ (1 เดือน 30 วัน) | ค่า |
+|---|---|
+| Theoretical Production Time | 720 ชม. |
+| Planned Down Time (ไม่มีคำสั่งซื้อ 0, รอวัตถุดิบ 27, หยุดทำ PM 58, หยุดตามแผน 0) | 85 ชม. -> Loading 635 ชม. |
+| Unplanned Down Time (ปรับตั้ง 4, เครื่องเสีย 87, ไฟดับในโรงงาน 0) | 91 ชม. -> เดินจริง 544 ชม. |
+| Theoretical rate (หนังสือเรียก Cycle Time) | 60,000 หน่วย/ชม. -> ควรได้ 32.64 ล้านหน่วย |
+| ผลผลิตจริง / ของเสีย | 31.28 / 1.323 ล้านหน่วย |
+
+| Pf | Af | Sf | Qf | OEE | Total Productivity |
+|---|---|---|---|---|---|
+| 88.19% | 85.67% | 95.83% | 95.77% | **78.62%** | 69.34% |
+
+- ตรวจเลข (derived): ถูกทุกค่า; "Theoretical Cycle Time 60,000 หน่วย/ชม." ที่จริงคือ rate (cycle time = 1/60,000 ชม./หน่วย)
+- ตัวอย่างนี้จัดรอวัตถุดิบเป็น planned และไฟดับในโรงงานเป็น unplanned ขณะที่ p.49 จัด "การไฟฟ้าดับไฟ" (ภายนอก) เป็น planned หนังสือไม่อธิบายการแยก (ตีความ: เหตุภายนอกที่ฝ่ายผลิต/บำรุงรักษาคุมไม่ได้อยู่นอก OEE)
+
+### 6.6 เป้าหมายและ benchmark (MPM p.55, p.213)
+
+- **World Class Manufacturing: OEE ไม่ต่ำกว่า 85%** จาก Availability >= 90%, Speed >= 95%, Quality >= 99% (0.90 x 0.95 x 0.99 = 84.6% ปัดเป็น 85%, derived)
+- ค่าสูงสุดที่ทำได้รายอุตสาหกรรม (MPM p.55):
+
+| อุตสาหกรรม | OEE | Total Productivity |
+|---|---|---|
+| Manufacturing | 85% | 60% |
+| Process | > 90% | > 68% |
+| โลหะ (Metallurgy) | 75% | 55% |
+| กระดาษ (Paper) | 95% | > 70% |
+| ปูนซีเมนต์ (Cement) | > 80% | 60% |
+
+- ตัวอย่างการตั้งเป้าจากช่องว่าง: โรงงานปิโตรเคมีชนิดหนึ่ง OEE เฉลี่ย 90% ถ้าวัดได้ 85% ด้อย 5 จุด แปลงเป็นเงินเพื่อหาความคุ้มของการลงทุน (MPM p.213)
+- ใช้ OEE ได้ทั้ง internal (trend, เทียบหลายหน่วย) และ external (เทียบอุตสาหกรรม) แต่วิธีคิดต้องเป็นมาตรฐานเดียวกัน (MPM p.54-55); Availability 100% ต้องถามว่ารวมอะไรและมี redundancy มากเกินจนมองไม่เห็นการหยุดหรือไม่ (MPM p.210)
+
+### 6.7 กับดักการตีความ: อย่าตัดสินจาก OEE ตัวเดียว (MPM p.57-58)
+
+| | หน่วยผลิต 1 | หน่วยผลิต 2 |
+|---|---|---|
+| Availability | 99% | 98% |
+| Speed | 80% | 95% |
+| Quality | 95% | 89% |
+| OEE | 75% | 83% |
+
+- ดู OEE อย่างเดียวจะคิดว่าหน่วย 2 ดีกว่า แต่หน่วย 2 คุณภาพต่ำมาก ซึ่งแพงที่สุด เพราะของเสียใช้วัตถุดิบ ทรัพยากร พลังงานไปแล้ว ส่วน speed loss เสียพลังงาน และ downtime เสียโอกาสเดินเครื่อง (ตรวจ derived: 75.24% และ 82.86%)
+- จุดตีความอื่น: หยุดนานเท่าไรจึงบันทึก (threshold), OEE เท่ากันแต่มาจาก loss ต่างกัน, ข้อมูลต้องมาจาก operator อย่างต่อเนื่องและละเอียด (MPM p.56-58)
+
+### 6.8 ตัวอย่างดัชนีเครื่องจักร 720 ชม. (รูป 8.3, MPM p.149-151)
+
+1 เดือน Loading 720 ชม. หยุด 3 ครั้ง เวลาซ่อม D1+D2+D3 = 70 ชม. เวลารอ W1+W2+W3 = 20 ชม.
+
+| ดัชนี | สูตร MPM | ผล |
+|---|---|---|
+| Availability Factor | (Loading - Down Time) / Loading, Down Time = ซ่อม + รอ | (720 - 90)/720 = **87.50%** |
+| MTBF | Total Up Time / จำนวนครั้งเสีย | 630/3 = **210 ชม.** |
+| MTTR | Total Repair Time / จำนวนครั้งเสีย (ซ่อมล้วน) | 70/3 = **23.33 ชม.** |
+| Mean Logistic Time (MLT) | Total Wait Time / จำนวนครั้งเสีย | 20/3 = **6.67 ชม.** |
+| Failure Rate | 1 / MTBF | พิมพ์ 0.0047 ครั้ง/ชม. |
+
+- **แก้ตัวเลข (derived)**: ข้อความในเล่มว่า Up Time U1-U4 "รวม 650 ชม." และเขียนสูตร U1+U2+U3 แต่การคำนวณใช้ 630 ชม. = 720 - 70 - 20 = U1+U2+U3+U4 ค่าที่ถูกคือ **630 ชม.**; Failure Rate 1/210 = 0.00476 ปัดเป็น **0.0048** ครั้ง/ชม.
+- ใต้ Availability มี 4 ดัชนีสำคัญคือ MTBF, MTTR, MLT, Failure Rate และ MPM ใช้ Availability เป็น **เป้าของหน่วยงานบำรุงรักษาหลังฝ่ายผลิตวางแผนผลิตแล้ว** (MPM p.148)
+- **ข้อขัดแย้ง MPM-C4**: MTTR ของ MPM บทที่ 8 = เวลาซ่อมล้วน แยกเวลารอเป็น MLT (MPM p.150-151) ต่างจาก RBMM ในหัวข้อ 1 และ 3 ของหน้านี้ที่ใช้ MDT = MTTR + MWT และ MTTR = Repair + Wait labor (RBMM p.17-20, p.49-51) และ MPM บทที่ 9 (p.166) เองกลับจัด MWT เป็นเป้าการลด MTTR wiki เก็บทั้งสองนิยามไว้ ยังไม่เลือก ใน Availability ตัวเลขออกมาเท่ากันเพราะทั้งสองแหล่งนับเวลาซ่อม + รอเป็น down time รายละเอียดดู [[Maintenance Time Definitions]] และ [[Reliability Metrics]]
+
+### 6.9 Convention ที่ต้องระบุเมื่อเทียบข้ามแหล่ง
+
+- **PM ไม่อยู่ใน Availability ของ MPM**: MPM จัด PM เป็น planned down time ใน Planning Factor (MPM p.49, p.53, p.56) Af จึงนับเฉพาะ unplanned down time ต่างจาก Ao ของ ISO 14224 (หัวข้อ 1) ที่รวมเวลา PM ได้ตามทางเลือก และต่างจาก Aa ของ CMRP ที่รวม PM ไม่ใช่ข้อผิด แต่ต้องบอก convention ทุกครั้งที่เทียบตัวเลข (การตีความของ wiki)
+- **เจ้าของ Availability**: RBMM ว่า Availability Factor "เกือบ 100% เป็นของบำรุงรักษา" (RBMM p.20) ส่วน MPM จัด Set up and Adjustment (รวมการเปลี่ยนสินค้า) ไว้ใน availability losses และบอกว่าแผนผลิตที่เปลี่ยนสินค้าบ่อยกระทบเวลาสูญเสีย (MPM p.50, p.54) และ MWT มาจากความร่วมมือระหว่างบำรุงรักษากับผลิตเป็นหลัก (MPM p.175) ฝ่ายผลิตจึงมีส่วนใน Availability ด้วย เป็นความตึงระดับการแบ่งความรับผิดชอบ ไม่ได้ตั้งเป็นข้อขัดแย้ง
+- **Availability สูงไม่ได้แปลว่า Reliability สูง**: เครื่องเสียบ่อยแต่ซ่อมเร็วก็ได้ A สูง (MPM p.166) MPM ผูกกลยุทธ์ Cost Leadership กับ Availability/MTTR และ Product Differentiation กับ Reliability/MTBF (MPM p.164-166, p.229)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Failure rate ใน [[OREDA]] เป็น constant failure rate ต่อ 10^6 ชั่วโมง (ดู [[Reliability Metrics]]) แปลงเป็น MTTF ได้เมื่อสมมติ exponential (MTTF = 1/lambda ตาม ch12) ใช้เป็นตัวป้อน MTTF ในสูตร Availability ของ [[Compressor]] ได้ แต่ OREDA ไม่ให้ MTTR/MWT ต้องใช้ข้อมูล CMMS ของไซต์ (ไม่มีใน sources)
@@ -139,6 +264,8 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - [[Asset Life Cycle]]
 - [[Spare Parts Management]]
 - [[Maintainability]]
+- [[Maintenance Financial Impact]] (Hidden Plant, OEE -> กำไร)
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -208,3 +335,40 @@ OEE = Availability x Speed x Quality  (RBMM p.19-20)
 - Inherent Availability Ai [depends_on:: [[Maintainability]]] MTTR limited to active repair in CMRP (CMRP CMPR-04 p.39)
 - Maintenance [depends_on:: Inherent Reliability] maintenance cannot raise reliability above inherent level (CMRP CMPR-04 p.18-19)
 - Availability [defined_in:: [[CMRP Course]]] Ai/Aa/Ao set, secondary teaching source (CMRP CMPR-04 p.21-23)
+- Total Productivity [has_formula:: Planning Factor x OEE] (MPM p.48-52)
+- Planning Factor [has_formula:: Loading Time / Theoretical Production Time] (MPM p.48-49)
+- Planning Factor Example [has_value:: 23.84%] 2,088 / 8,760 h, 8 h/day, 2 days off per week (MPM p.49)
+- Planning Factor [depends_on:: Planned Down Time] includes planned PM, breaks, planned changeover, no raw material (MPM p.49)
+- Production Output [has_formula:: OEE x Plant Capacity x Planning Factor] (MPM p.174, p.201); see [[Maintenance Financial Impact]]
+- Six Big Losses [has_part:: Equipment Failure Breakdown Loss] availability group (MPM p.49-52)
+- Six Big Losses [has_part:: Set Up and Adjustment Loss] availability group
+- Six Big Losses [has_part:: Reduced Speed Loss] speed group
+- Six Big Losses [has_part:: Idle and Minor Stoppage Loss] speed group
+- Six Big Losses [has_part:: Quality Defect Loss] quality group
+- Six Big Losses [has_part:: Start Up Loss] quality group
+- MPM Availability Factor [has_formula:: (Loading Time - Unplanned Down Time) / Loading Time] (MPM p.50-52, p.148)
+- MPM Speed Factor [has_formula:: (units produced x Theoretical Cycle Time) / (Loading Time - Down Time)] (MPM p.50-52)
+- MPM Quality Factor [has_formula:: good units / units produced] (MPM p.50-52)
+- OEE 8 Hour Shift Example [has_value:: OEE 83.07%] Pf 81.25%, Af 88.46%, Sf 95.65%, Qf 98.18%, TP 67.50%; exact 83.077% (MPM p.53-54)
+- MPM Formula C = B - B1 [contradicts:: Formula C = B - C1] book misprint, figures correct (MPM p.53)
+- XYZ Monthly OEE Example [has_value:: OEE 78.62%] Pf 88.19%, Af 85.67%, Sf 95.83%, Qf 95.77%, TP 69.34%, 720 h (MPM p.55-57)
+- World Class OEE [has_value:: >= 85%] Availability >= 90%, Speed >= 95%, Quality >= 99% (MPM p.55)
+- Industry Best OEE [has_value:: Manufacturing 85% / Process > 90% / Metallurgy 75% / Paper 95% / Cement > 80%] Total Productivity 60 / > 68 / 55 / > 70 / 60% (MPM p.55)
+- OEE Unit Comparison Example [has_value:: unit 1 OEE 75% vs unit 2 OEE 83%] unit 2 Quality 89% is costliest loss; do not judge on OEE alone (MPM p.57-58)
+- Quality Loss [differs_from:: Speed Loss] quality loss wastes material, resources and energy; speed loss wastes energy; downtime wastes opportunity (MPM p.58)
+- Fig 8.3 Machine Index Example [has_value:: A 87.50%, MTBF 210 h, MTTR 23.33 h, MLT 6.67 h] 720 h, 3 failures, repair 70 h, wait 20 h (MPM p.149-151)
+- Fig 8.3 Up Time Printed [has_value:: 650 h] book text; calculation uses 630 h (MPM p.149)
+- Fig 8.3 Up Time [has_value:: 630 h] derived 720 - 70 - 20 = U1+U2+U3+U4
+- Fig 8.3 Up Time Printed [contradicts:: Fig 8.3 Up Time] book error, derived
+- Fig 8.3 Failure Rate [has_value:: 0.0048 per h] derived 1/210; book prints 0.0047
+- MPM Availability Factor [depends_on:: Mean Logistic Time] with MTBF, MTTR, Failure Rate (MPM p.148)
+- MPM MTTR [has_formula:: Total Repair Time / Number of Failures] repair only, wait separated as MLT (MPM p.150-151) [contested:: true]
+- RBMM MTTR [has_formula:: Repair + Wait labor] (RBMM p.49-51) [contested:: true]
+- MPM MTTR [contradicts:: RBMM MTTR] MPM-C4; MPM p.166 itself puts MWT under MTTR [contested:: true]
+- MPM Availability Factor [differs_from:: Operational Availability Ao ISO] MPM puts PM in Planning Factor, ISO Ao may include PM; convention note
+- Set Up and Adjustment Loss [depends_on:: Production Planning] frequent changeover from production plan affects availability (MPM p.50, p.54)
+- Availability Factor [differs_from:: Reliability] high availability does not imply high reliability (MPM p.166)
+- Cost Leadership Strategy [depends_on:: MTTR] lead index Availability (MPM p.164-166)
+- Product Differentiation Strategy [depends_on:: MTBF] lead index Reliability (MPM p.164-166)
+- Petrochemical OEE Benchmark Example [has_value:: 90%] measured 85% = 5 point gap converted to money (MPM p.213)
+- [[Availability and OEE]] [defined_in:: [[Maintenance Profit Maker Book]]] chapters 3, 8, 10, 12

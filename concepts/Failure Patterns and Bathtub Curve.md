@@ -1,12 +1,12 @@
 ---
 title: Failure Patterns and Bathtub Curve
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [reliability, weibull, failure-rate, rcm, pm, book, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [reliability, weibull, failure-rate, rcm, pm, book, cmrp, mpm]
+sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Failure Patterns and Bathtub Curve
@@ -87,11 +87,42 @@ contested: false
 - ความรู้ทั่วไป (confidence low, ไม่ยืนยัน): การศึกษาภายหลังของ US Navy (เช่น SUBMEPP 2001) ให้สัดส่วน pattern E + F ราว 60% ซึ่งอาจเป็นที่มาของตัวเลขนี้
 - เป็นข้อไม่สอดคล้องภายใน CMRP ที่ไม่มีแหล่ง ไม่ใช่ข้อขัดแย้งกับ RBMM หรือ ISO จึงไม่ตั้ง contested
 
+## สัดส่วน failure pattern ตาม MPM: การบินและการผลิต (เพิ่ม 2026-10-28)
+
+[[Maintenance Profit Maker Book]] ให้กราฟอัตราการเสีย 6 รูปแบบ A-F พร้อมสัดส่วน (MPM p.20):
+
+| แบบ (ตัวอักษร MPM) | Aircraft Industry | Manufacturing |
+|---|---|---|
+| A | 4% | 30% (A + B รวม) |
+| B | 2% | (รวมใน A) |
+| C | 5% | 70% (C + D + E + F รวม) |
+| D | 7% | |
+| E | 14% | |
+| F | 68% | |
+
+- **ตัวเลขการบินตอนนี้มี source แล้ว**: ตรงกับตัวเลข Nowlan & Heap ที่หัวข้อ CMRP ข้างบนบันทึกไว้เป็นความรู้ทั่วไป (A 4, B 2, C 5, D 7, E 14, F 68%) จึงยืนยันด้วย (MPM p.20) ระดับ medium; MPM ไม่ได้อ้างชื่อ Nowlan & Heap หรือปีของการศึกษา การผูกกับ Nowlan & Heap ยังเป็นความรู้ทั่วไป
+- **ตัวเลขอุตสาหกรรมการผลิต (ใหม่)**: MPM จับเป็น 2 กลุ่มใหญ่ A + B ประมาณ 30% และ C-F ประมาณ 70% หนังสือไม่ระบุแหล่งของตัวเลขนี้
+- คำอธิบายรูปร่างใน MPM สั้นและกำกวม: A, B, D, F "อัตราเสียไม่คงที่ช่วงต้นหรือท้าย แต่คงที่ช่วงกลาง", C เพิ่มขึ้นคงที่, E คงที่ตลอด ซึ่งไม่ตรงกับนิยาม Nowlan & Heap เต็ม ๆ (เช่น F infant ไม่มีช่วงท้ายที่ไม่คงที่, B wear-out ไม่มีช่วงต้นไม่คงที่) ควรใช้รูปทรง Nowlan & Heap ประกอบ (ความรู้ทั่วไป) [รูปทรงแต่ละแบบอ่านจาก OCR ไม่ออก]
+- แนวปฏิบัติของ MPM (MPM p.20): ส่วนที่อัตราเสียคงที่ ดูแลด้วย PM/inspection/condition monitoring ตามคาบเวลาหรือมิเตอร์; ส่วนที่อัตราเสียเปลี่ยนแปลงต้อง **ปรับคาบตามสภาพ** ก่อนชำรุดเล็กน้อยลุกลาม เช่น vibration เพลามอเตอร์เพื่อนัดหยุดเปลี่ยนชิ้นส่วนกับฝ่ายผลิต, วัดความหนาท่อเพื่อยืดคาบตรวจ ดู [[P-F Interval and Condition Monitoring]]
+
+### ข้อขัดแย้ง MPM-C3: ระบบตัวอักษรของ failure pattern
+
+ผู้แต่งชุดเดียวกันใช้ตัวอักษรคนละระบบ ยังไม่ resolve (`contested: true`):
+
+| มุมมอง | Infant mortality | Wear-out ชัด | Random/คงที่ | จำนวนแบบ |
+|---|---|---|---|---|
+| MPM p.20 (ระบบ Nowlan & Heap) | F (68% การบิน) | B (2%), A = bathtub (4%) | E (14%) | 6 (A-F) |
+| RBMM p.155-158 (ตารางหลักของหน้านี้) | E (β = 0.5) | A (β = 15) | D (β = 1) | 5 (A-E) |
+
+- ผลต่อการใช้งาน: "pattern A" ใน MPM (bathtub, 4%) กับ "pattern A" ใน RBMM (wear-out) เป็นคนละรูปแบบ ห้ามเทียบตัวอักษรข้ามเล่มตรง ๆ ให้เทียบด้วยรูปทรงหรือค่า β
+- ตัวอักษร Nowlan & Heap ของ MPM ตรงกับที่ใช้ทั่วไปในวงการ RCM (ความรู้ทั่วไป) ส่วน RBMM ch12 ก็พูดถึง 6 รูปแบบแบบ RCM (RBMM p.379) แต่ ch6 แสดงแค่ 5 แบบ ด้วยตัวอักษรของตัวเอง
+- ตาราง A-E และกฎ β ข้างบนยังใช้ตัวอักษร RBMM ตามเดิม
+
 ## จุดที่หนังสือไม่สอดคล้องกัน (flag)
 
 - **Fig 6.14 (RBMM p.165-166):** จับ A กับ β >>> 1, B/C/D กับ β ≈ 1, E กับ β < 1 แต่ตัวอย่างก่อนหน้า (p.155-156) ให้ B ที่ β = 3 ซึ่งไม่ใกล้ 1 ควรใช้ตัวเลขตัวอย่างเป็นหลัก
 - **การระบุ infant mortality:** ch6 ระบุว่า pattern E คือ infant mortality และ D คือ random แต่ ch5 พูดถึง "Infant Mortality แบบ D" (RBMM p.148) และ ch7 จัด A/B เป็น β >> 1 มีอาการล่วงหน้า (ขัดกับตาราง ch6 ที่ B β = 3 ซึ่งไม่ >> 1) (RBMM p.207) ใช้นิยามของ ch6 เป็นหลัก
-- ทั้งหมดนี้เป็นความไม่สอดคล้องภายในหนังสือ ไม่ขัดกับข้อมูลเดิมใน wiki จึงตั้ง `contested: false`
+- ทั้งหมดนี้เป็นความไม่สอดคล้องภายในหนังสือ ไม่ขัดกับข้อมูลเดิมใน wiki จึงตั้ง `contested: false` (ข้อความเดิม 2026-10-25; ตั้งแต่ 2026-10-28 หน้านี้เป็น `contested: true` เพราะข้อขัดแย้ง MPM-C3 เรื่องระบบตัวอักษร ดูหัวข้อ MPM ข้างบน ส่วนรายการในหัวข้อนี้ยังไม่ใช่ contested)
 
 ## เชื่อมโยงกับ compressor failure hierarchy
 
@@ -107,6 +138,7 @@ contested: false
 - [[PM Task Selection]]
 - [[Failure Mode]]
 - [[Failure Finding Interval]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -170,3 +202,12 @@ contested: false
 - Equipment Without Wear-Out Phase [has_value:: about 60%] infant and random only, unsourced (CMRP CMPR-03 p.5) [confidence:: low]
 - CMRP 60 Percent No Wear-Out Claim [contradicts:: CMRP Pattern Shares 68 26 4 2] p.28 implies 94% infant + random (derived); internal CMRP inconsistency (CMRP CMPR-03 p.5 vs CMPR-01 p.28)
 - [[Failure Patterns and Bathtub Curve]] [defined_in:: [[CMRP Course]]] pattern shares (CMRP CMPR-01 p.28)
+- [[Failure Patterns and Bathtub Curve]] [defined_in:: [[Maintenance Profit Maker Book]]] six patterns A-F with shares (MPM p.20)
+- MPM Aircraft Pattern Shares [has_value:: A 4, B 2, C 5, D 7, E 14, F 68%] aircraft industry; matches Nowlan And Heap figures (MPM p.20)
+- MPM Aircraft Pattern Shares [related_to:: Nowlan And Heap Patterns C D E] N&H percentages now sourced by MPM p.20; N&H attribution general knowledge
+- MPM Manufacturing Pattern Shares [has_value:: A+B 30%, C-F 70%] manufacturing industry, source of figure not stated (MPM p.20)
+- Variable Failure Rate Part [selects:: Condition Monitoring] adjust interval to condition, e.g. motor shaft vibration, pipe thickness (MPM p.20)
+- Constant Failure Rate Part [selects:: Time-Based PM] PM/inspection by calendar or meter (MPM p.20)
+- MPM Pattern Letters [contradicts:: RBMM Pattern Letters] MPM-C3; MPM F = infant 68%, A = bathtub 4% (MPM p.20) [contested:: true]
+- RBMM Pattern Letters [contradicts:: MPM Pattern Letters] MPM-C3; RBMM A = wear-out, E = infant (RBMM p.155-158) [contested:: true]
+- MPM Pattern Letters [alias_of:: Nowlan And Heap Pattern Letters] same letter system, general knowledge [confidence:: low]

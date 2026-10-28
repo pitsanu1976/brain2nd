@@ -1,10 +1,10 @@
 ---
 title: FMECA
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [fmeca, criticality, rcm, reliability, statistics, book, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [fmeca, criticality, rcm, reliability, statistics, book, cmrp, mpm]
+sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: high
 contested: false
 ---
@@ -104,6 +104,12 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 - ตัวอย่าง PFMEA ในสไลด์มีเลขคูณผิด 3 ค่า (7 x 8 x 7 พิมพ์ 382 ควรเป็น 392; 7 x 1 x 7 พิมพ์ 40 ควรเป็น 49; 7 x 2 x 6 พิมพ์ 70 ควรเป็น 84) (CMRP CMPR-02 p.41)
 - FMEA เป็นเครื่องมือ forward-looking และใช้จัดลำดับสาเหตุใน [[Root Cause Analysis]] (CMRP CMPR-03 p.21-23)
 
+## หมายเหตุจาก MPM: การขยายตัวย่อผิด (เพิ่ม 2026-10-28)
+
+- หนังสือ [[Maintenance Profit Maker Book]] ขยาย FMECA ในแผนโครงการ 3 ปีของกรณีศึกษา XYZ (รูป 12.15) ว่า "Failure Mode Effect and **Cost** Analysis" (MPM p.236) และในบทที่ 9 ใช้คำว่า "Failure Mode Effect Cause Analysis" สำหรับการวิเคราะห์รากเหง้าและผลกระทบของปัญหา (MPM p.160)
+- ถือเป็น **ความผิดพลาดของหนังสือ** ไม่ใช่นิยามใหม่: นิยามมาตรฐานคือ Failure Mode Effect **Criticality** Analysis ตาม RBMM และ CMRP ในหน้านี้ (FMECA = FMEA + Criticality Analysis, CMRP CMPR-02 p.47-48) ไม่ตั้ง contested
+- บริบทการใช้ใน MPM: implement FMECA เป็นกิจกรรมของโครงการ OEE/Asset Management (MPM p.236) และ CMMS ต้องมีโครงสร้างประวัติซ่อมที่รองรับ Failure Root Cause Analysis / FMECA (MPM p.161) ดู [[Maintenance Master Plan]] และ [[Maintenance Performance Improvement]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - คอลัมน์ Equipment / Damage Code / Object Part / Failure Mode ของ FMECA (Fig 5.23) ตรงกับ record ใน [[Failure Data Recording]] และชั้น [[Failure Hierarchy]]
@@ -192,3 +198,6 @@ MIL-STD-1629A; RAC-HDBK-1120; MIL-HDBK-217; MIL-STD-882D; NAVAIRINST 5100.11; IE
 - PFMEA Example Row 4 Before [has_value:: 392] slide prints 382 (CMRP CMPR-02 p.41)
 - [[FMECA]] [input_to:: [[Root Cause Analysis]]] FMEA ranks possible causes (CMRP CMPR-03 p.21-22)
 - [[FMECA]] [related_to:: [[CMRP vs RBMM FMECA Scales]]]
+- MPM FMECA Expansion [contradicts:: [[FMECA]]] MPM p.236 prints Failure Mode Effect and Cost Analysis; book error, standard = Criticality Analysis
+- [[Maintenance Performance Improvement]] [uses:: [[FMECA]]] implement FMECA in XYZ OEE/asset management project (Fig 12.15, MPM p.236)
+- [[CMMS]] [input_to:: [[FMECA]]] repair history structure must support failure root cause analysis / FMECA (MPM p.161)

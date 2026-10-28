@@ -1,10 +1,10 @@
 ---
 title: Reliability Metrics
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [reliability, statistics, weibull, kpi, failure-rate, book, iso-14224, cmrp, maintainability]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
+tags: [reliability, statistics, weibull, kpi, failure-rate, book, iso-14224, cmrp, maintainability, mpm]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: true
 ---
@@ -64,6 +64,35 @@ wiki เก็บสองมุมมองไว้คู่กัน ยั�
 - ในข้อมูลหลายครั้งต่อ item ที่ซ่อมแล้วเหมือนใหม่ MTTF ของ RBMM จึงใกล้ MUT ของ ISO ถ้า item เสื่อมสะสม ค่าเฉลี่ยทำให้ตัดสินใจผิดได้ (cl. C.5.1, p.223)
 - ISO แยก MTTR (ซ่อม), MTTRes (รวม detection), MRT, MART รายละเอียดและการจับคู่ MTTR/MWT ของ RBMM ดู [[Maintenance Time Definitions]]
 - การประมาณ λ และช่วงความเชื่อมั่นของ ISO (λ = n/τ, chi-square) ตอบข้อเตือนของ RBMM ที่ว่าต้องมี confidence bound (p.165) ดู [[Failure Rate Estimation]]
+
+### มุมมอง MPM ต่อ MTBF และ MTTR (เพิ่ม 2026-10-28, sources: maintenance-profit-maker.md; ข้อขัดแย้ง MPM-C4)
+
+หนังสือ [[Maintenance Profit Maker Book]] ของผู้แต่งกลุ่มเดียวกับ RBMM ใช้นิยามเชิงปฏิบัติที่ต่างจาก RBMM ข้างบน wiki เก็บทั้งสองไว้ ยังไม่เลือก
+
+| ดัชนี | MPM บทที่ 8 (รูป 8.3, MPM p.149-151) | MPM บทที่ 4 (รูป 4.18, MPM p.76) | RBMM |
+|---|---|---|---|
+| MTBF | Total Up Time / จำนวนครั้งเสีย | (ชั่วโมงทั้งหมด - เวลาซ่อมรวม) / จำนวนครั้งเสีย (อนุมานจากตัวเลข, derived) | MTTF + MTTR + MWT (RBMM p.190-193) |
+| MTTR | Total Repair Time / จำนวนครั้งเสีย (ซ่อมล้วน) | เวลาซ่อมรวม / จำนวนครั้งเสีย | Repair + Wait labor (RBMM p.49-51) |
+| เวลารอ | แยกเป็น **Mean Logistic Time (MLT)** = Total Wait Time / จำนวนครั้งเสีย | ไม่แยก | MWT อยู่ใน MDT = MTTR + MWT |
+| Failure Rate | 1 / MTBF | - | λ(t) จาก pdf |
+
+- MTBF ของ MPM ทั้งสองบทจึงเป็น **เวลาเดินเฉลี่ย** ไม่รวมเวลาหยุด ใกล้ MTTF/MUT มากกว่า MTBF = MTTF + MTTR + MWT ของ RBMM (ผลต่างเล็กเมื่อเวลาหยุดน้อยเทียบเวลาเดิน) และ MTTR ของ MPM บทที่ 8 ใกล้ MART/MRT ของ ISO ดู [[Maintenance Time Definitions]]
+- ความไม่สอดคล้องภายในเล่ม: MPM บทที่ 9 (p.166) จัด MWT เป็นเป้าการลด MTTR ขัดกับบทที่ 8 ที่แยกเวลารอเป็น MLT
+- ตัวอย่างรูป 8.3: 720 ชม. เสีย 3 ครั้ง ซ่อม 70 ชม. รอ 20 ชม. ได้ MTBF 630/3 = 210 ชม., MTTR 23.33 ชม., MLT 6.67 ชม., Failure Rate 1/210 พิมพ์ 0.0047 (ปัดที่ถูก 0.0048 ครั้ง/ชม., derived); ข้อความในเล่มว่า Up Time 650 ชม. ค่าที่ใช้คำนวณและถูกต้องคือ 630 ชม. (derived) ดู [[Availability and OEE]] หัวข้อ 6.8
+
+**วิธีของรายงาน MTBF-MTTR รูป 4.18 (MPM p.76)**: ชั่วโมงทั้งหมด 26,280 ชม. (= 3 x 8,760, derived) 18 เครื่อง เสียรวม 35 ครั้ง เวลาซ่อมรวม 783 ชม.
+
+| เครื่อง | ครั้งที่เสีย | เวลาซ่อมรวม (ชม.) | MTBF | MTTR |
+|---|---|---|---|---|
+| PS01-FWP01 | 10 | 151 | 2,612.90 | 15.10 |
+| PS02 โรงสูบ 2 | 3 | 41 | 8,746.33 | 13.67 |
+| PS02-FWP01 | 4 | 337 | 6,485.75 | 84.25 |
+| PS03 โรงสูบ 3 | 5 | 155 | พิมพ์ 5,255.00 ที่ถูก **5,225.00** (derived) | 31.00 |
+| เครื่องที่เสีย 1 ครั้ง ซ่อม 3 ชม. | 1 | 3 | 26,277.00 | 3.00 |
+
+- ตัวอย่างตรวจ: (26,280 - 151)/10 = 2,612.9 และ 151/10 = 15.1; PS03 (26,280 - 155)/5 = 5,225.00 ตัวเลข 5,255.00 ในเล่มจึงเป็น typo (ของหนังสือหรือ OCR)
+- แถวที่เสีย 0 ครั้งแต่แสดง MTTR = 1.00 ไม่มีความหมาย ควรเป็น N/A (derived)
+- ข้อควรระวัง: ค่าแบบนี้เป็นค่าเฉลี่ยรวมทุก failure mode ของทั้งเครื่อง ใช้ดูอันดับปัญหา (top 10/20) ได้ แต่ไม่แทนการวิเคราะห์ราย mode ด้วย [[Weibull Analysis]] (การตีความของ wiki)
 
 ## Time to Target Reliability (RBMM p.169)
 
@@ -128,6 +157,7 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 - [[Statistical Distributions for Maintenance]]
 - [[Maintenance KPIs]]
 - [[Maintainability]]
+- [[Maintenance Profit Maker Book]] (MTBF/MTTR/MLT แบบ MPM)
 
 ## Triplets
 
@@ -192,3 +222,21 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 - Failure Rate [has_formula:: λ = 1/MTBF] only for exponential (CMRP CMPR-04 p.14)
 - CMRP MTTF Example [has_value:: 153.8 h] 1538/10 for 10 units (CMRP CMPR-04 p.16)
 - CMRP MTBF Example [has_value:: 4,000 h] n·m/r = 100 x 1000/25 (CMRP CMPR-04 p.16)
+- MPM MTBF [has_formula:: Total Up Time / Number of Failures] (MPM p.149-151) [contested:: true]
+- MPM Report MTBF [has_formula:: (total hours - total repair hours) / number of failures] inferred from Fig 4.18 figures (MPM p.76) [contested:: true]
+- MTBF [has_formula:: MTTF + MTTR + MWT] RBMM view kept alongside MPM (RBMM p.190-193) [contested:: true]
+- MPM MTBF [contradicts:: MTBF] MPM-C4; MPM MTBF is mean up time, excludes repair and wait [contested:: true]
+- MPM MTTR [has_formula:: Total Repair Time / Number of Failures] repair only (MPM p.150-151) [contested:: true]
+- MPM MTTR [contradicts:: RBMM MTTR] MPM-C4; RBMM MTTR = Repair + Wait labor (RBMM p.49-51) [contested:: true]
+- Mean Logistic Time [has_formula:: Total Wait Time / Number of Failures] (MPM p.150-151)
+- Mean Logistic Time [alias_of:: MWT] wait before and after repair, logistics support
+- MPM Failure Rate [has_formula:: 1 / MTBF] (MPM p.151)
+- Fig 8.3 Machine Index Example [has_value:: MTBF 210 h, MTTR 23.33 h, MLT 6.67 h] 720 h, 3 failures (MPM p.149-151)
+- MPM Chapter 9 MTTR Usage [contradicts:: MPM MTTR] p.166 puts MWT under MTTR, internal inconsistency (MPM p.166)
+- Fig 4.18 MTBF MTTR Report [has_value:: 26,280 h, 18 machines, 35 failures, 783 repair h] (MPM p.76)
+- Fig 4.18 PS01-FWP01 [has_value:: MTBF 2,612.90 h, MTTR 15.10 h] 10 failures, 151 h repair (MPM p.76)
+- Fig 4.18 PS03 MTBF Printed [has_value:: 5,255.00 h] (MPM p.76)
+- Fig 4.18 PS03 MTBF [has_value:: 5,225.00 h] derived (26,280 - 155)/5
+- Fig 4.18 PS03 MTBF Printed [contradicts:: Fig 4.18 PS03 MTBF] typo, derived correction
+- MPM MTBF [related_to:: MUT] mean running time, close to MTTF/MUT, interpretation [confidence:: medium]
+- [[Reliability Metrics]] [defined_in:: [[Maintenance Profit Maker Book]]] MPM chapter 4 and 8 practical definitions

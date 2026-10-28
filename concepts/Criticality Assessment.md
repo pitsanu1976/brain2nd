@@ -1,10 +1,10 @@
 ---
 title: Criticality Assessment
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224, cmrp]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md]
+tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224, cmrp, mpm]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -121,6 +121,49 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - สไลด์ใช้คำว่า criticality กับ risk/RPN สลับกันโดยไม่นิยามแยก (CMRP CMPR-02 p.31-33) เพิ่มความหมายที่ 4 ให้คำว่า "critical" นอกเหนือจาก 3 ความหมายใน callout ด้านบน: ในสไลด์ CMRP "critical" = ผลยอมรับไม่ได้ ต้องมีมาตรการ (CMRP CMPR-03 p.5) ซึ่งใกล้กับ A/B/C ของ RBMM
 - Total organizational risk: Risk = Threats x Vulnerabilities x Impact และ Composite Risk Index = Impact x Probability x Detectability (CMRP CMPR-02 p.36) โครงเดียวกับ RPN
 
+## มุมมอง MPM: 7 เกณฑ์และกลยุทธ์ 30/50/20 (เพิ่ม 2026-10-28)
+
+บทที่ 13 ของ [[Maintenance Profit Maker Book]] (ผู้แต่งชุดเดียวกับ RBMM) ใช้ criticality เป็นขั้นแรกของ Physical Asset Management (กรอบเต็มที่ [[Asset Life Cycle]] หัวข้อ 10)
+
+### ขั้นตอนและเกณฑ์ 7 ข้อ (รูป 13.2, MPM p.245-247)
+
+ขึ้นทะเบียนเครื่องจักรทั้งหมดใน [[CMMS]] (Asset Register) -> ให้คะแนนความวิกฤติทุกตัวเป็นดัชนี -> จัดอันดับ (ทำสม่ำเสมอให้เป็นปัจจุบัน) โดยดูผลกระทบเมื่อชำรุดต่อ 7 ข้อ:
+
+1. คุณภาพ
+2. ความปลอดภัยและสภาพแวดล้อม
+3. อุปกรณ์ข้างเคียง/ที่เกี่ยวข้อง
+4. อุปกรณ์สำรองหรือเสริม (Redundancy)
+5. ความถี่ในการเสีย (Frequency of failure)
+6. เวลาหยุดการผลิต (Down Time)
+7. ค่าใช้จ่ายในการซ่อม
+
+- หนังสือไม่ให้สเกลคะแนนหรือสูตรรวมของ 7 ข้อ (ไม่มีใน sources) เทียบ RBMM 3 ด้าน (Commercial, Safety, Environment) และ CMRP 6 มิติ: MPM แยก redundancy และอุปกรณ์ข้างเคียงเป็นเกณฑ์ของตัวเอง ส่วน RBMM จัดการ redundancy ผ่าน boundary/process (หัวข้อ Boundary, Redundancy ข้างบน)
+- ตามทฤษฎีความวิกฤติของแต่ละชิ้นถูกกำหนดโดยการออกแบบ เพราะชิ้นส่วนพึ่งพากันและลุกลามไปเสียส่วนอื่นได้ (MPM p.247)
+
+### กลยุทธ์และ service level อะไหล่ตามกลุ่ม (MPM p.248-250)
+
+| กลุ่ม (ตามลำดับคะแนน) | หลักการ | งานหลัก | Spare service level |
+|---|---|---|---|
+| วิกฤติที่สุด 30% แรก | ห้ามเสีย | Reliability Engineering / RCM, RBI, FMEA, งานปรับปรุงเปลี่ยนพฤติกรรมการเสีย; อาจจ้าง OEM บางเครื่อง | **100%** (รูปเขียน "เกือบ 100%") |
+| วิกฤติปานกลาง 50% | ห้ามเสียด้วยงานเชิงรุก | PM/PdM, ตาราง condition monitoring; ส่วนที่เงื่อนไขชัดใช้ reliability analysis ช่วย ส่วนที่ไม่ชัดตรวจตามตารางเวลาคงที่; พิจารณา redundancy (ต้นทุนลงทุนสูง) | **95-98%** |
+| ไม่วิกฤติ 20% | เชิงรับ ซ่อมง่าย ซ่อมเร็ว | อายุแน่นอน (failure rate บอกได้) ทำ PM ตามเวลา/ความถี่; อายุไม่แน่นอนใช้ run-to-failure และทำให้เวลาซ่อมสั้นที่สุด; ใช้อะไหล่และงานจ้างเหมาสนับสนุน | ไม่ระบุตัวเลข |
+
+- ตัวอย่างกลุ่มสูงสุด: หัวจ่ายในโรงงานบรรจุขวด (เสียแล้วหยุดทั้งสาย), ระบบไฟฟ้า, ระบบต้นกำลัง (MPM p.248)
+- สอดคล้องกับ RBMM: กลุ่มสูงสุด = RCM + service level 100% (Fig 1.5); **MPM เพิ่มตัวเลขกลุ่มกลาง 95-98%** ซึ่ง RBMM บอกเพียง "ระบุ % service level"
+- ความต่างกลุ่ม C: RBMM ว่า "ตัด PM ไม่จำเป็น, PM optimum, RTF" ส่วน MPM ยังให้ทำ PM ตามเวลาได้ถ้าอายุแน่นอน และไม่พูดถึงการตัด PM ไม่ขัดกันโดยตรง
+- **เงื่อนไขข้อมูลสำหรับ reliability analysis**: ใช้โปรแกรมที่เชื่อมกับ CMMS และระบบบัญชีได้ และต้องมีประวัติซ่อมครบถ้วนต่อเนื่อง **มากกว่า 3-4 ปี** จึงได้ผล (MPM p.248) ดู [[Weibull Analysis]]
+- **RBI** (Risk-Based Inspection) ใช้กับ stationary equipment และต้องมีกฎหมายรองรับการลดความถี่/เวลาหยุด (MPM p.248) หมายเหตุชื่อ RBI ที่ MPM p.252 เขียนผิดเป็น "Reliability Based Inspection" อยู่ที่ [[Asset Life Cycle]] หัวข้อ 5
+
+### Criticality drift (รูป 13.4, MPM p.247)
+
+- (1) เริ่มใช้งาน: ความวิกฤติตามที่ออกแบบ -> (2) ใช้งานไประยะหนึ่ง: ชิ้นที่บำรุงรักษาไม่ถูกต้องเลื่อนจาก "ไม่วิกฤติ" เป็น "วิกฤติสูง" และกลายเป็นต้นเหตุการสูญเสีย OEE -> (3) เป้าหมาย: กลับใกล้ค่าที่ออกแบบและลดลงได้อีก
+- สรุป: วิธีบำรุงรักษาเป็นตัวผลักให้ criticality เปลี่ยน จึงต้องจัดอันดับใหม่สม่ำเสมอ สอดคล้องกับ Dynamic of Criticality ของ RBMM ข้างบน (ในรูปมีตัวเลข "160%" ที่อ่านความหมายไม่ได้ [อ่านไม่ออก])
+
+### หมายเหตุ: สัดส่วน 20/50/30 ที่ MPM p.85
+
+- รูป 5.1 ของ MPM ในบทอะไหล่ (MPM p.85) แบ่งเป็น วิกฤติสูงสุด ~20% / ปานกลาง ~50% / ต่ำ ~30% กลับด้านกับ 30/50/20 ของ MPM p.248-250 เล่มเดียวกันและ RBMM Fig 1.4
+- ทั้งหมดเป็นตัวอย่าง ไม่ใช่มาตรฐาน จึงบันทึกเป็นความต่าง ไม่ใช่ข้อขัดแย้ง (ไม่ตั้ง contested) สัดส่วนจริงขึ้นกับผลการให้คะแนนของโรงงาน
+
 ## ใช้ใน RCM
 
 กระบวนการ 2 ของ [[RCM Reliability Centered Maintenance]]: เลือกเครื่องจักร/กรอบตาม criticality ก่อน แล้วค่อยลง Function และ FM Fast Track RCM ถือว่า criticality ของ equipment อยู่นอกกระบวนการ ผู้ใช้เลือกกรอบเอง (RBMM p.150) ระดับ equipment ละเอียดขึ้นด้วย [[FMECA]]
@@ -145,6 +188,7 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - [[Maintenance Budget]]
 - [[Asset Life Cycle]]
 - [[CMRP vs RBMM FMECA Scales]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -217,3 +261,21 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - CMRP Importance Table [has_category:: availability, production rate, quality, safety, environment, cost] 3 levels High/Moderate/Low (CMRP CMPR-02 p.30)
 - Composite Risk Index [has_formula:: Impact x Probability x Detectability] (CMRP CMPR-02 p.36)
 - Organizational Risk [has_formula:: Threats x Vulnerabilities x Impact] (CMRP CMPR-02 p.36)
+- [[Criticality Assessment]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 13 (MPM p.245-250)
+- MPM Criticality Criteria [has_category:: quality, safety and environment, adjacent equipment, redundancy, failure frequency, down time, repair cost] 7 criteria, no scoring scale given (MPM p.246-247)
+- MPM Criticality Criteria [differs_from:: RBMM Criticality Categories] 7 impact criteria vs Commercial/Safety/Environment
+- Equipment Criticality [depends_on:: Design] in theory set by design, interdependent parts (MPM p.247)
+- Asset Register [input_to:: [[Criticality Assessment]]] register all machines in CMMS first (Fig 13.2, MPM p.245-246)
+- Criticality A [has_value:: 30%] most critical group by ranking, also MPM (MPM p.248-250)
+- Criticality B [has_value:: 50%] also MPM (MPM p.248-250)
+- Criticality C [has_value:: 20%] also MPM (MPM p.248-250)
+- Criticality A [uses:: [[RCM Reliability Centered Maintenance]]] with RBI, FMEA, improvement work (MPM p.248)
+- Criticality A [has_value:: 100% service level] MPM figure says almost 100% (MPM p.248-250)
+- Criticality B [has_value:: 95-98% service level] spare parts (MPM p.248-250)
+- Criticality B [uses:: Condition Monitoring] PM/PdM, fixed schedule when conditions unclear, consider redundancy (MPM p.249)
+- Criticality C [uses:: Time-Based PM] if life is certain; run-to-failure with fast repair if not (MPM p.250)
+- Reliability Analysis [depends_on:: Maintenance History] more than 3-4 years complete history needed (MPM p.248)
+- Risk-Based Inspection [applies_to:: Stationary Equipment] needs legal backing (MPM p.248)
+- Criticality Drift [depends_on:: Maintenance Method] improperly maintained parts move from non-critical to highly critical, cause OEE loss (Fig 13.4, MPM p.247)
+- MPM Fig 5.1 Criticality Split [has_value:: 20/50/30%] high/medium/low (MPM p.85)
+- MPM Fig 5.1 Criticality Split [differs_from:: MPM Fig 13.4 Criticality Split] 20/50/30 vs 30/50/20; both examples, not contested

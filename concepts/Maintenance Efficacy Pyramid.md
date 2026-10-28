@@ -1,10 +1,10 @@
 ---
 title: Maintenance Efficacy Pyramid
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [maintenance-management, kpi, budget, cmms, book, work-management, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+tags: [maintenance-management, kpi, budget, cmms, book, work-management, cmrp, mpm, audit]
+sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -75,6 +75,33 @@ Fig 2.5 (Reliability Based Maintenance Selection and Optimization, RBMM p.42-43)
 
 CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, จัดคาบ PM ไม่เหมาะ, จัดระดับอะไหล่ไม่ได้, ตั้งงบไม่เป็น (สำคัญสุด รักษายากสุด), ไม่มีรายงานป้อนกลับที่ถูกต้อง จุดเริ่มต้นคือสอบทานสมรรถนะตนเองด้วยดัชนีใน [[Maintenance KPIs]]
 
+## 5. เทียบกับกรอบของ MPM (เพิ่ม 2026-10-28)
+
+หนังสือ [[Maintenance Profit Maker Book]] (ผู้แต่ง 2 ใน 3 คนเดียวกับ RBMM) มีกรอบคู่ขนาน 3 ชุด รายละเอียดอยู่ที่ [[Maintenance Performance Audit]] และ [[Maintenance Master Plan]] ด้านล่างบันทึกเฉพาะ **ความต่าง** (แนวคิดเดียวกัน ไม่ถือเป็นข้อขัดแย้ง)
+
+### 5.1 หัวข้อ audit 16 ข้อของ MPM (รูป 11.1, MPM p.193-195) vs 16 หัวข้อของ RBMM
+
+- MPM แบ่ง 9 Technical + 7 Management และให้เกรด A (90-100) ถึง F (< 60) พร้อมถ่วงน้ำหนักตามกลยุทธ์ธุรกิจ (MPM p.195); RBMM ไม่แบ่งกลุ่มและเน้น 6 ประเด็นสำคัญ (2, 3, 4, 7, 10, 13)
+- MPM มีหัวข้อที่ RBMM ไม่มีตรง: **สภาพโรงงาน เครื่องจักรอุปกรณ์**, **ความสามารถทางเทคนิค** (แทน Method and Technical Management)
+- RBMM มีหัวข้อที่ MPM ไม่มีแยก: **Maintenance Policy** (9); ส่วน Maintenance Performance Budgeting ของ RBMM ตรงกับ "การจัดทำและใช้งบประมาณ" ของ MPM
+- ข้อสรุปตรงกัน: จุดอ่อนมักอยู่ที่การวัดผล รายงาน และงบประมาณ (MPM p.195; RBMM p.33-34) และ MPM เพิ่มว่า **> 80% ของปัญหาเป็นการบริหารจัดการ** (MPM p.193)
+
+### 5.2 หัวข้อสอบเทียบ 14 ข้อในบทที่ 1 ของ MPM (MPM p.24-25)
+
+- ทับกับ RBMM: Organization, Maintenance Management System, Cost Accounting, Technical Documentation, Spare Part, HR, Safety & Environment, Subcontracting (= Outsourcing), Methodology (= Method)
+- MPM เพิ่ม: สภาพเครื่องเทียบมาตรฐาน, OEE และตัวขับ, Planning Ability and Capacity, Tool Management, Renewal Policy
+- RBMM มีแต่ชุด 14 ข้อไม่มี: Budgeting, Performance Measuring/Reporting, MIS, Policy, Standardization, Quality, Production Coordination
+
+### 5.3 แผนแม่บท 16 แผน (MPM บทที่ 9) และ road map 5 ระดับ (MPM บทที่ 1)
+
+- แผนแม่บท 16 แผนของ MPM แทบตรง 1:1 กับ 16 หัวข้อของ RBMM ในหัวข้อ 1 ต่างเพียง RBMM "Maintenance Policy" vs MPM "Investment and Renewal Policy" ตารางจับคู่อยู่ใน [[Maintenance Master Plan]] หัวข้อ 5
+- Road Map to Maintenance Excellence ของ MPM มี **5 ระดับ** ตามสัดส่วนงาน 16 กิจกรรม (Without MMS -> With MMS -> With CMMS -> With CMMS & ME beginning -> With CMMS & ME ongoing) (MPM p.25-33) ส่วนพีระมิดของ RBMM มี **6 ชั้น** ตามสิ่งที่คุมได้ (งาน -> เงิน -> งบ -> optimize) ทั้งสองชี้ตรงกันว่า Reactive/Break and Fix อยู่ล่างสุด และ CMMS ที่ใช้ไม่เต็มที่ไม่ช่วยยกระดับ (MPM ระดับ 3; RBMM ชั้น 2 Immature)
+
+### 5.4 ตัวเลขอะไหล่ในหัวข้อ 1
+
+- สัดส่วนค่าอะไหล่: MPM ว่า **มากกว่า 50%** ของค่าซ่อมบำรุง (MPM p.159, p.216) และ "เกิน 80% ในบางงาน" (MPM p.17) เทียบกับ RBMM มากกว่า 60-70% ในหัวข้อ 1 ฐานต่างกัน (ภาพรวม vs บางงาน) ทั้งคู่ > 50% จึงบันทึกเป็นความต่าง ไม่ใช่ข้อขัดแย้ง
+- holding cost ของ MPM ต่างจาก 15-20% ของ RBMM ดูข้อขัดแย้ง MPM-C1 ที่ [[Spare Parts Management]] และ [[Maintenance Cost Structure]]
+
 ## ข้อควรระวัง
 
 - รูป Fig 2.2 อ่านจากภาพ ข้อความในช่องบางส่วนเป็นการสรุปจากบันทึกอ่านหนังสือ
@@ -93,6 +120,8 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - [[RCM Reliability Centered Maintenance]]
 - [[Maintenance Planning and Scheduling]]
 - [[Maintenance Backlog and Schedule Compliance]]
+- [[Maintenance Performance Audit]]
+- [[Maintenance Master Plan]]
 
 ## Triplets
 
@@ -137,3 +166,10 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - Maintenance Work Control [uses:: [[Failure Data Recording]]] minimum record: failure mode/cause, Man-Hrs, PM type, parts, date-time, cost, equipment to part level (RBMM p.53)
 - Maintenance Work Control [uses:: [[Maintenance Planning and Scheduling]]] planning/scheduling element of level 3, detailed by CMRP (CMRP CMPR-09)
 - Maintenance Work Control [uses:: [[Maintenance Backlog and Schedule Compliance]]] work control indices: backlog weeks, schedule compliance (CMRP CMPR-10 p.1-9)
+- MPM 16 Audit Topics [differs_from:: 16-Topic Assessment] MPM 9 technical + 7 management with plant condition and technical capability; RBMM has Maintenance Policy (MPM p.193-195, RBMM Fig 2.1)
+- MPM 16 Audit Topics [has_category:: Grade A-F] weighted by business strategy (MPM p.195)
+- MPM 14 Audit Topics [differs_from:: 16-Topic Assessment] MPM adds OEE, planning capacity, tool management, renewal policy; lacks budgeting, reporting, MIS, policy, standardization, quality, production coordination (MPM p.24-25)
+- [[Maintenance Master Plan]] [maps_to:: 16-Topic Assessment] almost 1:1, Maintenance Policy vs Investment and Renewal Policy (MPM ch9)
+- Road Map to Maintenance Excellence [differs_from:: [[Maintenance Efficacy Pyramid]]] 5 levels by activity profile vs 6 levels by what is controlled (MPM p.25-33, RBMM p.35-40)
+- [[Maintenance Performance Audit]] [related_to:: [[Maintenance Efficacy Pyramid]]] MPM audit framework parallel to RBMM self-assessment
+- Spare Part Cost [has_value:: > 50%] of maintenance cost per MPM, difference in base not contested (MPM p.159, p.216)

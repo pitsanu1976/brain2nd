@@ -1,10 +1,10 @@
 ---
 title: Maintenance Business Case
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-28
 type: concept
-tags: [cmrp, business-case, cost, budget, kpi, maintenance-management]
-sources: [cmrp.md, reliability-based-maintenance-management.md]
+tags: [cmrp, business-case, cost, budget, kpi, maintenance-management, mpm, engineering-economics]
+sources: [cmrp.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -14,6 +14,8 @@ contested: false
 Business case คือเอกสารที่ใช้ขออนุมัติการลงทุนเฉพาะโครงการ โดยแสดงว่าโครงการมีคุณค่า คุ้มทุน สอดคล้องกับกลยุทธ์ และทำได้จริง สไลด์ CMRP นำเสนอขั้นตอนทำ business case (CMRP CMPR-04 p.1-5) และความต่างระหว่าง business case กับ business plan (CMRP CMPR-03 p.49-50) ในงานบำรุงรักษาใช้กับการลงทุนเช่น modification, redundancy, ระบบ CM/CMMS ใหม่ หรือ capital spares ข้อความถอดความจาก reading notes ใน [[CMRP Course]]
 
 **ข้อจำกัดของแหล่ง:** สไลด์กล่าวถึง DCF, IRR และ hurdle rate เป็นชื่อเท่านั้น **ไม่มีสูตร NPV, IRR, ROI, payback และไม่มีตัวอย่างตัวเลข** (CMRP CMPR-04 p.1-5) หน้านี้จึงไม่ใส่สูตรการเงิน ถ้าต้องการสูตรต้องใช้แหล่งอื่น
+
+**อัปเดต 2026-10-28:** ข้อจำกัดข้างบนยังจริงสำหรับสไลด์ CMRP แต่ตอนนี้ wiki มีแหล่งสูตรแล้ว: บทที่ 15 ของ [[Maintenance Profit Maker Book]] ให้ 6 interest factors, WACC, IRR, NPV และ payback พร้อมตัวอย่างที่ตรวจซ้ำแล้ว สรุปไว้ที่ [[Engineering Economics and Time Value of Money]] (MPM p.265-277) ส่วน ROI, benefit-cost ratio, annual worth และ replacement analysis ยังไม่มีใน sources
 
 ## Business case vs business plan (CMRP CMPR-03 p.49-50)
 
@@ -42,6 +44,20 @@ Business case คือเอกสารที่ใช้ขออนุมั
 - **IRR และ hurdle rate**: โครงการผ่านเมื่อผลตอบแทนภายในไม่ต่ำกว่าอัตราขั้นต่ำที่องค์กรตั้ง (ความรู้ทั่วไป)
 - **Scenario analysis**: ดูผลเมื่อสมมติฐานหลักเปลี่ยน เช่น ราคา ปริมาณ failure rate (ความรู้ทั่วไป)
 - **Cost of not proceeding**: ในงานบำรุงรักษามักเป็น risk cost ของการเดินต่อแบบเดิม เช่น downtime และ production loss ที่คาดว่าจะเกิด (การตีความของ wiki) แนวคิด risk cost = probability x penalty ปรากฏในเรื่องอะไหล่ (CMRP CMPR-03 p.13) ดู [[Spare Part Criticality and Risk]]
+
+### สูตรจาก MPM สำหรับขั้น Evaluate options (เพิ่ม 2026-10-28)
+
+ใช้แทนคำอธิบายความรู้ทั่วไปข้างบน รายละเอียดและตัวอย่างเต็มอยู่ที่ [[Engineering Economics and Time Value of Money]]
+
+| เครื่องมือ | นิยาม/สูตรตาม MPM | ข้อควรระวัง |
+|---|---|---|
+| Discount rate | WACC = Kd x (1 - ภาษี) ถ่วงหนี้ + Ke ถ่วงทุน; ตัวอย่าง 5.10% (MPM p.269-271) | Kd หลังภาษีใช้ได้เฉพาะบริษัทที่มีกำไร |
+| NPV (DCF) | PV ของกระแสเงินทุกงวดที่ WACC (MPM p.274-276) | ตัวอย่างหนังสือไม่คิดลดงวดแรก (t = 0) ถ้าใช้ Excel `NPV()` ตรง ๆ จะได้ค่าต่ำลงหนึ่งงวด |
+| IRR / hurdle rate | อัตราที่ NPV = 0 (MPM p.272-274) ผ่านเมื่อ IRR ไม่ต่ำกว่า hurdle rate | ทางเลือกขนาดต่างกันอาจได้ผล IRR ขัดกับ NPV (ตัวอย่าง IRR 11.88% vs 10.82% แต่ NPV 906,434 vs 1,029,712) |
+| Payback | จำนวนปีที่กระแสเงินสะสมกลับเป็นบวก (MPM p.276-277) | ตัวอย่างหนังสือเป็น simple payback ไม่คิดลด |
+
+- ผู้เขียน MPM ว่า "มักใช้ IRR มากกว่า" (MPM p.276) แต่หลักการเงินทั่วไปให้ตัดสินทางเลือก mutually exclusive ด้วย NPV หรือ incremental IRR (ความรู้ทั่วไป, confidence low) ดูการวิเคราะห์ที่ [[Engineering Economics and Time Value of Money]]
+- การเทียบเครื่องจักรด้วยต้นทุนตลอดอายุ (LCC) และกำไรตลอดอายุ (LCP) ดู [[Life Cycle Cost and Life Cycle Profit]]
 
 ตัวอย่างเชิงแนวคิดจากสไลด์: oil platform ยอมรับ cost of ownership ที่สูงขึ้นเพื่อแลก availability เพิ่มเล็กน้อย เพราะ revenue loss จาก downtime สูงกว่ามาก (CMRP CMPR-04 p.19) ดู [[Availability and OEE]]
 
@@ -80,3 +96,7 @@ Business case คือเอกสารที่ใช้ขออนุมั
 - [[Maintenance Business Case]] [related_to:: [[Reliability Allocation]]] lowest-cost reliability investment
 - [[Maintenance Business Case]] [related_to:: [[Availability and OEE]]] oil platform accepts higher cost for availability (CMRP CMPR-04 p.19)
 - Cost of Not Proceeding [related_to:: Risk Cost] interpretation; risk cost = probability x penalty (CMRP CMPR-03 p.13) [confidence:: low]
+- Evaluate Options [uses:: [[Engineering Economics and Time Value of Money]]] NPV, IRR, payback, WACC formulas (MPM p.265-277)
+- Discounted Cash Flow [depends_on:: WACC] discount rate, example 5.10% (MPM p.269-271)
+- Hurdle Rate [related_to:: Internal Rate of Return] IRR = rate where NPV = 0 (MPM p.272)
+- [[Maintenance Business Case]] [related_to:: [[Life Cycle Cost and Life Cycle Profit]]] equipment selection by LCC/LCP (MPM p.37-46)

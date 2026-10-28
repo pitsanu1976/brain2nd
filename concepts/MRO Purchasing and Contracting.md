@@ -1,10 +1,10 @@
 ---
 title: MRO Purchasing and Contracting
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spo, book, procurement, spare-parts, maintenance-management, cost]
-sources: [spare-parts-optimization.md]
+tags: [spo, book, procurement, spare-parts, maintenance-management, cost, mpm, outsourcing]
+sources: [spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -143,6 +143,12 @@ contested: false
   3. **ของเกิน (over shipment)**: รับเข้าสต็อกแล้วราคาต่อหน่วยลด พัสดุ MRO ใช้วิธีเฉลี่ยราคาได้ ส่วนสินค้าซื้อมาขายไปอาจมีปัญหาบัญชีต้องส่งคืน
 - การบันทึก: มี Claim Number; บัญชีได้สำเนาเพื่อระงับการจ่ายเงิน; เรียกค่าเสียหายเป็นเงินเฉพาะกรณีร้ายแรง; ไม่มีหลักฐาน = ไม่ได้ชดเชย; รายงาน **Status of Claims** รายเดือน; เรื่องมูลค่าน้อยละเว้นได้ (SPO p.99) แบบฟอร์ม Statement of Claim อยู่ที่ SPO p.100
 
+## มุมมอง MPM: การจ้างเหมางานบำรุงรักษาและศัพท์สัญญา (เพิ่ม 2026-10-28)
+
+- การจ้างเหมางานบำรุงรักษาทั้งระบบ (รูปแบบสัญญา Cost Plus / Lump sum + อัตราเพิ่ม / Performance Base, เมทริกซ์ Criticality x Responsibility, Off Balance Sheet Mode, 6 ขั้นตอนจ้างเหมา, make-or-buy ด้วย Full Cost Rate) อยู่ที่ [[Maintenance Outsourcing]] ตาม [[Maintenance Profit Maker Book]] บทที่ 6 — หัวข้อ Outsourcing ข้างบนเป็นมุมมองคลัง/จัดซื้อของ SPO
+- ศัพท์ของ MPM ตรงกับ SPO: **Blanket Order** = ซื้อเป็นก้อนล่วงหน้า ใช้กับรายการเคลื่อนไหวเร็ว-ปานกลางแบบ Min-Max (MPM p.88); **Consignment Stock** = ผู้ขายเก็บอะไหล่ไว้ที่คลังเรา จ่ายเงินเมื่อเบิกใช้ (MPM p.90)
+- จึงยืนยันว่าคำอธิบาย Blanket Order ของ RBMM (RBMM p.289, p.298) คือกลไก Consignment ของ SPO/MPM เป็นความต่างของการใช้คำในหนังสือ RBMM ไม่ใช่ข้อเท็จจริงขัดกัน (ไม่ตั้ง contested)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - อะไหล่ compressor ที่ lead time ยาวหรือ spec ซับซ้อน (เช่น valve, packing, seal ของ [[Reciprocating Compressor]]) เข้าเกณฑ์รายการสำคัญราว 200 รายการของขั้นตอนจัดซื้อเชิงรุก ที่ควรมี spec sheet และ Specification No. (การตีความของ wiki ไม่ใช่ข้อมูลในหนังสือ)
@@ -158,6 +164,8 @@ contested: false
 - [[Warehouse Design and Storage]]
 - [[SPO vs RBMM Spare Parts Approaches]]
 - [[Maintenance Cost Structure]]
+- [[Maintenance Outsourcing]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -197,3 +205,7 @@ contested: false
 - Claim Handling [depends_on:: Evidence] no evidence, no compensation (SPO p.99)
 - Over Shipment [uses:: Average Pricing] for MRO items (SPO p.98-99)
 - Blanket Order [related_to:: Lead Time] removes per-order quotation and PO steps, derived [confidence:: low]
+- [[MRO Purchasing and Contracting]] [related_to:: [[Maintenance Outsourcing]]] maintenance outsourcing strategy, MPM chapter 6
+- Blanket Order [has_category:: bulk purchase in advance] MPM meaning, same as SPO (MPM p.88)
+- Consignment Stock [alias_of:: Consignment] vendor stock at our store, paid on issue (MPM p.90)
+- RBMM Blanket Order Usage [maps_to:: Consignment] terminology difference confirmed by MPM and SPO, not contested (RBMM p.289, MPM p.90, SPO p.95)

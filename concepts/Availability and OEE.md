@@ -267,6 +267,8 @@ OEE                 = Af x Sf x Qf
 - [[Maintenance Financial Impact]] (Hidden Plant, OEE -> กำไร)
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Master Plan]], [[Maintenance Performance Improvement]]
+
 ## Triplets
 
 - RBMM MDT [has_formula:: MTTR + MWT] (RBMM Fig 1.2, p.17-20)

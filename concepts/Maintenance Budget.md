@@ -315,6 +315,8 @@ Target Production = Capacity x Planning Factor x OEE     (MPM p.125, 128)
 - [[Maintenance Outsourcing]]
 - [[Job Order Costing]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]]
+
 ## Triplets
 
 - [[Maintenance Budget]] [alias_of:: Maintenance Performance Budgeting]

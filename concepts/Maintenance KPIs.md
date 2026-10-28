@@ -375,6 +375,8 @@ OEAD = Operational Earning After Depreciation
 - [[Maintenance Financial Impact]] (MPM, KPI -> งบการเงิน)
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Audit]], [[Maintenance Master Plan]]
+
 ## Triplets
 
 - [[Maintenance KPIs]] [defined_in:: [[Reliability Based Maintenance Management Book]]] KPI tree Fig 2.9 (p.48-54) and codes B, C, D, E (ch3 p.70-84)

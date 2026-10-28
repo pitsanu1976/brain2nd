@@ -2,9 +2,9 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-27 | จำนวนหน้า wiki: 126 (entities 13, concepts 89, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-10-28 | จำนวนหน้า wiki: 135 (entities 14, concepts 97, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
-Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224, CMRP และ SPO)
+Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224, CMRP, SPO และ MPM)
 
 ## Raw sources (Layer 1, immutable; area ข)
 
@@ -16,6 +16,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/iso-14224]] — ISO 14224:2016 (280 หน้า, licensed ไม่เก็บ PDF) reading notes ถอดความ 6 ส่วนใน `raw/iso-14224/` (clauses 1-7, 8-9, Annex A, B, C-D, E-F)
 - [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
 - [[raw/spare-parts-optimization]] — หนังสือ Spare Parts Optimization (สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/spare-parts-optimization/`
+- [[raw/maintenance-profit-maker]] — หนังสือ Maintenance: The Profit Maker (วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, 277 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/maintenance-profit-maker/`
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)
@@ -33,6 +34,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[Reliability Based Maintenance Management Book]] — hub หนังสือ RBMM: ข้อมูลบรรณานุกรม ตาราง 12 บท กรอบ CMMS ถึงธุรกิจบำรุงรักษา ข้อผิดพลาดในหนังสือ และความสัมพันธ์กับ compressor hierarchy
 - [[CMRP Course]] — hub สไลด์ CMRP (PETROSYNC): SMRP BOK 5 pillars, AEO model, แผนที่ไฟล์ไปยังหน้า wiki, ข้อผิดพลาดในสไลด์ 21 จุด และ 4 ข้อ contested กับ RBMM/ISO
 - [[Spare Parts Optimization Book]] — hub หนังสือ SPO (มุมมองคลังพัสดุ/จัดซื้อ MRO, ที่มา COSAL + Esso): ตาราง 12 บทไปยังหน้า wiki, offset หน้า PDF/book, ข้อผิดพลาด OCR/หนังสือประมาณ 28 จุด
+- [[Maintenance Profit Maker Book]] — hub หนังสือ MPM (มุมการเงิน/กำไรของงานบำรุงรักษา, ผู้แต่งร่วมกับ RBMM): ตาราง 15 บทไปยังหน้า wiki, ข้อขัดแย้ง MPM-C1 ถึง C7 (รอผู้ใช้ตัดสิน), ข้อผิดพลาดของหนังสือ/OCR
 
 ## concepts/
 
@@ -145,6 +147,19 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[MRO Inventory Control Methods]] — EOQ แบบ SPO (CO 90-120 บาท/รายการ), COP 7 องค์ประกอบ, ROP = D×LT + SS (%), High/Low, Periodic Review, Order Up-to, OAR, ตารางวิธีต่อประเภทอะไหล่
 - [[Inventory Turnover and GPI Benchmarks]] — turnover, MOS/DOS, Inventory % GPI benchmark 2/4/10%, ≤4% (≤1.5% labour intensive), ตัวเลข Esso และการเทียบกับ B7 ของ RBMM
 - [[MRO Inventory Reduction Program]] — ABC/ABU (A = มูลค่าใช้สูง), obsolete 3 ปี, danger signals, ตัวอย่าง 3→5 รอบประหยัด 3 ล้านบาท, Materials Control Committee 18 หน้าที่
+
+### Area ข: Maintenance Profit Maker (MPM)
+
+หน้าสังเคราะห์จาก [[Maintenance Profit Maker Book]] (ingest 2026-10-28) หน้าเดิมที่ได้หัวข้อเสริม: [[Asset Life Cycle]], [[Availability and OEE]], [[Reliability Metrics]], [[Maintenance Time Definitions]], [[Maintenance KPIs]], [[Failure Patterns and Bathtub Curve]], [[Criticality Assessment]], [[CMMS]], [[Maintenance Planning and Scheduling]], [[Maintenance Backlog and Schedule Compliance]], [[Turnaround Management]], [[Spare Parts Management]], [[Spare Part Criticality and Risk]], [[EOQ and Reorder Point]], [[MRO Inventory Control Methods]], [[Inventory Turnover and GPI Benchmarks]], [[MRO Inventory Reduction Program]], [[MRO Purchasing and Contracting]], [[Maintenance Budget]], [[Maintenance Cost Structure]], [[Job Order Costing]], [[Maintenance Business Models]], [[Maintenance Business Case]], [[Maintenance Efficacy Pyramid]], [[FMECA]], [[Root Cause Analysis]]
+
+- [[Life Cycle Cost and Life Cycle Profit]] — LCC 3 ช่วงค่าใช้จ่าย, ความไม่แน่นอนของข้อมูลผู้ผลิต, ตัวอย่าง LCC 3 เครื่องที่ WACC 6% (พร้อมค่าแก้ derived), LCP = LCR - LCC และเกณฑ์เลือก LCC vs LCP
+- [[Engineering Economics and Time Value of Money]] — 6 interest factors พร้อมฟังก์ชัน Excel ที่ถูกต้อง, WACC (Kd, Ke), IRR/NPV/payback ตัวอย่าง 2 ทางเลือก, ข้อควรระวังการคิดลด และ NPV vs IRR
+- [[Work Order Lifecycle]] — วงจร WR/WO 6 ขั้น: กลั่นกรอง WR, 7 สถานะ WO เทียบ Work Backlog Basket ของ RBMM, 7 คำถามวางแผน, งานรอ 5 หมวด, Single Entry และการวิเคราะห์ 9 เรื่อง
+- [[Maintenance Outsourcing]] — จ้างเหมาเป็นยุทธศาสตร์ไม่ใช่นโยบาย, เงื่อนไข 7 ข้อ, สัญญา 3 แบบ (Cost Plus / Lump sum + rate / Performance Base), เมทริกซ์ Criticality x Responsibility 3x3, Off Balance Sheet, make-or-buy ด้วย Full Cost Rate (XYZ 1,196.8 vs 237.1 บาท/ชม.)
+- [[Maintenance Financial Impact]] — ผลต่องบดุล/งบกำไรขาดทุน, ค่าใช้จ่ายตรง 4 กลุ่ม, ROTA/ROE, Hidden Plant, Output = OEE x Capacity x Planning Factor, XYZ เสียโอกาสกำไรขั้นต้น 161.84 / 489.17 ล้านบาท
+- [[Maintenance Performance Audit]] — Flash vs Full Audit, 16 หัวข้อ (9 เทคนิค + 7 บริหาร) บน radar เกรด A-F, "> 80% ของปัญหาเป็นการบริหาร", Room for Improvement, หลักการกระทบยอด, road map 5 ระดับ
+- [[Maintenance Master Plan]] — แผนแม่บท 16 แผน (9 เทคนิค + 7 ระบบจัดการ), Cost Leadership -> Availability/MTTR vs Differentiation -> Reliability/MTBF, จับคู่กับ 16 หัวข้อประเมิน
+- [[Maintenance Performance Improvement]] — เป้า OEE ขึ้น ฿ ลง, กระบวนการ 6 ขั้น, เมทริกซ์ benefit/feasibility, กับดักบัญชี, สาเหตุ availability loss, การวินิจฉัย XYZ พร้อมค่าที่แก้แล้ว
 
 ## comparisons/ (area ข)
 

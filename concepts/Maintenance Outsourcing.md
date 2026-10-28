@@ -153,6 +153,8 @@ Full Cost Rate = Fixed Cost / (Available Man-Hrs x Utilization Factor)
 - [[Criticality Assessment]]
 - [[Turnaround Management]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]], [[Maintenance Performance Improvement]]
+
 ## Triplets
 
 - [[Maintenance Outsourcing]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 6 (MPM p.91-110)

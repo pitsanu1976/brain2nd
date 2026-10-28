@@ -183,6 +183,8 @@ MPM เน้นว่า MMS ที่ดีใช้ได้ทั้งแ�
 - [[Work Order Lifecycle]]
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Audit]]
+
 ## Triplets
 
 - [[CMMS]] [has_label:: Computerized Maintenance Management System]

@@ -156,6 +156,8 @@ OEE = Af x Sf x Qf
 - [[Maintenance Business Case]]
 - [[Asset Life Cycle]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Improvement]], [[Maintenance Performance Audit]], [[Life Cycle Cost and Life Cycle Profit]]
+
 ## Triplets
 
 - [[Maintenance Financial Impact]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 10 and chapter 12 case study (MPM p.167-190, p.230-236)

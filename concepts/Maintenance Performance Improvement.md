@@ -165,6 +165,8 @@ LCC ตามกรอบเดิมของ wiki อยู่ใน [[Asset L
 - [[Maintenance Business Case]]
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Life Cycle Cost and Life Cycle Profit]], [[Maintenance Financial Impact]]
+
 ## Triplets
 
 - [[Maintenance Performance Improvement]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 12 (MPM p.205-242)

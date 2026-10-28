@@ -295,6 +295,8 @@ MPM ให้ทั้ง "ไม่ต่ำกว่า 60-70%" (MPM p.90) แ
 - [[Maintenance Profit Maker Book]]
 - [[Root Cause Analysis]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Improvement]], [[Maintenance Financial Impact]]
+
 ## Triplets
 
 - [[Spare Parts Management]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9

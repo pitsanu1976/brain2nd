@@ -144,6 +144,8 @@ Room for Improvement (รูป 11.2, MPM p.196)
 - [[Availability and OEE]]
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]]
+
 ## Triplets
 
 - [[Maintenance Performance Audit]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 11, also chapter 1 (MPM p.22-25, p.191-204)

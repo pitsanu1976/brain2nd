@@ -55,11 +55,11 @@ hub ของหนังสือ "Maintenance: The Profit Maker — บำร�
 
 | ID | ประเด็น | MPM | แหล่งอื่น | หน้า |
 |---|---|---|---|---|
-| MPM-C1 | holding cost ของอะไหล่ | 20-40% ของมูลค่าสต็อก (MPM p.84); ตัวอย่างคิดเฉพาะต้นทุนการเงิน 6-10% (MPM p.17, p.108, p.180-181) | RBMM 15-20% ต่อปี | [[Spare Parts Management]], [[Maintenance Cost Structure]], [[EOQ and Reorder Point]] |
+| MPM-C1 | holding cost ของอะไหล่ | 20-40% ของมูลค่าสต็อก (MPM p.84); ตัวอย่างคิดเฉพาะต้นทุนการเงิน 6-10% (MPM p.17, p.108, p.180-181) | RBMM 15-20% ต่อปี | [[Spare Parts Management]], [[Maintenance Cost Structure]], [[EOQ and Reorder Point]], [[Maintenance Budget]], [[Maintenance Financial Impact]] |
 | MPM-C2 | สัดส่วนต้นทุนที่ถูกกำหนดในช่วง engineering/design | ไม่คงที่ในเล่ม: p.14 = 80%, p.39 Engineering 90% / Project 80%, รูป 70/85/95/100 | RBMM Fig 1.1 85-95% | [[Asset Life Cycle]], [[Life Cycle Cost and Life Cycle Profit]] |
 | MPM-C3 | ตัวอักษร failure pattern | ตามระบบ Nowlan & Heap (F = infant mortality 68%) (MPM p.20) | RBMM A = wear-out, E = infant | [[Failure Patterns and Bathtub Curve]] |
 | MPM-C4 | นิยาม MTTR / MTBF | บทที่ 8: MTTR = เวลาซ่อมอย่างเดียว เวลารอแยกเป็น Mean Logistic Time (MPM p.150-151); บทที่ 4: MTBF = (ชม.รวม - ชม.ซ่อม)/จำนวนเสีย (MPM p.76); บทที่ 9 กลับรวมเวลารอใน MTTR (MPM p.166) | RBMM MTTR = ซ่อม + รอ, MTBF = MTTF + MTTR + MWT | [[Reliability Metrics]], [[Maintenance Time Definitions]], [[Availability and OEE]] |
-| MPM-C5 | เป้า labour utilization | เป้า > 60%, ตัวอย่าง 40% -> 70% (MPM p.215, p.239) | RBMM 60% ถือว่าสูงแล้ว อย่าไล่ดัชนีนี้ตัวเดียว (RBMM p.73-74) | [[Maintenance KPIs]], [[Maintenance Performance Improvement]] |
+| MPM-C5 | เป้า labour utilization | เป้า > 60%, ตัวอย่าง 40% -> 70% (MPM p.215, p.239) | RBMM 60% ถือว่าสูงแล้ว อย่าไล่ดัชนีนี้ตัวเดียว (RBMM p.73-74) | [[Maintenance KPIs]], [[Maintenance Performance Improvement]], [[Maintenance Business Models]] (Case 2) |
 | MPM-C6 | profit centre | ดีกว่าในทุกรูปแบบ (MPM p.241-242) | RBMM: โรงงานเดียว cost center + performance budgeting ก็พอ (RBMM p.325-327) | [[Maintenance Business Models]] |
 | MPM-C7 | อายุค่าเสื่อมราคา | 10-20 ปีตามกฎหมาย (MPM p.256) | RBMM 15-20-25 ปี (RBMM p.15) | [[Asset Life Cycle]] |
 

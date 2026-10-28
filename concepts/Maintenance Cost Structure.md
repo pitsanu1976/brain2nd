@@ -283,6 +283,8 @@ Full Fix Cost Rate = Fixed / (ชั่วโมง-คนทั้งหมด 
 - [[Maintenance Profit Maker Book]]
 - [[Maintenance Outsourcing]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]], [[Engineering Economics and Time Value of Money]]
+
 ## Triplets
 
 - [[Maintenance Cost Structure]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapters 3, 10, 11

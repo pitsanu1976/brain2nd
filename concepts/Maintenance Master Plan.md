@@ -137,6 +137,8 @@ contested: false
 - [[Maintenance Budget]]
 - [[Maintenance Profit Maker Book]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Outsourcing]]
+
 ## Triplets
 
 - [[Maintenance Master Plan]] [alias_of:: MMMP] Maintenance Management Master Plan (MPM p.33-34)

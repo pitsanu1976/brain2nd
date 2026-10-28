@@ -178,6 +178,8 @@ OEAD = Operational Earning After Depreciation
 - [[Maintenance Outsourcing]]
 - [[Turnaround Management]]
 
+ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Improvement]], [[Maintenance Financial Impact]]
+
 ## Triplets
 
 - [[Maintenance Business Models]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 11 (RBMM p.321-329)

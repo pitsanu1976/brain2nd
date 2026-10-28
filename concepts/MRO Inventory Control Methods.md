@@ -1,10 +1,10 @@
 ---
 title: MRO Inventory Control Methods
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spo, book, inventory-control, spare-parts, statistics, cost, maintenance-management]
-sources: [spare-parts-optimization.md]
+tags: [spo, book, inventory-control, spare-parts, statistics, cost, maintenance-management, mpm]
+sources: [spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -190,6 +190,28 @@ M = 90, ค้างรับ 30, คงเหลือ 25  -> 90 - (25 + 30) = 
 
 ตารางนี้สอดคล้องกับตาราง p.110: ของหมุนเร็ว/ใช้ร่วม/ทั่วไปใช้วิธีคำนวณ ของเฉพาะเครื่องและ insurance ใช้ Min-Max (derived)
 
+## เมทริกซ์ Movement x Cost และ 4 โมเดลของ MPM (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 5 (MPM p.88-89) จัดอะไหล่ตามกระแสหมุนเวียน (Movement) x ราคาต่อหน่วย (Cost) เป็น 9 ช่อง ใช้กับโรงงานที่เดินเครื่องเข้าที่แล้ว คู่กับ ABC และการวิเคราะห์ความวิกฤต
+
+| Movement \ Cost | High | Medium | Low |
+|---|---|---|---|
+| Fast | FH | FM | FL |
+| Medium | MH | MM | ML |
+| Slow | SH | SM | SL |
+
+| ช่อง | โมเดล | วิธีจัดการ | เทียบวิธีของ SPO (การเทียบของ wiki) |
+|---|---|---|---|
+| FH, FM, MH | **Perpetual Inventory Model (PIM)** | สั่งด้วย EOQ สมดุลค่าจัดหากับค่าครอบครอง | ROP/EOQ |
+| FL, MM | **Minimum-Maximum Model (MMM)** | เติมให้พอตลอด จัดหาแบบ **Blanket Order** (ซื้อเป็นก้อนล่วงหน้า) คงคลังวิ่งระหว่าง Max-Min | Min-Max / High-Low Limit + Blanket Order |
+| ML, SM, SL | **Two Bin System (TBS)** | แบ่ง 2 ที่เก็บ (ชั้นบน/ชั้นล่าง) เบิกชั้นบนก่อน พร่องถึงชั้นล่างจึงสั่งเติม | ไม่มีใน 6 วิธีของ SPO; กลไกเท่ากับ ROP โดยชั้นล่าง = ROP (ความรู้ทั่วไป) |
+| SH | **Issue Replacement Model (IRM)** | ปริมาณเก็บขึ้นกับ Criticality และจำนวนที่ติดตั้งในเครื่อง; สั่งเท่าจำนวนที่ใช้ไป | Order Up-to |
+
+- สูตร EOQ ของ PIM ใช้สัญลักษณ์ต่างจาก SPO ดู [[EOQ and Reorder Point]]
+- ศัพท์ Blanket Order ของ MPM (ซื้อก้อนล่วงหน้า) ตรงกับความหมายของ SPO (สัญญาซื้อทั้งปีที่ทยอยรับ) ไม่ใช่ความหมายของ RBMM (ผู้ขายเก็บของในคลังเรา คิดเงินเมื่อเบิก) ซึ่ง MPM และ SPO เรียก Consignment ดู [[MRO Purchasing and Contracting]] (ความต่างของศัพท์ ไม่ใช่ contested)
+- IRM ของช่อง SH (ราคาสูง เคลื่อนไหวช้า) อิงความวิกฤต จึงควรใช้คู่กับแนวทางความเสี่ยงใน [[Spare Part Criticality and Risk]]
+- แกน Cost ใช้ราคาต่อหน่วย ไม่ใช่มูลค่าการใช้ทั้งปี จึงต่างจาก ABC ด้วย ABU ของ SPO ใน [[MRO Inventory Reduction Program]] (derived)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - อะไหล่สิ้นเปลืองใช้ร่วมของ compressor (O-ring, gasket, bearing, filter) อยู่กลุ่ม Common Used ใช้ ROP/EOQ หรือ High/Low ได้ ส่วนชิ้นเฉพาะเครื่องของ [[Reciprocating Compressor]] หรือ [[Centrifugal Compressor]] (rotor, diaphragm) เป็น Unique/Insurance ใช้ Min-Max หรือ Order Up-to (การตีความของ wiki ไม่ใช่ข้อมูลในหนังสือ)
@@ -205,6 +227,7 @@ M = 90, ค้างรับ 30, คงเหลือ 25  -> 90 - (25 + 30) = 
 - [[Spare Part Demand Forecasting]]
 - [[MRO Inventory Reduction Program]]
 - [[SPO vs RBMM Spare Parts Approaches]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -258,3 +281,12 @@ M = 90, ค้างรับ 30, คงเหลือ 25  -> 90 - (25 + 30) = 
 - Imported Maintenance Chemicals [has_value:: 3 months] maximum stock target (SPO p.55-57)
 - Domestic Maintenance Chemicals [uses:: Blanket Order] annual, from last 6 months usage (SPO p.55-57)
 - General Used Items [uses:: Blanket Order] also Vendor Stocking, forecast + EOQ/ROP (SPO p.55-57)
+- Movement Cost Matrix [defined_in:: [[Maintenance Profit Maker Book]]] 3x3 movement x unit cost, 9 cells (MPM p.88-89)
+- Perpetual Inventory Model [applies_to:: FH, FM, MH] order with EOQ (MPM p.88)
+- Minimum-Maximum Model [applies_to:: FL, MM] replenish between Max and Min, Blanket Order (MPM p.88-89)
+- Two Bin System [applies_to:: ML, SM, SL] two bins, reorder when lower bin reached (MPM p.89)
+- Issue Replacement Model [applies_to:: SH] stock by criticality and installed quantity, reorder what was issued (MPM p.89)
+- Perpetual Inventory Model [maps_to:: ROP/EOQ] wiki mapping
+- Issue Replacement Model [maps_to:: Order Up-to] wiki mapping
+- Two Bin System [maps_to:: Reorder Point] lower bin acts as ROP, general knowledge [confidence:: low]
+- Minimum-Maximum Model [uses:: Blanket Order] MPM meaning = bulk advance purchase, same as SPO (MPM p.88)

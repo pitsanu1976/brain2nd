@@ -1,10 +1,10 @@
 ---
 title: MRO Inventory Reduction Program
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spo, book, spare-parts, inventory-control, kpi, cost, maintenance-management]
-sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md]
+tags: [spo, book, spare-parts, inventory-control, kpi, cost, maintenance-management, mpm]
+sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -226,8 +226,34 @@ Target OH Value = Current OH Value x Target MOS / Current MOS
 - ชื่อเรียกในเล่มไม่คงที่: บทที่ 4 ใช้ "คณะกรรมการบริหารวัสดุ (MMC)" นโยบายคลังบทที่ 5 ใช้ "คณะกรรมการควบคุมพัสดุ" ซึ่งเป็นผู้กำหนดวิธีเติมสต็อกและจำนวนอะไหล่ประกัน (SPO p.55-57) น่าจะหมายถึงกลไกเดียวกัน (การตีความ)
 - เทียบ RBMM: RBMM ให้ระดับสะสมรายรายการขึ้นกับนโยบายความเสี่ยงและอำนาจอนุมัติที่ฝ่ายบริหารกำหนด (RBMM p.74-75) ซึ่งตรงกับบทบาทของ MCC ข้อ 7-8 และ 13-14 (การตีความ)
 
+## 9. มุมมองของ MPM: ABC ตามปริมาณ, ตัวอย่างลด 16% และ consignment (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 5 และ 12
+
+### ABC ตามปริมาณการใช้ (MPM p.87)
+
+| กลุ่ม | สัดส่วนปริมาณการใช้ทั้งปี | สัดส่วนจำนวนรายการ |
+|---|---|---|
+| A | 70% | 10% |
+| B | 20% | 20% |
+| C | 10% | 70% |
+
+- MPM แบ่งจาก **ปริมาณการใช้ (quantity)** ไม่ใช่มูลค่า ต่างจาก ABU ของ SPO ในหัวข้อ 1 และ Turnover ของ RBMM ที่ใช้ **มูลค่าการใช้** (qty x price); สัดส่วน 70/20/10 ตรงกับทางเลือกที่ SPO ยอมให้ (SPO p.115) จึงต่างที่ฐานมากกว่าตัวเลข
+- **ไม่ตั้ง contested**: ผู้ใช้ตัดสินแล้ว (2026-10-27) ว่า A = มูลค่าใช้สูง ตาม SPO ให้ถือ ABC ตามปริมาณของ MPM เป็นมุมมองเสริม (เหมาะกับการวางแผนปริมาณ/พื้นที่เก็บ) ไม่ใช่เกณฑ์หลักของการจัดกลุ่ม (การตีความของ wiki)
+- MPM เตือนเช่นเดียวกับ SPO/RBMM ว่า ABC ไม่ครอบคลุมราคาและความวิกฤตรายรายการ ต้องตรวจรายรายการว่ามีอาการ: สะสมมาก/น้อยไป, สั่งเร็ว/ช้าไป, ต้องสั่งมาก/น้อยกว่าเดิม, อัตราหมุนเวียนดี/ไม่ดี (MPM p.87) แล้วใช้เมทริกซ์ Movement x Cost ใน [[MRO Inventory Control Methods]]
+
+### ตัวอย่างลดยอดสำรอง 16% (MPM p.89-90)
+
+- องค์กรตัวอย่างลดยอดสำรองได้ **16%** เพียงทบทวนประวัติการเบิก (รวมรายการที่ขาด/จ่ายไม่ได้) แล้วปรับระดับสำรอง สอดคล้องกับหลักของ SPO ที่เริ่มจากวิธีง่ายก่อน (หัวข้อ 2)
+- เป้าการลดภาพรวมของ MPM: อย่างน้อย 10-20% และ > 20% ถ้าไม่เคยจัดการ พร้อมสัดส่วน fast/optimizable/insurance = 20/60/20 (MPM p.217-218) ดู [[Spare Parts Management]] ซึ่งสอดคล้องกับคำเตือนของ SPO ให้เลี่ยงเป้าไม่มีเหตุผลรองรับ เช่น "ลด 50%" (หัวข้อ 4)
+
+### Consignment Stock (MPM p.90)
+
+- แก้ lead time ไม่แน่นอนด้วย **Consignment Stock**: ผู้ผลิตเก็บอะไหล่ไว้ที่เรา จ่ายเงินเมื่อเบิกใช้ ความหมายตรงกับ Consignment/Vendor Stocking ของ SPO (ไม่ใช่ Blanket Order ตามศัพท์ของ RBMM) ดู [[MRO Purchasing and Contracting]]
+
 ## ดูเพิ่ม
 
+- [[Maintenance Profit Maker Book]]
 - [[Inventory Turnover and GPI Benchmarks]]
 - [[Spare Parts Management]]
 - [[Spare Part Criticality and Risk]]
@@ -278,3 +304,9 @@ Target OH Value = Current OH Value x Target MOS / Current MOS
 - Materials Control Committee [related_to:: [[Parts Interchangeability]]] duty 17 (SPO p.132)
 - [[MRO Inventory Reduction Program]] [related_to:: [[Spare Part Criticality and Risk]]]
 - [[MRO Inventory Reduction Program]] [related_to:: [[EOQ and Reorder Point]]]
+- [[MRO Inventory Reduction Program]] [related_to:: [[Maintenance Profit Maker Book]]] chapters 5 and 12
+- MPM ABC Analysis [has_value:: 70 / 20 / 10 usage quantity, 10 / 20 / 70 items] A/B/C by annual usage quantity (MPM p.87)
+- MPM ABC Analysis [differs_from:: ABC Analysis] quantity basis vs value basis (ABU); not contested, user decided A = high usage value 2026-10-27
+- MPM ABC Analysis [differs_from:: Part Criticality] does not cover price or criticality per item (MPM p.87)
+- Stock Level Review [has_value:: 16% reduction] example by reviewing issue history incl. stockouts (MPM p.89-90)
+- Consignment Stock [applies_to:: Uncertain Lead Time] supplier keeps parts at our site, pay on issue (MPM p.90)

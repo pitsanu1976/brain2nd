@@ -1,12 +1,12 @@
 ---
 title: EOQ and Reorder Point
 created: 2026-10-21
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp, spo, inventory-control]
-sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
+tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp, spo, inventory-control, mpm]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # EOQ and Reorder Point
@@ -180,6 +180,37 @@ ROP = (D x LT) + SS,   SS = % ของ D x LT
 - **ความต่างจาก RBMM:** SS ของ SPO เป็นกฎง่าย (rule of thumb) ไม่มี confidence level กำกับ ต่างจาก SS = z x sigma_combined ข้างบนที่มาจากการกระจายของ demand และ lead time ตามความรู้ทั่วไป SS แบบ % โตเป็นเส้นตรงตาม D x LT ส่วนแบบสถิติขึ้นกับความแปรปรวนจริง (โตตาม sqrt(LT) เมื่อ LT คงที่) [confidence:: low] เป็นวิธีต่างระดับความละเอียด ไม่ใช่ข้อเท็จจริงขัดกัน ดู [[SPO vs RBMM Spare Parts Approaches]]
 - High/Low Limit ของ SPO (High = D x Stockage Objective, Low = ROP) ใกล้กับ BS Model (Min-Max) ของ CMRP ข้างบน และ Periodic Review (สั่ง M - (OH + QOD) ตามรอบ) ใกล้ sS Model (การเทียบ derived)
 
+## ส่วนเสริมจาก MPM (เพิ่ม 2026-10-28)
+
+[[Maintenance Profit Maker Book]] บทที่ 5 ใช้ EOQ กับกลุ่ม Perpetual Inventory Model (อะไหล่เคลื่อนไหวเร็ว-ปานกลาง ราคาสูง-ปานกลาง) ในเมทริกซ์ Movement x Cost ดู [[MRO Inventory Control Methods]]
+
+### สัญลักษณ์ EOQ ของ MPM (MPM p.88)
+
+```
+EOQ = sqrt( 2 x A x B / (C x D) )
+A = ค่าใช้จ่ายในการจัดซื้อต่อหนึ่งรายการ (ordering cost ต่อครั้ง)
+B = อัตราการเบิกใช้ต่อปี
+C = ราคาต่อชิ้น
+D = ค่าครอบครองเป็นเศษส่วนของราคาต่อหน่วย (ต่อปี)
+```
+
+| ความหมาย | MPM | SPO | RBMM |
+|---|---|---|---|
+| ค่าสั่งซื้อต่อครั้ง | **A** | CO | Cp |
+| ปริมาณใช้ต่อปี | **B** | **A** | **A** |
+| ราคาต่อหน่วย | C | C | (อยู่ใน Ch) |
+| อัตราค่าครอบครองต่อปี | D | I | (อยู่ใน Ch) |
+| ค่าครอบครองต่อหน่วยต่อปี | C x D | C x I | Ch |
+
+- สูตรเทียบเท่ากันทั้งสามเล่ม (derived) แต่ **ตัวอักษร A ของ MPM หมายถึงค่าสั่งซื้อ ขณะที่ A ของ SPO และ RBMM หมายถึงปริมาณใช้ต่อปี** ต้องระวังเมื่อยกสูตรข้ามเล่ม หนังสือไม่ให้ตัวอย่างตัวเลข (MPM p.88)
+
+### ข้อขัดแย้ง MPM-C1: ค่า D (อัตราค่าครอบครอง) (contested)
+
+- MPM ข้อความหลัก: ค่าเก็บสำรองราว **20-40%** ของมูลค่าอะไหล่ (MPM p.84)
+- MPM ตัวอย่างตัวเลข: คิดเฉพาะต้นทุนการเงิน **6-10%** (MPM p.17, p.108, p.180-181)
+- RBMM: **15-20%** ต่อปี (RBMM p.16, p.234) ซึ่งเป็นที่มาของ Ch ในหัวข้อ EOQ ข้างบน
+- ผล (derived): EOQ แปรผกผันกับ sqrt(D) ถ้าใช้ D = 40% แทน 15% EOQ จะเล็กลงราว sqrt(15/40) = 0.61 เท่า; ถ้าใช้ D = 6% (ดอกเบี้ยอย่างเดียว) EOQ ใหญ่ขึ้นราว sqrt(15/6) = 1.58 เท่า จึงต้องระบุขอบเขตของค่าครอบครองก่อนคำนวณ ยังไม่ resolve รายละเอียดที่ [[Spare Parts Management]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ฟิลด์ Min, Max, ROP, EOQ ถูกเก็บเป็นกลุ่มที่ 3 (ค่าจากการคำนวณ) ใน Spare Part Database ของ [[CMMS]] (RBMM p.102) ผูกกับ [[Maintainable Item]] ผ่าน BOM
@@ -195,6 +226,7 @@ ROP = (D x LT) + SS,   SS = % ของ D x LT
 - [[CMRP Course]]
 - [[MRO Inventory Control Methods]]
 - [[Spare Parts Optimization Book]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -214,7 +246,7 @@ ROP = (D x LT) + SS,   SS = % ของ D x LT
 - EOQ [has_formula:: sqrt( 2 x A x Cp / Ch )] minimum when holding cost = purchasing cost (RBMM p.252-253)
 - Ordering Cost Term [has_formula:: (A/Q) x Cp] book p.253 misprints Q/2 x Cp (RBMM p.253)
 - Ch [has_formula:: holding rate x unit price] derived, not written in book [confidence:: low]
-- Ch [depends_on:: Holding Cost] about 15-20% of part price per year (RBMM p.16, p.234)
+- Ch [depends_on:: Holding Cost] about 15-20% of part price per year (RBMM p.16, p.234) MPM-C1 [contested:: true]
 - EOQ [depends_on:: Shelf Life] short shelf life limits quantity (RBMM p.256)
 - EOQ [applies_to:: Fast Moving] and Low Criticality (RBMM p.238)
 - Reorder Point [has_formula:: Demand Rate x Lead Time] constant case (RBMM p.247)
@@ -269,3 +301,11 @@ ROP = (D x LT) + SS,   SS = % ของ D x LT
 - Safety Stock [differs_from:: z x sigma_combined] SPO percent rule vs RBMM statistical, not contested, general knowledge [confidence:: low]
 - Reorder Point [has_value:: 48] SPO example D 20, LT 2 months, SS 8 (SPO p.105)
 - Reorder Point [maps_to:: Min-Max] Mid = ROP, Min = SS, order quantity = EOQ (SPO p.105-106)
+- [[EOQ and Reorder Point]] [defined_in:: [[Maintenance Profit Maker Book]]] MPM supplement, Perpetual Inventory Model (MPM p.88)
+- EOQ [has_formula:: sqrt( 2 x A x B / (C x D) )] MPM notation, equivalent form, derived (MPM p.88)
+- MPM A [maps_to:: Cp] MPM A = ordering cost per order; SPO and RBMM A = annual usage (MPM p.88)
+- MPM B [maps_to:: A] annual usage (MPM p.88)
+- MPM D [maps_to:: I] holding fraction of unit price per year; C x D = Ch (MPM p.88)
+- MPM D [has_value:: 20-40%] MPM text holding cost of stocked value, MPM-C1 (MPM p.84) [contested:: true]
+- MPM D [contradicts:: Ch] RBMM holding cost 15-20% per year (RBMM p.16, p.234); MPM examples use finance cost only 6-10% (MPM p.17, p.108, p.180-181), MPM-C1 [contested:: true]
+- EOQ [depends_on:: Holding Cost] EOQ scales with 1 / sqrt(D); D 40% vs 15% gives 0.61x, derived [confidence:: low]

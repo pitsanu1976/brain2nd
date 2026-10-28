@@ -1,10 +1,10 @@
 ---
 title: Spare Part Criticality and Risk
 created: 2026-10-20
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp, spo, inventory-control]
-sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md]
+tags: [spare-parts, criticality, cost, maintenance-management, book, cmrp, spo, inventory-control, mpm]
+sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -218,6 +218,43 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
   - สถานะ: ยังไม่ resolve; ข้อความของสองเล่มตรงกัน ป้ายในรูป RBMM น่าจะผิด แต่ยังไม่ได้ตรวจกับต้นฉบับ RBMM ระหว่างนี้ให้อ่าน A ว่า "มูลค่าใช้สูง" (ข้อความเดิมก่อน resolve)
   - ผู้ใช้ตัดสิน 2026-10-27: ยึดตาม SPO คือ A = มูลค่าใช้สูง ป้าย Very Slow ในรูปที่ 9.4 ของ RBMM ถือเป็นความผิดพลาดของรูป (resolved)
 
+## มุมมอง MPM: บทบาทอะไหล่ตามความวิกฤต และ SOS (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 5, 10, 12
+
+### สัดส่วนเครื่องตามความวิกฤตและระดับการสนับสนุน (Fig 5.1, MPM p.85)
+
+| กลุ่มเครื่อง | สัดส่วน | บทบาทของอะไหล่ |
+|---|---|---|
+| วิกฤตสูงสุด | ~20% แรก | สนับสนุนด้วยอะไหล่ **เกือบ 100%** + Inspection/RBI, RCM/FMEA |
+| วิกฤตปานกลาง | ~50% | เน้นงานเชิงรุก วิเคราะห์ ทำนายการเสียด้วย Reliability Engineering มากกว่าสะสมอะไหล่ |
+| วิกฤตต่ำ | ~30% | ไม่สะสมมาก จัดหาเมื่อต้องการหรือจ้างเหมา (บางเครื่องให้ OEM) ซ่อมเชิงรับ |
+
+- ผัง (อ่านจากรูป): Asset Register -> วิเคราะห์ความวิกฤต -> จัดอันดับ (ทบทวนสม่ำเสมอ) -> แยกตามความแน่นอนของอายุ/เงื่อนไข -> โปรแกรมบริหารอะไหล่และพยากรณ์ -> reliability/availability/maintainability ดีขึ้น; ความสัมพันธ์ลูกศรบางส่วนอ่านไม่ออกจาก OCR
+- **สัดส่วนต่างกัน (ไม่ใช่ contested)**: MPM p.85 ให้ สูง/กลาง/ต่ำ = 20/50/30 ขณะที่ MPM p.250 ของเล่มเดียวกันและ RBMM Fig 1.4 ให้ A/B/C = 30/50/20 (RBMM p.23-25) ทั้งหมดเป็นตัวอย่าง ไม่ใช่มาตรฐาน สัดส่วนจริงต้องมาจากการประเมินของโรงงานเอง ดู [[Criticality Assessment]]
+- การสนับสนุน "เกือบ 100%" ของกลุ่มสูงสุดสอดคล้องกับเป้า 100% service level ของเครื่อง High ใน RBMM บทที่ 1 (RBMM p.24-26) ข้างบน
+
+### Service level ที่ MPM ตั้งเป้า (MPM p.86, p.170)
+
+- สูตร: จำนวนรายการที่เบิกได้ครบ / จำนวนรายการที่เบิกทั้งหมด (MPM p.86) = Stock Service Rate ของ RBMM
+- เป้าทั้งคลัง: ความพร้อมอะไหล่ **> 95%** ภายใต้เงื่อนไขคงคลังต่ำสุดและหมุนเวียน > 90% (MPM p.170) ซึ่งเป็นเป้ารวม ไม่แยกตาม criticality ต่างจาก RBMM ที่ตั้ง confidence ตามกลุ่ม (A > 95%, B 90%, C 80-90%) ดู [[Inventory Turnover and GPI Benchmarks]]
+
+### Spare Part Optimization System (SOS) 5 โซน (MPM p.219-221)
+
+MPM เสนอ SOS ที่ใช้ความเชื่อมโยงอะไหล่-เครื่อง ผลกระทบการผลิต และความสำคัญ เพื่อบอกความเสี่ยงของการไม่มีอะไหล่ แบ่ง 5 โซน (ตารางเต็มที่ [[Spare Parts Management]]): ต่ำ/ผลกระทบน้อย = ไม่เก็บ; ต่ำ/ผลกระทบสูง = อาจซื้อ **ประกันภายนอก (external insurance policy)** แทนถ้าอะไหล่แพงมาก; ปานกลาง/ผลกระทบสูง = insurance spares; ปานกลาง/ผลกระทบต่ำ = เก็บปกติ; สูง = ต้องเก็บ
+
+เทียบกับโซนของ RBMM Fig 9.9 ข้างบน (การเทียบของ wiki):
+
+| แนวคิด | RBMM (Cost Ratio) | MPM (SOS) |
+|---|---|---|
+| ไม่เก็บ | No Stock Zone (ratio ไม่เกิน 1) | ความเสี่ยงต่ำ ผลกระทบน้อย |
+| ต้องเก็บ | Mandatory Stock Zone | ความเสี่ยงสูง |
+| ค่าขาดต่อครั้งสูงมาก | Insurance Part (ขออนุมัติระดับบริหาร) | insurance spares เอง หรือ **ประกันภายนอก** (ทางเลือกใหม่ที่ RBMM/SPO/CMRP ไม่มี) |
+| ผู้ตัดสิน | ตาม policy อำนาจอนุมัติ | ผู้บริหาร (ระบบบอกความเสี่ยงเท่านั้น) |
+
+- ตัวอย่างหน้าจอ Stock Cost/Risk Assessment (Fig 12.8): แกน X = อัตราส่วน Risk ต่อ Cost of Stock (50:1, 10:1, 2:1, 1:1, 0.1), แกน Y = Cost of Stockout (< 50K ถึง > 50M) ตัวอย่าง Cost of Stock $30,000, Assessment Period 10 ปี (MPM p.220-221) แกน X ใกล้แนวคิด Cost Ratio ของ RBMM (derived)
+- SOS ต้องการ Reliability Engineering และประวัติเสีย/ซ่อมครบ มิฉะนั้นลงทุนเปล่า (MPM p.221)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - Part Criticality ข้อ CBM/detect-ability คล้ายแนวคิด detectability ใน [[FMECA]] และ detection method ของ [[ISO 14224]]; Equipment Criticality (Commercial, Safety, Environment) สอดคล้องกับการจัด criticality ของเครื่อง เช่น [[Compressor]] ที่หยุดแล้วกระทบการผลิต
@@ -236,6 +273,7 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - [[SPO vs RBMM Spare Parts Approaches]]
 - [[MRO Inventory Reduction Program]]
 - [[MRO Material Classification]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -321,3 +359,13 @@ Cost Ratio = Expected Cost of Stock out / Expected Cost of Stock
 - ABC Turnover Group A [has_category:: high usage value] SPO, about 80% of ABU (SPO p.115-117)
 - ABC Turnover Group A [has_value:: 80 / 15 / 5 split] same in SPO and RBMM; SPO allows 75/20/5 or 70/20/10 (SPO p.115)
 - ABC Analysis [related_to:: [[MRO Inventory Reduction Program]]] SPO uses ABC to cut stock and move C items to OAR (SPO p.117-118)
+- [[Spare Part Criticality and Risk]] [related_to:: [[Maintenance Profit Maker Book]]] chapters 5, 10, 12
+- MPM Highest Criticality Group [has_value:: about 20%] of equipment, spare support nearly 100% plus Inspection/RBI and RCM/FMEA (Fig 5.1, MPM p.85)
+- MPM Medium Criticality Group [has_value:: about 50%] proactive maintenance over stocking (Fig 5.1, MPM p.85)
+- MPM Low Criticality Group [has_value:: about 30%] buy when needed or outsource (Fig 5.1, MPM p.85)
+- MPM Criticality Split 20/50/30 [differs_from:: Criticality Split 30/50/20] MPM p.85 vs MPM p.250 and RBMM Fig 1.4 (RBMM p.23-25); examples, not contested
+- MPM Service Level [has_value:: > 95%] whole-store target, not by criticality (MPM p.170)
+- Spare Part Optimization System [has_value:: 5 zones] risk of not having part vs impact (MPM p.219-221)
+- Low Risk High Impact Zone [selects:: External Insurance Policy] alternative to Insurance Part when part very expensive (MPM p.220)
+- External Insurance Policy [differs_from:: Insurance Part] transfer risk to insurer instead of stocking, MPM only (MPM p.220)
+- Spare Part Optimization System [related_to:: Cost Ratio] risk to cost of stock axis similar to RBMM Cost Ratio, derived (MPM p.220-221)

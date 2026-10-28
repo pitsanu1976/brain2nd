@@ -1,12 +1,12 @@
 ---
 title: Maintenance KPIs
 created: 2026-10-20
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224, work-management, cmrp, spo]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, spare-parts-optimization.md]
+tags: [kpi, maintenance-management, spare-parts, cost, book, iso-14224, work-management, cmrp, spo, mpm]
+sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
-contested: false
+contested: true
 ---
 
 # Maintenance KPIs (โครงสร้างดัชนีบริหารงานบำรุงรักษา)
@@ -216,6 +216,143 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - SPO ชี้ว่า turnover/MOS ใช้ได้กับของหมุนเร็วเท่านั้น คลัง MRO ที่มีของหมุนช้าปนต้องดู %GPI ด้วย (SPO p.113)
 - เทียบ RBMM: B8 Stock Turn Ratio 40% = 0.40 รอบ/ปี = MOS 30 เดือน (derived) และ B7 เป้า 1-3% ของราคาเครื่องจักร ใกล้เคียงแต่ต่ำกว่า benchmark พื้นที่แบบไทยของ SPO (3-4%) ความต่างมาจากขอบเขตตัวเศษและบริบทพื้นที่ ไม่ถือเป็น contested (การตีความ ดู [[Inventory Turnover and GPI Benchmarks]])
 
+## 8. ดัชนีของ MPM (เพิ่ม 2026-10-28, sources: maintenance-profit-maker.md)
+
+จาก [[Maintenance Profit Maker Book]] บทที่ 8 (p.142-156), บทที่ 11 (p.202-203) และกรณีศึกษาบทที่ 12 ถอดความจาก reading notes ค่าที่ wiki คำนวณเองระบุว่า derived
+
+### 8.1 เป้าหมาย 5 ข้อของงานบำรุงรักษา (MPM p.142)
+
+ต้องรู้เป้าหมายก่อนจึงกำหนดดัชนีได้: (1) **Availability** สูงสุด ผลิตจะเดินเมื่อใดก็เดินได้ (2) **Reliability** เดินได้นาน ไม่หยุดบ่อย (3) **Safety** ต่อชีวิตและทรัพย์สิน (4) **Environment** ที่ดีต่อโรงงานและชุมชน (5) **Cost** ที่ "เหมาะสม" ไม่ใช่ "ต่ำสุด" เพราะขึ้นกับนโยบายของแต่ละโรงงาน
+
+### 8.2 ดัชนีหลัก + 4 กลุ่มย่อย (รูป 8.1, MPM p.142-145)
+
+| กลุ่ม | ดัชนีที่หนังสือยกตัวอย่าง |
+|---|---|
+| **ดัชนีหลัก** (ภาพรวม) | Maintenance Cost / Unit of Production; OEE; ค่าบำรุงรักษา / มูลค่าเครื่องจักร; Man Power Utilization; Spare Parts Turn Over |
+| ดัชนีเครื่องจักร | Total Productivity; Planning Factor; OEE; Availability Factor; MTBF; MTTR; Mean Logistic Time; Down Time; Failure Rate |
+| ดัชนีอะไหล่และการจัดหา | Inventory Turnover; Part Availability Rate / Service Level; Dead (Inactive) Stock; Urgent Purchase Requisition; Carrying Spare Part / Plant Asset |
+| ดัชนีคน | Utilization Factor; Training Factor; Maintainability |
+| ดัชนีการบริหาร | Actual/Budget; High Cost Areas; High Problem Areas; ประเภทปัญหา; Man-Hour จริง/แผน; Man-Hour ตามประเภทงาน; Maintenance History; Backlog; Low Utilized Tools; High Usage Parts |
+
+แต่ละกลุ่มมีดัชนีหลัก (บอกสภาพ) และดัชนีรอง (ชี้จุดปรับปรุง); "วัดไม่ได้ก็ปรับปรุงไม่ได้" และต้องเข้าใจที่มาของตัวเลขก่อนตีความ (MPM p.156) ดัชนีเครื่องจักรดู [[Availability and OEE]] หัวข้อ 6 และ [[Reliability Metrics]]
+
+### 8.3 การนำดัชนีไปใช้ 5 แบบ (MPM p.145)
+
+1. เทียบมาตรฐาน/โรงงานอื่นในธุรกิจเดียวกัน (ข้อจำกัด: ข้อมูลอุตสาหกรรมไทยมีน้อยและอาจไม่ถูกต้อง)
+2. เทียบกับตัวเองตามเวลา ดูแนวโน้ม
+3. หา Room for Improvement อย่างต่อเนื่อง
+4. ตั้ง Target หลังเริ่มเก็บข้อมูลได้
+5. ดูผลกระทบทางการเงิน: ความคุ้มค่า ระยะคืนทุน ทั้งเชิงปริมาณและคุณภาพ ดู [[Maintenance Financial Impact]]
+
+### 8.4 ค่าบำรุงรักษาต่อหน่วยผลิตแบบ Full Cost (รูป 8.2, MPM p.145-148)
+
+```
+Maintenance Cost / Unit = ค่าใช้จ่ายงานบำรุงรักษา (Full Cost) / ผลผลิตสุทธิที่ขายได้ (ตัดของเสีย)
+```
+
+ตัวอย่าง: ผลิต 1,345,601 ตัน ขาย 10,256,684,000 บาท Replacement Value 15,000 ล้านบาท WACC 10%
+
+| รายการ | ค่าใช้จ่าย/ปี (บาท) |
+|---|---|
+| ค่าบริหารจัดสรรจากส่วนกลาง | 16,382,434 |
+| ทรัพย์สินบำรุงรักษา (ค่าเสื่อม 17,947,280 + ค่าการเงิน 13,476,139 ของโรงซ่อม/เครื่องมือมูลค่า 134,761,388) | 31,423,419 |
+| เงินเดือนค่าแรง (ทางอ้อม 15,423,378 + ทางตรง 31,764,050) | 47,187,428 |
+| อะไหล่คงคลัง 350,000,000 -> ค่าการเงิน + เก็บรักษา | 35,000,000 |
+| **Total Fixed Cost** | **129,993,280** (ผลรวมจริง 129,993,281 ต่างจากการปัด, derived) |
+| อะไหล่ใช้สิ้น / จ้างเหมา / ซ่อมใหญ่ 152 ล้านทุก 3 ปี เฉลี่ยต่อปี | 56,741,325 / 8,512,000 / 50,666,667 |
+| **Total Variable Cost** | **115,919,992** |
+| **รวมทั้งสิ้น** | **245,913,272** |
+
+| KPI | ค่า | ตรวจ (derived) |
+|---|---|---|
+| Maintenance cost / unit produced | **182.75 บาท/ตัน** | 245,913,272 / 1,345,601 |
+| Maintenance cost / sales | 2.40% | ตรง |
+| Maintenance cost / plant replacement value | 1.64% | ตรง |
+| Spare part turnover rate | 16.21% | 56,741,325 / 350,000,000 |
+| Full cost rate / man-hr | 1,398 บาท | 129,993,280 / (206,640 x 45%) = 1,397.96 (หนังสือไม่แสดงสูตร) |
+
+- **ตัดส่วนที่ไม่ใช่ค่าใช้จ่ายของหน่วยงานโดยตรง** (ค่าจัดสรรส่วนกลาง + ค่าเสื่อมและค่าการเงินของทรัพย์สินที่หน่วยงานครอบครอง): 245,913,272 - 16,382,434 - 31,423,419 = 198,107,419 บาท = **147 บาท/ตัน** (147.22, derived) ส่วนต่างราว 35.5 บาท/ตัน = จัดสรร 12.17 + ค่าการเงิน 10.01 + ค่าเสื่อม 13.34 ใช้บอกว่าควรลดส่วนใดก่อน
+- ข้อสังเกตเชิงนิยาม (derived): ข้อความว่าตัด "ค่าใช้จ่ายด้านการเงิน" ออก แต่ยังคง 35,000,000 ค่าการเงิน + เก็บรักษาอะไหล่คงคลังไว้ ถ้าตัดด้วยจะเหลือ 163,107,419 บาท = **121.2 บาท/ตัน**
+- ตัวเลขที่ตรวจซ้ำไม่ได้: Man-Hr Rate เฉลี่ย 143 บาท [ไม่ทราบที่มา] และ Man-hours 206,640 = 105 คน x 1,968 ชม. ซึ่งไม่ตรงกับ 1,663.2 ชม./คน ที่บทเดียวกันเสนอ (derived) โครงสร้างต้นทุนเต็มดู [[Maintenance Cost Structure]]
+
+### 8.5 ดัชนีอะไหล่และการจัดหา (MPM p.151-153)
+
+| ดัชนี | สูตร | หมายเหตุ |
+|---|---|---|
+| Spare Part Turn Over | มูลค่าเบิกใช้ทั้งปี / มูลค่าคงเหลือ **สิ้นปี** | ตัวอย่าง 0.16 รอบถือว่าต่ำ; "ค่ามาตรฐานราว 1.0" (MPM p.152) ตัวหารต่างจาก SPO ที่ใช้ average inventory (หัวข้อ 7) |
+| Part Availability Rate / Service Level | จำนวนอะไหล่ที่เบิกได้ / จำนวนที่ขอเบิกทั้งหมด | ตรงข้าม Stock Out; สูตรอังกฤษในเล่มพิมพ์ตัวเศษเป็น "Orders Not filled on demand" ซึ่งคือ stock out rate ตัวเศษที่ถูกของ service level คือ **Orders filled on demand** (derived) |
+| Inactive Stock | มูลค่าอะไหล่ไม่เคลื่อนไหว / มูลค่าทั้งหมด | แยก Insurance Parts และของ lead time นานออกก่อนตัดสินใจลด |
+| Part Usage, PM Part Requirement | รายรายการ (จำนวน/มูลค่า) | ตั้ง Max/Min, รวมความต้องการจากแผน PM ทั้งปี |
+| Urgent Purchase Requisition | Line Items ของ Urgent PO / Total Line Items ของ PO | งานฉุกเฉินมาก = "ถูกงานคุม" |
+| Carrying Spare Part / Plant Asset | มูลค่าอะไหล่ที่เก็บ / มูลค่าเครื่องจักร | ยิ่งต่ำยิ่งดี โดย Availability ไม่ลด; ไม่ให้ค่าเป้า (เทียบ B7 ข้างบนและ [[Inventory Turnover and GPI Benchmarks]]) |
+
+### 8.6 ดัชนีคน (MPM p.154-155)
+
+- **Utilization Factor** = เวลาทำงานจริง / เวลาที่พร้อมทำงาน; ชั่วโมงพร้อมทำงาน/คน/ปี = 365 - 104 (สุดสัปดาห์) - 15 (วันหยุด) - 15 (ลา) = 231 วัน x 8 = 1,848 ชม. หักอบรม 5% และงานจิปาถะ 5% = **1,663.2 ชม.** ตัวอย่างช่างทำงาน 1,000 ชม. = 60.1% (RBMM ใช้ 1,760 / ราว 1,600 ชม. เป็นค่าสมมติต่างกัน ไม่ถือเป็นข้อขัดแย้ง ดู [[Maintenance Cost Structure]])
+- **Training Factor** = เวลาอบรมรวม / จำนวนพนักงาน (ชม./คน/ปี) อบรมมากไม่ได้แปลว่าเก่งขึ้น ต้องดูคู่ Maintainability
+- **Maintainability (มุมคน)** ใช้ MTTR: MTTR ลดต่อเนื่องหลังอบรมอาจแสดงว่าคนเก่งขึ้น
+
+### 8.7 ดัชนีการบริหาร (MPM p.155-156)
+
+| ดัชนี | สูตร/รูปแบบ | ความหมาย |
+|---|---|---|
+| Actual / Budget | ratio | งบตั้งบนข้อมูลจริงเพียงใด |
+| High Cost Areas และ High Problem Areas | รายงานจัดอันดับ | ใช้คู่กัน เพราะเครื่องค่าใช้จ่ายสูงอาจเสียไม่บ่อย |
+| สรุปประเภทปัญหา | ตามสาเหตุ | คู่กับ High Problem Areas |
+| Man-Hours จริง / แผน | ratio | ความแม่นของการประมาณงาน |
+| Man-Hours ตามประเภทงาน / ทั้งหมด | PM : CM : [ประเภทที่ 3 อ่านไม่ออก] | งานไม่ได้วางแผนมาก = ช่าง "ถูกงานคุม" |
+| Maintenance History | ข้อมูล | ข้อมูลสำคัญที่สุด |
+| Backlog | Man-Hours งานที่เหลือ / Man-Hours กำลังคนที่พร้อม | งานค้างต้องใช้อีกกี่วัน (ไม่มีเป้า; CMRP นับเป็นสัปดาห์ ดู [[Maintenance Backlog and Schedule Compliance]]) |
+| Low Utilized Tools | Hours ใช้งาน / Hours พร้อมใช้ รายรายการ | วางแผนลงทุนเครื่องมือ |
+| High Usage Parts by Amount and Quantity | รายงาน | นโยบายอะไหล่แต่ละประเภท |
+
+- **PM/CM Ratio ควรอยู่ที่ 2.0 ฐานชั่วโมง-คน** แต่ค่าใช้จ่ายงานซ่อมสูงกว่า PM มากกว่า 2 เท่า เพราะอะไหล่และค่าสูญเสียผลผลิต (MPM p.123-124) ตัวอย่างบริษัท XYZ มี PM/CM 1.2 ทุกปี (MPM p.232-233) สอดคล้องกับแนว C2.1/C2.2 ของ RBMM (หัวข้อ 3) ที่ต้องอ่าน ratio ทั้งฐาน man-hours และฐาน cost
+
+### 8.8 ชุดดัชนีที่ใช้ประเมินสมรรถนะ (รูป 11.4, MPM p.202; ค่า XYZ จากรูป 12.12, MPM p.232-233)
+
+| กลุ่ม | ดัชนี | XYZ 1998 / 1999 / 2000 |
+|---|---|---|
+| Maintenance Expenditure | Maintenance Expenses / Unit Produced | 640 / 920 / 966 บาท/ตัน |
+| | Maintenance Expenditure / Plant Asset | 2.91 / 3.53 / 4.65% |
+| | Maintenance Operating Expense / Maintenance Capital Expenses | n/a / 3.2 / 2.1 (ย้อนคำนวณไม่ได้) |
+| | Maintenance Asset / Total Plant Asset | 4.56 / 4.59 / 5.62% |
+| OEE | Availability, Speed, Quality Factor | OEE 89.13 / 80.45 / 79.42% |
+| Inventory | Spare Part Inventory / Plant Asset | 3.7 / 3.7 / 4.7% |
+| | Spare Part Turn Over rate | 20.4 / 11.4 / 10.8% |
+| | Spare Part Service rate | 95 / 93 / 93% |
+| | Spare Part Cost / Total Maintenance Cost | 53.3 / 60.3 / 71.8% |
+| Work Control | PM/CM; PDM / Total Maintenance | 1.2; 5% |
+| | MTBF, MTTR, MWT | n/a |
+| | Turnaround Time (days); Turnaround Cost / Plant Asset; Mean Time Between Turnaround (years) | 35; 0.33%; 3.0 |
+| Human Resource | Utilization Factor; Over Time / Normal | 50%; 30% |
+| | Personnel Cost / Total Maintenance Cost | พิมพ์ 22.1 / 19.0 / 12.1% (ปี 1998 ที่ถูก 68.1/320.2 = 21.3%, derived) |
+| | Direct / Indirect Head count; Contracts / Total Maintenance Cost | 7.7 / 7.6 / 6.7; 5.2 / 3.3 / 2.2% |
+| Safety | Man-hours lost by accident / Total Hours Available | - |
+| Maintenance Full Cost rate | Average Man-Hr Rate; Actual (full) Man-Hr Rate | 237 / 266 / 247; 1,197 / 1,299 / 1,506 บาท |
+
+- รูป 11.4 ไม่ให้ค่าเป้า/benchmark ดัชนีส่วนใหญ่ซ้ำกับ RBMM Strategic Report (B1, B5, B7, B8, B9) ในหัวข้อ 3 ส่วนรูป 12.10 (MPM p.228) พิมพ์ชุดตัวเลขที่ขัดกับรูป 12.12 หลายแถว ให้ใช้รูป 12.12 ซึ่งตรวจแล้วตรงกับข้อมูลดิบ (derived)
+- ต้องเลือก **ดัชนีหลักชัย** ก่อน ที่เหลือเป็นดัชนีเสริม เพราะดัชนีมาจากหลายระบบที่ต้องกระทบยอดกัน (MPM p.201) Utilization Factor อ่อนไหวมาก สูงแค่บอกว่าคนว่างน้อย ต้องถามด้วยว่างานควรใช้เวลาเท่านั้นหรือไม่ (MPM p.203)
+
+### 8.9 Personnel Productivity (MPM p.203, p.242)
+
+```
+Personnel Productivity = (OEAD + ค่าใช้จ่ายทั้งสิ้นด้านบุคคล) / ค่าใช้จ่ายทั้งสิ้นด้านบุคคล
+OEAD = Operational Earning After Depreciation
+```
+
+- วัดความสามารถสร้างมูลค่าเพิ่มของบุคลากร ประเมินง่ายเมื่อเป็น Profit Center ถ้าเป็น Cost Center ต้องประมาณมูลค่าเพิ่ม; การคิดหลังหักค่าเสื่อมทรัพย์สินที่บำรุงรักษาครอบครองทำให้ผู้บริหารพยายามถือทรัพย์สินให้น้อยที่สุด ค่าบุคคลรวมทั้งทางตรงและทางอ้อม
+- รายงานที่หนังสือให้ศูนย์กำไรบำรุงรักษาต้องมี: Utilization Factor, Full Cost และ Full Cost rate, Over/(Under) Absorption (OCR อ่านเป็น "Reserved"), Provision for Work Due / Loss Order, ดัชนีที่เลือกทั้งหมด และ Personnel Productivity (MPM p.242)
+
+### 8.10 เป้า Utilization Factor (ข้อขัดแย้ง MPM-C5)
+
+| แหล่ง | มุมมอง |
+|---|---|
+| MPM | ตั้งเป้า **Utilization rate > 60%** บนฐานงานมาตรฐาน + work control system ซึ่งหมายถึงคนต่ำอย่างเหมาะสมและบันทึกชั่วโมงเชื่อถือได้ (MPM p.215); กรณีศึกษาบำรุงรักษารวมศูนย์สมมติปรับ UF จาก **40% -> 70%** ทำให้ต้องการคน 229 แทน 400 คน (MPM p.239) |
+| RBMM | B5 ที่ **60% ถือว่าสูงแล้ว** เพราะต้องมีเวลาอบรมและงานที่ไม่มี WO และห้ามไล่ดัชนีนี้อย่างเดียว (RBMM p.73-74, หัวข้อ 3) |
+
+- 70% ของ MPM เกินระดับที่ RBMM ถือว่าสูง ทั้งที่เป็นผู้แต่งกลุ่มเดียวกัน wiki เก็บทั้งสองมุมมองและยังไม่เลือก ฐานการนับก็ต่างได้ (MPM ใช้ 1,663.2 ชม. พร้อมทำงานหลังหัก 10%; ตัวอย่าง XYZ ใช้ 1,968 ชม.) จึงควรระบุตัวหารทุกครั้งที่ตั้งเป้า
+- คำว่า Utilization Factor ใน MPM ถูกใช้สองความหมาย: UF 50% ของ XYZ (ชั่วโมงลงงาน) กับ "UF ที่คิดเป็นเนื้องาน" 35% -> 55% ในตัวอย่าง planner (MPM p.227) ซึ่งใกล้ wrench time ในหัวข้อ 6.1 มากกว่า ดู [[Maintenance Planning and Scheduling]]
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - ดัชนีข้อ 16 Failure Records (Failure Modes + Incidence Information) คือข้อมูลที่ [[ISO 14224]] กำหนดโครงสร้างไว้ ถ้า CMMS บันทึก failure mode ตาม [[Failure Mode]] และ cause ตาม [[Failure Cause Codes]] ได้ ดัชนี No. of failures, MTTF และ % CM-Unplanned จะแยกตาม mode/maintainable item ได้
@@ -235,6 +372,8 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - [[Maintenance Backlog and Schedule Compliance]]
 - [[Turnaround Management]] (ISO KPI 21-22)
 - [[Inventory Turnover and GPI Benchmarks]] (SPO stock KPIs)
+- [[Maintenance Financial Impact]] (MPM, KPI -> งบการเงิน)
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -344,3 +483,44 @@ Total Variance = Cost Variance + Efficiency Variance              (p.72-73)
 - B8 Stock Turn Ratio [related_to:: Inventory Turnover] 40% = 0.4 turns = MOS 30 months, derived
 - B7 Spare Part Inventory per Plant Asset [related_to:: Inventory Value % GPI] RBMM 1-3% vs SPO 3-4% Thai benchmark; not contested
 - [[Maintenance KPIs]] [related_to:: [[Inventory Turnover and GPI Benchmarks]]]
+- [[Maintenance KPIs]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 8 indices (MPM p.142-156) and Fig 11.4 (MPM p.202)
+- Maintenance Goals MPM [has_part:: Availability] with Reliability, Safety, Environment, appropriate Cost not lowest (MPM p.142)
+- MPM KPI Structure [has_part:: Main Indices] plus machine, spares and procurement, people, management sub-groups (MPM p.142-145 Fig 8.1)
+- Main Indices MPM [has_part:: Maintenance Cost per Unit] with OEE, cost / asset value, manpower utilization, spare turnover (MPM p.142-145)
+- Maintenance KPI [applies_to:: Benchmarking] 5 uses: benchmark, trend, room for improvement, target, financial impact (MPM p.145)
+- MPM Maintenance Cost per Unit [has_formula:: Full Cost maintenance expense / net saleable output] (MPM p.145-148)
+- Fig 8.2 Full Cost Example [has_value:: 182.75 baht per ton] 245,913,272 / 1,345,601 t (MPM p.147)
+- Fig 8.2 Full Cost Example [has_value:: cost/sales 2.40%, cost/RV 1.64%, turnover 16.21%, full cost rate 1,398 baht/h] (MPM p.147)
+- Fig 8.2 Full Cost Example [has_value:: total fixed 129,993,280; variable 115,919,992; total 245,913,272 baht] (MPM p.146-147)
+- Full Cost Rate [has_formula:: Total Fixed Cost / (Man-hours x Utilization Factor)] 129,993,280 / (206,640 x 45%), derived
+- Fig 8.2 Direct Cost Example [has_value:: 147 baht per ton] excludes allocation and maintenance asset cost; 147.22 derived (MPM p.147)
+- Fig 8.2 Direct Cost Excluding Spare Financing [has_value:: 121.2 baht per ton] derived, also removing 35,000,000 spare financing
+- MPM Spare Part Turn Over [has_formula:: annual usage value / year-end stock value] standard about 1.0 (MPM p.151-152)
+- MPM Spare Part Turn Over [differs_from:: Inventory Turnover] year-end stock vs average inventory (SPO p.112)
+- Service Level [has_formula:: parts issued / parts requested] opposite of Stock Out (MPM p.152)
+- Service Level Printed English Formula [has_formula:: Orders Not filled on demand / total orders] actually stock out rate (MPM p.152)
+- Service Level Printed English Formula [contradicts:: Service Level] book error; correct numerator Orders filled on demand, derived
+- Inactive Stock [has_formula:: non-moving stock value / total stock value] exclude insurance and long lead parts (MPM p.152-153)
+- Urgent Purchase Requisition [has_formula:: urgent PO line items / total PO line items] (MPM p.153)
+- Carrying Spare Part per Plant Asset [is_a:: Maintenance KPI] lower is better if availability holds (MPM p.153)
+- MPM Utilization Factor [has_formula:: actual working time / available time] (MPM p.154)
+- MPM Available Hours [has_value:: 1,663.2 h per person per year] 231 days x 8 h less 5% training and 5% misc (MPM p.154)
+- Training Factor [has_formula:: total training hours / number of employees] (MPM p.154)
+- MPM Backlog [has_formula:: remaining work man-hours / available man-hours] in days, no target (MPM p.155-156)
+- Low Utilized Tools [has_formula:: hours used / hours available] per tool (MPM p.156)
+- High Cost Areas [related_to:: High Problem Areas] use together (MPM p.155)
+- PM/CM Ratio [has_value:: 2.0] man-hour basis target; repair cost far above 2x PM (MPM p.123-124)
+- XYZ Case Study [has_value:: PM/CM 1.2] all years (MPM p.232-233)
+- Fig 11.4 KPI Set [has_part:: Maintenance Expenditure Indices] with OEE, Inventory, Work Control, Human Resource, Safety, Full Cost rate groups (MPM p.202)
+- Fig 11.4 KPI Set [has_value:: no targets given] (MPM p.202)
+- XYZ Case Study [has_value:: Maintenance Expenditure / Plant Asset 2.91 / 3.53 / 4.65%] 1998-2000 (MPM p.232-233 Fig 12.12)
+- XYZ Case Study [has_value:: spare turnover 20.4 / 11.4 / 10.8%] service rate 95 / 93 / 93% (MPM p.232-233)
+- XYZ Personnel Cost Share 1998 Printed [has_value:: 22.1%] book error; derived 21.3% = 68.1 / 320.2 (MPM p.233)
+- Personnel Productivity [has_formula:: (OEAD + total personnel cost) / total personnel cost] OEAD = Operational Earning After Depreciation (MPM p.203, p.242)
+- Personnel Productivity [measures:: Personnel Value Added] easier in profit center (MPM p.203)
+- MPM Utilization Target [has_value:: > 60%] with work control system (MPM p.215) [contested:: true]
+- MPM Utilization Case Study [has_value:: 40% to 70%] 400 to 229 people (MPM p.239) [contested:: true]
+- RBMM Utilization View [has_value:: 60% already high] do not chase alone (RBMM p.73-74) [contested:: true]
+- MPM Utilization Target [contradicts:: RBMM Utilization View] MPM-C5 [contested:: true]
+- RBMM Utilization View [contradicts:: MPM Utilization Case Study] MPM-C5, 70% exceeds RBMM high level [contested:: true]
+- [[Maintenance KPIs]] [related_to:: [[Maintenance Financial Impact]]]

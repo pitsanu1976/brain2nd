@@ -1,10 +1,10 @@
 ---
 title: Inventory Turnover and GPI Benchmarks
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: concept
-tags: [spo, book, spare-parts, kpi, inventory-control, cost]
-sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md]
+tags: [spo, book, spare-parts, kpi, inventory-control, cost, mpm]
+sources: [spare-parts-optimization.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -163,6 +163,23 @@ Inventory Value % GPI = Inventory Value / GPI x 100
 - เรื่องอัตราค่าถือครอง 30% vs 15-20% ดูการวิเคราะห์ที่ [[MRO Inventory Reduction Program]] (สรุป: 30% ของ SPO เป็นค่าสมมติในตัวอย่าง ไม่ขัดแท้)
 - ภาพรวมการเทียบสองเล่มอยู่ที่ [[SPO vs RBMM Spare Parts Approaches]]
 
+## 5. มุมมองของ MPM: ความต่างของนิยามและเป้า (เพิ่ม 2026-10-28)
+
+ที่มา: [[Maintenance Profit Maker Book]] บทที่ 8, 10, 12 บันทึกเฉพาะส่วนที่ต่างจาก SPO/RBMM ข้างบน
+
+| ประเด็น | MPM | เทียบ |
+|---|---|---|
+| สูตร turnover | มูลค่าเบิกใช้ทั้งปี / **มูลค่าคงเหลือสิ้นปี** (Total Annual Value Usage / Total Spare Part Value) (MPM p.151-152); บทที่ 12 เขียน Turn Over rate = Total Used / Total Stock (MPM p.217) | ตัวหารเหมือน RBMM B8 (ยอด ณ จุดเวลา) ต่างจาก SPO ที่ใช้ average inventory |
+| หน่วย | แสดงได้ทั้ง "รอบ" (0.16 รอบ, MPM p.151-152) และ **% ของคงเหลือสิ้นปี** (16.21%, 20.4%) | SPO ใช้รอบ/ปี; RBMM ใช้ % |
+| ตัวเศษ | เฉพาะการเบิกจากคลัง ไม่รวมซื้อตรง (กรณี XYZ) | สอดคล้องกับ RBMM ที่ไม่นับอะไหล่ซื้อตรงใน turnover (RBMM p.239, p.243) |
+| ค่ามาตรฐาน | **ราว 1.0 รอบ** ตัวอย่าง 56,741,325 / 350,000,000 = 0.16 รอบถือว่าต่ำ (MPM p.152) | ไม่มีค่ามาตรฐานใน SPO/RBMM; RBMM ตัวอย่าง B8 40% เป็นตัวอย่างไม่ใช่เป้า |
+| เป้า | อะไหล่หมุนเวียน **> 90% ของระดับคงคลัง** และความพร้อมอะไหล่ (service level) **> 95%** (เบิก 100 ครั้ง มีของอย่างน้อย 95 ครั้ง) (MPM p.170) | RBMM B9 budget 99% (RBMM p.74-75); เป้า confidence ตาม criticality A > 95% (RBMM p.317-319) |
+| มูลค่าคลังต่อทรัพย์สิน | Carrying Spare Part / Plant Asset "ยิ่งต่ำยิ่งดี" โดย availability ไม่ลด ไม่ให้เป้าตัวเลข (MPM p.153); ค่าเฉลี่ยประเทศอุตสาหกรรม 3-5% ของราคาเครื่องจักร (MPM p.84-85) | เป้าที่ผู้ใช้เลือกยังเป็น SPO ไม่เกิน 4% GPI (resolved 2026-10-27); 3-5% ของ MPM เป็นค่าเฉลี่ยที่พบ ไม่ใช่เป้า |
+
+- กรณี XYZ: turnover 20.4% (1998) และค่าที่หนังสือเว้นว่างคำนวณได้ 11.4% (1999) และ 10.8% (2000) (derived) ขณะที่ซื้อตรงพุ่งขึ้น ชี้ว่าอะไหล่ที่เก็บไม่ตรงความต้องการ; รูป 12.10 ของเล่มพิมพ์ 47.5/60.6% ซึ่งขัดกับรูป 12.12 notes ให้ใช้ 11.4/10.8% (MPM p.172, p.228, p.232); อะไหล่คงคลัง/Plant Asset ของ XYZ = 3.7-4.7% (MPM p.172, p.232) ปี 2000 เกินเกณฑ์ 4% GPI ที่ผู้ใช้เลือก
+- สูตร service level ภาษาอังกฤษใน p.152 พิมพ์ตัวเศษเป็น "Order Not filled on demand" ซึ่งคือ Stock Out Rate ที่ถูกตามสูตรไทยคือ orders **filled** on demand (derived)
+- ข้อสังเกตของ wiki (การตีความ): เป้า ~1.0 รอบ หรือ > 90% เทียบเท่า MOS ราว 12-13 เดือน (derived: 12/1.0, 12/0.9) ซึ่งเร็วกว่าตัวอย่างคลังอะไหล่ MRO ของ SPO (30-41 เดือน) มาก และ MPM ไม่แยกอะไหล่หมุนช้า/insurance ออก ขณะที่ SPO เตือนว่า turnover ใช้ไม่ได้กับของหมุนช้า เป้า MPM จึงอาจสูงเกินจริงถ้าใช้กับคลังอะไหล่ทั้งหมด ควรใช้กับกลุ่มเคลื่อนไหว (ไม่ใช่ contested เพราะต่างที่ขอบเขต)
+
 ## เชื่อมโยงกับ compressor failure hierarchy
 
 - GPI นับ [[Compressor]] (ใน Power Plant) เป็นส่วนของเงินลงทุนหลัก ดังนั้นมูลค่าทดแทนของ compressor เข้าตัวหาร (ตีความจาก SPO p.114)
@@ -175,6 +192,7 @@ Inventory Value % GPI = Inventory Value / GPI x 100
 - [[Maintenance KPIs]]
 - [[Spare Parts Management]]
 - [[EOQ and Reorder Point]]
+- [[Maintenance Profit Maker Book]]
 
 ## Triplets
 
@@ -220,3 +238,12 @@ Inventory Value % GPI = Inventory Value / GPI x 100
 - [[Inventory Turnover and GPI Benchmarks]] [related_to:: [[Maintenance KPIs]]]
 - [[Inventory Turnover and GPI Benchmarks]] [related_to:: [[Spare Parts Management]]]
 - [[Inventory Turnover and GPI Benchmarks]] [input_to:: [[MRO Inventory Reduction Program]]]
+- MPM Spare Part Turnover [has_formula:: annual usage value / year-end spare stock value] shown as turns or % of year-end stock (MPM p.151-152, p.217)
+- MPM Spare Part Turnover [has_value:: about 1.0] standard; example 0.16 = 56,741,325 / 350,000,000 is low (MPM p.152)
+- MPM Spare Part Turnover [has_value:: > 90%] target of stock level (MPM p.170)
+- MPM Service Level [has_value:: > 95%] target spare availability (MPM p.170)
+- MPM Spare Part Turnover [differs_from:: Inventory Turnover] year-end stock denominator and % unit vs SPO average inventory and turns per year; differences only, not contested
+- MPM Spare Part Turnover [related_to:: B8 Stock Turn Ratio] same denominator basis and % unit (RBMM p.239)
+- XYZ Spare Part Turnover [has_value:: 20.4% / 11.4% / 10.8%] 1998-2000; 1999-2000 derived (MPM p.172, p.232)
+- Carrying Spare Part per Plant Asset [has_value:: 3-5% of machine price] average in industrial countries, not target (MPM p.84-85)
+- Carrying Spare Part per Plant Asset [related_to:: Inventory Value % GPI] lower is better without lowering availability, no target (MPM p.153)

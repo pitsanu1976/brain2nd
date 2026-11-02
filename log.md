@@ -141,3 +141,12 @@
 - ยังไม่สร้าง reading notes / wiki page ใด ๆ และไม่แตะ `graph/triplets.csv` (raw source ไม่ใช่หน้า wiki) — ขั้นถัดไปถ้าต้องการ: ถอดความต่อ chapter เป็น `raw/oracle-manual/ch06-08.md` … แล้วผูกเข้า [[CMMS]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]], [[Spare Parts Management]]
 - อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 8), [[index]] (Raw sources)
 - Pages: [[raw/oracle-manual]], [[index]], [[SCHEMA]]
+
+## [2026-11-02] ingest | Oracle eAM Student Guide Volume 1 (ต่อจาก Vol.2) — raw source เดิมขยายเป็น 2 เล่ม
+- Raw: [[raw/oracle-manual]] — *11i Enterprise Asset Management Fundamentals — Volume 1 Student Guide* (D22272, 490 หน้า, Ch.1–5, text layer) เพิ่มจาก Vol.2 (D22273, 448 หน้า, Ch.6–20) เป็น **ครบชุด 938 หน้า**
+- ไฟล์: `raw/oracle-manual/eAM_TrainingMaterial_v1.pdf` (6.0 MB, sha256 `42bf9dc2…4ded5a`) + `..._v2.pdf`; ข้อความเต็มรวมใหม่ `raw/oracle_manual.md` (895 KB) ถอดด้วย PyMuPDF จากทั้งสองเล่ม, ลบลายน้ำ/licence ที่ซ้ำทุกหน้า, marker ใหม่ `<!-- vol: V | page: N | ch: C-P -->` ครบ 938 marker
+- ตรวจ: chapter start ตรงกับหัวสไลด์จริงทุกบท (Vol.1 ch1→p19, ch2→p57, ch3→p263, ch4→p303, ch5→p441; Vol.2 ch6→p19 … ch20→p439), สุ่มเนื้อหา vol.1 p.303/p.310/p.460 ตรงกับ PDF
+- สิ่งที่ได้เพิ่มและสำคัญต่องาน CMMS: **Ch.2 setup** (organization, eAM parameters, area, department, resource, asset group) และ **Ch.4 work management** (work request → work order, operation, material, resource) — เป็นฐานอ้างอิงของงาน failure hierarchy/OREDA mapping ใน Oracle ที่ยังไม่มีใน vault
+- อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 8 — ระบุ 2 เล่ม/938 หน้า/เลข sha256 แยกเล่ม), [[index]]; `.gitignore` ครอบ `raw/oracle-manual/*.pdf` และ `raw/oracle_manual.md` อยู่แล้ว (ไม่ขึ้น GitHub)
+- ยังไม่สร้าง reading notes / wiki page / triplets — ขั้นถัดไป: ถอดความ `raw/oracle-manual/ch02-setup.md`, `ch04-work-management.md`, `ch05-pm.md` แล้วผูก [[CMMS]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]]
+- Pages: [[raw/oracle-manual]], [[index]], [[SCHEMA]]

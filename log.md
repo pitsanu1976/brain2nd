@@ -150,3 +150,12 @@
 - อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 8 — ระบุ 2 เล่ม/938 หน้า/เลข sha256 แยกเล่ม), [[index]]; `.gitignore` ครอบ `raw/oracle-manual/*.pdf` และ `raw/oracle_manual.md` อยู่แล้ว (ไม่ขึ้น GitHub)
 - ยังไม่สร้าง reading notes / wiki page / triplets — ขั้นถัดไป: ถอดความ `raw/oracle-manual/ch02-setup.md`, `ch04-work-management.md`, `ch05-pm.md` แล้วผูก [[CMMS]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]]
 - Pages: [[raw/oracle-manual]], [[index]], [[SCHEMA]]
+
+## [2026-11-02] ingest | Oracle eAM User's Guide Release 11i (A95930-01) — functional reference
+- Raw: [[raw/oracle-eam-user-guide]] — *Oracle Enterprise Asset Management User's Guide, Release 11i*, Part A95930-01, ก.พ. 2002, 234 หน้า, 7 บท, **PDF มี text layer** (ไม่ต้อง OCR)
+- ไฟล์: PDF `raw/oracle-eam-ug/A95930-01_eAM_User_Guide_11i.pdf` (2.4 MB, sha256 `3bfd24c4…05cc37`) และข้อความเต็ม `raw/oracle_concept.md` (273 KB, ถอดด้วย PyMuPDF, ตัด running header/folio, marker ครบ 234 หน้า `<!-- page: N | ch: C-P -->`); มีลิขสิทธิ์ Oracle → เพิ่ม `.gitignore` ทั้งคู่
+- ตัวเอกสารเป็นคู่มือ functional ไม่ใช่สไลด์: Ch.1 ภาพรวม · Ch.2 setup (object model: Organization → Area → Department/Resource → Lookups → Category → Asset Group → Asset Number parent/child → Asset Activity + BOM + Route → Rebuildable Item → Collection Plan) · Ch.3 work management (WO types routine/PM/rebuild/easy, lifecycle Draft→Released→Complete→Closed, operations/material/resource) · Ch.4 PM (meters, PM scheduling definition บน asset number × asset activity หรือ asset route, forecast → generate) · Ch.5 planning & scheduling · Ch.6 direct item procurement · Ch.7 self-service
+- **ประโยชน์ตรงต่องาน CMMS ที่ค้างอยู่:** เอกสารแยกชัด 3 แกน — Activity Type (Inspection/Overhaul/Lubrication/Repair/Servicing/Cleaning, 2-48), Activity Cause (Breakdown/Vandalism/Normal Wear/Settings, 2-48), และ WO type (3-7 ถึง 3-18) → ใช้เป็นหลักฐานตอบปัญหา "technician เลือก WO type ผิด" และเป็นที่วาง taxonomy failure mode/mechanism ของ ISO 14224 ที่ eAM ไม่มีให้
+- อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 9), [[index]] (Raw sources)
+- ยังไม่สร้าง wiki page / triplets — ขั้นถัดไปที่คุ้ม: หน้า [[CMMS Failure Coding]] หรืออัปเดต [[CMMS]] + [[Work Order Lifecycle]] ด้วย mapping 3 แกนนี้ แล้วออก triplets (`has_activity_type`, `has_cause`, `mapped_to_iso14224`)
+- Pages: [[raw/oracle-eam-user-guide]], [[index]], [[SCHEMA]]

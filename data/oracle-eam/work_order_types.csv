@@ -1,0 +1,5 @@
+wo_type,definition_quote,created_by,starts_at_status,chapter_page,pdf_page,notes
+Routine,Routine work orders are normally created by a Planner,Maintenance Workbench,Draft,3-7,101,งานทั่วไปที่วางแผนเอง
+Preventive Maintenance,"eAM enables you to generate work orders automatically based on meter readings, runtime intervals, and calendar days",PM Scheduler,Draft,3-12,106,เกิดจาก PM schedule/meter
+Rebuild,You may need to create Rebuild Work Orders as child work orders of parent work orders,child of parent WO,Draft,3-13,107,งานซ่อมชิ้นส่วนที่ถอดออกมา
+Easy,Easy Work Orders have been referred to as unplanned work orders,manual,Released,3-18,112,ข้าม operation/resource planning และข้าม Draft

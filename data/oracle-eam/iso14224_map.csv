@@ -1,0 +1,9 @@
+iso_level,iso_concept,eam_construct,eam_page,confidence,rationale
+6,equipment unit,Asset Number (ระดับบนของ hierarchy) + Asset Group เป็น class,"2-30, 2-37",high,"Asset Group = การจำแนกประเภท, Asset Number = ตัวเครื่องจริง"
+7,subunit,Asset Number ลูก (parent/child),2-37,medium,eAM ไม่กำหนดความหมายของแต่ละระดับ ต้องตกลงเอง
+8,component / maintainable item,Asset Number ใบล่าง หรือ Rebuildable Item,"2-37, 2-59",medium,ถ้ามีการถอดซ่อมกลับใช้ Rebuildable Item จะได้ genealogy
+6/8,failure mode (failure record),WIP_EAM_FAILURE_CODE,2-25,medium,lookup เดียวแบน ต้องฝัง mode/mechanism ในรหัส
+8,failure cause,MTL_EAM_ACTIVITY_CAUSE (หยาบ) + WIP_EAM_FAILURE_CODE (ละเอียด),"2-17, 2-25",high,"สองชั้น: cause หยาบที่ activity, failure code ละเอียดตอนปิดงาน"
+8,failure mechanism,ไม่มีฟิลด์ — ฝังในรหัส failure code หรือ descriptive flexfield,—,low,ไม่มี object รองรับ ต้องออกแบบเอง
+maintenance record,maintenance activity (ISO เก็บนอก taxonomy),Asset Activity + Work Order Operation,"2-43, 3-21",high,ISO ไม่มี resolution; eAM เก็บงานที่ทำใน operation
+—,resolution,ไม่มีฟิลด์ — operation / DFF,—,low,OREDA มี resolution 13 รหัส แต่ eAM ไม่มีที่เก็บ

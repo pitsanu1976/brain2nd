@@ -1,0 +1,8 @@
+status,description_quote,can_schedule,can_charge_labor,can_request_material,chapter_page,pdf_page,transitions
+Draft,No scheduling of work orders at a Draft status can take place,no,no,no,3-19,113,Draft → Released / Unreleased / Cancel
+Released,"Once a work order is Released, you can execute a work order",yes,yes,yes,3-19,113,Released → Complete / On-Hold / Unreleased / Cancel
+Unreleased,Scheduling can take place for these work orders,yes,no,no,3-20,114,Unreleased → Released / On-Hold / Cancel; ย้อนเป็น Draft ไม่ได้
+Complete,A Complete status for an eAM work order does not require any operation to be completed,no,yes,no,3-20,114,Complete → Closed / Released (uncomplete)
+Closed,You cannot charge any accounts once an eAM work order is closed,no,no,no,3-20,114,Closed → Complete (unclose)
+On-Hold,eAM work orders at Released and Unreleased statuses can be put on hold,no,no,no,3-20,114,พักงานจาก Released/Unreleased
+Cancel,You can cancel an eAM work order at any status in its lifecycle,no,no,no,3-20,114,ยกเลิกได้ทุกสถานะ

@@ -159,3 +159,10 @@
 - อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 9), [[index]] (Raw sources)
 - ยังไม่สร้าง wiki page / triplets — ขั้นถัดไปที่คุ้ม: หน้า [[CMMS Failure Coding]] หรืออัปเดต [[CMMS]] + [[Work Order Lifecycle]] ด้วย mapping 3 แกนนี้ แล้วออก triplets (`has_activity_type`, `has_cause`, `mapped_to_iso14224`)
 - Pages: [[raw/oracle-eam-user-guide]], [[index]], [[SCHEMA]]
+
+## [2026-11-02] data | structured dataset จาก Oracle eAM User's Guide 11i
+- โฟลเดอร์ใหม่ `data/oracle-eam/` (derived data, ประกาศใน [[SCHEMA]] §2): สกัดตารางจาก [[raw/oracle-eam-user-guide]] เป็น CSV 5 ไฟล์ — `eam_objects.csv` 26 แถว (object model + คำนิยาม verbatim + chapter/PDF page + upstream), `eam_lookups.csv` 3 (MTL_EAM_ACTIVITY_TYPE / MTL_EAM_ACTIVITY_CAUSE / WIP_EAM_FAILURE_CODE + ค่าตัวอย่างจริง), `work_order_types.csv` 4, `work_order_statuses.csv` 7 (สิทธิ์ schedule/charge labor/request material + transition), `iso14224_map.csv` 8 (ข้อมูลที่อนุมานเอง มี confidence/rationale กำกับ)
+- วิธีทำให้ตรวจสอบได้: `build.py` slice ข้อความระหว่าง anchor จาก `raw/oracle_concept.md` → quote เป็น verbatim โดยโครงสร้าง; `validate.py` ตรวจซ้ำทุกแถวว่า quote ปรากฏจริงบนหน้าที่อ้าง + chapter tag ตรง → **PASS 40/40 แถว (26+3+4+7), 0 failed**
+- เจตนา: ให้เป็นข้อมูลเชิงโครงสร้างที่ push ขึ้น GitHub ได้โดยไม่ละเมิดลิขสิทธิ์ (ข้อความเต็ม 938+234 หน้ายัง gitignored) และใช้ตอบปัญหางาน CMMS ได้แก่ การออกแบบ failure coding และการแยก WO type ออกจาก status
+- ไม่แตะ `graph/triplets.csv` (ยังเป็น KG ของหน้า wiki ตาม §10) และไม่สร้างหน้า wiki ใหม่ในรอบนี้
+- Pages: [[SCHEMA]], [[raw/oracle-eam-user-guide]], [[Failure Hierarchy]], [[ISO 14224 Taxonomy]]

@@ -133,3 +133,11 @@
 - ข้อผิดพลาดในหนังสือที่ flag (ตรวจคำนวณซ้ำ) เช่น ตัวย่อ RBI "Reliability Based Inspection" และ FMECA "...Cost Analysis", LCC เครื่อง 1 26,578→26,390, Fig 4.16 grand total 46,273.80→44,473.80, MTBF 5,255→5,225, up time 650→630, Fig 12.13 กำไรที่ OEE 100% 1,579→1,864.5, WACC แถวหนี้ 0.33→2.33, ฟังก์ชัน Excel PMT ใช้ผิดกับ 4 factor; รายการเต็มใน [[Maintenance Profit Maker Book]] และท้ายแต่ละไฟล์ notes
 - Lint: ไม่มี broken link, frontmatter/tag ครบ, ทุกหน้าอยู่ใน [[index]] (135 หน้า); `graph/triplets.csv` rebuild 6,602 triplets 0 error
 - Pages: [[Maintenance Profit Maker Book]], [[raw/maintenance-profit-maker]], [[index]], [[SCHEMA]]
+
+## [2026-11-02] ingest | Oracle 11i eAM Fundamentals Vol.2 Student Guide (raw source เท่านั้น)
+- Raw: [[raw/oracle-manual]] — *11i Enterprise Asset Management Fundamentals — Volume 2 Student Guide*, Oracle University course D14149GC31 Edition 3.1 (Oct 2005), 448 หน้า, **PDF มี text layer จึงไม่ต้อง OCR**
+- ไฟล์: PDF เก็บ `raw/oracle-manual/eAM_TrainingMaterial_v2.pdf` (6.1 MB, sha256 `0387d355…ec1edd`) และข้อความเต็ม `raw/oracle_manual.md` (387 KB, ถอดด้วย PyMuPDF, ลบลายน้ำ/บรรทัด license ที่พิมพ์ซ้ำทุกหน้า, marker ทุกหน้า `<!-- page: N | ch: C-P -->`); ทั้งสองไฟล์มีลิขสิทธิ์ Oracle → เพิ่มใน `.gitignore` เก็บในเครื่องเท่านั้น
+- ขอบเขต: Volume 2 = Chapter 6–20 (planning & scheduling, direct item procurement, cost management, contractor services, property manager, service, process/discrete/project manufacturing, work order billing, OTL, self-service work requests, workbench, stores, reports) — **Chapter 1–5 อยู่ใน Volume 1 ซึ่งยังไม่มีใน vault**
+- ยังไม่สร้าง reading notes / wiki page ใด ๆ และไม่แตะ `graph/triplets.csv` (raw source ไม่ใช่หน้า wiki) — ขั้นถัดไปถ้าต้องการ: ถอดความต่อ chapter เป็น `raw/oracle-manual/ch06-08.md` … แล้วผูกเข้า [[CMMS]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]], [[Spare Parts Management]]
+- อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 8), [[index]] (Raw sources)
+- Pages: [[raw/oracle-manual]], [[index]], [[SCHEMA]]

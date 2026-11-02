@@ -17,6 +17,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
 - [[raw/spare-parts-optimization]] — หนังสือ Spare Parts Optimization (สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/spare-parts-optimization/`
 - [[raw/maintenance-profit-maker]] — หนังสือ Maintenance: The Profit Maker (วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, 277 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/maintenance-profit-maker/`
+- [[raw/oracle-manual]] — Oracle 11i eAM Fundamentals Volume 2 Student Guide (D14149GC31, 448 หน้า, PDF text layer; PDF + ข้อความเต็มเก็บในเครื่องเท่านั้น) Chapter 6–20: planning & scheduling, cost management, contractor services, stores, workbench
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)

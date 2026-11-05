@@ -166,3 +166,9 @@
 - เจตนา: ให้เป็นข้อมูลเชิงโครงสร้างที่ push ขึ้น GitHub ได้โดยไม่ละเมิดลิขสิทธิ์ (ข้อความเต็ม 938+234 หน้ายัง gitignored) และใช้ตอบปัญหางาน CMMS ได้แก่ การออกแบบ failure coding และการแยก WO type ออกจาก status
 - ไม่แตะ `graph/triplets.csv` (ยังเป็น KG ของหน้า wiki ตาม §10) และไม่สร้างหน้า wiki ใหม่ในรอบนี้
 - Pages: [[SCHEMA]], [[raw/oracle-eam-user-guide]], [[Failure Hierarchy]], [[ISO 14224 Taxonomy]]
+
+## [2026-11-02] fix | ถอด `raw/efficacy_of_maintenance.md` ออกจาก git tracking
+- พบว่าไฟล์ข้อความเต็มของหนังสือ *Efficacy of Maintenance* (1.4 MB) ถูก track ใน repo public ทั้งที่เป็นลิขสิทธิ์ และไม่สอดคล้องกับอีก 3 เล่มที่ gitignore ไว้
+- แก้: `git rm --cached raw/efficacy_of_maintenance.md` (ไฟล์ยังอยู่บนเครื่องครบ 1,441,498 bytes) + เพิ่มใน `.gitignore` ใต้หัวข้อ licensed/copyrighted source
+- ตรวจแล้ว: ไม่มีหน้า wiki หรือ note ใด link ถึงไฟล์นี้ (`grep` ทั้ง vault = 0) จึงไม่มี broken link; `raw/` ใน git เหลือ 105 ไฟล์ / ~7.2 MB
+- **ข้อจำกัดที่ต้องรู้:** การถอดนี้ไม่ลบประวัติ — blob ยังอยู่ใน history ของ commit ก่อนหน้า ถ้าต้องลบจริงต้อง rewrite history (`git filter-repo`) ซึ่งยังไม่ทำ เพราะต้อง backup และแจ้งก่อน

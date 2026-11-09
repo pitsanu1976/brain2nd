@@ -181,3 +181,9 @@
 - ข้อจำกัดที่บันทึกไว้: เป็น secondary source (ต่ำกว่า ISO/RBMM), ชื่อสไลด์บางหน้าถอดเพี้ยน, ตาราง B.4 คอลัมน์ matrix เป็น `[?]` — ต้องเปิด PDF หน้า 100 เมื่อใช้ matrix
 - อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 10), [[index]] (Raw sources); ยังไม่สร้าง wiki page/triplets — ขั้นถัดไปที่คุ้ม: รวม B.4/B.5 เข้า [[Failure Hierarchy]] และ data/oracle-eam/iso14224_map.csv
 - Pages: [[raw/applied-rcm]], [[index]], [[SCHEMA]], [[RCM Reliability Centered Maintenance]]
+
+## [2026-11-02] fix | PETROSYNC RCM PDF ถูก autopush ขึ้น public repo ชั่วคราว — ลบออกจาก history แล้ว
+- ปัญหา: ระหว่าง ingest [[raw/applied-rcm]] cron `autopush` (ทุก 5 นาที) commit ไฟล์ PDF 6.7 MB ก่อนที่บรรทัด `.gitignore` จะมีผล → กลายเป็น commit `2f74245 vault: sync … 1 file(s)` และถูก push ขึ้น repo public
+- แก้: `git rebase --onto 9dee179 2f74245 main` ตัด commit ที่มีแต่ PDF ทิ้ง (commit ใหม่ `c617409`) → `git push --force-with-lease`; กู้ไฟล์กลับลงเครื่องด้วย `git show 2f74245:…` และตรวจ sha256 ตรง (`cdfe2737…a01935`) ไฟล์ยังอยู่ครบในเครื่อง
+- ตรวจแล้ว: `git log --all -- raw/applied-rcm/` = ว่าง (ไม่มี blob ในสาขาใด), remote HEAD เหลือเฉพาะ `raw/applied-rcm.md`, `.gitignore` มีทั้ง `raw/applied_reliability_centered_maintenance.md` และ `raw/applied-rcm/*.pdf`
+- **ข้อจำกัด**: GitHub อาจยังเก็บ object เดิมไว้ชั่วคราวจนกว่า GC — เข้าถึงได้ทาง direct SHA เท่านั้น ไม่ปรากฏใน tree/branch; ถ้าต้องการลบถาวรต้องติดต่อ GitHub Support ให้ purge

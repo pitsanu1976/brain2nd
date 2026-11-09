@@ -1,10 +1,10 @@
 ---
 title: CMMS
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [cmms, maintenance-management, reliability, book, iso-14224, data-quality, work-management, cmrp, mpm, work-order]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: high
 contested: false
 ---
@@ -185,6 +185,16 @@ MPM เน้นว่า MMS ที่ดีใช้ได้ทั้งแ�
 
 ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Audit]]
 
+## จาก Efficacy of Maintenance (บทที่ 14)
+
+- **ประโยชน์ 10 ข้อ** ที่ผู้เขียนระบุ (EOM p.257-259): คุ้มครองการลงทุนเครื่องจักร, ควบคุมงาน, ควบคุมค่าใช้จ่าย, พัฒนาบุคลากร, สร้าง "สังคมความรู้" (ทำงานด้วยระบบแทนทำงานด้วยคน), เพิ่มผลผลิต, ตั้งงบอย่างเป็นระบบ, เพิ่มประสิทธิผลการทำงาน, ควบคุมอะไหล่, ทำให้อุปกรณ์พร้อมใช้
+- **สาระสำคัญ**: การได้ประโยชน์ขึ้นกับ Implementation ไม่ใช่ตัวซอฟต์แวร์ — ผู้นำเข้าต้องเข้าใจทั้งระบบงานและรอยต่อเทคนิค/บริหาร (EOM p.257)
+- **ขอบเขตที่จำกัด**: CMMS เป็นแกนกลางทางเทคนิค (PM, Work Control, Outage, Information, Budgeting, Report/KPI, Spare & Outsourcing) แต่ต้องอินเตอร์เฟซกับ Supply Side, SH&E, Production Plan, Project Management, Accounting, HR, Spare Optimization, RCM — CMMS เป็น "เครื่องมือของระบบงาน" ไม่ใช่ตัวระบบงาน (รูปที่ 13.3, EOM p.254)
+- **เลือก CMMS** (EOM p.264-266): ภายใน 4 ข้อ (เข้าใจระบบและความต้องการตนเอง, รู้ข้อจำกัดของคน เช่นช่างอาวุโสกลัวระบบ, แยกฟังก์ชันจำเป็น/เสริม, งบประมาณ) + ภายนอก 4 ข้อ (ฟังก์ชัน, Interface one-way/two-way/temp file/direct update, เทคโนโลยี Client-Server vs Web base, ผู้ขาย: core business ด้านบำรุงรักษา + ทีม implementation + support + reference)
+- **ปัจจัยความสำเร็จ 4 ข้อ** (EOM p.270-271): ผู้บริหารเห็นชอบ, key person + working team ที่รู้ทั้งระบบงานและซอฟต์แวร์, อบรม 3 ระดับ (คณะทำงาน/ผู้ใช้/ผู้บริหาร), ทำให้ CMMS เป็นส่วนหนึ่งของการบริหารและ **reconcile ข้อมูลกับบัญชี-จัดซื้อ-บุคคลได้**
+- **ขึ้นระบบ 5 ขั้น** (EOM p.271-273): สำรวจข้อมูล → ออกแบบระบบ (เริ่มจากรายงานที่ต้องการแล้วถอยกลับไปหาวิธีเก็บข้อมูล) → จัดเตรียมข้อมูล → อบรม → go-live + ดูแลต่อ
+- **ตำแหน่งในแผนแม่บท**: CMMS ถูกจัดอยู่ในแผนงานเทคนิค **ระดับความเร่งด่วนที่ 3** ของ MMMP (EOM p.223-224) — คือทำหลังเอกสารเทคนิค มาตรฐานงาน และอะไหล่ ไม่ใช่ทำก่อน
+
 ## Triplets
 
 - [[CMMS]] [has_label:: Computerized Maintenance Management System]
@@ -244,3 +254,6 @@ MPM เน้นว่า MMS ที่ดีใช้ได้ทั้งแ�
 - [[CMMS]] [has_value:: 8 benefits] de-coupling, coupling, faster history review, performance history, failure analysis to modification, continuous spare optimisation, reliability improvement, standard indices (MPM p.30)
 - [[CMMS]] [has_value:: less than 25%] share of intended result achieved by CMMS investment; book cites no data source [confidence:: low] (MPM p.226)
 - [[CMMS]] [related_to:: [[Work Order Lifecycle]]] 6-stage MMS process (MPM p.61)
+- [[CMMS]] [is_a:: tool of Maintenance Management System] not the system itself, EOM p.254
+- [[CMMS]] [has_value:: 10 benefits] EOM p.257-259
+- [[CMMS]] [depends_on:: data reconciliation with accounting] EOM p.271

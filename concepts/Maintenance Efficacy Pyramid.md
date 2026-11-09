@@ -1,10 +1,10 @@
 ---
 title: Maintenance Efficacy Pyramid
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [maintenance-management, kpi, budget, cmms, book, work-management, cmrp, mpm, audit]
-sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -123,6 +123,22 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - [[Maintenance Performance Audit]]
 - [[Maintenance Master Plan]]
 
+## 7. เงื่อนไขขึ้นชั้นตาม Efficacy of Maintenance (EOM บทที่ 15)
+
+เล่ม Efficacy of Maintenance อธิบายพีระมิดชุดเดียวกันในมุม "ต้องมีอะไรจึงจะขึ้นชั้นได้" (EOM p.277-300)
+
+| ชั้น | เงื่อนไขขึ้นชั้น (EOM) |
+|---|---|
+| 2 Immature | มีหน่วยบำรุงรักษาในผังองค์กร + บุคลากรระดับจัดการ + หน่วยวางแผนแข็งแรง + ใช้ work control indices + เริ่มดัชนีค่าใช้จ่าย (EOM p.278) |
+| 3 Systematic Work Control | มีผู้รับผิดชอบวางแผน + วัด OEE ระดับหน่วยผลิต + เปลี่ยนงานที่ "วางแผนไม่ได้" ให้เป็นงานที่วางแผนได้ (EOM p.279) |
+| 4 Cost Control | ระบบบัญชีต้นทุนบันทึกถูกต้อง + ดัชนีค่าใช้จ่าย + เป้าหมายต้นทุนที่มาจากเนื้องาน + Full Fixed Cost Rate / Utilization (EOM p.284-292) |
+| 5 Budgeting | ตั้งงบจากเนื้องานเป็น man-hour + แยก fixed/variable + ควบคุม over/under absorption + ต้นทุนต่อหน่วยผลิต (EOM p.293-296) |
+| 6 Optimization | Production Planning & Control + Maintenance Planning & Control + ABC + Reliability Engineering + ข้อมูลสถิติพอทำ FMECA (EOM p.297-300) |
+
+- ชั้น 3 ในเล่มนี้ชื่อ **Maintenance Systematic Work Control** (RBMM ใช้ Maintenance Work Control) — ชั้นเดียวกัน ชื่อต่าง
+- ชั้น 1→3 อยู่ในมือหน่วยบำรุงรักษาเพียงลำพัง; ชั้น 3→4 คือการเปลี่ยน "ประเภทองค์กร" เพราะต้องดึงฝ่ายบัญชีเข้ามา ไม่ใช่แค่ทำงานเทคนิคเก่งขึ้น (EOM p.300)
+- คำเตือนของเล่ม: การพูดถึง RCM โดยไม่มีสถิติการเสียและระบบควบคุมงานที่ดีพอ = การข้ามขั้น (EOM p.298-299)
+
 ## Triplets
 
 - [[Maintenance Efficacy Pyramid]] [has_value:: 6 levels] maturity of maintenance organization (Fig 2.2, RBMM p.35-40)
@@ -173,3 +189,6 @@ CMMS ใช้ไม่คุ้ม, เลือก PM ไม่เป็น, �
 - Road Map to Maintenance Excellence [differs_from:: [[Maintenance Efficacy Pyramid]]] 5 levels by activity profile vs 6 levels by what is controlled (MPM p.25-33, RBMM p.35-40)
 - [[Maintenance Performance Audit]] [related_to:: [[Maintenance Efficacy Pyramid]]] MPM audit framework parallel to RBMM self-assessment
 - Spare Part Cost [has_value:: > 50%] of maintenance cost per MPM, difference in base not contested (MPM p.159, p.216)
+- Maintenance Cost Control [depends_on:: accounting system] to break through to cost control, EOM p.300
+- Maintenance Optimization [depends_on:: Reliability Engineering] EOM p.297
+- Maintenance Systematic Work Control [differs_from:: Maintenance Work Control] EOM p.279 vs RBMM p.36 [contested:: true]

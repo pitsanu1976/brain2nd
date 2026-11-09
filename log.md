@@ -187,3 +187,13 @@
 - แก้: `git rebase --onto 9dee179 2f74245 main` ตัด commit ที่มีแต่ PDF ทิ้ง (commit ใหม่ `c617409`) → `git push --force-with-lease`; กู้ไฟล์กลับลงเครื่องด้วย `git show 2f74245:…` และตรวจ sha256 ตรง (`cdfe2737…a01935`) ไฟล์ยังอยู่ครบในเครื่อง
 - ตรวจแล้ว: `git log --all -- raw/applied-rcm/` = ว่าง (ไม่มี blob ในสาขาใด), remote HEAD เหลือเฉพาะ `raw/applied-rcm.md`, `.gitignore` มีทั้ง `raw/applied_reliability_centered_maintenance.md` และ `raw/applied-rcm/*.pdf`
 - **ข้อจำกัด**: GitHub อาจยังเก็บ object เดิมไว้ชั่วคราวจนกว่า GC — เข้าถึงได้ทาง direct SHA เท่านั้น ไม่ปรากฏใน tree/branch; ถ้าต้องการลบถาวรต้องติดต่อ GitHub Support ให้ purge
+
+## [2026-11-09] ingest | Efficacy of Maintenance (360 หน้า, 17 บท) — ครบวงจร
+- Source: [[raw/efficacy-of-maintenance]] — สุพัฒน์ เชยศิริวัฒนนา, วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, ISBN 978-616-08-1054-3, 360 หน้า 17 บท
+- เปลี่ยนชื่อไฟล์ OCR จาก `raw/efficacy_of_maintenance.md` → `raw/efficacy-of-maintenance-ocr.md` (1,441,498 bytes, sha256 `03fd4862…19d59f`) ให้ตรง convention `<book>-ocr.md`; อัปเดต `.gitignore` ตามชื่อใหม่ (ยังเป็น local-only เพราะลิขสิทธิ์)
+- Reading notes 9 ไฟล์ใน `raw/efficacy-of-maintenance/`: `ch01-02`, `ch03-04`, `ch05-06`, `ch07-08`, `ch09-10`, `ch11-12`, `ch13-14`, `ch15`, `ch16-17` (ถอดความ ไม่คัดลอก; อ้าง `(EOM p.NN)` printed page)
+- หน้า hub ใหม่: [[Efficacy of Maintenance Book]] (entity) — ตารางบท→หน้า wiki, สิ่งที่เล่มเพิ่มจาก MPM/RBMM, ข้อขัดแย้ง 6 ข้อ
+- อัปเดต 9 หน้า concept แบบ additive (เพิ่มหัวข้อ "จาก Efficacy" + sources + triplets): [[Maintenance Efficacy Pyramid]], [[CMMS]], [[Maintenance Planning and Scheduling]], [[Turnaround Management]], [[Maintenance Budget]], [[Maintenance Master Plan]], [[Spare Parts Management]], [[Maintenance Outsourcing]], [[RCM Reliability Centered Maintenance]]
+- ข้อค้นพบที่บันทึกเป็น contested: (1) ชื่อผู้นำต่างกันระหว่างหน้าลิขสิทธิ์กับบรรณานุกรม (2) ชั้น 3 พีระมิดชื่อ Maintenance Systematic Work Control vs Maintenance Work Control ของ RBMM (3) EOM ระบุ RCM (รูป 16.3) ไม่รวม optimization/CMMS ขณะที่ PETROSYNC วางเป็น process model 11 กล่อง
+- ข้อจำกัด: หน้า 113 เป็นตารางแนวนอนที่ OCR อ่านไม่ได้ (ไม่นำตัวเลขมาใช้); offset printed page ไม่คงที่ (+2 → +10); ตัวเลขบท 11/13/15/16 เป็นตัวอย่างสมมติของผู้เขียน
+- Pages: [[raw/efficacy-of-maintenance]], [[Efficacy of Maintenance Book]], [[index]], [[SCHEMA]]

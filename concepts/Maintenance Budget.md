@@ -1,10 +1,10 @@
 ---
 title: Maintenance Budget
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [budget, cost, maintenance-management, kpi, book, turnaround, cmrp, mpm]
-sources: [reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: true
 ---
@@ -317,6 +317,24 @@ Target Production = Capacity x Planning Factor x OEE     (MPM p.125, 128)
 
 ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]]
 
+## จาก Efficacy of Maintenance (บทที่ 11)
+
+**3 กลุ่มค่าใช้จ่าย** (EOM p.195)
+
+1. **คงที่**: บุคลากร, สำนักงาน/ส่วนกลาง, ค่าเสื่อมราคาทรัพย์สินของหน่วย, allocation จากหน่วยสนับสนุน
+2. **แปรผันตามกิจกรรม**: อะไหล่ตาม PM-Program, อะไหล่ตาม Planned Outage, ค่าจ้างเหมา, ตั้งสำรองเผื่องานนอกแผน
+3. **งบลงทุนและผูกพัน**: ค่าเสื่อมราคาทรัพย์สินที่ลงทุนปรับปรุง, **ผูกพันค่าใช้จ่าย Turnaround เฉลี่ยเป็นงวดปีละเท่า ๆ กันตลอดรอบ**
+
+**Full Fixed Cost Rate (EOM p.205-207)**
+
+- `FFCR = ค่าใช้จ่ายคงที่ทั้งสิ้น / จำนวนคน-ชั่วโมง (capacity)` → ใช้แปลงงานเป็นเงิน: ต้นทุนงาน = FFCR x man-hour จริง
+- **Over/Under Absorption** = ผลต่างระหว่างค่าใช้จ่ายที่คำนวณได้กับที่เกิดขึ้นจริง — ต้องรายงานทุกงวด เพราะเป็นสัญญาณว่างบตั้งบนสมมติฐาน man-hour ผิด
+- Utilization ต่ำทำให้ต้นทุนต่อชั่วโมงจริงสูงกว่าที่ควร แม้ค่าใช้จ่ายรวมอยู่ในงบ
+
+**ตัวอย่างรายงาน** (EOM p.253): fixed 15,750,000 + variable 19,200,000 = 34,950,000; expenditure/plant asset 3.50%; over/(under) absorption (1,750,000); FFCR actual 787.5/man-hr; utilization 56.8%; planned:unplanned = 1.41 (man-hr) แต่ 0.25 (cost) — สองอัตราเล่าเรื่องต่างกัน
+
+**ผังงบประมาณ** (รูปที่ 11.2, EOM p.196): fixed → Full Fixed Cost; variable → สัดส่วน planned:unplanned; capital → ค่าเสื่อม + ผูกพัน turnaround → สุดท้ายชี้ไปที่การปรับ OEE
+
 ## Triplets
 
 - [[Maintenance Budget]] [alias_of:: Maintenance Performance Budgeting]
@@ -433,3 +451,6 @@ Target Production = Capacity x Planning Factor x OEE     (MPM p.125, 128)
 - Holding Cost [has_value:: 10% finance cost only] XYZ spare finance cost 52.1 / 521.2 (MPM p.108, 129-130) [contested:: true]
 - Holding Cost [has_value:: 15-25%] RBMM recommended range (RBMM p.295) [contested:: true]
 - MPM Holding Cost Example [contradicts:: RBMM Holding Cost Range] MPM-C1 [contested:: true]
+- Maintenance Full Fixed Cost Rate [has_formula:: total fixed cost / total man-hours] EOM p.205-207
+- Turnaround Cost [has_value:: accrued evenly over the turnaround cycle] EOM p.195
+- Maintenance Over/Under Absorption [has_value:: (1,750,000) in the worked example] EOM p.253

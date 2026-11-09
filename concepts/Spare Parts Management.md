@@ -1,10 +1,10 @@
 ---
 title: Spare Parts Management
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [spare-parts, maintenance-management, cmms, kpi, cost, book, work-management, cmrp, spo, warehousing, procurement, inventory-control, mpm]
-sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: true
 ---
@@ -297,6 +297,17 @@ MPM ให้ทั้ง "ไม่ต่ำกว่า 60-70%" (MPM p.90) แ
 
 ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Performance Improvement]], [[Maintenance Financial Impact]]
 
+## จาก Efficacy of Maintenance (บทที่ 9)
+
+- **แยก Demand Side (บำรุงรักษา) กับ Supply Side (พัสดุ + จัดซื้อ)** (EOM p.150-151): บำรุงรักษากำหนด consumption rate, stock level (max-min), แผนซื้อตาม outage, รายการที่ต้อง/ไม่ต้องสำรอง; คลังตัดยอด/ออกใบเบิกซื้อเมื่อต่ำกว่า min; จัดซื้อกำหนด lead time, แหล่งขาย, ราคากลาง, สัญญา blanket order / vendor stock
+- **คัดเลือกเครื่องที่มีอะไหล่สำรองตาม criticality 1 → 2 → 3** (EOM p.152)
+- **แยกประเภทอะไหล่ให้ชัด** (EOM p.152-153)
+  - **Insurance Spare Part** = ต้องมีเสมอเพื่อฉุกเฉิน บางกรณีถูกบริษัทประกันภัยบังคับ; มักไม่ถูกเบิก → dead stock สูง มูลค่าสูง; เกณฑ์ตั้ง stock ตามความเสียหายที่หลีกเลี่ยงได้ ไม่ใช่ตามอัตราการใช้
+  - **Necessary / Unique Spare Part** = ของเครื่องระดับ 1-2 ที่ใช้ใน planned outage และ **lead time > 3 เดือน**
+  - **Capital Part** = อะไหล่ที่ซื้อมาพร้อมโรงงาน
+- **เป้าดัชนี** (EOM p.250): Spare Part Service Factor **> 98%** (stock-out < 2%) และ Spare Part Turnover **> 50%** (ที่น่าพอใจ ~100%)
+- ตัวอย่างรายงาน (EOM p.253): spare inventory/plant asset 2.50%, turnover 40%, direct purchase/total spare cost 38.27%
+
 ## Triplets
 
 - [[Spare Parts Management]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9
@@ -407,3 +418,6 @@ MPM ให้ทั้ง "ไม่ต่ำกว่า 60-70%" (MPM p.90) แ
 - Medium Risk High Impact Zone [selects:: Insurance Part] insurance usually unavailable (MPM p.220)
 - High Risk Zone [selects:: Stock Parts] must stock (MPM p.220)
 - Spare Part Optimization System [differs_from:: [[CMMS]]] needs part-machine links, production impact, criticality (MPM p.219-220)
+- Insurance Spare Part [differs_from:: Necessary Spare Part] EOM p.152-153
+- Spare Part Service Factor [has_value:: >98%] EOM p.250
+- Spare Part Turnover [has_value:: >50%, satisfactory ~100%] EOM p.250

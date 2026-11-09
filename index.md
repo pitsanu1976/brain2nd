@@ -2,7 +2,7 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-10-28 | จำนวนหน้า wiki: 135 (entities 14, concepts 97, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-11-09 | จำนวนหน้า wiki: 136 (entities 15, concepts 97, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
 Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224, CMRP, SPO และ MPM)
 
@@ -17,6 +17,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/cmrp]] — สไลด์หลักสูตร CMRP ของ PETROSYNC 11 ไฟล์ 408 หน้า (สแกน, PDF เก็บในเครื่องเท่านั้น) reading notes ถอดความใน `raw/CMRP/CMPR-01.md` ถึง `CMPR-11.md`
 - [[raw/spare-parts-optimization]] — หนังสือ Spare Parts Optimization (สุชาติ ศุภมงคล, SE-ED 2546, 143 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/spare-parts-optimization/`
 - [[raw/maintenance-profit-maker]] — หนังสือ Maintenance: The Profit Maker (วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, 277 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/maintenance-profit-maker/`
+- [[raw/efficacy-of-maintenance]] — หนังสือ สัมฤทธิผลของงานบำรุงรักษา (Efficacy of Maintenance) (สุพัฒน์ เชยศิริวัฒนนา, วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, 360 หน้า 17 บท; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 9 ไฟล์ใน `raw/efficacy-of-maintenance/`
 - [[raw/oracle-manual]] — Oracle 11i eAM Fundamentals Student Guide ครบ 2 เล่ม (D14149GC31, 938 หน้า, PDF text layer; PDF + ข้อความเต็มเก็บในเครื่องเท่านั้น) Ch.1–5 setup/work management/PM + Ch.6–20 planning, cost, contractor, stores, workbench
 - [[raw/oracle-eam-user-guide]] — Oracle eAM User's Guide Release 11i (A95930-01, 234 หน้า, 2002; PDF + ข้อความเต็ม `raw/oracle_concept.md` เก็บในเครื่องเท่านั้น) functional reference: object model การ setup, WO types/lifecycle, PM scheduling, planning, procurement, self-service
 - [[raw/applied-rcm]] — Applied Reliability Centred Maintenance (PETROSYNC course 3–5 พ.ย. 2025, 173 สไลด์; PDF + ข้อความเต็มเก็บในเครื่องเท่านั้น) 8 โมดูล RCM, criticality, FMECA, task selection, ISO 14224 Table B.4/B.5, RBI integration
@@ -38,6 +39,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[CMRP Course]] — hub สไลด์ CMRP (PETROSYNC): SMRP BOK 5 pillars, AEO model, แผนที่ไฟล์ไปยังหน้า wiki, ข้อผิดพลาดในสไลด์ 21 จุด และ 4 ข้อ contested กับ RBMM/ISO
 - [[Spare Parts Optimization Book]] — hub หนังสือ SPO (มุมมองคลังพัสดุ/จัดซื้อ MRO, ที่มา COSAL + Esso): ตาราง 12 บทไปยังหน้า wiki, offset หน้า PDF/book, ข้อผิดพลาด OCR/หนังสือประมาณ 28 จุด
 - [[Maintenance Profit Maker Book]] — hub หนังสือ MPM (มุมการเงิน/กำไรของงานบำรุงรักษา, ผู้แต่งร่วมกับ RBMM): ตาราง 15 บทไปยังหน้า wiki, ข้อขัดแย้ง MPM-C1 ถึง C7 (รอผู้ใช้ตัดสิน), ข้อผิดพลาดของหนังสือ/OCR
+- [[Efficacy of Maintenance Book]] — hub หนังสือ EOM (คู่มือสร้างระบบบริหารงานบำรุงรักษาทีละชั้น 17 บท): ตารางบทไปยังหน้า wiki, 6 ข้อที่เล่มนี้เพิ่มจาก MPM/RBMM, ข้อขัดแย้งเรื่องชื่อชั้น 3 และขอบเขต RCM
 
 ## concepts/
 

@@ -1,10 +1,10 @@
 ---
 title: Turnaround Management
 created: 2026-10-25
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [turnaround, work-management, maintenance-management, budget, cost, cmrp, spare-parts, spo, procurement, mpm]
-sources: [cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, spare-parts-optimization.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, cmrp.md, reliability-based-maintenance-management.md, iso-14224.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -231,6 +231,23 @@ MPM บทที่ 12 ขยาย RBI เป็น "Reliability Based Inspecti
 - [[Maintenance Profit Maker Book]] (บทที่ 1, 12)
 - [[Work Order Lifecycle]]
 
+## จาก Efficacy of Maintenance (บทที่ 8)
+
+- **Standard Planned Outage Package 3 แบบ** (EOM p.131-132)
+
+| แพ็คเกจ | ขอบเขต | ระยะหยุดโดยทั่วไป |
+|---|---|---|
+| Turnaround (Major Overhaul) | ครบทุกกิจกรรม + เครื่องหลักทุกตัว | นานที่สุด |
+| Semi-Turnaround (Overhaul) | Function Test, NDT, Calibration, Verification, Part Replacement บางตัว | 15-30 วัน |
+| Minor Inspection (Yearly Inspection) | ตรวจสภาพเครื่องหลักเป็นหลัก | 7-15 วัน |
+
+- **7 ขั้น** (EOM p.132): Work Initiation → Outage Planning (scope) → Resources Preparation → Work Scheduling → Pre-Outage → Outage Execution → Post-Outage
+- **Scope มาจาก 4 แหล่ง** (รูปที่ 8.5, EOM p.133): backlog unplanned + Standard Outage Package + backlog PdM + งาน IM
+- งาน outage มีความซับซ้อนจน **Work Control ธรรมดาไม่พอ ต้องใช้ project management/CPM** และซอฟต์แวร์จัดตาราง (EOM p.132)
+- แยก **Pre-Start-up** (ตรวจ subsystem) ออกจาก **Start-up** (เดินจริง) — ระบบ CMMS ทั่วไปมักไม่มีสองขั้นนี้ (EOM p.145-146)
+- ตัวชี้วัดความสำเร็จของ outage: ตรงเวลา ตรงขอบเขต ไม่มีงานค้างหลังกลับมาเดิน และไม่เกิด unplanned shutdown ตามมา (EOM p.147-148)
+- งบ: ค่าใช้จ่าย Turnaround ต้อง **เฉลี่ยผูกพันเป็นรายปีตลอดรอบ** ไม่ตัดก้อนเดียวในปีที่หยุด (EOM p.195)
+
 ## Triplets
 
 - [[Turnaround Management]] [defined_in:: [[CMRP Course]]] CMPR-10 p.9-30 and CMPR-11 p.1-3
@@ -292,3 +309,6 @@ MPM บทที่ 12 ขยาย RBI เป็น "Reliability Based Inspecti
 - Turnaround Time [uses:: [[CMMS]]] gather backlog and deferred work for one opportunity (MPM p.223)
 - MPM RBI Expansion [contradicts:: Risk Based Inspection] book p.223 says Reliability Based Inspection; book error, standard is Risk-Based Inspection [confidence:: low]
 - [[Turnaround Management]] [related_to:: [[Maintenance Profit Maker Book]]] chapters 1 and 12
+- Semi-Turnaround [has_value:: 15-30 days] EOM p.131
+- Minor Inspection [has_value:: 7-15 days] EOM p.132
+- [[Turnaround Management]] [has_value:: 7 steps] EOM p.132

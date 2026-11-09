@@ -1,10 +1,10 @@
 ---
 title: RCM Reliability Centered Maintenance
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-11-09
 type: concept
 tags: [rcm, pm, reliability, maintenance-management, weibull, book]
-sources: [reliability-based-maintenance-management.md]
+sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md]
 confidence: high
 contested: false
 ---
@@ -110,6 +110,18 @@ FMECA เป็นกระบวนการอิสระจากฝั่�
 - [[Failure Data Recording]]
 - [[Redundancy and Standby Systems]]
 
+## จาก Efficacy of Maintenance (บทที่ 16)
+
+- **ประวัติ**: ปลายทศวรรษ 1960 การบินพลเรือน (Boeing 747) → United Airlines ตั้งทีมทบทวนแผนบำรุงรักษาใหม่ทั้งระบบ → ใช้กับเครื่องบินทุกรุ่น → DOD (กองทัพอากาศ/เรือ) → อุตสาหกรรมผลิตไฟฟ้าเป็นกลุ่มแรกนอกการบิน (EOM p.318)
+- **นิยามเชิงแนวคิด 5 ข้อ** (EOM p.319-320): เป็น process ไม่ใช่เทคนิค, ทำนุบำรุง **function** (เริ่มจากระบบลงไป), คิดถึง functional failure, จัด criticality ให้ failure mode, เลือกงานแบบจำเพาะด้วยเกณฑ์ Applicable / Effective / Reject
+- **กระบวนการ RCM 3 ขั้น (รูปที่ 16.3, EOM p.320)**
+  1. กำหนดขอบเขต Productive Unit + ระบุ Maintainable Item + criticality
+  2. วิเคราะห์ failure mode/effect/criticality (FMECA) + RCFA
+  3. เลือกงานป้องกันให้เหมาะสมจาก 4 ทางเลือก: PdM, Fixed Time Maintenance (FTM), Improvement Maintenance, Operate To Failure (OTF) (EOM p.329)
+- **ข้อจำกัดที่ผู้เขียนระบุเอง**: รูปที่ 16.3 **ไม่มีการทำ Optimization และ CMMS** — RCM คือกระบวนการเลือกงาน ไม่ใช่ระบบบริหารทั้งระบบ (EOM p.320) ต่างจาก PETROSYNC ที่วาง RCM เป็น process model 11 กล่องรวม business goals และ living program
+- **RCFA**: เริ่มทุกครั้งที่มี WO ประเภท Breakdown/Unplanned, ใช้ fishbone ได้, ผลต้องเก็บเป็นความรู้ใช้ซ้ำกับเครื่องที่เหมือนกัน (EOM p.329)
+- **เงื่อนไขก่อนทำ RCM ได้จริง (6 ข้อ, EOM p.341)**: ประวัติซ่อมครบ, บันทึกเหตุการณ์ผลิต+ซ่อม, แยก failure mode, ต้นทุนตรง/ทางอ้อมถูกต้อง, ความรู้ maintenance engineering, ความรู้คณิตศาสตร์/สถิติ
+
 ## Triplets
 
 - [[RCM Reliability Centered Maintenance]] [selects:: Scheduled PM Task] per failure mode, using reliability knowledge (RBMM p.114-115)
@@ -181,3 +193,6 @@ FMECA เป็นกระบวนการอิสระจากฝั่�
 - [[FMECA]] [differs_from:: [[RCM Reliability Centered Maintenance]]] FMECA equipment level from design side; RCM function of Productive Unit (RBMM p.137)
 - [[RCM Reliability Centered Maintenance]] [uses:: [[OREDA]]] failure modes and mechanisms; OREDA gives % per mode, not Weibull parameters
 - Scheduled Failure Finding [applies_to:: Protective System] e.g. PSV, ESD, trip; equipment examples are interpretation (RBMM p.125-126) [confidence:: low]
+- [[RCM Reliability Centered Maintenance]] [has_value:: 3 steps] scoping + FMECA + task selection, EOM p.320
+- [[RCM Reliability Centered Maintenance]] [differs_from:: PETROSYNC RCM process model] excludes optimization and CMMS in Fig 16.3, EOM p.320 [contested:: true]
+- [[RCM Reliability Centered Maintenance]] [depends_on:: maintenance history, failure modes, cost data] 6 preconditions, EOM p.341

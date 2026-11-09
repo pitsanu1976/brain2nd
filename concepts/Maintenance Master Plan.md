@@ -1,10 +1,10 @@
 ---
 title: Maintenance Master Plan
 created: 2026-10-28
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [mpm, maintenance-management]
-sources: [maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -139,6 +139,22 @@ contested: false
 
 ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Outsourcing]]
 
+## จาก Efficacy of Maintenance (บทที่ 12) — MMMP 9 + 7
+
+**แผนงานด้านเทคนิค 9 แผน** (EOM p.223): เอกสารเทคนิค, เทคนิคการซ่อมบำรุง, SHE, มาตรฐานงาน, อะไหล่, คุณภาพงาน, จ้างเหมา, นโยบายเปลี่ยนเครื่องจักร, CMMS
+
+**แผนงานระบบจัดการ 7 แผน** (EOM p.223): ความร่วมมือผลิต-ซ่อมบำรุง, HR, บัญชี, ระบบประเมินสมรรถนะ, งบประมาณและควบคุม, MIS, ผังองค์กร
+
+**ลำดับความเร่งด่วน 3 ระดับ** (EOM p.223-224)
+
+1. เอกสารเทคนิค → เทคนิคการซ่อมบำรุง → SHE (ข้อมูลฐานที่แผนอื่นใช้ต่อ)
+2. มาตรฐานงาน → อะไหล่ → คุณภาพงาน
+3. จ้างเหมา → นโยบายเปลี่ยนเครื่องจักร → **CMMS**
+
+- CMMS อยู่ชั้นสาม — อธิบายว่าทำไม "ซื้อ CMMS ก่อน" จึงล้มเหลว (ข้อมูลและมาตรฐานยังไม่มีให้ป้อน)
+- เอกสารที่ต้องมีก่อน (EOM p.224): Equipment list & grouping, technical data, spare part list, work specification/step/instruction, inspection sheet, PM-Program, Standard Outage Package
+- อุปสรรค (EOM p.236-242): ผู้บริหารมองไม่ถึงเป้าระยะยาว, ขาดเจ้าภาพ, ทำแผนไม่ผูกงบ, ข้ามขั้น
+
 ## Triplets
 
 - [[Maintenance Master Plan]] [alias_of:: MMMP] Maintenance Management Master Plan (MPM p.33-34)
@@ -167,3 +183,5 @@ contested: false
 - [[Maintenance Master Plan]] [related_to:: [[Maintenance Efficacy Pyramid]]]
 - [[Maintenance Performance Audit]] [input_to:: [[Maintenance Master Plan]]] radar results show which plan to prioritise
 - Production Maintenance Coordination Plan [uses:: OEE] common main index; sub-indices MWT and speed loss (MPM p.161)
+- [[Maintenance Master Plan]] [has_value:: 9 technical + 7 management plans] EOM p.223
+- [[CMMS]] [has_value:: priority tier 3 in MMMP] EOM p.224

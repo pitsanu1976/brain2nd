@@ -1,10 +1,10 @@
 ---
 title: Maintenance Planning and Scheduling
 created: 2026-10-25
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [work-management, maintenance-management, cmms, spare-parts, kpi, cmrp, mpm, work-order]
-sources: [cmrp.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, cmrp.md, reliability-based-maintenance-management.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -202,6 +202,17 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - [[Work Order Lifecycle]]
 - [[Maintenance Profit Maker Book]]
 
+## จาก Efficacy of Maintenance (บทที่ 5-6)
+
+- **ตารางกิจกรรม x ระดับความสำคัญ (รูปที่ 5.2, EOM p.84)**: ระดับ criticality 1-4 กำหนดว่ากิจกรรมใดทำ/ทำเท่าที่จำเป็น/ทำเมื่อมีสำรอง/ไม่ทำ ทั้งช่วงเดินเครื่องและช่วงหยุดเครื่อง
+  - งาน Planned Outage เน้นระดับ 1-2 เท่านั้น; ระดับ 3-4 ไม่มีงาน outage เลย (ย้ายไปทำระหว่างเดินเครื่อง) เพื่อลดความยุ่งยากของ outage (EOM p.84-85)
+  - ระดับ 4 = Run to failure เป็นหลัก ยกเว้นเครื่องราคาสูงที่ต้องมี Basic PM (EOM p.85)
+- **ระดับความยากของงาน**: Routine Inspection & Cleaning → M&L → Condition Monitoring → Part Replacement PM → Recondition (EOM p.85-91) — ใช้ตัดสินว่าใครทำ (operator / ช่าง / ผู้เชี่ยวชาญ)
+- **PM-Program 2 ส่วน** (EOM p.98): งานระหว่างเดินเครื่อง + Planned Outage Standard Package (Minor Inspection / Semi-Turnaround / Turnaround)
+- **หลักจัดตาราง**: Routine Inspection/M&L/CM ทำที่ระดับ **อุปกรณ์หลัก ไม่แตกย่อย** (ต้องใช้ทีม multi-skill); Part Replacement/Recondition จัดตารางรายเครื่องลงถึงระดับอุปกรณ์ย่อย (EOM p.99)
+- **ช่วงเวลา**: งานตรวจวัดทุก 1-12 สัปดาห์ — **ไม่ควรเกิน 12 สัปดาห์ (3 เดือน)**; Part Replacement ระดับ 1-2 ตั้งตรงรอบหยุดโรงงานหรือเว้น 2/3/4 รอบ; ระดับ 3-4 ใช้ MTBF จากประวัติแล้วตั้งก่อนถึง MTBF เล็กน้อย (EOM p.99-100)
+- **กฎแก้ตารางทับซ้อน**: กำหนดกิจกรรมให้เป็นอิสระต่อกันก่อน ถ้าชนกันให้ยึดงานที่ซับซ้อนกว่า (C > B > A) และ **ยกเลิกงานที่จำเป็นน้อยกว่า** ไม่ใช่เลื่อนทั้งคู่ (EOM p.100)
+
 ## Triplets
 
 - [[Maintenance Planning and Scheduling]] [defined_in:: [[CMRP Course]]] CMPR-09 and CMPR-08 p.46-50
@@ -268,3 +279,6 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - Planner Effect [has_value:: 47 equivalent craftsmen] 30 craftsmen x 1.57, 17 extra to PM (MPM p.227)
 - MPM Utilization Factor Work Content [related_to:: Wrench Time] 35% to 55% work content, closer to wrench time than B5, wiki interpretation
 - [[Maintenance Planning and Scheduling]] [related_to:: [[Work Order Lifecycle]]]
+- PM-Program [has_value:: overlap resolved by complexity C > B > A] EOM p.100
+- Condition Monitoring Interval [has_value:: 1-12 weeks, not more than 12] EOM p.100
+- [[Maintenance Planning and Scheduling]] [depends_on:: [[Criticality Assessment]]] activity matrix by criticality 1-4, EOM p.84

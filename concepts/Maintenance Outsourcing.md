@@ -1,10 +1,10 @@
 ---
 title: Maintenance Outsourcing
 created: 2026-10-28
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [mpm, outsourcing, maintenance-management, cost, book]
-sources: [maintenance-profit-maker.md]
+sources: [efficacy-of-maintenance.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -155,6 +155,19 @@ Full Cost Rate = Fixed Cost / (Available Man-Hrs x Utilization Factor)
 
 ดูเพิ่ม (หน้าจาก MPM ingest 2026-10-28): [[Maintenance Financial Impact]], [[Maintenance Performance Improvement]]
 
+## จาก Efficacy of Maintenance (บทที่ 10)
+
+- **กรอบคิด**: ใช้ Work Control 6 ขั้น (Initiation → Assessment → Scheduling → Execution → Closing/Reporting → History) เป็นไม้บรรทัด แล้วถามว่า "ผู้รับเหมารับผิดชอบขั้นไหน" — **ขอบเขตความรับผิดชอบ = จำนวนขั้นที่โอน** (EOM p.173)
+- **5 ระดับจากน้อยไปมาก** (EOM p.173-191)
+  1. จ้างเป็นงาน ๆ ตามใบสั่งงาน — ผู้รับเหมารับเฉพาะขั้น Execution
+  2. พันธมิตร (Partnership) — แบ่งข้อมูล แผน และความเสี่ยงบางส่วน ระยะยาว
+  3. จ้างที่เพิ่มความรับผิดชอบในทรัพย์สิน + แบ่งความเสี่ยงค่าใช้จ่าย
+  4. จ้างเต็มรูปแบบ (Full Service) — วางแผน กำหนดการ ลงมือ รายงาน
+  5. รับช่วงบริหารงานบำรุงรักษาทั้งโรงงานในเครือ และจ้างเดินเครื่อง+บำรุงรักษา (O&M)
+- **ข้อดีของการจ้างงานไม่ซับซ้อน** (EOM p.175): ไม่ต้องมีกำลังคนมาก, ต้นทุนทางอ้อมต่ำกว่าถือคนเอง, ไม่ต้องลงทุน workshop/เครื่องมือแพงที่ utilization ต่ำ, ลดความยุ่งยากภายใน
+- **การจัด package** (รูปที่ 10.4, EOM p.175): แกนความวิกฤต x วงจรชีวิตงาน (Discrete → Continuous) 4 กลุ่ม — ใช้ตัดสินว่าอะไรจ้าง อะไรทำเอง
+- ข้อจำกัด: หนังสือไม่ได้ให้ KPI สัญญาเชิงตัวเลข (availability guarantee, penalty) — จุดนี้ [[Maintenance Profit Maker Book]] ละเอียดกว่า
+
 ## Triplets
 
 - [[Maintenance Outsourcing]] [defined_in:: [[Maintenance Profit Maker Book]]] chapter 6 (MPM p.91-110)
@@ -207,3 +220,5 @@ Full Cost Rate = Fixed Cost / (Available Man-Hrs x Utilization Factor)
 - Multi-year Bundled Contract [has_value:: from 5% per year saving] of previous spend (MPM p.221-222)
 - Contract Out Expenditure / Total In-house Maintenance Expenditure [measures:: Outsourcing Level] (MPM p.221-222)
 - Value Side Management [uses:: [[Availability and OEE]]] share bonus from higher OEE (MPM p.222)
+- [[Maintenance Outsourcing]] [has_value:: 5 responsibility levels] EOM p.173-191
+- [[Maintenance Outsourcing]] [depends_on:: [[Work Order Lifecycle]]] scope = number of work control steps transferred, EOM p.173

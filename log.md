@@ -197,3 +197,14 @@
 - ข้อค้นพบที่บันทึกเป็น contested: (1) ชื่อผู้นำต่างกันระหว่างหน้าลิขสิทธิ์กับบรรณานุกรม (2) ชั้น 3 พีระมิดชื่อ Maintenance Systematic Work Control vs Maintenance Work Control ของ RBMM (3) EOM ระบุ RCM (รูป 16.3) ไม่รวม optimization/CMMS ขณะที่ PETROSYNC วางเป็น process model 11 กล่อง
 - ข้อจำกัด: หน้า 113 เป็นตารางแนวนอนที่ OCR อ่านไม่ได้ (ไม่นำตัวเลขมาใช้); offset printed page ไม่คงที่ (+2 → +10); ตัวเลขบท 11/13/15/16 เป็นตัวอย่างสมมติของผู้เขียน
 - Pages: [[raw/efficacy-of-maintenance]], [[Efficacy of Maintenance Book]], [[index]], [[SCHEMA]]
+
+## [2026-11-09] promote | Applied RCM: ถอด Table B.4/B.5 + failure characteristics + cost criticality เข้า wiki
+- **ข้อมูล**: `data/oracle-eam/` เพิ่ม 2 ไฟล์ — `failure_mode_codes.csv` 21 แถว (compressor class CO 20 รหัสที่ใช้ จาก 62 รหัส ISO + ELF ที่ CO ไม่ใช้) และ `maintenance_activity_codes.csv` 12 แถว (Table B.5 + ค่า C/P) พร้อม `iso_usage_note` ว่าใช้กับ lookup ตัวไหนของ eAM
+- `iso14224_map.csv` 8 → 10 แถว (เพิ่มแถว code-level ที่ชี้ไป 2 ไฟล์ใหม่); `build.py` + `validate.py` + `README.md` อัปเดต; **validate PASS** — ตรวจทีละรหัสกับ label list 62 รหัสใน `raw/iso-14224/annex-b.md`, นับ 20 รหัสของ CO, ตรวจลำดับ 12 กิจกรรม
+- **หน้า wiki 3 หน้า** (additive, ทุกหน้ามี `sources: applied-rcm.md` แล้ว):
+  - [[Failure Hierarchy]] — ตาราง 20 รหัส failure mode ของ CO + วิธีฝังรหัส `<CLASS>-<MODE>[-<MECH>]` + กฎต้องมี UNK/OTH + FTS/STP ต้องผูก FFM
+  - [[PM Task Selection]] — failure characteristics 4 คำถาม, เงื่อนไข CBM 3 ข้อ, `PT + f < (P-F)`, ตารางแมปคำตอบ → RtF/FFM/CBM/SM/MOD, cost-benefit + legislation
+  - [[Criticality Assessment]] — business goals → criticality matrix 3 มิติ (cost/availability/production rate), cost-based criticality เป็นตัวคัดกรอง, เกณฑ์เลือก critical asset
+- **ข้อผิดพลาดของ source ที่บันทึกไว้**: ตาราง B.4 ของ PETROSYNC sl.100 OCR เหลื่อมคอลัมน์ (Failure to open → STP, Spurious stop → ELP) จึงห้ามใช้เป็น source of truth; ใช้เฉพาะ B.5 (12 กิจกรรม) เป็นตัว corroborate
+- จำนวน triplet: 6,641 → 6,647
+- Pages: [[raw/applied-rcm]], [[Failure Hierarchy]], [[PM Task Selection]], [[Criticality Assessment]], [[index]], [[log]]

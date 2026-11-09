@@ -1,10 +1,10 @@
 ---
 title: Failure Hierarchy
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-11-09
 type: concept
 tags: [taxonomy, oreda, iso-14224, failure-mode, failure-mechanism, resolution]
-sources: [compressor-failure-hierarchy.md, failure-structure.md, reliability-based-maintenance-management.md, iso-14224.md]
+sources: [applied-rcm.md, compressor-failure-hierarchy.md, failure-structure.md, reliability-based-maintenance-management.md, iso-14224.md]
 confidence: medium
 contested: true
 ---
@@ -60,6 +60,43 @@ Mechanism, detail และ resolution เป็น engineering judgement ขอ
 ## ดูเพิ่ม (RBMM)
 
 ลิงก์/การตีความ ไม่ใช่ข้อความใน OREDA: ลำดับชั้น asset ใน CMMS ตาม RBMM (Plant > Process > System > Subsystem > Equipment > Object Part > Cause, Fig 5.12 p.130) ครอบคลุมเหนือและใต้ระดับ Equipment ของตารางนี้ ดู [[CMMS]] และ [[Failure Data Recording]] การเทียบ Object Part กับ [[Maintainable Item]] ดู [[RBMM Concepts vs Compressor Failure Hierarchy]]
+
+## ISO 14224 failure mode codes สำหรับ compressor (CO)
+
+รหัสที่ใช้จริงใน `WIP_EAM_FAILURE_CODE` ไม่ได้มาจากคู่มือ Oracle แต่มาจาก ISO 14224 Table B.6-B.15 (p.185-204) ต่อ equipment class — compressor class **CO ใช้ 20 รหัส** จาก 62 รหัสทั้งมาตรฐาน (ไม่ใช้ **ELF** ซึ่งเป็น leakage of fuel ของ CE/GT/ST) ดู `data/oracle-eam/failure_mode_codes.csv`
+
+| Code | Failure mode | CO |
+|---|---|---|
+| AIR | Abnormal instrument reading | ✓ |
+| BRD | Breakdown | ✓ |
+| ERO | Erratic output | ✓ |
+| ELP | External leakage - process medium | ✓ |
+| ELU | External leakage - utility medium | ✓ |
+| FTS | Failure to start on demand | ✓ |
+| HIO | High output | ✓ |
+| INL | Internal leakage | ✓ |
+| LOO | Low output | ✓ |
+| NOI | Noise | ✓ |
+| OHE | Overheating | ✓ |
+| PDE | Parameter deviation | ✓ |
+| PLU | Plugged/choked | ✓ |
+| SER | Minor in-service problems | ✓ |
+| STD | Structural deficiency | ✓ |
+| STP | Failure to stop on demand | ✓ |
+| OTH | Other | ✓ |
+| UNK | Unknown | ✓ |
+| UST | Spurious stop | ✓ |
+| VIB | Vibration | ✓ |
+| (ELF) | External leakage - fuel | ✗ |
+
+**วิธีฝังใน eAM** (lookup เป็น flat list ไม่มี hierarchy):
+
+- รูปแบบ `<CLASS>-<MODE>` เช่น `CO-ELP`, `CO-VIB` และถ้าต้องการ mechanism ให้ต่อท้าย `<CLASS>-<MODE>-<MECH>` เช่น `CO-ELP-6.4`
+- ต้องมี `UNK` และ `OTH` เสมอ — ถ้าไม่มี คนจะเดารหัสและข้อมูลเสียตั้งแต่ต้นทาง (EOM/MB หลักการเดียวกับที่ PETROSYNC sl.100 เน้น)
+- `FTS` และ `STP` เป็น hidden/safety-relevant → ต้องผูกกับงาน FFM ไม่ใช่ PM ตามเวลา (sl.60-62)
+- แยก `INL` (รั่วภายใน) ออกจาก `ELP` (รั่วออกนอก) ให้ชัด — เป็นจุดที่ช่างมักลงรหัสเดียวกัน
+
+**ข้อควรระวัง**: ตาราง B.4 ที่พิมพ์ในสไลด์ PETROSYNC sl.100 ถูก OCR แล้ว**คอลัมน์รหัสเหลื่อมกัน** (เช่น "Failure to open" ไปอยู่แถว STP, "Spurious stop" ไปอยู่แถว ELP) — ใช้ sl.100 เป็นเพียงตัว corroborate รายการ 활동 12 รหัส (Table B.5) ห้ามใช้คอลัมน์รหัสของ B.4 จากสไลด์เป็น source of truth ให้ยึด [[ISO 14224 Taxonomy]] / `raw/iso-14224/annex-b.md`
 
 ## Triplets
 
@@ -136,3 +173,5 @@ Mechanism, detail และ resolution เป็น engineering judgement ขอ
 - [[Resolution Codes]] [differs_from:: [[ISO 14224 Taxonomy]]] Resolution not in ISO taxonomy; ISO keeps maintenance activity in maintenance record
 - [[Failure Hierarchy]] [depends_on:: Engineering Judgement] mechanism, detail and resolution by dataset author (Notes item 8); review with CMMS history/RCA before RCM/FMEA
 - [[CMMS]] [related_to:: [[Failure Hierarchy]]] RBMM asset hierarchy Plant > Process > System > Subsystem > Equipment > Object Part > Cause (Fig 5.12 p.130) spans above and below Equipment (interpretation) [confidence:: low]
+- CO Failure Mode Code Set [has_value:: 20 codes used of 62 ISO codes] ISO 14224 Table B.6-B.15, annex-b.md
+- ELF [differs_from:: CO failure modes] fuel leakage not used by compressor class, ISO 14224 B.6-B.15

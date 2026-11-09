@@ -216,7 +216,79 @@ MAP = [
      'high', 'ISO ไม่มี resolution; eAM เก็บงานที่ทำใน operation'),
     ('—', 'resolution', 'ไม่มีฟิลด์ — operation / DFF', '—',
      'low', 'OREDA มี resolution 13 รหัส แต่ eAM ไม่มีที่เก็บ'),
+    ('6/8', 'failure mode codes (ค่าใน lookup)', 'WIP_EAM_FAILURE_CODE — ใส่รหัส ISO B.6-B.15 (compressor CO 20 รหัส)', '2-25',
+     'high', 'ดู failure_mode_codes.csv; lookup เดียวแบน จึงต้องฝัง class/mode/mechanism ในรหัส'),
+    ('maintenance record', 'maintenance activity codes (Table B.5)', 'MTL_EAM_ACTIVITY_TYPE — ใส่ 12 รหัสกิจกรรม ISO', '2-16',
+     'high', 'ดู maintenance_activity_codes.csv; เป็นชนิดงาน ไม่ใช่สาเหตุ'),
 ]
 write('iso14224_map.csv',
       ['iso_level', 'iso_concept', 'eam_construct', 'eam_page', 'confidence', 'rationale'], MAP)
+# ------------------------------------------------- ISO code vocabularies ----
+# ค่าที่ใช้จริงใน lookup ของ eAM ไม่ได้อยู่ในคู่มือ Oracle — มาจาก ISO 14224
+#   failure mode: Table B.6-B.15 (p.185-204), ชุดของ compressor class CO = 20 รหัส
+#   activity:     Table B.5 (p.183-185) = 12 รหัส
+# อ้างจาก notes ใน vault: raw/iso-14224/annex-b.md
+# PETROSYNC sl.100 เป็นตัว corroborate เท่านั้น — คอลัมน์รหัสในตาราง B.4 ของสไลด์
+# OCR แล้วเหลื่อมกัน (Failure to open ได้ STP, Spurious stop ได้ ELP) จึงไม่ใช้เป็น source of truth
+PROV = 'ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100'
+
+# code, label (ต้องตรงกับ annex-b), CO ใช้ไหม, คำอธิบายตอนใช้ใน eAM
+FM = [
+    ('AIR', 'Abnormal instrument reading', 'yes', 'อ่านค่าเพี้ยน/เซนเซอร์ผิด'),
+    ('BRD', 'Breakdown', 'yes', 'เสียจนทำงานไม่ได้ ไม่ระบุกลไก — ใช้เมื่อไม่มีข้อมูลลึกกว่านี้'),
+    ('ERO', 'Erratic output', 'yes', 'เอาต์พุตแกว่ง ไม่นิ่ง (คนละตัวกับ HIO/LOO)'),
+    ('ELF', 'External leakage - fuel', 'no', 'CO ไม่ใช้ — ใช้กับ CE, GT, ST'),
+    ('ELP', 'External leakage - process medium', 'yes', 'รั่วออกนอกตัวเครื่อง (ของเหลว/ก๊าซกระบวนการ)'),
+    ('ELU', 'External leakage - utility medium', 'yes', 'รั่วของ utility เช่น น้ำหล่อเย็น ลมเครื่องมือ'),
+    ('FTS', 'Failure to start on demand', 'yes', 'สั่งสตาร์ทแล้วไม่ติด — hidden failure ที่ต้องมี FFM'),
+    ('HIO', 'High output', 'yes', 'จ่ายเกินพิกัด (แรงดัน/อัตราไหล/กำลัง)'),
+    ('INL', 'Internal leakage', 'yes', 'รั่วภายใน (ผ่านวาล์ว/ซีล) — แยกจาก ELP'),
+    ('LOO', 'Low output', 'yes', 'จ่ายได้ต่ำกว่าที่กำหนด'),
+    ('NOI', 'Noise', 'yes', 'เสียงดังผิดปกติ'),
+    ('OHE', 'Overheating', 'yes', 'อุณหภูมิเกินขีด'),
+    ('PDE', 'Parameter deviation', 'yes', 'ค่า parameter เบี่ยงจากสเปก'),
+    ('PLU', 'Plugged/choked', 'yes', 'อุดตัน/ตัน'),
+    ('SER', 'Minor in-service problems', 'yes', 'ปัญหาเล็กน้อยระหว่างใช้งาน (รั่วซึมเล็ก, ตั้งค่าเพี้ยน)'),
+    ('STD', 'Structural deficiency', 'yes', 'โครงสร้างบกพร่อง ร้าว ผุกร่อน'),
+    ('STP', 'Failure to stop on demand', 'yes', 'สั่งหยุดแล้วไม่หยุด — safety-relevant'),
+    ('OTH', 'Other', 'yes', 'อื่น ๆ ที่ไม่เข้าโหมดใด'),
+    ('UNK', 'Unknown', 'yes', 'ไม่ทราบสาเหตุ — ต้องมีเพื่อไม่ให้คนเดารหัส'),
+    ('UST', 'Spurious stop', 'yes', 'หยุดเองโดยไม่มีคำสั่ง'),
+    ('VIB', 'Vibration', 'yes', 'สั่นสะเทือนเกินเกณฑ์'),
+]
+write('failure_mode_codes.csv',
+      ['code', 'label_en', 'used_by_compressor_co', 'eam_lookup', 'eam_usage_note', 'provenance', 'confidence'],
+      [[c, lab, co, 'WIP_EAM_FAILURE_CODE', note, PROV, 'high'] for c, lab, co, note in FM])
+
+# code_no, activity, คำอธิบายสั้น, ตัวอย่าง, ISO use (C=corrective, P=preventive), note
+MA = [
+    (1, 'Replace', 'เปลี่ยนของใหม่/ของ refurbish ชนิดเดียวกัน', 'เปลี่ยนวาล์วที่สึก', 'C, P',
+     'งานที่ต้องมี spare ในคลัง — ผูกกับ Part Replacement PM'),
+    (2, 'Repair', 'ซ่อมด้วยมือให้กลับสภาพเดิม', 'repack, weld, plug, remake', 'C',
+     'งานนอกแผนมักลงรหัสนี้ ไม่ใช่ Replace'),
+    (3, 'Modify', 'เปลี่ยน/ปรับให้ต่างชนิด วัสดุ หรือดีไซน์', 'เปลี่ยนไส้กรอง mesh เล็กลง', 'C, P',
+     'ถ้าเป็น Modify ควรมี WO type/IM แยก ไม่ปนกับ PM'),
+    (4, 'Adjust', 'ปรับให้กลับใน tolerances', 'align, calibrate, balance', 'C, P',
+     'Calibration ควรเป็น activity type ของตัวเองถ้าต้อง track'),
+    (5, 'Refit', 'บริการ/ซ่อมเล็กให้ดูดีและใช้งานได้', 'polish, clean, paint, lube, oil change', 'C, P',
+     'งาน Basic PM ส่วนใหญ่ลงที่นี่'),
+    (6, 'Check', 'สอบสาเหตุแต่ไม่ซ่อม หรือเลื่อนซ่อม คืนฟังก์ชันด้วยการรีสตาร์ท/รีเซ็ต', 'restart, reset', 'C',
+     'สำคัญกับ functional failure เช่น F&G detector — ไม่ใช่ Test'),
+    (7, 'Service', 'งานบริการตามรอบ ไม่ถอดประกอบ', 'cleaning, เติมของสิ้นเปลือง', 'P',
+     'ใช้กับ PM routine ที่ไม่แตะชิ้นส่วน'),
+    (8, 'Test', 'ทดสอบฟังก์ชัน/สมรรถนะตามรอบ', 'function test ของ gas detector', 'P',
+     'ใช้คู่กับ FFM — ต้องบันทึกผลผ่าน/ไม่ผ่าน'),
+    (9, 'Inspection', 'ตรวจตามรอบด้วยประสาทสัมผัสหรือไม่ถอด', 'general checks', 'P',
+     'งาน Routine Inspection ลงรหัสนี้'),
+    (10, 'Overhaul', 'ยกเครื่องครั้งใหญ่ ถอดมากว้าง', 'overhaul ปั๊ม/คอมเพรสเซอร์', 'C, P',
+     'ผูกกับ Turnaround/Major Overhaul'),
+    (11, 'Combination', 'รวมหลายกิจกรรมข้างต้น', 'งานที่ทำหลายอย่างใน WO เดียว', 'C, P',
+     'ถ้าระบุ dominant activity ได้ ให้ลงตัวนั้นแทน'),
+    (12, 'Other', 'กิจกรรมอื่นนอกเหนือจากข้างต้น', '—', 'C, P',
+     'ควรมีน้อยกว่า 5% ของ WO ถ้าเกินแปลว่า taxonomy ไม่พอ'),
+]
+write('maintenance_activity_codes.csv',
+      ['code_no', 'activity', 'description_th', 'examples', 'iso_use', 'eam_lookup', 'eam_usage_note', 'provenance', 'confidence'],
+      [[n, a, d, ex, use, 'MTL_EAM_ACTIVITY_TYPE', note, PROV, 'high'] for n, a, d, ex, use, note in MA])
+
 print('done')

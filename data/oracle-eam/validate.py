@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Verify every quoted cell in the Oracle eAM CSVs appears verbatim on its cited page.
+"""Verify the Oracle eAM CSVs: quoted cells verbatim on their cited page, and the ISO
+code vocabularies matching raw/iso-14224/annex-b.md.
 
 Fails loudly if a quote was paraphrased, a page number is wrong, or a chapter tag
 does not match the source. Run after build.py:  python3 validate.py
@@ -57,6 +58,50 @@ for r in read('iso14224_map.csv'):
             print(f'FAIL iso14224_map: page ref {ref} not in source')
             fails += 1
 print(f'iso14224_map: page refs checked against {len(tags)} chapter tags')
+
+# ------------------------------------------------- ISO code vocabularies ---
+# ตรวจกับ notes ของ ISO 14224 ใน vault (source of truth สูงกว่า slide PETROSYNC)
+ANNEX = os.path.join(ROOT, 'raw', 'iso-14224', 'annex-b.md')
+annex = open(ANNEX, encoding='utf-8').read()
+label_line = [l for l in annex.split('\n') if l.startswith('AIR Abnormal')][0]
+iso_labels = {c: lab.strip().rstrip('*').strip()
+              for c, lab in re.findall(r'([A-Z]{2,3}) ([^;]+)', label_line)}
+print(f'annex-b: {len(iso_labels)} ISO failure mode codes parsed')
+
+fm = read('failure_mode_codes.csv')
+codes = [r['code'] for r in fm]
+if len(set(codes)) != len(codes):
+    print('FAIL failure_mode_codes: duplicate code'); fails += 1
+for r in fm:
+    c, lab = r['code'], r['label_en']
+    if not re.fullmatch(r'[A-Z]{2,3}', c):
+        print(f'FAIL failure_mode_codes: bad code format {c!r}'); fails += 1
+    elif c not in iso_labels:
+        print(f'FAIL failure_mode_codes: {c} not in ISO 14224 label list'); fails += 1
+    elif iso_labels[c] != lab:
+        print(f'FAIL failure_mode_codes: {c} label {lab!r} != ISO {iso_labels[c]!r}'); fails += 1
+    if r['used_by_compressor_co'] not in ('yes', 'no'):
+        print(f'FAIL failure_mode_codes: col used_by_compressor_co = {r["used_by_compressor_co"]!r}'); fails += 1
+co_yes = sum(1 for r in fm if r['used_by_compressor_co'] == 'yes')
+if co_yes != 20:
+    print(f'FAIL failure_mode_codes: compressor CO should use 20 codes, found {co_yes}'); fails += 1
+if not any(r['code'] == 'ELF' and r['used_by_compressor_co'] == 'no' for r in fm):
+    print('FAIL failure_mode_codes: ELF must be present and not used by CO'); fails += 1
+print(f'failure_mode_codes: {len(fm)} rows, {co_yes} used by CO')
+
+ma = read('maintenance_activity_codes.csv')
+EXPECT = ['Replace', 'Repair', 'Modify', 'Adjust', 'Refit', 'Check', 'Service',
+          'Test', 'Inspection', 'Overhaul', 'Combination', 'Other']
+if len(ma) != 12:
+    print(f'FAIL maintenance_activity_codes: expected 12 rows, got {len(ma)}'); fails += 1
+if [r['activity'] for r in ma] != EXPECT:
+    print('FAIL maintenance_activity_codes: activity names/order differ from ISO Table B.5'); fails += 1
+if [int(r['code_no']) for r in ma] != list(range(1, 13)):
+    print('FAIL maintenance_activity_codes: code_no must be 1..12'); fails += 1
+for r in ma:
+    if set(x.strip() for x in r['iso_use'].split(',')) - {'C', 'P'}:
+        print(f'FAIL maintenance_activity_codes: iso_use {r["iso_use"]!r}'); fails += 1
+print(f'maintenance_activity_codes: {len(ma)} rows checked')
 
 print('\nRESULT:', 'PASS — all quotes verified against raw/oracle_concept.md' if fails == 0 else f'FAIL — {fails} problem(s)')
 sys.exit(1 if fails else 0)

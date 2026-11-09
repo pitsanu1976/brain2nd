@@ -12,7 +12,9 @@ User's Guide, Release 11i, Part A95930-01, 234 หน้า) ตัวข้อ�
 | `eam_lookups.csv` | 3 | lookup type ที่ใช้รหัส failure/งาน: `MTL_EAM_ACTIVITY_TYPE`, `MTL_EAM_ACTIVITY_CAUSE`, `WIP_EAM_FAILURE_CODE` + ค่าตัวอย่างจริงในเอกสาร |
 | `work_order_types.csv` | 4 | Routine / Preventive Maintenance / Rebuild / Easy — สร้างโดยใคร, เริ่มที่สถานะไหน |
 | `work_order_statuses.csv` | 7 | Draft, Released, Unreleased, Complete, Closed, On-Hold, Cancel + สิทธิ์ schedule/charge labor/request material และ transition |
-| `iso14224_map.csv` | 8 | **ข้อมูลที่เราอนุมานเอง** (ไม่ใช่ในเอกสาร Oracle): จับคู่ระดับ ISO 14224 กับ construct ของ eAM + confidence |
+| `iso14224_map.csv` | 10 | **ข้อมูลที่เราอนุมานเอง** (ไม่ใช่ในเอกสาร Oracle): จับคู่ระดับ ISO 14224 กับ construct ของ eAM + confidence |
+| `failure_mode_codes.csv` | 21 | รหัส failure mode ของ ISO 14224 ระดับ compressor class CO (20 รหัสที่ใช้ + ELF ที่ไม่ใช้) พร้อมคำอธิบายตอนใช้กับ `WIP_EAM_FAILURE_CODE` |
+| `maintenance_activity_codes.csv` | 12 | กิจกรรมบำรุงรักษา 12 รหัสของ ISO 14224 Table B.5 + ค่า `iso_use` (C/P) พร้อมใช้กับ `MTL_EAM_ACTIVITY_TYPE` |
 | `build.py` | — | สร้าง CSV ทั้งหมดโดย slice ข้อความจาก `raw/oracle_concept.md` ระหว่าง anchor start/end |
 | `validate.py` | — | ตรวจว่า **ทุก quote ในทุกแถวปรากฏจริงบนหน้าที่อ้าง** และ chapter tag ตรงกับต้นฉบับ |
 
@@ -25,6 +27,8 @@ User's Guide, Release 11i, Part A95930-01, 234 หน้า) ตัวข้อ�
   # RESULT: PASS — all quotes verified against raw/oracle_concept.md
   ```
 - `iso14224_map.csv` ไม่มี quote — เป็นการตีความ จึงมีคอลัมน์ `confidence` และ `rationale` กำกับ และต้องอ่านคู่กับ [[ISO 14224 Taxonomy]] / [[Failure Hierarchy]]
+- `failure_mode_codes.csv` / `maintenance_activity_codes.csv` **ไม่ใช่ quote จากคู่มือ Oracle** — รหัสและชื่อโหมดต้องตรงกับ [[raw/iso-14224]] (`annex-b.md`) และ `validate.py` ตรวจทีละรหัสกับ label list ของมาตรฐาน (รวมถึงการนับ 20 รหัสของ class CO และการเรียง 12 กิจกรรม)
+- ตาราง B.4 ในสไลด์ PETROSYNC sl.100 ถูก OCR เหลื่อมคอลัมน์ — ใช้เป็นเพียงตัว corroborate ไม่ใช่ source of truth ของรหัส
 
 ## วิธีใช้กับงาน CMMS
 

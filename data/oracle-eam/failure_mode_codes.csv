@@ -1,0 +1,22 @@
+code,label_en,used_by_compressor_co,eam_lookup,eam_usage_note,provenance,confidence
+AIR,Abnormal instrument reading,yes,WIP_EAM_FAILURE_CODE,อ่านค่าเพี้ยน/เซนเซอร์ผิด,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+BRD,Breakdown,yes,WIP_EAM_FAILURE_CODE,เสียจนทำงานไม่ได้ ไม่ระบุกลไก — ใช้เมื่อไม่มีข้อมูลลึกกว่านี้,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+ERO,Erratic output,yes,WIP_EAM_FAILURE_CODE,เอาต์พุตแกว่ง ไม่นิ่ง (คนละตัวกับ HIO/LOO),ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+ELF,External leakage - fuel,no,WIP_EAM_FAILURE_CODE,"CO ไม่ใช้ — ใช้กับ CE, GT, ST",ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+ELP,External leakage - process medium,yes,WIP_EAM_FAILURE_CODE,รั่วออกนอกตัวเครื่อง (ของเหลว/ก๊าซกระบวนการ),ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+ELU,External leakage - utility medium,yes,WIP_EAM_FAILURE_CODE,รั่วของ utility เช่น น้ำหล่อเย็น ลมเครื่องมือ,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+FTS,Failure to start on demand,yes,WIP_EAM_FAILURE_CODE,สั่งสตาร์ทแล้วไม่ติด — hidden failure ที่ต้องมี FFM,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+HIO,High output,yes,WIP_EAM_FAILURE_CODE,จ่ายเกินพิกัด (แรงดัน/อัตราไหล/กำลัง),ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+INL,Internal leakage,yes,WIP_EAM_FAILURE_CODE,รั่วภายใน (ผ่านวาล์ว/ซีล) — แยกจาก ELP,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+LOO,Low output,yes,WIP_EAM_FAILURE_CODE,จ่ายได้ต่ำกว่าที่กำหนด,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+NOI,Noise,yes,WIP_EAM_FAILURE_CODE,เสียงดังผิดปกติ,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+OHE,Overheating,yes,WIP_EAM_FAILURE_CODE,อุณหภูมิเกินขีด,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+PDE,Parameter deviation,yes,WIP_EAM_FAILURE_CODE,ค่า parameter เบี่ยงจากสเปก,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+PLU,Plugged/choked,yes,WIP_EAM_FAILURE_CODE,อุดตัน/ตัน,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+SER,Minor in-service problems,yes,WIP_EAM_FAILURE_CODE,"ปัญหาเล็กน้อยระหว่างใช้งาน (รั่วซึมเล็ก, ตั้งค่าเพี้ยน)",ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+STD,Structural deficiency,yes,WIP_EAM_FAILURE_CODE,โครงสร้างบกพร่อง ร้าว ผุกร่อน,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+STP,Failure to stop on demand,yes,WIP_EAM_FAILURE_CODE,สั่งหยุดแล้วไม่หยุด — safety-relevant,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+OTH,Other,yes,WIP_EAM_FAILURE_CODE,อื่น ๆ ที่ไม่เข้าโหมดใด,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+UNK,Unknown,yes,WIP_EAM_FAILURE_CODE,ไม่ทราบสาเหตุ — ต้องมีเพื่อไม่ให้คนเดารหัส,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+UST,Spurious stop,yes,WIP_EAM_FAILURE_CODE,หยุดเองโดยไม่มีคำสั่ง,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high
+VIB,Vibration,yes,WIP_EAM_FAILURE_CODE,สั่นสะเทือนเกินเกณฑ์,ISO 14224 Table B.5/B.6-B.15 via raw/iso-14224/annex-b.md; corroborated by PETROSYNC RCM 2025 sl.100,high

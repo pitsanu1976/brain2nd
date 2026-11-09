@@ -1,10 +1,10 @@
 ---
 title: PM Task Selection
 created: 2026-10-20
-updated: 2026-10-25
+updated: 2026-11-09
 type: concept
 tags: [pm, rcm, reliability, weibull, maintenance-management, book, cbm, cmrp]
-sources: [reliability-based-maintenance-management.md, cmrp.md]
+sources: [applied-rcm.md, reliability-based-maintenance-management.md, cmrp.md]
 confidence: medium
 contested: false
 ---
@@ -142,6 +142,34 @@ Hidden failure?  Yes -> CBM ได้? Yes = CBM / No = FFM
 - [[Criticality Assessment]]
 - [[Root Cause Analysis]]
 
+## มุมมอง PETROSYNC: failure characteristics 4 คำถาม (sl.60-62)
+
+ก่อนเลือก task ต้องตอบ 4 คำถามนี้กับแต่ละ failure mode (PETROSYNC RCM 2025 sl.60)
+
+1. **failure นี้ hidden ไหม** — ผลไม่ปรากฏตอนเดินปกติ / เกี่ยวกับฟังก์ชันป้องกัน (protective device) — ไม่ได้ดูจากการมองเห็นสาเหตุหรือความยากในการตรวจจับ
+2. **failure นี้ critical ไหม** — ใช้ผลจาก criticality analysis ไม่ใช่ความรู้สึก
+3. **มี condition indicator ที่ใช้ได้จริงไหม** — ต้องเข้าเกณฑ์ 3 ข้อ: เห็น trend ได้จริง, รู้ condition ขั้นต่ำที่ยอมรับได้, และเลือกความถี่ตรวจที่ทันก่อน failure
+4. **failure interval รู้ค่าและคงที่ไหม**
+
+### เงื่อนไข CBM ที่คนมักข้าม (sl.61-62)
+
+- ถ้า failure เกิดแบบ **sudden functional failure** (ไม่มีอาการนำ) → **ใช้ CBM ไม่ได้เลย**
+- ต้องมี `PT + f < (P-F)` — planning time (PT) บวกความถี่ตรวจ (f) ต้องสั้นกว่า P-F interval ไม่งั้นวางแผนไม่ทัน
+- P = จุดที่ตรวจพบการเสื่อม, F = จุดที่ functional failure เกิด; ช่วง P-F คือเวลาที่มีไว้ซ่อม
+
+### แมปคำตอบ -> กลยุทธ์ (sl.64)
+
+| คำตอบ | กลยุทธ์ |
+|---|---|
+| hidden + ไม่มี task อื่น applicable | **FFM** (function test) |
+| มี condition indicator + P-F ยาวพอ | **CBM** |
+| interval รู้ค่าและคงที่ + มีอายุที่ failure probability กระโดด | **SM** (scheduled) |
+| ไม่ critical / มี redundancy | **RtF** |
+| PM ทั้งหมดไม่คุ้ม หรือเป็นปัญหาที่เกิดซ้ำ | **MOD** (modification) |
+
+- เกณฑ์ "applicable" และ "effective" ของ PETROSYNC ตรงกับ Nowlan & Heap ข้อ 3-4 ข้างต้น แต่เพิ่ม **cost-benefit analysis และ legislation** เป็น input ของการเลือก (sl.65-69) — ถ้ากฎหมายบังคับ task/interval ต้องทำตามกฎหมายก่อนแล้วจึงเสนอเปลี่ยน
+- ต่างจาก RBMM: PETROSYNC ไม่ได้ใช้ β ของ Weibull เป็นเกณฑ์หลักในการเลือก แต่ใช้ "interval รู้ค่าและคงที่ไหม" เป็นคำถามเชิงคุณภาพ — ในทางปฏิบัติควรใช้ทั้งคู่ (β บอกว่ารูปแบบการเสื่อมเป็น wear-out จริงหรือไม่)
+
 ## Triplets
 
 - [[PM Task Selection]] [applies_to:: [[Failure Mode]]] select per failure mode, not per equipment (RBMM ch7)
@@ -205,3 +233,5 @@ Hidden failure?  Yes -> CBM ได้? Yes = CBM / No = FFM
 - CMRP Strategy Tree [defined_in:: [[CMRP Course]]] (CMRP CMPR-03 p.7)
 - Proactive Maintenance [uses:: [[Root Cause Analysis]]] RCFA, age exploration, FMEA, acceptance testing (CMRP CMPR-03 p.2)
 - CMRP Interval Rules [depends_on:: Criticality] moderate vs high, see Failure Finding Interval and P-F pages (CMRP CMPR-03 p.12)
+- P-F Interval [has_value:: PT + f < (P-F)] PETROSYNC RCM 2025 sl.62
+- Condition Based Maintenance [depends_on:: condition indicator, known limit, inspection frequency] PETROSYNC sl.61

@@ -1,10 +1,10 @@
 ---
 title: Criticality Assessment
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [criticality, rcm, spare-parts, maintenance-management, cost, book, iso-14224, cmrp, mpm]
-sources: [reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
+sources: [applied-rcm.md, reliability-based-maintenance-management.md, iso-14224.md, cmrp.md, maintenance-profit-maker.md]
 confidence: medium
 contested: false
 ---
@@ -190,6 +190,27 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - [[CMRP vs RBMM FMECA Scales]]
 - [[Maintenance Profit Maker Book]]
 
+## มุมมอง PETROSYNC: criticality จากธุรกิจและต้นทุนซ่อม (sl.27-30)
+
+PETROSYNC เริ่ม criticality จาก **business goal** ไม่ใช่จากทะเบียนเครื่อง (sl.27): protect people & environment → cut cost → yield/energy → eliminate losses → production schedule → quality แล้วแปลงเป็น SBO → CSF → KPI → initiative ก่อนจะสร้าง criticality matrix
+
+### Criticality matrix 3 มิติ (sl.28-30)
+
+| มิติ | วิธีตั้งเกณฑ์ |
+|---|---|
+| **Cost** | ค่าซ่อม/เปลี่ยนเทียบเส้น X (serious) และ Y (no impact) |
+| **Availability** | ต้องหยุดกี่นาที/ชั่วโมง/วันจึงรับไม่ได้ |
+| **Production rate** | batch process → คิดเป็น efficiency; line process → คิดเป็น % production lost |
+
+- จุดที่สไลด์เน้น: ต้องนิยาม "ยอมรับได้" เป็นตัวเลขก่อน ไม่งั้น criticality จะกลายเป็นความเห็น
+- **criticality จากต้นทุนซ่อม (sl.30)**: จัดกลุ่มเครื่องตามต้นทุนซ่อมต่อปีที่เกิดขึ้นจริง แล้วใช้เป็นตัวตั้งต้นคัดเลือก — เป็นวิธีที่เร็วและเถียงยากในโรงงานที่มีประวัติค่าใช้จ่าย แต่จะมองข้ามเครื่องที่ "ยังไม่เสียแต่เสียแล้วหยุดทั้งライン"
+
+### การเลือก critical asset (sl.36-37)
+
+เกณฑ์คัดเข้าทำ RCM: มี PM/CM หนาอยู่แล้ว, availability/reliability ต่ำ, มีข้อจำกัดในการเปลี่ยนแปลงน้อย, ผลไปใช้กับระบบอื่นได้, หรือเป็นโรงใหม่ — วิธีเลือกใช้ ranking, engineering judgment, ประวัติค่าซ่อมสูง, low-hanging fruit
+
+**ข้อสังเกต**: วิธี cost-based ของ PETROSYNC หยาบกว่ากรอบ 3 มิติ (commercial/safety/environment) ของ [[Reliability Based Maintenance Management Book]] — ใช้เป็น **ตัวคัดกรองรอบแรก** ก่อนทำ criticality เต็มรูปแบบ ไม่ใช่แทนกัน
+
 ## Triplets
 
 - [[Criticality Assessment]] [produces:: Criticality A] High, Criticality 1 (RBMM p.116-118)
@@ -279,3 +300,5 @@ Fig 5.6 (p.120): ตารางสรุป 3 คอลัมน์ (Commercial
 - Criticality Drift [depends_on:: Maintenance Method] improperly maintained parts move from non-critical to highly critical, cause OEE loss (Fig 13.4, MPM p.247)
 - MPM Fig 5.1 Criticality Split [has_value:: 20/50/30%] high/medium/low (MPM p.85)
 - MPM Fig 5.1 Criticality Split [differs_from:: MPM Fig 13.4 Criticality Split] 20/50/30 vs 30/50/20; both examples, not contested
+- Criticality Matrix [has_value:: cost, availability, production rate] PETROSYNC RCM 2025 sl.28-30
+- Cost-Based Criticality [differs_from:: three-dimension criticality] screening only, PETROSYNC sl.30

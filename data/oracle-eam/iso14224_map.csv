@@ -7,3 +7,5 @@ iso_level,iso_concept,eam_construct,eam_page,confidence,rationale
 8,failure mechanism,ไม่มีฟิลด์ — ฝังในรหัส failure code หรือ descriptive flexfield,—,low,ไม่มี object รองรับ ต้องออกแบบเอง
 maintenance record,maintenance activity (ISO เก็บนอก taxonomy),Asset Activity + Work Order Operation,"2-43, 3-21",high,ISO ไม่มี resolution; eAM เก็บงานที่ทำใน operation
 —,resolution,ไม่มีฟิลด์ — operation / DFF,—,low,OREDA มี resolution 13 รหัส แต่ eAM ไม่มีที่เก็บ
+6/8,failure mode codes (ค่าใน lookup),WIP_EAM_FAILURE_CODE — ใส่รหัส ISO B.6-B.15 (compressor CO 20 รหัส),2-25,high,ดู failure_mode_codes.csv; lookup เดียวแบน จึงต้องฝัง class/mode/mechanism ในรหัส
+maintenance record,maintenance activity codes (Table B.5),MTL_EAM_ACTIVITY_TYPE — ใส่ 12 รหัสกิจกรรม ISO,2-16,high,ดู maintenance_activity_codes.csv; เป็นชนิดงาน ไม่ใช่สาเหตุ

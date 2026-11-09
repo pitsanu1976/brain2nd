@@ -19,6 +19,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[raw/maintenance-profit-maker]] — หนังสือ Maintenance: The Profit Maker (วัฒนา เชียงกูล, เกรียงไกร ดำรงรัตน์, SE-ED 2556, 277 หน้า; OCR ทั้งเล่มเก็บในเครื่องเท่านั้น) reading notes ถอดความ 7 ไฟล์ใน `raw/maintenance-profit-maker/`
 - [[raw/oracle-manual]] — Oracle 11i eAM Fundamentals Student Guide ครบ 2 เล่ม (D14149GC31, 938 หน้า, PDF text layer; PDF + ข้อความเต็มเก็บในเครื่องเท่านั้น) Ch.1–5 setup/work management/PM + Ch.6–20 planning, cost, contractor, stores, workbench
 - [[raw/oracle-eam-user-guide]] — Oracle eAM User's Guide Release 11i (A95930-01, 234 หน้า, 2002; PDF + ข้อความเต็ม `raw/oracle_concept.md` เก็บในเครื่องเท่านั้น) functional reference: object model การ setup, WO types/lifecycle, PM scheduling, planning, procurement, self-service
+- [[raw/applied-rcm]] — Applied Reliability Centred Maintenance (PETROSYNC course 3–5 พ.ย. 2025, 173 สไลด์; PDF + ข้อความเต็มเก็บในเครื่องเท่านั้น) 8 โมดูล RCM, criticality, FMECA, task selection, ISO 14224 Table B.4/B.5, RBI integration
 - Area ก ไม่มี raw source (เขียนจากความรู้ทั่วไป)
 
 ## entities/ (area ข)

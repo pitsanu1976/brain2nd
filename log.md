@@ -172,3 +172,12 @@
 - แก้: `git rm --cached raw/efficacy_of_maintenance.md` (ไฟล์ยังอยู่บนเครื่องครบ 1,441,498 bytes) + เพิ่มใน `.gitignore` ใต้หัวข้อ licensed/copyrighted source
 - ตรวจแล้ว: ไม่มีหน้า wiki หรือ note ใด link ถึงไฟล์นี้ (`grep` ทั้ง vault = 0) จึงไม่มี broken link; `raw/` ใน git เหลือ 105 ไฟล์ / ~7.2 MB
 - **ข้อจำกัดที่ต้องรู้:** การถอดนี้ไม่ลบประวัติ — blob ยังอยู่ใน history ของ commit ก่อนหน้า ถ้าต้องลบจริงต้อง rewrite history (`git filter-repo`) ซึ่งยังไม่ทำ เพราะต้อง backup และแจ้งก่อน
+
+## [2026-11-02] ingest | Applied Reliability Centred Maintenance (PETROSYNC, 3–5 พ.ย. 2025)
+- Raw: [[raw/applied-rcm]] — course material 173 สไลด์สแกน ของ PETROSYNC (Amari Bangkok, 3–5 พ.ย. 2025) **text layer เดิมจากเครื่องถ่ายเอกสารอ่านไม่ได้** จึงถอดใหม่ด้วย vision OCR ทั้งเล่ม (DeepSeek, 150 dpi, BATCH=4 WORKERS=5, 197 วินาที, ซ่อม 4 หน้าที่ขาด: 9, 33, 89, 125)
+- ไฟล์: PDF `raw/applied-rcm/Applied_RCM_PETROSYNC_2025.pdf` (6.7 MB, sha256 `cdfe2737…a01935`) + ข้อความเต็ม `raw/applied_reliability_centered_maintenance.md` (157 KB, 173 markers) — เพิ่มใน `.gitignore` ทั้งคู่ (ลิขสิทธิ์ PETROSYNC)
+- โครง 8 โมดูล (ตรวจกับสไลด์ divider จริง): 1–2 ปูพื้น terminology/FMECA (sl.1–22) · 3 Identify What Is Important (23) · 4 Define What Should Be Done (55) · 5 RCM Customization (92) · 6 Change the Existing Program (109) · 7 RCM Project (140) · 8 RBI Integration (167)
+- คุณค่าต่องาน CMMS: **sl.100 = ISO 14224 Table B.4 failure mode codes (ELP, FTS, STP, ERV, KGP, ELU, MIB, OHE, PLU, PUE, AR, STD, SER, UNK) + Table B.5 maintenance activity 12 รหัส** ซึ่งเป็น vocabulary ที่ต่อกับงาน failure hierarchy; sl.60 failure characteristics 4 คำถาม; sl.30 criticality จากต้นทุนซ่อม
+- ข้อจำกัดที่บันทึกไว้: เป็น secondary source (ต่ำกว่า ISO/RBMM), ชื่อสไลด์บางหน้าถอดเพี้ยน, ตาราง B.4 คอลัมน์ matrix เป็น `[?]` — ต้องเปิด PDF หน้า 100 เมื่อใช้ matrix
+- อัปเดต: [[SCHEMA]] §9 (raw source ชุดที่ 10), [[index]] (Raw sources); ยังไม่สร้าง wiki page/triplets — ขั้นถัดไปที่คุ้ม: รวม B.4/B.5 เข้า [[Failure Hierarchy]] และ data/oracle-eam/iso14224_map.csv
+- Pages: [[raw/applied-rcm]], [[index]], [[SCHEMA]], [[RCM Reliability Centered Maintenance]]

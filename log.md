@@ -208,3 +208,13 @@
 - **ข้อผิดพลาดของ source ที่บันทึกไว้**: ตาราง B.4 ของ PETROSYNC sl.100 OCR เหลื่อมคอลัมน์ (Failure to open → STP, Spurious stop → ELP) จึงห้ามใช้เป็น source of truth; ใช้เฉพาะ B.5 (12 กิจกรรม) เป็นตัว corroborate
 - จำนวน triplet: 6,641 → 6,647
 - Pages: [[raw/applied-rcm]], [[Failure Hierarchy]], [[PM Task Selection]], [[Criticality Assessment]], [[index]], [[log]]
+
+## [2026-11-09] ingest | Gemini chat: Poisson min-max stock สำหรับ slow-moving spares
+- Source: [[raw/gemini-minmax-poisson]] — transcript บทสนทนา Gemini 8 ข้อความ (ผู้ใช้ส่งมาเป็นไฟล์ .txt) เก็บ verbatim 11,562 bytes, sha256 `20aa368c…7150b`
+- หน้าใหม่: [[Min-Max Stock Policy for Slow-Moving Spares]] — แยกวิธีตาม demand pattern (deterministic PM BOM / intermittent Poisson / mixed shifted Poisson / insurance risk-based / rotable pool), ตัวอย่าง seal λ=0.4 CSL 95% → ROP 2, Max 4, ตาราง k สำหรับ λ 0.1-2.0 × CSL 90-99%
+- **ตรวจตัวเลขด้วย Python**: P(X≤0..3) = 0.6703 / 0.9384 / 0.9921 / 0.9992 (transcript ปัดเป็น 0.9920) — ตัวเลขหลักถูก
+- **แก้/เสริม 7 ข้อที่ transcript มองข้าม**: protection interval ต้องเป็น LT + review period (min-max เป็น periodic review), CSL ≠ fill rate (ใช้ critical ratio ของ newsvendor กับของแพง), λ จากประวัติสั้นควรใช้ gamma-Poisson หรือ MTBF ของ OEM, lead time แปรผันต้องใช้ compound model หรือ safety lead time แยก, ระวัง double counting PM BOM ใน CMMS, PM compliance drift, kitting สำหรับ outage
+- อัปเดต [[EOQ and Reorder Point]] (ข้อจำกัดกับ slow-moving), [[Spare Parts Management]] (pointer + triplet)
+- สถานะ: ยังไม่ทดสอบกับข้อมูล CMMS จริง — ต้องรันกับ export 12 เดือนก่อนใช้ตั้งค่า (บันทึกไว้ในหน้าด้วย)
+- จำนวนหน้า wiki 136 → 137; triplet 6,647 → 6,653
+- แก้ตัวเลขใน entry นี้: triplet หลัง build จริงคือ 6,655 (ไม่ใช่ 6,653)

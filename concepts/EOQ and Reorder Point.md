@@ -1,10 +1,10 @@
 ---
 title: EOQ and Reorder Point
 created: 2026-10-21
-updated: 2026-10-28
+updated: 2026-11-09
 type: concept
 tags: [spare-parts, statistics, cost, maintenance-management, book, cmrp, spo, inventory-control, mpm]
-sources: [reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
+sources: [gemini-minmax-poisson.md, reliability-based-maintenance-management.md, cmrp.md, spare-parts-optimization.md, maintenance-profit-maker.md]
 confidence: medium
 contested: true
 ---
@@ -110,6 +110,10 @@ ROP = (12/365) x 90 + 2 = 2.95 + 2 ~ 5 ชิ้น   (ใช้เป็น Min
 - สมมติ Normal Distribution; กับอะไหล่ที่ใช้น้อย (0-5 ชิ้นต่อปี) demand เป็นจำนวนเต็มไม่สมมาตร ควรใช้ Poisson หรือ Monte Carlo ดู [[Spare Part Demand Forecasting]] และ [[Statistical Distributions for Maintenance]]
 - ไม่คำนึงความวิกฤติของ item; ต้องจัดกลุ่มก่อน (ดู [[Spare Part Criticality and Risk]]) อะไหล่ Medium/High ใช้ Cost Ratio และ Simulation
 - รวมความต้องการตามแผนและนอกแผนเฉพาะอะไหล่ใช้ร่วมที่ตาราง PM ไม่พร้อมกัน (RBMM p.236)
+
+### ข้อจำกัดกับ slow-moving items (เพิ่ม 2026-11-09)
+
+สูตร ROP ที่ใช้ Z-score ข้างต้นสมมติ demand ต่อช่วงเป็น **continuous และใกล้ normal** ซึ่งใช้ไม่ได้เมื่ออะไหล่เบิกปีละ 0-3 ครั้ง: ค่า σ ประมาณไม่ได้, ของต้องเป็นจำนวนเต็ม, และการแจกแจงเอียงขวาจัด สำหรับกลุ่มนี้ให้ใช้ [[Min-Max Stock Policy for Slow-Moving Spares]] (Poisson / shifted Poisson, CSL ตาม criticality) และแยก insurance spare ออกไปใช้ risk-based
 
 ## ส่วนเสริมจาก CMRP: MRO inventory (CMRP CMPR-08 p.31-45)
 
@@ -309,3 +313,4 @@ D = ค่าครอบครองเป็นเศษส่วนของ�
 - MPM D [has_value:: 20-40%] MPM text holding cost of stocked value, MPM-C1 (MPM p.84) [contested:: true]
 - MPM D [contradicts:: Ch] RBMM holding cost 15-20% per year (RBMM p.16, p.234); MPM examples use finance cost only 6-10% (MPM p.17, p.108, p.180-181), MPM-C1 [contested:: true]
 - EOQ [depends_on:: Holding Cost] EOQ scales with 1 / sqrt(D); D 40% vs 15% gives 0.61x, derived [confidence:: low]
+- [[Min-Max Stock Policy for Slow-Moving Spares]] [differs_from:: [[EOQ and Reorder Point]]] Poisson instead of normal approximation for low demand

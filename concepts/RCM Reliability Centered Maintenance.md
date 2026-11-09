@@ -4,7 +4,7 @@ created: 2026-10-20
 updated: 2026-11-09
 type: concept
 tags: [rcm, pm, reliability, maintenance-management, weibull, book]
-sources: [efficacy-of-maintenance.md, reliability-based-maintenance-management.md]
+sources: [applied-rcm.md, efficacy-of-maintenance.md, reliability-based-maintenance-management.md]
 confidence: high
 contested: false
 ---
@@ -196,3 +196,4 @@ FMECA เป็นกระบวนการอิสระจากฝั่�
 - [[RCM Reliability Centered Maintenance]] [has_value:: 3 steps] scoping + FMECA + task selection, EOM p.320
 - [[RCM Reliability Centered Maintenance]] [differs_from:: PETROSYNC RCM process model] excludes optimization and CMMS in Fig 16.3, EOM p.320 [contested:: true]
 - [[RCM Reliability Centered Maintenance]] [depends_on:: maintenance history, failure modes, cost data] 6 preconditions, EOM p.341
+- RCM Process Model [has_value:: 11 boxes in 3 phases] PETROSYNC RCM 2025 sl.26/58/65

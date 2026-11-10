@@ -225,3 +225,11 @@
 - ตรวจกับ `raw/iso-14224/annex-b.md` (Table B.15: 62 รหัส; CO ใช้ 20) พบ 3 ข้อผิดใน clipping: (1) ไม่ครบ ให้ 18 รหัส, (2) ขาด PLU Plugged/choked, (3) รวม STP = "fail to stop on demand / spurious stop" กับ UST = spurious stop เป็นรหัสเดียว
 - [[Failure Mode]] เพิ่มหัวข้อ "การเลือกใช้รหัส (เกณฑ์ + ตัวอย่างรายรหัส)": เกณฑ์ 3 ข้อ, ตาราง 21 รหัส (ISO label + เงื่อนไขบันทึก + ตัวอย่างประกอบ), ตารางคู่ที่มักสลับ (AIR/PDE, ELP/ELU, INL/ELP, STP/UST, SER/STD, BRD/UNK), กฎการบันทึก 4 ข้อ
 - SCHEMA §9 เพิ่มรายการ source; triplet +3 (STP differs_from UST, Failure Mode differs_from Failure Cause Codes, Failure Mode has_value 62) → **6,658** จาก 115 หน้า, 0 errors
+
+## 2026-11-10 — ingest internal SOP: Maintenance Inventory Control (TH-GEN-PROD-162 Rev 2)
+
+- รับไฟล์ `TH_GEN_PROD_162_REP_0001_Maintenance_Inventory_R2_min_max_revise.docx` (420,821 bytes, sha256 976b885f…4c65d6) — เนื้อหาเหมือน Rev 2 ที่แก้ §5.2 และตรวจแล้วว่า paragraph/table diff = 0 กับไฟล์ที่ส่งก่อนหน้า; เก็บ .docx ไว้ `/opt/data/home/docs_incoming/` และเพิ่ม `*.docx` ใน `.gitignore` (เอกสารภายใน ห้ามขึ้น public repo)
+- `raw/maintenance-inventory-sop-162.md` — source note แบบ paraphrase (ไม่ใช่ข้อความเต็ม): แผนผัง §5.1–§5.8, §6, ตาราง criticality C1/C2/NC + asset link, stock decision 5 เงื่อนไข, โซน cost ratio, SL ต่อชั้น, วิธีพยากรณ์ 4 กลุ่ม, control model, KPI
+- หน้าใหม่ [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — นโยบาย 8 หัวข้อ + ข้อจำกัด (rotable pool, fixed SS หยาบ, SL เป็นช่วง, link ระดับ equipment)
+- เพิ่มลิงก์จาก [[Spare Part Criticality and Risk]], [[MRO Inventory Control Methods]], [[Min-Max Stock Policy for Slow-Moving Spares]]; index 137→138
+- triplet +6 → **6,664** จาก 116 หน้า, 0 errors

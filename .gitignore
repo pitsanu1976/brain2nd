@@ -12,3 +12,6 @@ raw/oracle-eam-ug/*.pdf
 raw/efficacy-of-maintenance-ocr.md
 raw/applied_reliability_centered_maintenance.md
 raw/applied-rcm/*.pdf
+
+# Internal company documents (SOP/docx) stay local — never in the public repo
+*.docx

@@ -97,6 +97,8 @@ Max = ROP + order quantity
 - ตัวเลขใน transcript ตรวจแล้วถูก (P(X≤2) = 0.9921 ไม่ใช่ 0.9920 ตามการปัดเศษ) แต่ transcript ไม่ได้อ้างแหล่งและมองข้ามข้อ 1-7 ข้างบน
 - ยังไม่ทดสอบกับข้อมูล CMMS จริงของ Valeura — ต้องรันกับ export 12 เดือนก่อนใช้ตั้งค่า
 
+- [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — ค่า SL ต่อชั้นที่องค์กรล็อก (C1 95–99.5 %, C2 90–95 %, NC = OAR) และ fixed SS default 1/1/0; Rev 2 แก้สูตร Max = Min + Q
+
 ## Triplets
 
 - [[Min-Max Stock Policy for Slow-Moving Spares]] [applies_to:: [[Spare Parts Management]]] intermittent demand items

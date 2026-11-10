@@ -275,6 +275,8 @@ MPM เสนอ SOS ที่ใช้ความเชื่อมโยง�
 - [[MRO Material Classification]]
 - [[Maintenance Profit Maker Book]]
 
+- [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — นโยบายองค์กร: C1/C2/NC + stock decision 5 เงื่อนไข + โซน cost ratio ที่ล็อกตัวเลข + SL ต่อชั้น
+
 ## Triplets
 
 - [[Spare Part Criticality and Risk]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9

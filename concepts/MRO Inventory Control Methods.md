@@ -229,6 +229,8 @@ M = 90, ค้างรับ 30, คงเหลือ 25  -> 90 - (25 + 30) = 
 - [[SPO vs RBMM Spare Parts Approaches]]
 - [[Maintenance Profit Maker Book]]
 
+- [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — movement × cost → 4 โมเดลที่องค์กรใช้จริง (perpetual ROP/EOQ, min-max blanket, two-bin, one-for-one)
+
 ## Triplets
 
 - [[MRO Inventory Control Methods]] [defined_in:: [[Spare Parts Optimization Book]]] chapter 9 (SPO p.101-110)

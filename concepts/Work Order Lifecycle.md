@@ -157,6 +157,8 @@ contested: false
 - [[Failure Data Recording]]
 - [[Maintenance Profit Maker Book]]
 
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
+
 ## Triplets
 
 - [[Work Order Lifecycle]] [defined_in:: [[Maintenance Profit Maker Book]]] MMS chapter 4 (MPM p.59-81)

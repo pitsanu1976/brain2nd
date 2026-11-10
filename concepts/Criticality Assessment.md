@@ -211,6 +211,8 @@ PETROSYNC เริ่ม criticality จาก **business goal** ไม่ใ�
 
 **ข้อสังเกต**: วิธี cost-based ของ PETROSYNC หยาบกว่ากรอบ 3 มิติ (commercial/safety/environment) ของ [[Reliability Based Maintenance Management Book]] — ใช้เป็น **ตัวคัดกรองรอบแรก** ก่อนทำ criticality เต็มรูปแบบ ไม่ใช่แทนกัน
 
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
+
 ## Triplets
 
 - [[Criticality Assessment]] [produces:: Criticality A] High, Criticality 1 (RBMM p.116-118)

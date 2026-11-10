@@ -2,7 +2,7 @@
 
 แค็ตตาล็อกของทุกหน้า อัปเดตทุกครั้งที่เพิ่ม/ย้ายหน้า (กติกาใน [[SCHEMA]], ประวัติใน [[log]])
 
-อัปเดตล่าสุด: 2026-11-10 | จำนวนหน้า wiki: 138 (entities 15, concepts 99, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
+อัปเดตล่าสุด: 2026-11-10 | จำนวนหน้า wiki: 139 (entities 15, concepts 100, comparisons 6, guides 6, reference 6, queries 6; ไม่นับ `queries/README.md`)
 
 Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reliability (compressor failure hierarchy, RBMM, ISO 14224, CMRP, SPO และ MPM)
 
@@ -114,6 +114,7 @@ Area ก = Obsidian Second Brain + LLM Wiki method | Area ข = Maintenance Reli
 - [[EOQ and Reorder Point]] — สูตร EOQ, ROP, Safety Stock = z x sigma_combined, ตาราง Z และตัวอย่างคำนวณ SS ประมาณ 2, ROP ประมาณ 5
 - [[Min-Max Stock Policy for Slow-Moving Spares]] — Min/Max ตาม demand pattern: PM BOM (LTD), Poisson/short-CSL สำหรับ corrective, shifted Poisson เมื่อใช้ทั้งคู่, insurance spare ใช้ risk-based; มีตาราง k สำหรับ lambda x CSL และข้อควรระวัง protection interval / fill rate
 - [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — นโยบายภายใน: criticality C1/C2/NC + asset link, stock decision 5 เงื่อนไข, โซน cost ratio, SL ต่อชั้น, control model 4 แบบ, KPI 7 ตัว
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บทองค์กร (TH-GEN-MT-GE-PHI-0001 R7): ปรัชญา ขอบเขต 7 maintenance types, maintainability, criticality + calibration ตามชั้น, แผน/ตาราง/shutdown, spares 3 ประเภท, KPI + bad actor, audit 3 ปี, skill 5 ระดับ
 - [[Spare Part Demand Forecasting]] — คาดการณ์ demand อะไหล่ด้วย MTBF average, Poisson (D=3, D=5.333) และ Monte Carlo
 - [[Maintenance Budget]] — กรอบตั้งงบบำรุงรักษา Top Down/Bottom Up: Gross -> สำรอง (Losses/Costs) -> Net Budget, Cost Control vs Loss Control, งบตาม Criticality A/B/C
 - [[Maintenance Cost Structure]] — Full Fixed Cost 5 กลุ่ม, Materials (Stock/Direct Purchase/Outsource), Full Fixed Cost Rate, Over/(Under) Absorption และ Variance

@@ -233,3 +233,12 @@
 - หน้าใหม่ [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]] — นโยบาย 8 หัวข้อ + ข้อจำกัด (rotable pool, fixed SS หยาบ, SL เป็นช่วง, link ระดับ equipment)
 - เพิ่มลิงก์จาก [[Spare Part Criticality and Risk]], [[MRO Inventory Control Methods]], [[Min-Max Stock Policy for Slow-Moving Spares]]; index 137→138
 - triplet +6 → **6,664** จาก 116 หน้า, 0 errors
+
+## 2026-11-10 — ingest internal doc: Valeura Maintenance Philosophy (TH-GEN-MT-GE-PHI-0001 R7)
+
+- รับ `TH-GEN-MT-GE-PHI-0001 MAINT PHILOSOPHY.docx` (754,649 bytes, sha256 3fb118ee…99a6f9, Rev 7 พ.ค. 2023, 294 paragraphs / 13 tables) — เอกสารภายใน เก็บใน `docs_incoming` เท่านั้น (`*.docx` gitignored อยู่แล้ว)
+- `raw/valeura-maintenance-philosophy.md` — source note แบบ paraphrase: แผนผังเอกสาร, ตารางกฎที่มีตัวเลข (refurbishment <70 %, calibration ตาม criticality, shutdown 4 ระดับ + เตรียม 2 เดือน, bad actor 500 ชม./ไตรมาส, operating spares 2 ปี, audit 3 ปี / obsolescence 5 ปี, skill 5 ระดับ)
+- หน้าใหม่ [[Valeura Maintenance Philosophy]] 14 หัวข้อ — รวมตาราง 7 maintenance types + ข้อสังเกตเชิงระบบว่า type ผสม 2 มิติ (จังหวะ vs ลักษณะงาน) ขณะที่ ISO 14224 B.5 แยก activity 12 รหัส และ Oracle eAM แยก WO type + Activity Type
+- เพิ่มลิงก์ขาเข้าจาก [[Maintainability]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]], [[Maintenance KPIs]], [[Spare Parts Management]], [[Criticality Assessment]]; index 138→139
+- ระบุช่องว่าง: TH-GEN-MT-GE-KPP-0001 (Maintenance Strategy) และ TH-GEN-MT-GN-GUI-0001 (Equipment Criticality Guideline) ยังไม่ ingest
+- triplet +7 → **6,671** จาก 117 หน้า, 0 errors

@@ -213,6 +213,8 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 - **ช่วงเวลา**: งานตรวจวัดทุก 1-12 สัปดาห์ — **ไม่ควรเกิน 12 สัปดาห์ (3 เดือน)**; Part Replacement ระดับ 1-2 ตั้งตรงรอบหยุดโรงงานหรือเว้น 2/3/4 รอบ; ระดับ 3-4 ใช้ MTBF จากประวัติแล้วตั้งก่อนถึง MTBF เล็กน้อย (EOM p.99-100)
 - **กฎแก้ตารางทับซ้อน**: กำหนดกิจกรรมให้เป็นอิสระต่อกันก่อน ถ้าชนกันให้ยึดงานที่ซับซ้อนกว่า (C > B > A) และ **ยกเลิกงานที่จำเป็นน้อยกว่า** ไม่ใช่เลื่อนทั้งคู่ (EOM p.100)
 
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
+
 ## Triplets
 
 - [[Maintenance Planning and Scheduling]] [defined_in:: [[CMRP Course]]] CMPR-09 and CMPR-08 p.46-50

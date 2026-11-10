@@ -135,6 +135,8 @@ Active repair (corrective) แบ่ง 7 ขั้น:
 - [[Reliability Allocation]]
 - [[CMRP Course]]
 
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
+
 ## Triplets
 
 - [[Maintainability]] [defined_in:: [[CMRP Course]]] ease and speed of restoring an item after failure (CMRP CMPR-04 p.24)

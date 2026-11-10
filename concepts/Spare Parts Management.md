@@ -312,6 +312,8 @@ MPM ให้ทั้ง "ไม่ต่ำกว่า 60-70%" (MPM p.90) แ
 
 การตั้ง Min/Max ของอะไหล่ที่เบิกน้อยและไม่สม่ำเสมอต้องแยกตาม demand pattern ไม่ใช่ใช้สูตรเดียวทั้งคลัง: PM BOM → `usage × lead time`; corrective → Poisson ที่ CSL ตาม criticality; ใช้ทั้งคู่ → shifted Poisson (`ROP = D_PM + k_Poisson`); insurance/capital → risk-based ไม่ใช้สูตรสถิติ ดูรายละเอียดและตาราง k ใน [[Min-Max Stock Policy for Slow-Moving Spares]]
 
+- [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
+
 ## Triplets
 
 - [[Spare Parts Management]] [defined_in:: [[Reliability Based Maintenance Management Book]]] chapter 9

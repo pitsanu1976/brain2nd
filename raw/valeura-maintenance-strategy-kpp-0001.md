@@ -41,7 +41,7 @@ Purpose → Scope & objectives (6 ข้อ) → Reference (risk matrix) → Mai
 
 **SIL:** กำหนด reliability ของ protective device; drive การจัดซื้อตอน project และ **proof-test interval** ตอน operate — loop test/calibration ของ input device, ESD cause & effect test ของ controller, SDV stroke test + วัด closure time ตอน ESD
 
-**RBI:** กระบวนการ dynamic ที่อัปเดตตามสภาวะ processและประวัติ ผลกระทบที่สนใจคือ loss of containment จากการกัดกร่อน/สูญเสียวัสดุ; ใช้ API 580; ขอบเขต topside piping, pressure vessel, storage tank
+**RBI:** กระบวนการ dynamic ที่อัปเดตตามสภาวะ process และประวัติ ผลกระทบที่สนใจคือ loss of containment จากการกัดกร่อน/สูญเสียวัสดุ; ใช้ API 580; ขอบเขต topside piping, pressure vessel, storage tank
 
 **CMMS (Oracle) ต้องมี:** asset register ตาม P&ID (รวม package P&ID), asset criticality ทุกตัว, PM plan (task, interval, spare, manpower), BOM 2 ระดับ (equipment BOM + activity BOM) เพื่อให้ WO ที่ออกจาก standard activity ผูกวัสดุอัตโนมัติและพยากรณ์วัสดุล่วงหน้าเพื่อต่อรองราคา
 

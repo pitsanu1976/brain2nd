@@ -90,6 +90,8 @@ contested: false
 - [[Work Order Lifecycle]] — ที่มาของข้อมูล WO ใน Oracle
 - [[Maintenance Planning and Scheduling]] — ตัวขับเคลื่อน backlog
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — เอกสารกลยุทธ์ที่ KPI เหล่านี้ตรวจ (มี KPI list ที่ขาดกลางคัน จึงต้องอ้าง KPP-0002 แทน)
+
 ## Triplets
 
 - [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] [has_value:: 15] KPIs, mix of CONTROL/MONITOR and LEADING/LAGGING

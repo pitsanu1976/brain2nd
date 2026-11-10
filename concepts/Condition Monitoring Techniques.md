@@ -134,6 +134,8 @@ ultrasonic -> vibration -> oil analysis -> audible noise -> hot to touch (thermo
 - [[PM Task Selection]]
 - [[Criticality Assessment]]
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — กลยุทธ์องค์กร R2: เมนูเครื่องมือ 14 (OEM→criticality→RCM/SIL/RBI→CBM→RCFA), CMMS ต้องมี BOM 2 ระดับ, look-ahead 30/90/7, swing unit, เป้า overdue 0 %
+
 ## Triplets
 
 - [[Condition Monitoring Techniques]] [is_a:: Condition Monitoring] health check without stopping operation (CMRP CMPR-01 p.28)

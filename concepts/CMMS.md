@@ -195,6 +195,8 @@ MPM เน้นว่า MMS ที่ดีใช้ได้ทั้งแ�
 - **ขึ้นระบบ 5 ขั้น** (EOM p.271-273): สำรวจข้อมูล → ออกแบบระบบ (เริ่มจากรายงานที่ต้องการแล้วถอยกลับไปหาวิธีเก็บข้อมูล) → จัดเตรียมข้อมูล → อบรม → go-live + ดูแลต่อ
 - **ตำแหน่งในแผนแม่บท**: CMMS ถูกจัดอยู่ในแผนงานเทคนิค **ระดับความเร่งด่วนที่ 3** ของ MMMP (EOM p.223-224) — คือทำหลังเอกสารเทคนิค มาตรฐานงาน และอะไหล่ ไม่ใช่ทำก่อน
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — กลยุทธ์องค์กร R2: เมนูเครื่องมือ 14 (OEM→criticality→RCM/SIL/RBI→CBM→RCFA), CMMS ต้องมี BOM 2 ระดับ, look-ahead 30/90/7, swing unit, เป้า overdue 0 %
+
 ## Triplets
 
 - [[CMMS]] [has_label:: Computerized Maintenance Management System]

@@ -77,6 +77,8 @@ dangerous failure ที่ทำให้ SIF ใช้ไม่ได้ = saf
 - compressor เองไม่ใช่ safety system แต่ shutdown/trip logic และ valve ที่ผูกอยู่กับ compressor อาจเป็น SCE การตีความนี้ไม่มีใน sources
 - trip ที่ไม่จำเป็น (spurious trip) เทียบได้กับ [[UST Spurious Stop]] ตามที่ Annex C ระบุ (cl. C.1.8, p.208)
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — กลยุทธ์องค์กร R2: เมนูเครื่องมือ 14 (OEM→criticality→RCM/SIL/RBI→CBM→RCFA), CMMS ต้องมี BOM 2 ระดับ, look-ahead 30/90/7, swing unit, เป้า overdue 0 %
+
 ## Triplets
 
 - [[Safety Critical Failure Classification]] [defined_in:: [[ISO 14224]]] Annex F informative (cl. F.1-F.2, p.251)

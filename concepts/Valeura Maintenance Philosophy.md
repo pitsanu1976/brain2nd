@@ -149,6 +149,8 @@ overdue = เกิน expected complete date และนับเป็น bac
 - [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — ชุด KPI ที่วัดนโยบายหน้านี้ (Rev R8)
 - [[Maintenance KPIs]], [[Maintenance Budget]], [[Root Cause Analysis]]
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — เอกสารกลยุทธ์ที่แปลงนโยบายเป็นเมนูเครื่องมือ (Rev R2)
+
 ## Triplets
 
 - [[Valeura Maintenance Philosophy]] [defined_in:: TH-GEN-MT-GE-PHI-0001] Rev 7, May 2023

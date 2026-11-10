@@ -122,6 +122,8 @@ FMECA เป็นกระบวนการอิสระจากฝั่�
 - **RCFA**: เริ่มทุกครั้งที่มี WO ประเภท Breakdown/Unplanned, ใช้ fishbone ได้, ผลต้องเก็บเป็นความรู้ใช้ซ้ำกับเครื่องที่เหมือนกัน (EOM p.329)
 - **เงื่อนไขก่อนทำ RCM ได้จริง (6 ข้อ, EOM p.341)**: ประวัติซ่อมครบ, บันทึกเหตุการณ์ผลิต+ซ่อม, แยก failure mode, ต้นทุนตรง/ทางอ้อมถูกต้อง, ความรู้ maintenance engineering, ความรู้คณิตศาสตร์/สถิติ
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — กลยุทธ์องค์กร R2: เมนูเครื่องมือ 14 (OEM→criticality→RCM/SIL/RBI→CBM→RCFA), CMMS ต้องมี BOM 2 ระดับ, look-ahead 30/90/7, swing unit, เป้า overdue 0 %
+
 ## Triplets
 
 - [[RCM Reliability Centered Maintenance]] [selects:: Scheduled PM Task] per failure mode, using reliability knowledge (RBMM p.114-115)

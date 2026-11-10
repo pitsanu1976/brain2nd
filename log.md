@@ -251,3 +251,13 @@
 - เพิ่มลิงก์จาก [[Maintenance KPIs]], [[Maintenance Backlog and Schedule Compliance]], [[Reliability Metrics]], [[Valeura Maintenance Philosophy]]; index 139→140
 - หมายเหตุ: PHI-0001 อ้าง TH-GEN-MT-GE-KPP-0001 (Maintenance Strategy) — **ยังไม่ ingest**; KPP-0002 ที่ ingest วันนี้เป็นฉบับ KPI ไม่ใช่ strategy
 - triplet +8 → **6,679** จาก 118 หน้า, 0 errors
+
+## 2026-11-10 — ingest internal standard: Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001 R2)
+
+- รับ `TH-GEN-MT-GE-KPP-0001 MAINT STRAGETY.docx` (750,657 bytes, sha256 7692e80e…05db14, 191 paragraphs / 8 tables, Rev R2 พ.ค. 2023) — ปิดช่องว่างที่ PHI-0001 และ KPP-0002 อ้างถึง; เอกสารภายใน เก็บ `docs_incoming` เท่านั้น
+- `raw/valeura-maintenance-strategy-kpp-0001.md` — paraphrase 17 หัวข้อ
+- หน้าใหม่ [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — เมนูเครื่องมือ 14 อย่าง, CMMS ต้องมี BOM 2 ระดับ (equipment + activity), planning 30/90/7 วัน + เป้า overdue 0 %, spares (PM BOM = stock, min-max จาก look-ahead simulation, swing unit รวม electrical generator), SCE register + deviation control, Pre-ORR 13 หัวข้อ, competency matrix
+- ข้อสังเกต 7 ข้อ บันทึกในหน้า: (1) KPI list ขาดกลางคัน (2) ไม่มีวิธีเลือก task ระดับ failure mode (3) min-max จาก look-ahead 90 วันไม่ใช่ consumption history — ใช้กับ slow-moving ไม่ได้ (4) swing unit ≠ rotable pool (5) เป้า overdue 0 % ขัดกับ tolerance 1–3 % ใน KPP-0002 (6) ไม่มีตัวเลขความถี่ CBM/RBI (7) ไม่มี spare criticality C1/C2/NC
+- เพิ่มลิงก์จาก [[CMMS]], [[Maintenance Planning and Scheduling]], [[Spare Parts Management]], [[RCM Reliability Centered Maintenance]], [[Condition Monitoring Techniques]], [[Safety Critical Failure Classification]], [[Valeura Maintenance Philosophy]], [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]]; index 140→141
+- triplet +8 → **6,687** จาก 119 หน้า, 0 errors
+- ชุดเอกสาร Valeura ครบสามชั้นแล้ว: PHI-0001 (นโยบาย) → KPP-0001 (กลยุทธ์) → KPP-0002 (KPI) + SOP 162 (คลังอะไหล่) เป็นเอกสารประยุกต์

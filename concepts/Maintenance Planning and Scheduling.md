@@ -215,6 +215,8 @@ Slide: wrench ~30% ของ 40 ชม. = 12 ชม./คน/สัปดาห�
 
 - [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
 
+- [[Valeura Maintenance Strategy (TH-GEN-MT-GE-KPP-0001)]] — กลยุทธ์องค์กร R2: เมนูเครื่องมือ 14 (OEM→criticality→RCM/SIL/RBI→CBM→RCFA), CMMS ต้องมี BOM 2 ระดับ, look-ahead 30/90/7, swing unit, เป้า overdue 0 %
+
 ## Triplets
 
 - [[Maintenance Planning and Scheduling]] [defined_in:: [[CMRP Course]]] CMPR-09 and CMPR-08 p.46-50

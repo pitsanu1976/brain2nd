@@ -159,6 +159,8 @@ Availability = เวลาที่พร้อมใช้ / เวลาท�
 - [[Maintainability]]
 - [[Maintenance Profit Maker Book]] (MTBF/MTTR/MLT แบบ MPM)
 
+- [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — มาตรฐาน KPI องค์กร 15 ตัว + scorecard 5 ระดับ (tolerance: SCE/HIGH 1 เดือน, MEDIUM + CM/BM 3 เดือน)
+
 ## Triplets
 
 - [[Reliability Metrics]] [uses:: Weibull Distribution] example β = 3.7888, η = 13,130.8 h (Y regression)

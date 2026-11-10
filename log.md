@@ -242,3 +242,12 @@
 - เพิ่มลิงก์ขาเข้าจาก [[Maintainability]], [[Work Order Lifecycle]], [[Maintenance Planning and Scheduling]], [[Maintenance KPIs]], [[Spare Parts Management]], [[Criticality Assessment]]; index 138→139
 - ระบุช่องว่าง: TH-GEN-MT-GE-KPP-0001 (Maintenance Strategy) และ TH-GEN-MT-GN-GUI-0001 (Equipment Criticality Guideline) ยังไม่ ingest
 - triplet +7 → **6,671** จาก 117 หน้า, 0 errors
+
+## 2026-11-10 — ingest internal standard: ARMS KPI (TH-GEN-MT-GE-KPP-0002 R8)
+
+- รับ `TH-GEN-MT-GE-KPP-0002 Rev R8.docx` (713,116 bytes, sha256 ad11ea89…bfff13, 221 paragraphs / 11 tables) — Rev R8 ส.ค. 2026 เพิ่ม Availability & Reliability + ปรับ KPI เดิม; เอกสารภายใน เก็บ `docs_incoming` เท่านั้น
+- `raw/arms-kpi-standard-kpp-0002.md` — paraphrase: นิยาม BACKLOG vs PM OVERDUE COMPLIANCE, 15 KPI + tolerance, scorecard weights, ผู้รับผิดชอบ
+- หน้าใหม่ [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — 6 หัวข้อ + **ข้อบกพร่อง 7 จุด** ที่พบ: (1) % SCE PM backlog overdue นิยามเศษ/ส่วนคนละมิติ (2) ช่วงคะแนน reliability ซ้ำและมีรู 0.003–0.004 (3) 1/MTBF สมมติ exponential ไม่มี β (4) backlog เป็น % ของงานครบกำหนดเดือน ทำให้ซ่อนของค้างจำนวนมาก (5) ไม่มี KPI คุณภาพ PM (repeat/rework) (6) PM:CM ratio ไม่มี target band (7) สูตรเป็น equation object อ่านด้วยเครื่องไม่ได้
+- เพิ่มลิงก์จาก [[Maintenance KPIs]], [[Maintenance Backlog and Schedule Compliance]], [[Reliability Metrics]], [[Valeura Maintenance Philosophy]]; index 139→140
+- หมายเหตุ: PHI-0001 อ้าง TH-GEN-MT-GE-KPP-0001 (Maintenance Strategy) — **ยังไม่ ingest**; KPP-0002 ที่ ingest วันนี้เป็นฉบับ KPI ไม่ใช่ strategy
+- triplet +8 → **6,679** จาก 118 หน้า, 0 errors

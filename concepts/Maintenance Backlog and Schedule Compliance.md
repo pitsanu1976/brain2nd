@@ -136,6 +136,8 @@ Backlog (MPM) = Man-Hours ที่ต้องใช้ทำงานที่
 - [[Work Order Lifecycle]]
 - [[Maintenance Profit Maker Book]]
 
+- [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — มาตรฐาน KPI องค์กร 15 ตัว + scorecard 5 ระดับ (tolerance: SCE/HIGH 1 เดือน, MEDIUM + CM/BM 3 เดือน)
+
 ## Triplets
 
 - [[Maintenance Backlog and Schedule Compliance]] [defined_in:: [[CMRP Course]]] CMPR-09 p.37-46, CMPR-10 p.1-9

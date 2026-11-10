@@ -379,6 +379,8 @@ OEAD = Operational Earning After Depreciation
 
 - [[Valeura Maintenance Philosophy]] — เอกสารแม่บท Valeura (TH-GEN-MT-GE-PHI-0001 R7): 7 maintenance types, criticality, warranty rule, KPI, bad actor 500 ชม./ไตรมาส, skill 5 ระดับ
 
+- [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — มาตรฐาน KPI องค์กร 15 ตัว + scorecard 5 ระดับ (tolerance: SCE/HIGH 1 เดือน, MEDIUM + CM/BM 3 เดือน)
+
 ## Triplets
 
 - [[Maintenance KPIs]] [defined_in:: [[Reliability Based Maintenance Management Book]]] KPI tree Fig 2.9 (p.48-54) and codes B, C, D, E (ch3 p.70-84)

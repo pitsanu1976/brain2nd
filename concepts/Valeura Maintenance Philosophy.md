@@ -146,6 +146,7 @@ overdue = เกิน expected complete date และนับเป็น bac
 - [[Maintenance Planning and Scheduling]], [[Maintenance Backlog and Schedule Compliance]]
 - [[Work Order Lifecycle]] — สถานะและ WO type ใน Oracle eAM
 - [[Spare Parts Management]], [[Maintenance Inventory Control SOP (TH-GEN-PROD-162)]]
+- [[ARMS KPI Standard (TH-GEN-MT-GE-KPP-0002)]] — ชุด KPI ที่วัดนโยบายหน้านี้ (Rev R8)
 - [[Maintenance KPIs]], [[Maintenance Budget]], [[Root Cause Analysis]]
 
 ## Triplets

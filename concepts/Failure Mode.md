@@ -1,10 +1,10 @@
 ---
 title: Failure Mode
 created: 2026-10-20
-updated: 2026-10-22
+updated: 2026-11-10
 type: concept
 tags: [failure-mode, failure-rate, oreda, taxonomy, iso-14224]
-sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__summary-by-failure-mode.csv, reliability-based-maintenance-management.md, iso-14224.md]
+sources: [compressor-failure-hierarchy.md, compressor-failure-hierarchy__summary-by-failure-mode.csv, reliability-based-maintenance-management.md, iso-14224.md, gemini-failure-mode-definitions.md]
 confidence: high
 contested: false
 ---
@@ -61,6 +61,62 @@ contested: false
 - ตามค่า default มาตรฐานให้บันทึก mode ที่ระดับ **equipment class** (subsea แนะนำให้บันทึกที่ maintainable item ด้วย) (ISO 14224 cl. B.2.6, p.185) ต่างจาก dataset OREDA ที่ผูก mode กับ maintainable item ทุกแถว นี่เป็นความต่างของขอบเขตระหว่างสอง source ไม่ใช่ข้อขัดแย้ง
 - UST เป็นรหัสที่ ISO 2016 ใช้จริง (ดู [[UST Spurious Stop]]); ความต่างของ subdivision ดู [[Compressor Subdivision Wiki vs ISO 14224]]
 - field อื่นของ record: [[Failure Detection Method]]
+
+## การเลือกใช้รหัส (เกณฑ์ + ตัวอย่างรายรหัส)
+
+ส่วนนี้เพิ่มจาก clipping AI 2026-11-10 ซึ่งตรวจทานกับ [[ISO 14224]] แล้ว (ดู `raw/gemini-failure-mode-definitions.md`) — เกณฑ์ 3 ข้อของ clipping ใช้ได้ แต่รายการรหัสไม่ครบและมีจุดที่รวมรหัสผิด จึงแก้ไว้ในตารางนี้
+
+### เกณฑ์ 3 ข้อ
+
+1. **บันทึกอาการที่สังเกต/ตรวจวัดได้ ไม่ใช่สาเหตุหรือกลไก** — mode คือระดับ 4 ของ [[Failure Hierarchy]]; "Corrosion" เป็น mechanism ไม่ใช่ mode, "น้ำมันรั่วที่หน้าแปลน" จึงเป็น ELP
+2. **ยึดขอบเขตอุปกรณ์ (equipment boundary)** — ค่า default ของ ISO คือบันทึกที่ระดับ equipment class (ISO 14224 cl. B.2.6) ถ้าองค์กรเก็บที่ maintainable item ต้องประกาศให้ชัด เพราะตัวเลข % จะเทียบกันไม่ได้
+3. **แยก 3 ชั้นให้ชัด** — failure mode (อาการ) → [[Failure Mechanism]] (กลไก: wear, corrosion, misalignment) → [[Failure Cause Codes]] (ราก: หล่อลื่นผิด, ติดตั้งผิด, ออกแบบผิด)
+
+### ตารางนิยาม 21 รหัสของ compressor (CO)
+
+20 รหัสที่ CO ใช้ + ELF ที่ CO ไม่ใช้ ตัวอย่างในคอลัมน์สุดท้ายเป็น **ตัวอย่างประกอบ (illustrative)** ไม่ได้มาจากมาตรฐาน
+
+| Code | ISO label | บันทึกเมื่อ | ตัวอย่าง |
+|---|---|---|---|
+| AIR | Abnormal instrument reading | ตัวเครื่องวัด/เซนเซอร์เองอ่านผิด เพี้ยน หรือค้าง — กระบวนการยังปกติ | เกจความดันค้างที่ค่าสูงสุดแม้ระบบหยุดแล้ว |
+| BRD | Breakdown | เสียหายรุนแรงจนหยุดทันที ต้องยกเครื่อง/เปลี่ยนชิ้นใหญ่ และไม่มีข้อมูลลึกกว่านี้ | เพลาคอมเพรสเซอร์หัก ใบพัดแตก |
+| ELF | External leakage - fuel | รั่วของเชื้อเพลิง — ใช้กับ CE, GT, ST เท่านั้น (CO ไม่ใช้) | ท่อน้ำมันเชื้อเพลิงรั่วที่ข้อต่อ gas turbine |
+| ELP | External leakage - process medium | ของไหลกระบวนการรั่วออกนอก casing/boundary | น้ำมันดิบซึมที่หน้าแปลนท่อส่ง |
+| ELU | External leakage - utility medium | ของไหล utilityรั่วออกนอก เช่น น้ำหล่อเย็น ลมเครื่องมือ น้ำมันหล่อลื่น/ไฮดรอลิก | น้ำหล่อเย็นหยดจากซีลปั๊ม |
+| ERO | Erratic output | เอาต์พุตแกว่ง/ไม่นิ่ง แต่ยังทำงานอยู่ | transmitter ส่งกระแสแกว่งทั้งที่กระบวนการนิ่ง |
+| FTS | Failure to start on demand | สั่งสตาร์ทหรือถูกเรียกใช้งานแล้วไม่ติด — hidden failure ต้องมี FFM | emergency generator ไม่ติดเมื่อไฟหลักดับ |
+| HIO | High output | จ่ายเกินพิกัด (แรงดัน/อัตราไหล/กำลัง) | วาล์วควบคุมเปิดเกิน ทำให้ความดันปลายทางเกินพิกัด |
+| INL | Internal leakage | รั่วภายในผ่านตัวกั้น (บ่าวาล์ว ซีลภายใน) มองจากภายนอกไม่เห็น | วาล์วปิดสนิทแต่ยังมีก๊าซผ่านไปอีกฝั่ง |
+| LOO | Low output | จ่ายได้ต่ำกว่าสเปกแต่ยังทำงาน | ปั๊มจ่าย flow ต่ำกว่าพิกัด |
+| NOI | Noise | เสียงผิดปกติ (หวีด/กระแทก/ดังเกิน) ขณะทำงาน | bearing ส่งเสียงหวีดขณะหมุน |
+| OHE | Overheating | อุณหภูมิเกินขีดหรือทริปจากความร้อน | มอเตอร์ร้อนจนระบบทริป |
+| OTH | Other | อาการที่ไม่เข้าโหมดใดเลย — ต้องมีหมายเหตุอธิบาย | อาการเฉพาะที่ไม่มีรหัสรองรับ |
+| PDE | Parameter deviation | ค่า process (อุณหภูมิ ความดัน ระดับ การไหล) เบี่ยงจาก setpoint แต่ยังไม่ทริป — **ตัวกระบวนการเอง ไม่ใช่เครื่องวัด** | อุณหภูมิน้ำมันหล่อลื่นสูงกว่าปกติ 10 °C ต่อเนื่อง |
+| PLU | Plugged/choked | อุดตัน/ตัน จนการไหลลดหรือ ΔP สูงขึ้น (รหัสที่ clipping ขาด) | strainer ตัน ทำให้ ΔP สูงขึ้นเรื่อย ๆ |
+| SER | Minor in-service problems | ปัญหาเล็กน้อยที่ยังไม่ทำให้หยุดหรือเสียสมรรถนะชัด | น็อตฝาครอบหลวม คราบสกปรก ตั้งค่าเพี้ยนเล็กน้อย |
+| STD | Structural deficiency | โครงสร้างบกพร่อง: ร้าว ผุกร่อน เสียรูป | รอยร้าวที่ skirt ถังแรงดันจากการกัดกร่อน |
+| STP | Failure to stop on demand | สั่งหยุด/สั่งปิด (รวม trip) แล้วไม่หยุด — safety critical | วาล์วตัดอัตโนมัติไม่ปิดเมื่อสั่ง |
+| UST | Spurious stop | หยุดเองโดยไม่มีคำสั่งและไม่มีความผิดปกติจริง (false trip) | คอมเพรสเซอร์ทริปเองทั้งที่ค่าปกติทุกตัว |
+| VIB | Vibration | สั่นเกินเกณฑ์ alarm/trip | misalignment ทำให้สั่นเกินเกณฑ์ |
+| UNK | Unknown | ข้อมูลไม่พอจะระบุ — ต้องมีไว้เพื่อไม่ให้คนเดารหัส | ใบแจ้งซ่อมเขียนเพียง "เสีย" |
+
+### คู่ที่มักบันทึกสลับกัน
+
+| คู่ | คำถามตัดสิน |
+|---|---|
+| AIR vs PDE | ค่าจริงเปลี่ยนหรือแค่ตัวอ่านเปลี่ยน — ถ้ากระบวนการปกติแต่ค่าที่อ่านเพี้ยน = AIR; ถ้ากระบวนการเบี่ยงจริง = PDE |
+| ELP vs ELU | ของไหลนั้นเป็นส่วนของ process หรือเป็น utility (น้ำหล่อเย็น ลม ไฮดรอลิก) |
+| INL vs ELP | รั่วผ่านตัวกั้นภายใน (ไม่เห็นภายนอก) = INL; รั่วออกนอก boundary = ELP |
+| STP vs UST | สั่งแล้วไม่หยุด = STP; หยุดเองทั้งที่ไม่มีคำสั่ง = UST (clipping 2026-11-10 รวมสองรหัสนี้เป็นรหัสเดียว — ผิด) |
+| SER vs STD | ยังไม่กระทบการทำงาน = SER; ความสมบูรณ์ของโครงสร้างลดลง (ร้าว/ผุ) = STD |
+| BRD vs UNK | BRD คือเสียหายหนักจริงและเห็นความเสียหาย; ถ้าไม่รู้ว่าเกิดอะไร = UNK ไม่ใช่ BRD |
+
+### กฎการบันทึก
+
+- 1 work order = 1 โหมดหลัก — ถ้ามีหลายอาการ ให้เลือกโหมดที่เป็นเหตุให้เปิด WO หรือที่ทำให้หยุด
+- ชุดรหัสต้องมีทั้ง **OTH และ UNK** และห้ามใช้แทนกัน (OTH = รู้ว่าเป็นอะไรแต่ไม่มีรหัส, UNK = ไม่รู้)
+- โหมดประเภท on-demand (FTS, STP) เป็น hidden failure — ต้องมี failure-finding task และ **ห้ามใช้ CBM** กับ sudden failure ดู [[PM Task Selection]] และ [[Failure Finding Interval]]
+- จำนวนรหัสในระบบจริงควรล็อก 15–25 รหัสต่อ equipment class ไม่ใช่ทั้งหมด 62 รหัส ดู [[Failure Hierarchy]]
 
 ## ดูเพิ่ม (RBMM)
 
@@ -176,3 +232,6 @@ contested: false
 - [[Failure Mode]] [related_to:: [[Failure Detection Method]]] other field of the failure record
 - [[FMECA]] [applies_to:: [[Failure Mode]]] systematic failure mode analysis
 - [[PM Task Selection]] [applies_to:: [[Failure Mode]]] PM task selection per failure mode
+- [[Failure Mode]] [differs_from:: [[Failure Cause Codes]]] mode = อาการที่สังเกตได้, cause = เหตุที่ทำให้เกิด โดยมี mechanism คั่นกลาง
+- STP [differs_from:: UST] STP = สั่งหยุดแล้วไม่หยุด; UST = หยุดเองโดยไม่มีคำสั่ง (clipping 2026-11-10 รวมสองรหัสเป็นรหัสเดียว ผิด)
+- [[Failure Mode]] [has_value:: 62] ISO 14224 Table B.15 รหัสทั้งหมดทุก equipment class (CO ใช้ 20)

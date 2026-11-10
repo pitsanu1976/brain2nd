@@ -218,3 +218,10 @@
 - สถานะ: ยังไม่ทดสอบกับข้อมูล CMMS จริง — ต้องรันกับ export 12 เดือนก่อนใช้ตั้งค่า (บันทึกไว้ในหน้าด้วย)
 - จำนวนหน้า wiki 136 → 137; triplet 6,647 → 6,653
 - แก้ตัวเลขใน entry นี้: triplet หลัง build จริงคือ 6,655 (ไม่ใช่ 6,653)
+
+## 2026-11-10 — ingest clipping failure mode definitions (Gemini)
+
+- เพิ่ม `raw/gemini-failure-mode-definitions.md` (12,431 bytes verbatim, sha256 5ac4e25f…2515b) — AI conversation, secondary source ระดับต่ำ
+- ตรวจกับ `raw/iso-14224/annex-b.md` (Table B.15: 62 รหัส; CO ใช้ 20) พบ 3 ข้อผิดใน clipping: (1) ไม่ครบ ให้ 18 รหัส, (2) ขาด PLU Plugged/choked, (3) รวม STP = "fail to stop on demand / spurious stop" กับ UST = spurious stop เป็นรหัสเดียว
+- [[Failure Mode]] เพิ่มหัวข้อ "การเลือกใช้รหัส (เกณฑ์ + ตัวอย่างรายรหัส)": เกณฑ์ 3 ข้อ, ตาราง 21 รหัส (ISO label + เงื่อนไขบันทึก + ตัวอย่างประกอบ), ตารางคู่ที่มักสลับ (AIR/PDE, ELP/ELU, INL/ELP, STP/UST, SER/STD, BRD/UNK), กฎการบันทึก 4 ข้อ
+- SCHEMA §9 เพิ่มรายการ source; triplet +3 (STP differs_from UST, Failure Mode differs_from Failure Cause Codes, Failure Mode has_value 62) → **6,658** จาก 115 หน้า, 0 errors
